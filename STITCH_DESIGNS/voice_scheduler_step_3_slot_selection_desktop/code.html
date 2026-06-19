@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise - Slot Selection</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "neutral-800": "#1A202C",
+                    "primary-fixed": "#d9e2ff",
+                    "outline": "#747781",
+                    "tertiary-fixed": "#ffdcbd",
+                    "on-tertiary-fixed": "#2c1600",
+                    "inverse-surface": "#2f3035",
+                    "on-secondary-container": "#006b7a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "primary": "#002862",
+                    "tertiary-container": "#613700",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "background": "#faf9ff",
+                    "source-badge-bg": "#EFF6FF",
+                    "on-tertiary-container": "#f19931",
+                    "primary-fixed-dim": "#afc6ff",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001a43",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "neutral-600": "#4A5568",
+                    "on-surface-variant": "#434750",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e3e2e8",
+                    "on-secondary-fixed": "#001f25",
+                    "inverse-primary": "#afc6ff",
+                    "surface": "#faf9ff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "surface-container-high": "#e8e7ee",
+                    "surface-tint": "#3d5d9d",
+                    "surface-container-highest": "#e3e2e8",
+                    "on-primary-container": "#8eadf3",
+                    "neutral-400": "#9AA5B4",
+                    "surface-bright": "#faf9ff",
+                    "on-background": "#1a1b20",
+                    "neutral-50": "#F7F8FA",
+                    "warning-500": "#D97706",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "outline-variant": "#c4c6d2",
+                    "primary-container": "#1b3f7e",
+                    "neutral-900": "#0F172A",
+                    "error-500": "#C0392B",
+                    "source-badge-text": "#1E40AF",
+                    "error": "#ba1a1a",
+                    "tertiary": "#422400",
+                    "secondary-container": "#94eafd",
+                    "surface-dim": "#dad9df",
+                    "neutral-200": "#E2E8F0",
+                    "disclaimer-bg": "#FFF8E1",
+                    "disclaimer-border": "#F59E0B",
+                    "on-surface": "#1a1b20",
+                    "on-primary-fixed-variant": "#224584",
+                    "surface-container-lowest": "#ffffff",
+                    "neutral-100": "#EEF0F4",
+                    "secondary-fixed": "#a4eeff",
+                    "surface-container-low": "#f4f3f9",
+                    "secondary": "#006877",
+                    "surface-container": "#eeedf3",
+                    "error-container": "#ffdad6",
+                    "success-500": "#2D8653",
+                    "on-error": "#ffffff",
+                    "info-500": "#2563EB",
+                    "saffron": "#F59E0B"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-5": "20px",
+                    "max-width": "1280px",
+                    "space-1": "4px",
+                    "space-3": "12px",
+                    "space-4": "16px",
+                    "space-2": "8px",
+                    "space-6": "24px",
+                    "space-12": "48px",
+                    "space-16": "64px",
+                    "space-10": "40px",
+                    "space-8": "32px"
+            },
+            "fontFamily": {
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-disclaimer": ["Inter"],
+                    "text-body": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .slot-card-selected {
+            background-color: #f0fdfa !important; /* soft teal-50 */
+            border-color: #006877 !important;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .shadow-soft {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-text-body">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-neutral-900 shadow-md docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center space-x-space-3">
+<span class="material-symbols-outlined text-on-primary dark:text-primary-fixed" style="font-size: 28px;">account_balance</span>
+<span class="text-text-h3 font-text-h3 font-bold text-on-primary dark:text-primary-fixed">Fundwise</span>
+</div>
+<nav class="hidden md:flex items-center space-x-space-8">
+<a class="text-on-primary/90 hover:text-white transition-colors duration-200 font-text-h4 text-text-h4" href="#">Dashboard</a>
+<a class="text-on-primary/90 hover:text-white transition-colors duration-200 font-text-h4 text-text-h4" href="#">Portfolio</a>
+<a class="text-secondary-fixed-dim border-b-2 border-secondary-fixed-dim pb-1 font-text-h4 text-text-h4" href="#">Advisory</a>
+</nav>
+<button class="bg-secondary-container text-on-secondary-container px-space-4 py-space-2 rounded-lg font-text-h4 text-text-h4 font-bold hover:opacity-90 transition-opacity">
+                Advisor Login
+            </button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-space-6 py-space-10">
+<!-- Stepper Component -->
+<div class="mb-space-10">
+<div class="flex items-center justify-between max-w-xl mx-auto">
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-success-500 text-white flex items-center justify-center mb-space-2">
+<span class="material-symbols-outlined">check</span>
+</div>
+<span class="font-text-small text-text-small text-success-500 font-bold">Requirement</span>
+</div>
+<div class="flex-1 h-1 bg-success-500 mx-space-2 -mt-8"></div>
+<!-- Step 2: Complete -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-success-500 text-white flex items-center justify-center mb-space-2">
+<span class="material-symbols-outlined">check</span>
+</div>
+<span class="font-text-small text-text-small text-success-500 font-bold">Advisor</span>
+</div>
+<div class="flex-1 h-1 bg-success-500 mx-space-2 -mt-8"></div>
+<!-- Step 3: Active -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mb-space-2 ring-4 ring-primary/20">
+<span class="font-text-h4 text-text-h4">3</span>
+</div>
+<span class="font-text-small text-text-small text-primary font-bold">Scheduling</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-8">
+<!-- Left Side: Voice Agent Context -->
+<div class="md:col-span-5 space-y-space-6">
+<div class="flex flex-col items-start space-y-space-4">
+<div class="flex items-center space-x-space-3">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">smart_toy</span>
+</div>
+<span class="font-text-h3 text-text-h3 font-bold text-primary">Advisor Match</span>
+</div>
+<!-- Voice Agent Speech Bubble -->
+<div class="bg-white p-space-5 rounded-xl rounded-tl-none border border-neutral-200 shadow-soft relative">
+<p class="font-text-body-lg text-text-body-lg text-neutral-800 leading-relaxed">
+                            "Here are the available slots for this week. I've curated these based on your preference for morning sessions. Which one works best for your initial consultation?"
+                        </p>
+<div class="mt-space-4 flex items-center text-primary font-bold space-x-space-2">
+<div class="flex space-x-1">
+<div class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"></div>
+<div class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.2s]"></div>
+<div class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:0.4s]"></div>
+</div>
+<span class="text-text-small font-text-small">Listening for your choice...</span>
+</div>
+</div>
+<!-- Voice Input Button -->
+<div class="flex justify-center w-full pt-space-4">
+<button class="w-[72px] h-[72px] rounded-full border-4 border-saffron flex items-center justify-center pulse-animation shadow-lg bg-white group hover:bg-saffron transition-all duration-300">
+<span class="material-symbols-outlined text-saffron group-hover:text-white" data-weight="fill" style="font-size: 32px;">mic</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Side: Slot Selection List -->
+<div class="md:col-span-7">
+<div class="bg-surface-container-low p-space-6 rounded-xl border border-neutral-100 shadow-sm">
+<h2 class="font-text-h2 text-text-h2 text-primary mb-space-6">Available Consultation Slots</h2>
+<form class="space-y-space-4" id="slotForm">
+<!-- Slot Card 1 -->
+<label class="relative block cursor-pointer group">
+<input class="peer hidden" name="slot" onchange="updateSelection()" type="radio" value="slot1"/>
+<div class="flex items-center justify-between p-space-5 bg-white border border-neutral-200 rounded-xl transition-all duration-200 hover:border-secondary peer-checked:border-secondary peer-checked:bg-secondary-container/10 group-hover:shadow-md">
+<div class="flex items-center space-x-space-4">
+<div class="bg-neutral-100 p-space-3 rounded-lg peer-checked:bg-secondary/20">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+</div>
+<div>
+<p class="font-text-h4 text-text-h4 text-neutral-800">Monday, Oct 28</p>
+<p class="font-text-body text-text-body text-neutral-600">10:30 AM - 11:00 AM IST</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-neutral-300 flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary">
+<div class="w-2.5 h-2.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+</label>
+<!-- Slot Card 2 -->
+<label class="relative block cursor-pointer group">
+<input class="peer hidden" name="slot" onchange="updateSelection()" type="radio" value="slot2"/>
+<div class="flex items-center justify-between p-space-5 bg-white border border-neutral-200 rounded-xl transition-all duration-200 hover:border-secondary peer-checked:border-secondary peer-checked:bg-secondary-container/10 group-hover:shadow-md">
+<div class="flex items-center space-x-space-4">
+<div class="bg-neutral-100 p-space-3 rounded-lg">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+</div>
+<div>
+<p class="font-text-h4 text-text-h4 text-neutral-800">Tuesday, Oct 29</p>
+<p class="font-text-body text-text-body text-neutral-600">09:00 AM - 09:30 AM IST</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-neutral-300 flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary">
+<div class="w-2.5 h-2.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+</label>
+<!-- Slot Card 3 -->
+<label class="relative block cursor-pointer group">
+<input class="peer hidden" name="slot" onchange="updateSelection()" type="radio" value="slot3"/>
+<div class="flex items-center justify-between p-space-5 bg-white border border-neutral-200 rounded-xl transition-all duration-200 hover:border-secondary peer-checked:border-secondary peer-checked:bg-secondary-container/10 group-hover:shadow-md">
+<div class="flex items-center space-x-space-4">
+<div class="bg-neutral-100 p-space-3 rounded-lg">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+</div>
+<div>
+<p class="font-text-h4 text-text-h4 text-neutral-800">Thursday, Oct 31</p>
+<p class="font-text-body text-text-body text-neutral-600">11:15 AM - 11:45 AM IST</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-neutral-300 flex items-center justify-center peer-checked:border-secondary peer-checked:bg-secondary">
+<div class="w-2.5 h-2.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+</label>
+</form>
+<!-- Disclaimer Block -->
+<div class="mt-space-8 bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-4">
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 italic">
+                            Disclaimer: All slots are subject to advisor confirmation. Mutual fund investments are subject to market risks. Please read the scheme information and other related documents carefully before investing.
+                        </p>
+</div>
+<!-- Action Buttons -->
+<div class="mt-space-8 flex flex-col sm:flex-row space-y-space-4 sm:space-y-0 sm:space-x-space-4">
+<button class="flex-1 border-2 border-primary text-primary px-space-6 py-space-4 rounded-lg font-bold hover:bg-neutral-100 transition-colors">
+                            Back to Advisor Info
+                        </button>
+<button class="flex-1 bg-saffron text-white px-space-6 py-space-4 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-warning-500 transition-all shadow-md active:scale-95" disabled="" id="continueBtn">
+                            Continue
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-neutral-900 border-t-4 border-disclaimer-border mt-space-16">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-white/10 pb-space-6">
+<div class="flex items-center space-x-space-2 mb-space-4 md:mb-0">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">account_balance</span>
+<span class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise</span>
+</div>
+<div class="flex flex-wrap gap-space-4">
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Scheme Documents</a>
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Grievance Redressal</a>
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<div class="text-center">
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/60">
+                    © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks. Information displayed is for educational purposes only.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        function updateSelection() {
+            const continueBtn = document.getElementById('continueBtn');
+            const radios = document.getElementsByName('slot');
+            let anyChecked = false;
+            
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    anyChecked = true;
+                    // Trigger visual feedback
+                    radio.nextElementSibling.classList.add('ring-2', 'ring-secondary');
+                } else {
+                    radio.nextElementSibling.classList.remove('ring-2', 'ring-secondary');
+                }
+            });
+            
+            if (anyChecked) {
+                continueBtn.disabled = false;
+                continueBtn.classList.remove('opacity-50');
+            }
+        }
+
+        // Add visual micro-interactions for the voice button
+        const voiceBtn = document.querySelector('.pulse-animation');
+        voiceBtn.addEventListener('mousedown', () => {
+            voiceBtn.classList.add('scale-90');
+        });
+        voiceBtn.addEventListener('mouseup', () => {
+            voiceBtn.classList.remove('scale-90');
+        });
+    </script>
+</body></html>

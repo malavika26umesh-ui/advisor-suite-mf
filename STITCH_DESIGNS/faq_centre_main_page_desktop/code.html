@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mutual Fund FAQ Centre | Fundwise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "info-500": "#2563EB",
+                    "source-badge-bg": "#EFF6FF",
+                    "neutral-600": "#4A5568",
+                    "neutral-50": "#F7F8FA",
+                    "surface-bright": "#faf9ff",
+                    "background": "#faf9ff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "neutral-100": "#EEF0F4",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d9e2ff",
+                    "on-surface": "#1a1b20",
+                    "tertiary-fixed": "#ffdcbd",
+                    "on-secondary-container": "#006b7a",
+                    "surface-container-highest": "#e3e2e8",
+                    "on-primary-fixed-variant": "#224584",
+                    "inverse-surface": "#2f3035",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#3d5d9d",
+                    "surface-dim": "#dad9df",
+                    "secondary": "#006877",
+                    "disclaimer-border": "#F59E0B",
+                    "source-badge-text": "#1E40AF",
+                    "primary-fixed-dim": "#afc6ff",
+                    "inverse-on-surface": "#f1f0f6",
+                    "secondary-fixed": "#a4eeff",
+                    "on-tertiary-container": "#f19931",
+                    "error-500": "#C0392B",
+                    "primary": "#002862",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "neutral-200": "#E2E8F0",
+                    "tertiary-container": "#613700",
+                    "surface-container-high": "#e8e7ee",
+                    "secondary-container": "#94eafd",
+                    "surface-container-low": "#f4f3f9",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "outline": "#747781",
+                    "neutral-400": "#9AA5B4",
+                    "disclaimer-bg": "#FFF8E1",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#422400",
+                    "on-secondary-fixed": "#001f25",
+                    "on-primary-container": "#8eadf3",
+                    "primary-container": "#1b3f7e",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeedf3",
+                    "on-primary-fixed": "#001a43",
+                    "success-500": "#2D8653",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "surface-variant": "#e3e2e8",
+                    "inverse-primary": "#afc6ff",
+                    "neutral-800": "#1A202C",
+                    "on-surface-variant": "#434750",
+                    "surface": "#faf9ff",
+                    "outline-variant": "#c4c6d2",
+                    "neutral-900": "#0F172A",
+                    "warning-500": "#D97706",
+                    "on-tertiary-fixed": "#2c1600",
+                    "on-background": "#1a1b20"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-5": "20px",
+                    "space-2": "8px",
+                    "space-4": "16px",
+                    "space-16": "64px",
+                    "space-8": "32px",
+                    "space-3": "12px",
+                    "space-10": "40px",
+                    "max-width": "1280px",
+                    "space-12": "48px",
+                    "space-6": "24px",
+                    "space-1": "4px"
+            },
+            "fontFamily": {
+                    "text-body": ["Inter"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .voice-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(217, 119, 6, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+        }
+        .advisor-border {
+            border-left: 4px solid #D97706;
+        }
+        .compliance-border {
+            border-left: 4px solid #F59E0B;
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 font-text-body text-on-background">
+<!-- Top Navigation Shell -->
+<header class="bg-primary shadow-md docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-space-3">
+<span class="material-symbols-outlined text-on-primary text-text-h2" data-icon="account_balance">account_balance</span>
+<h1 class="text-text-h3 font-text-h3 font-bold text-on-primary">Fundwise</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-space-8">
+<a class="text-on-primary/90 hover:text-secondary-fixed-dim transition-colors font-text-h4 text-text-h4" href="#">Home</a>
+<a class="text-on-primary/90 hover:text-secondary-fixed-dim transition-colors font-text-h4 text-text-h4" href="#">Market Trends</a>
+<a class="text-secondary-fixed-dim border-b-2 border-secondary-fixed-dim pb-1 font-text-h4 text-text-h4" href="#">FAQ Centre</a>
+<a class="text-on-primary/90 hover:text-secondary-fixed-dim transition-colors font-text-h4 text-text-h4" href="#">My Portfolio</a>
+</nav>
+<button class="bg-white/10 hover:bg-white/20 text-on-primary px-space-4 py-space-2 rounded-lg font-text-h4 text-text-h4 transition-colors">
+                Advisor Login
+            </button>
+</div>
+</header>
+<!-- Main FAQ Header -->
+<section class="bg-primary-container text-on-primary w-full py-space-16" data-alt="A sophisticated digital pattern of interconnected nodes and financial data lines against a deep navy blue background. The style is modern, corporate, and trustworthy, with subtle light-blue glow effects creating a sense of professional clarity and depth." style="background-image: linear-gradient(rgba(27, 63, 126, 0.95), rgba(27, 63, 126, 0.95)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBmiJOwwiw156bafhIVTeGlWRtTXFkNC1cJz6MMjg67cfebysqF71LOp_-14CyFsB7geDYWATyimtKAyUwRET2-IsoK1MxdUsKmAmImkeWCWQgrGriID0WsRGh061BbPA4SnWNjr7Ke4QHYEYMSfoJSL_dK_EtSa0utgmcLKoXUpaLEV9mba_Wo6o20yCvkbHiUpBmuvJgFHnxihKB1PDwpluUHz1btumEnN2I_p0Vrgxonn-Uae0HLmXV0MUt11MjpRU6qg6tcoutT');">
+<div class="max-w-max-width mx-auto px-space-6">
+<div class="max-w-3xl">
+<h1 class="font-text-h1 text-text-h1 text-white mb-space-2">Mutual Fund FAQ Centre</h1>
+<p class="font-text-body-lg text-text-body-lg text-primary-fixed opacity-90 mb-space-8">
+                    Factual answers from official AMFI, SEBI, and AMC sources. Every answer cites its source.
+                </p>
+<!-- Search Bar -->
+<div class="relative flex items-center bg-white rounded-xl shadow-lg p-space-1 overflow-hidden">
+<span class="material-symbols-outlined ml-space-4 text-neutral-400" data-icon="search">search</span>
+<input class="w-full border-none focus:ring-0 text-text-body-lg px-space-4 py-space-4 text-neutral-800" placeholder="Search for mutual fund regulations, fees, or types..." type="text"/>
+<button class="p-space-3 mr-space-2 text-warning-500 hover:bg-neutral-100 rounded-full transition-colors voice-pulse">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="bg-warning-500 hover:bg-warning-500/90 text-white font-bold px-space-8 py-space-4 rounded-lg transition-transform active:scale-95">
+                        Ask
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Layout -->
+<main class="max-w-max-width mx-auto px-space-6 py-space-12">
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-space-10">
+<!-- Left Column: Content -->
+<div class="space-y-space-8">
+<!-- Advice Deflection Banner -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-4 flex items-start gap-space-3">
+<span class="material-symbols-outlined text-warning-500" data-icon="info">info</span>
+<p class="font-text-disclaimer text-text-disclaimer text-on-tertiary-fixed-variant">
+<strong>Regulatory Note:</strong> This information is for educational purposes only and does not constitute financial advice. Consult a registered investment advisor for personal recommendations.
+                    </p>
+</div>
+<!-- Answer Card -->
+<div class="bg-surface-container-lowest border border-neutral-200 rounded-xl shadow-sm overflow-hidden">
+<!-- User Question Bubble -->
+<div class="p-space-6 bg-neutral-50 border-b border-neutral-100">
+<div class="flex items-start gap-space-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-text-h4 text-text-h4 text-primary">Are there any exit loads on Liquid Funds?</p>
+<p class="font-text-small text-text-small text-neutral-600 mt-space-1">Asked by Retail Investor • 2 hours ago</p>
+</div>
+</div>
+</div>
+<!-- Factual Answer -->
+<div class="p-space-6">
+<div class="flex gap-space-4 mb-space-4">
+<div class="w-10 h-10 rounded-full bg-success-500 flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<div class="space-y-space-4">
+<p class="font-text-body-lg text-text-body-lg text-neutral-800">
+                                    Yes, SEBI introduced a graded exit load structure for liquid funds in 2019. If you withdraw your investment within 7 days of allotment, a small exit load is applicable, starting at 0.0070% on Day 1 and reducing to 0% after Day 6.
+                                </p>
+<p class="font-text-body-lg text-text-body-lg text-neutral-800">
+                                    This move was implemented to prevent institutional investors from using liquid funds for ultra-short overnight parking, which could cause volatility. From the 7th day onwards, there is zero exit load on liquid fund redemptions.
+                                </p>
+</div>
+</div>
+<!-- Source Row -->
+<div class="flex items-center gap-space-3 pt-space-6 border-t border-neutral-100">
+<span class="font-text-small text-text-small font-bold text-neutral-600 uppercase tracking-wider">Source:</span>
+<div class="flex items-center bg-source-badge-bg text-source-badge-text px-space-3 py-space-1 rounded-full text-text-small font-medium border border-info-500/20">
+<span class="material-symbols-outlined text-[16px] mr-1" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                AMFI Verified Disclosure
+                            </div>
+<a class="flex items-center text-info-500 hover:underline text-text-small" href="#">
+                                SEBI Circular SEBI/HO/IMD/DF2/CIR/P/2019/101
+                                <span class="material-symbols-outlined text-[14px] ml-1" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Compliance Disclaimer Block -->
+<div class="bg-disclaimer-bg compliance-border p-space-6">
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800">
+                            Mutual Fund investments are subject to market risks, read all scheme related documents carefully. The exit load mentioned above is based on current SEBI guidelines and individual AMC policies may vary within the regulated cap. Always check the Scheme Information Document (SID) before investing.
+                        </p>
+</div>
+</div>
+<!-- Bento Grid Extra Info -->
+<div class="grid grid-cols-2 gap-space-6">
+<div class="bg-surface-container-low p-space-6 rounded-xl border border-neutral-200 hover:shadow-md transition-shadow cursor-pointer">
+<span class="material-symbols-outlined text-secondary mb-space-3" data-icon="timer">timer</span>
+<h4 class="font-text-h4 text-text-h4 text-primary mb-space-1">Redemption Timeframes</h4>
+<p class="font-text-body text-text-body text-neutral-600">Liquid funds typically offer T+1 redemption, with some offering instant withdrawal up to ₹50,000.</p>
+</div>
+<div class="bg-surface-container-low p-space-6 rounded-xl border border-neutral-200 hover:shadow-md transition-shadow cursor-pointer">
+<span class="material-symbols-outlined text-secondary mb-space-3" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h4 class="font-text-h4 text-text-h4 text-primary mb-space-1">Taxation on Gains</h4>
+<p class="font-text-body text-text-body text-neutral-600">Gains from liquid funds are taxed as per your individual income tax slab as of the latest Finance Act.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="space-y-space-8">
+<!-- Panel 1: Fee Explainer -->
+<div class="sticky top-space-24 bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden" style="border-left: 4px solid #006877;">
+<div class="p-space-6">
+<div class="flex items-center gap-space-2 mb-space-4">
+<span class="material-symbols-outlined text-secondary" data-icon="payments">payments</span>
+<h3 class="font-text-h3 text-text-h3 text-primary">Fee Explainer</h3>
+</div>
+<h4 class="font-text-h4 text-text-h4 text-neutral-800 mb-space-2">What is Exit Load?</h4>
+<p class="font-text-body text-text-body text-neutral-600 mb-space-4">
+                            An exit load is a fee charged by the Asset Management Company (AMC) when an investor sells or redeems their mutual fund units within a specific timeframe. 
+                        </p>
+<div class="bg-neutral-50 p-space-3 rounded-lg border border-neutral-100">
+<p class="font-text-small text-text-small text-neutral-800">
+<strong class="text-primary">Key Purpose:</strong> To discourage short-term withdrawals and protect the interests of long-term investors in the fund.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Panel 2: Covered Schemes -->
+<div class="bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden">
+<div class="p-space-6 border-b border-neutral-100 flex justify-between items-center">
+<h3 class="font-text-h4 text-text-h4 text-primary">Verified Schemes</h3>
+<span class="material-symbols-outlined text-neutral-400 text-[20px]" data-icon="help">help</span>
+</div>
+<div class="p-space-4 space-y-space-3">
+<div class="flex items-center gap-space-3 p-space-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer group">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-primary font-bold text-[10px]">HDFC</div>
+<div class="flex-1">
+<p class="font-text-small text-text-small font-bold text-neutral-800 leading-tight">HDFC Liquid Fund</p>
+<p class="text-[10px] text-neutral-400">ISIN: INF179K01KV8</p>
+</div>
+<span class="material-symbols-outlined text-neutral-300 group-hover:text-primary transition-colors text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center gap-space-3 p-space-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer group">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-primary font-bold text-[10px]">SBI</div>
+<div class="flex-1">
+<p class="font-text-small text-text-small font-bold text-neutral-800 leading-tight">SBI Liquid Fund</p>
+<p class="text-[10px] text-neutral-400">ISIN: INF200K01MT1</p>
+</div>
+<span class="material-symbols-outlined text-neutral-300 group-hover:text-primary transition-colors text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center gap-space-3 p-space-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer group">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-primary font-bold text-[10px]">ICICI</div>
+<div class="flex-1">
+<p class="font-text-small text-text-small font-bold text-neutral-800 leading-tight">ICICI Pru Liquid Fund</p>
+<p class="text-[10px] text-neutral-400">ISIN: INF109K01LM1</p>
+</div>
+<span class="material-symbols-outlined text-neutral-300 group-hover:text-primary transition-colors text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center gap-space-3 p-space-2 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer group">
+<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-primary font-bold text-[10px]">AXIS</div>
+<div class="flex-1">
+<p class="font-text-small text-text-small font-bold text-neutral-800 leading-tight">Axis Liquid Fund</p>
+<p class="text-[10px] text-neutral-400">ISIN: INF846K01015</p>
+</div>
+<span class="material-symbols-outlined text-neutral-300 group-hover:text-primary transition-colors text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<button class="w-full py-space-3 text-center text-info-500 font-text-h4 text-text-h4 hover:bg-neutral-50 transition-colors border-t border-neutral-100">
+                        View All Schemes
+                    </button>
+</div>
+<!-- Advisor Brief CTA -->
+<div class="bg-surface-container-highest p-space-6 rounded-xl advisor-border">
+<p class="font-text-h4 text-text-h4 text-primary mb-space-2">Need Advisor Assistance?</p>
+<p class="font-text-body text-text-body text-on-surface-variant mb-space-4">Our SEBI registered partners can help you structure your liquid fund investments for maximum tax efficiency.</p>
+<button class="w-full bg-primary text-white py-space-3 rounded-lg font-bold hover:opacity-90 transition-opacity">Connect with Advisor</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary border-t-4 border-disclaimer-border mt-space-16">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-10">
+<div class="space-y-space-4">
+<div class="flex items-center gap-space-2">
+<span class="material-symbols-outlined text-white" data-icon="account_balance">account_balance</span>
+<span class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise</span>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/70">
+                        Empowering retail investors with transparent, source-verified mutual fund knowledge and professional advisory connections.
+                    </p>
+</div>
+<div>
+<h5 class="text-white font-bold mb-space-4 uppercase text-[12px] tracking-widest">Resources</h5>
+<ul class="space-y-space-2">
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">Scheme Documents</a></li>
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">Grievance Redressal</a></li>
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">Compliance Disclosures</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-space-4 uppercase text-[12px] tracking-widest">Calculators</h5>
+<ul class="space-y-space-2">
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">SIP Calculator</a></li>
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">Exit Load Estimator</a></li>
+<li><a class="text-on-primary/70 hover:text-white font-text-disclaimer text-text-disclaimer transition-colors" href="#">Taxation Tool</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-space-4 uppercase text-[12px] tracking-widest">Stay Updated</h5>
+<div class="flex gap-space-2">
+<input class="bg-white/10 border-white/20 rounded-lg text-white font-text-disclaimer text-text-disclaimer focus:ring-secondary focus:border-secondary w-full" placeholder="Email address" type="email"/>
+<button class="bg-secondary px-space-4 py-space-2 rounded-lg text-white">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-space-6 border-t border-white/10">
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/50 text-center">
+                    © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks. Past performance is not an indicator of future returns. Please read the offer document carefully before investing.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the search bar
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('ring-4', 'ring-primary-container/20', 'border-primary');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('ring-4', 'ring-primary-container/20', 'border-primary');
+        });
+
+        // Toggle mobile nav (placeholder for functionality)
+        console.log("FAQ Centre UI Loaded successfully.");
+    </script>
+</body></html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book a Call - Fundwise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "neutral-800": "#1A202C",
+                        "primary-fixed": "#d9e2ff",
+                        "outline": "#747781",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-tertiary-fixed": "#2c1600",
+                        "inverse-surface": "#2f3035",
+                        "on-secondary-container": "#006b7a",
+                        "inverse-on-surface": "#f1f0f6",
+                        "primary": "#002862",
+                        "tertiary-container": "#613700",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "background": "#faf9ff",
+                        "source-badge-bg": "#EFF6FF",
+                        "on-tertiary-container": "#f19931",
+                        "primary-fixed-dim": "#afc6ff",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a43",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "neutral-600": "#4A5568",
+                        "on-surface-variant": "#434750",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e3e2e8",
+                        "on-secondary-fixed": "#001f25",
+                        "inverse-primary": "#afc6ff",
+                        "surface": "#faf9ff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "surface-container-high": "#e8e7ee",
+                        "surface-tint": "#3d5d9d",
+                        "surface-container-highest": "#e3e2e8",
+                        "on-primary-container": "#8eadf3",
+                        "neutral-400": "#9AA5B4",
+                        "surface-bright": "#faf9ff",
+                        "on-background": "#1a1b20",
+                        "neutral-50": "#F7F8FA",
+                        "warning-500": "#D97706",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "outline-variant": "#c4c6d2",
+                        "primary-container": "#1b3f7e",
+                        "neutral-900": "#0F172A",
+                        "error-500": "#C0392B",
+                        "source-badge-text": "#1E40AF",
+                        "error": "#ba1a1a",
+                        "tertiary": "#422400",
+                        "secondary-container": "#94eafd",
+                        "surface-dim": "#dad9df",
+                        "neutral-200": "#E2E8F0",
+                        "disclaimer-bg": "#FFF8E1",
+                        "disclaimer-border": "#F59E0B",
+                        "on-surface": "#1a1b20",
+                        "on-primary-fixed-variant": "#224584",
+                        "surface-container-lowest": "#ffffff",
+                        "neutral-100": "#EEF0F4",
+                        "secondary-fixed": "#a4eeff",
+                        "surface-container-low": "#f4f3f9",
+                        "secondary": "#006877",
+                        "surface-container": "#eeedf3",
+                        "error-container": "#ffdad6",
+                        "success-500": "#2D8653",
+                        "on-error": "#ffffff",
+                        "info-500": "#2563EB"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-5": "20px",
+                        "max-width": "1280px",
+                        "space-1": "4px",
+                        "space-3": "12px",
+                        "space-4": "16px",
+                        "space-2": "8px",
+                        "space-6": "24px",
+                        "space-12": "48px",
+                        "space-16": "64px",
+                        "space-10": "40px",
+                        "space-8": "32px"
+                    },
+                    "fontFamily": {
+                        "text-h1": ["Plus Jakarta Sans"],
+                        "text-body-lg": ["Inter"],
+                        "text-disclaimer": ["Inter"],
+                        "text-body": ["Inter"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-small": ["Inter"],
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mic-pulse {
+            box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+        .voice-wave {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .wave-bar {
+            width: 3px;
+            background: #F59E0B;
+            border-radius: 50px;
+            animation: wave 1s infinite ease-in-out;
+        }
+        @keyframes wave {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+        .step-active { width: 100%; height: 100%; background: #002862; border-radius: 2px; }
+        .step-inactive { width: 100%; height: 100%; background: #E2E8F0; border-radius: 2px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-text-body">
+<!-- Top Navigation (Shell suppressed for linear task focus, but keeping brand identity as per Anchor guidance) -->
+<header class="bg-primary shadow-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-space-2">
+<span class="material-symbols-outlined text-on-primary text-text-h3" data-icon="account_balance">account_balance</span>
+<span class="text-text-h3 font-text-h3 font-bold text-on-primary">Fundwise</span>
+</div>
+<button class="bg-secondary px-space-4 py-space-2 rounded-lg text-on-primary font-text-h4 hover:opacity-80 transition-transform active:scale-95">
+                Advisor Login
+            </button>
+</div>
+</header>
+<main class="min-h-[calc(100vh-140px)] flex flex-col items-center py-space-12 px-space-4">
+<div class="w-full max-w-[640px] flex flex-col items-center text-center">
+<!-- Headline -->
+<h1 class="font-text-h1 text-text-h1 text-primary mb-space-4">
+                Book a Call with a SEBI-Registered Advisor
+            </h1>
+<!-- Pulse Banner (Advice Deflection / Context Banner) -->
+<div class="w-full bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-4 mb-space-8 rounded-r-xl flex items-start gap-space-3 text-left">
+<span class="text-xl">💡</span>
+<div>
+<p class="font-text-body text-neutral-800 leading-relaxed">
+<span class="font-bold">This week, many investors are asking about:</span> Exit load confusion on ELSS funds.
+                    </p>
+</div>
+</div>
+<!-- Voice Agent Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-md border border-neutral-100 overflow-hidden relative">
+<!-- Progress Indicator -->
+<div class="px-space-6 pt-space-6 pb-space-4">
+<div class="flex gap-2 h-1.5 w-full">
+<div class="flex-1 step-active"></div>
+<div class="flex-1 step-inactive"></div>
+<div class="flex-1 step-inactive"></div>
+<div class="flex-1 step-inactive"></div>
+<div class="flex-1 step-inactive"></div>
+<div class="flex-1 step-inactive"></div>
+</div>
+<p class="text-text-small text-neutral-400 mt-space-2 uppercase tracking-wider font-bold">Step 1 of 6: Greeting</p>
+</div>
+<!-- Agent Interaction Area -->
+<div class="flex flex-col items-center p-space-10 pt-space-6">
+<!-- Animated Avatar Placeholder -->
+<div class="relative w-24 h-24 mb-space-6">
+<div class="absolute inset-0 rounded-full border-2 border-primary/10 animate-ping"></div>
+<div class="relative w-full h-full rounded-full bg-surface-container overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A hyper-professional 3D friendly female AI avatar with a soft corporate look, wearing a neat navy blue blazer. She is smiling warmly against a soft-focus background of a modern wealth management office. The lighting is bright and inviting with a soft key light, reflecting a clean light-mode aesthetic and Indian corporate trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDshUcoCM2MMaRyVtY68RYpDYLD37kVjpSBTx4NEmH1mHvKv0SqVzOQn2eUShdmdw60hTYGkH9tCctvIXccf2CNREHVzWgyPAuWscQitTE8F7BP-hUktzkIwXDWQ9BqI3EZZVuwJifKLd3ILY9ru_zaFwECtSPSE3gQSsnaUMGn5q8A4zBTxUzPDdy4utDTTn_KcGBzpN8pXvTfeIhlEjJ_OC72iggitl1aDeABXQGPW9P13HIDPALO5iXJpzhEtyxldHMvrJByC73_"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-success-500 w-5 h-5 rounded-full border-2 border-white flex items-center justify-center">
+<div class="voice-wave">
+<div class="wave-bar" style="animation-delay: 0.1s"></div>
+<div class="wave-bar" style="animation-delay: 0.3s"></div>
+<div class="wave-bar" style="animation-delay: 0.2s"></div>
+</div>
+</div>
+</div>
+<!-- Speech Bubble -->
+<div class="bg-neutral-50 rounded-2xl rounded-tl-none p-space-5 mb-space-8 border border-neutral-100 max-w-[80%] text-left">
+<p class="font-text-h4 text-neutral-800">
+                            "Namaste! I'm your Fundwise assistant. I'll help you find the right advisor for your financial goals. How can I help you today?"
+                        </p>
+</div>
+<!-- Large Mic Button -->
+<div class="flex flex-col items-center gap-space-3">
+<button class="w-[72px] h-[72px] rounded-full bg-on-tertiary-container text-white flex items-center justify-center mic-pulse transition-transform active:scale-90 hover:brightness-110" id="mic-btn">
+<span class="material-symbols-outlined text-4xl" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<span class="font-text-h4 text-primary font-bold">Tap to speak</span>
+</div>
+<!-- Text Fallback -->
+<div class="w-full mt-space-10 pt-space-8 border-t border-neutral-100">
+<p class="text-text-small text-neutral-400 mb-space-3">Or type your response</p>
+<div class="relative flex items-center w-full">
+<input class="w-full h-11 pl-space-4 pr-12 rounded-lg border-neutral-200 focus:ring-secondary focus:border-secondary font-text-body text-neutral-800" placeholder="Type your query here..." type="text"/>
+<button class="absolute right-2 p-1.5 text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- PII Notice -->
+<div class="bg-surface-container-low px-space-6 py-space-3 border-t border-neutral-100">
+<p class="text-text-disclaimer text-neutral-600 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span>
+                        Your data is encrypted. We never share PII with third parties without consent.
+                    </p>
+</div>
+</div>
+<!-- Regulatory Footer Anchor (Small Version for Focused Task) -->
+<div class="mt-space-12 text-center">
+<p class="text-text-disclaimer text-neutral-400 max-w-md mx-auto">
+                    © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor (INA000012345). Mutual fund investments are subject to market risks.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer Component logic -->
+<footer class="bg-primary mt-auto">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-wrap justify-between items-start gap-space-6">
+<div class="flex flex-col gap-space-2">
+<span class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise</span>
+<p class="text-text-disclaimer text-on-primary/70 max-w-xs">
+                        Leading the way in transparent, tech-enabled financial advisory for the Indian retail investor.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-x-space-8 gap-y-space-4">
+<a class="text-on-primary/70 hover:text-white transition-colors" href="#">Scheme Documents</a>
+<a class="text-on-primary/70 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 hover:text-white transition-colors" href="#">Grievance Redressal</a>
+<a class="text-on-primary/70 hover:text-white transition-colors" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<div class="pt-space-6 border-t border-white/10">
+<p class="text-text-disclaimer text-on-primary/70 leading-relaxed italic">
+                    © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks. Please read all scheme related documents carefully before investing.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for Mic Button
+        const micBtn = document.getElementById('mic-btn');
+        let isRecording = false;
+
+        micBtn.addEventListener('click', () => {
+            isRecording = !isRecording;
+            if (isRecording) {
+                micBtn.classList.remove('bg-on-tertiary-container');
+                micBtn.classList.add('bg-error-500');
+                micBtn.innerHTML = '<span class="material-symbols-outlined text-4xl" data-icon="stop" style="font-variation-settings: \'FILL\' 1;">stop</span>';
+            } else {
+                micBtn.classList.add('bg-on-tertiary-container');
+                micBtn.classList.remove('bg-error-500');
+                micBtn.innerHTML = '<span class="material-symbols-outlined text-4xl" data-icon="mic" style="font-variation-settings: \'FILL\' 1;">mic</span>';
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advisor Pro - Dashboard Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#a4eeff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#006b7a",
+                    "inverse-primary": "#afc6ff",
+                    "on-surface": "#1a1b20",
+                    "tertiary-container": "#613700",
+                    "surface-container-highest": "#e3e2e8",
+                    "secondary": "#006877",
+                    "error-500": "#C0392B",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "inverse-on-surface": "#f1f0f6",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#001f25",
+                    "neutral-600": "#4A5568",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#1a1b20",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#3d5d9d",
+                    "on-primary-fixed-variant": "#224584",
+                    "primary-container": "#1b3f7e",
+                    "neutral-800": "#1A202C",
+                    "surface-container": "#eeedf3",
+                    "surface-bright": "#faf9ff",
+                    "neutral-50": "#F7F8FA",
+                    "primary-fixed-dim": "#afc6ff",
+                    "outline-variant": "#c4c6d2",
+                    "neutral-100": "#EEF0F4",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "neutral-400": "#9AA5B4",
+                    "on-tertiary-container": "#f19931",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2f3035",
+                    "outline": "#747781",
+                    "neutral-900": "#0F172A",
+                    "surface-container-low": "#f4f3f9",
+                    "on-surface-variant": "#434750",
+                    "neutral-200": "#E2E8F0",
+                    "disclaimer-border": "#F59E0B",
+                    "info-500": "#2563EB",
+                    "tertiary": "#422400",
+                    "surface": "#faf9ff",
+                    "primary": "#002862",
+                    "success-500": "#2D8653",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "secondary-container": "#94eafd",
+                    "on-tertiary-fixed": "#2c1600",
+                    "on-primary-container": "#8eadf3",
+                    "source-badge-bg": "#EFF6FF",
+                    "surface-dim": "#dad9df",
+                    "surface-variant": "#e3e2e8",
+                    "primary-fixed": "#d9e2ff",
+                    "on-primary-fixed": "#001a43",
+                    "tertiary-fixed": "#ffdcbd",
+                    "error-container": "#ffdad6",
+                    "source-badge-text": "#1E40AF",
+                    "disclaimer-bg": "#FFF8E1",
+                    "surface-container-high": "#e8e7ee",
+                    "error": "#ba1a1a",
+                    "warning-500": "#D97706",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "background": "#faf9ff",
+                    "brand-saffron": "#F59E0B",
+                    "brand-navy": "#002862"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-10": "40px",
+                    "space-5": "20px",
+                    "space-4": "16px",
+                    "space-12": "48px",
+                    "space-2": "8px",
+                    "space-8": "32px",
+                    "space-3": "12px",
+                    "space-1": "4px",
+                    "space-6": "24px",
+                    "space-16": "64px",
+                    "max-width": "1280px"
+            },
+            "fontFamily": {
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-body": ["Inter"],
+                    "text-body-lg": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"]
+            },
+            "fontSize": {
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-nav-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 1.5rem;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-text-body">
+<!-- Sidebar Component (Fixed Navy Sidebar) -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-primary dark:bg-neutral-900 flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="font-text-h2 text-text-h2 font-bold text-white tracking-tight">Advisor Pro</h1>
+<p class="text-[11px] uppercase tracking-widest text-primary-fixed-dim opacity-70">Wealth Management Suite</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-text-body text-text-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-text-body text-text-body">Meeting Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-text-body text-text-body">Meeting Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-text-body text-text-body">Availability</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-text-body text-text-body">Product Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-text-body text-text-body">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2 border-t border-white/10 pt-6">
+<button class="w-full bg-brand-saffron hover:bg-amber-600 text-white font-bold py-3 rounded-lg transition-transform active:scale-95 mb-4 shadow-lg shadow-amber-900/20">
+                New Meeting
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-primary-fixed-dim hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-text-body text-text-body">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary-fixed-dim hover:text-white transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-text-body text-text-body">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-60 min-h-screen">
+<!-- TopAppBar Component -->
+<header class="h-16 fixed top-0 right-0 w-[calc(100%-240px)] bg-surface dark:bg-neutral-900 shadow-sm z-40">
+<div class="flex justify-between items-center px-8 h-full">
+<div class="flex items-center gap-6">
+<h2 class="font-text-h3 text-text-h3 font-bold text-primary dark:text-secondary-fixed">Meeting Queue</h2>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<span class="text-on-surface-variant font-medium text-text-body">October 24, 2023</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<a class="text-primary border-b-2 border-primary font-semibold py-1" href="#">Overview</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors py-1" href="#">Reports</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors py-1" href="#">Analytics</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-white font-bold cursor-pointer hover:opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="pt-24 pb-12 px-8 max-w-[1400px] mx-auto">
+<!-- Advice Deflection Banner (Global Rule) -->
+<div class="mb-8 flex items-center gap-3 p-4 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-brand-saffron">warning</span>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800">
+<strong>Regulatory Notice:</strong> All mutual fund recommendations provided are based on current market intelligence. Historical performance is not indicative of future returns. Please consult the full risk disclosure document before final execution.
+                </p>
+</div>
+<!-- Product Pulse Pinned Card (Hero Section) -->
+<section class="mb-10">
+<div class="relative overflow-hidden rounded-xl bg-primary-container text-white p-8 shadow-xl flex flex-col md:flex-row items-center gap-8 group">
+<!-- Background Shader Asset -->
+
+<div class="relative z-10 flex-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-white/10 rounded-lg backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary-fixed">monitoring</span>
+</div>
+<h3 class="font-text-h2 text-text-h2 font-bold tracking-tight">Product Pulse</h3>
+</div>
+<p class="font-text-body-lg text-text-body-lg opacity-90 max-w-xl mb-6">
+                            Real-time market volatility is currently <span class="text-secondary-fixed font-bold">Low (1.2%)</span>. Advisor sentiment across Indian equity suggests a 15% increase in SIP allocations for the upcoming quarter.
+                        </p>
+<div class="flex gap-4">
+<button class="bg-white text-primary font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-secondary-fixed transition-colors">
+                                View Full Analysis
+                            </button>
+<button class="bg-white/10 border border-white/20 backdrop-blur-md text-white font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-white/20 transition-colors">
+                                Market Heatmap
+                            </button>
+</div>
+</div>
+<div class="relative z-10 w-full md:w-80 h-48 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 p-4 shadow-inner">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-primary-fixed-dim">Theme Preview</span>
+<span class="text-xs bg-success-500/20 text-success-500 px-2 py-0.5 rounded-full font-bold">+4.2%</span>
+</div>
+<!-- Placeholder for Mini Chart -->
+<div class="flex items-end gap-1.5 h-24 justify-between mt-2">
+<div class="w-full bg-secondary-fixed/40 rounded-t h-[40%]"></div>
+<div class="w-full bg-secondary-fixed/40 rounded-t h-[60%]"></div>
+<div class="w-full bg-secondary-fixed/60 rounded-t h-[45%]"></div>
+<div class="w-full bg-secondary-fixed/80 rounded-t h-[80%]"></div>
+<div class="w-full bg-secondary-fixed/40 rounded-t h-[55%]"></div>
+<div class="w-full bg-secondary-fixed/100 rounded-t h-[95%]"></div>
+<div class="w-full bg-secondary-fixed/70 rounded-t h-[70%]"></div>
+</div>
+<p class="text-[10px] mt-4 text-center text-primary-fixed-dim">NSE NIFTY 50 - Last 7 Trading Days</p>
+</div>
+</div>
+</section>
+<!-- Table Filters & Search -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div class="flex gap-2 p-1 bg-surface-container rounded-lg border border-outline-variant/30 self-start">
+<button class="px-5 py-1.5 bg-white shadow-sm rounded-md text-sm font-bold text-primary">All Meetings</button>
+<button class="px-5 py-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Today</button>
+<button class="px-5 py-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Pending</button>
+<button class="px-5 py-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Completed</button>
+</div>
+<div class="relative w-full md:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-sm" placeholder="Search booking code..." type="text"/>
+</div>
+</div>
+<!-- Main Meeting Queue Table -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Booking Code</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Investor / Topic</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Time</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-text-code text-text-code text-primary">MF-9283-A</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Rajesh Malhotra</span>
+<span class="text-xs px-2 py-0.5 bg-source-badge-bg text-source-badge-text rounded w-fit mt-1">Equity Growth Portfolio</span>
+</div>
+</td>
+<td class="px-6 py-4 text-text-body text-on-surface-variant">10:30 AM</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-success-500/10 text-success-500">
+<span class="w-1.5 h-1.5 rounded-full bg-success-500"></span> Confirmed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold text-sm">Open Brief</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-text-code text-text-code text-primary">MF-1029-B</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Ananya Sharma</span>
+<span class="text-xs px-2 py-0.5 bg-orange-100 text-orange-700 rounded w-fit mt-1">Retirement Planning</span>
+</div>
+</td>
+<td class="px-6 py-4 text-text-body text-on-surface-variant">11:15 AM</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-warning-500/10 text-warning-500">
+<span class="w-1.5 h-1.5 rounded-full bg-warning-500"></span> Rescheduled
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold text-sm">Open Brief</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-text-code text-text-code text-primary">MF-5541-X</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Vikram Singh</span>
+<span class="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded w-fit mt-1">Debt Fund Switch</span>
+</div>
+</td>
+<td class="px-6 py-4 text-text-body text-on-surface-variant">02:00 PM</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-error-container text-on-error-container">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Urgent Action
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold text-sm">Open Brief</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-text-code text-text-code text-primary">MF-7720-K</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Sanya Iyer</span>
+<span class="text-xs px-2 py-0.5 bg-neutral-100 text-neutral-700 rounded w-fit mt-1">New KYC Onboarding</span>
+</div>
+</td>
+<td class="px-6 py-4 text-text-body text-on-surface-variant">03:30 PM</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-neutral-100 text-neutral-500">
+<span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline font-bold text-sm">Open Brief</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-surface-container-lowest border-t border-outline-variant/30 flex items-center justify-between">
+<p class="text-xs text-on-surface-variant">Showing 4 of 28 meetings</p>
+<div class="flex gap-2">
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Bento Stats Section -->
+<section class="mt-10 bento-grid">
+<!-- Stat Card 1 -->
+<div class="col-span-2 bg-white p-6 rounded-xl border border-outline-variant/30 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-medium text-on-surface-variant mb-1">Portfolio AUM Managed</p>
+<h4 class="font-text-h2 text-text-h2 text-primary">₹42.8 Cr</h4>
+</div>
+<div class="p-2 bg-primary/5 rounded-lg group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/20 flex items-center gap-2">
+<span class="text-success-500 text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +12%</span>
+<span class="text-xs text-neutral-400">vs last month</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-white p-6 rounded-xl border border-outline-variant/30 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<p class="text-sm font-medium text-on-surface-variant mb-1">Conversion</p>
+<h4 class="font-text-h2 text-text-h2 text-primary">68%</h4>
+<div class="mt-4 h-1 w-full bg-neutral-100 rounded-full overflow-hidden">
+<div class="h-full bg-brand-saffron w-[68%]"></div>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-primary p-6 rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<p class="text-sm font-medium text-primary-fixed-dim mb-1">Client Health</p>
+<h4 class="font-text-h2 text-text-h2 text-white">9.4<span class="text-sm opacity-50 ml-1">/10</span></h4>
+<div class="mt-4 flex gap-1">
+<span class="w-4 h-4 bg-secondary-fixed rounded-sm"></span>
+<span class="w-4 h-4 bg-secondary-fixed rounded-sm"></span>
+<span class="w-4 h-4 bg-secondary-fixed rounded-sm"></span>
+<span class="w-4 h-4 bg-secondary-fixed rounded-sm opacity-50"></span>
+</div>
+</div>
+</section>
+<!-- Compliance Footer (Source Citation Badge Global Rule) -->
+<footer class="mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<div class="px-3 py-1.5 bg-source-badge-bg border border-blue-200 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-source-badge-text">verified</span>
+<span class="text-[10px] font-bold text-source-badge-text uppercase tracking-widest">AMFI Registered Advisor</span>
+</div>
+<span class="text-xs text-on-surface-variant">Last Data Refresh: Oct 24, 09:00 AM IST</span>
+</div>
+<div class="flex gap-6">
+<a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Security Disclosure</a>
+</div>
+</footer>
+</div>
+</main>
+<!-- Floating Action Button for Dashboard (Suppressed on Details) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-brand-navy hover:bg-primary-container text-white rounded-full shadow-2xl flex items-center justify-center transition-transform hover:scale-110 active:scale-95 z-50 group">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+<script>
+        // Micro-interaction for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('active-nav-shadow');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('active-nav-shadow');
+            });
+        });
+
+        // Simple Dashboard Navigation State Management
+        const navItems = document.querySelectorAll('aside nav a');
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                navItems.forEach(nav => {
+                    nav.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-bold');
+                    nav.classList.add('text-primary-fixed-dim');
+                });
+                item.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-bold');
+                item.classList.remove('text-primary-fixed-dim');
+            });
+        });
+    </script>
+</body></html>

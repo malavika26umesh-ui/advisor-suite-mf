@@ -1,0 +1,144 @@
+{
+  "schemes": [
+    {
+      "id": 1,
+      "name": "Parag Parikh Flexi Cap Fund",
+      "category": "Flexi Cap",
+      "amc": "PPFAS Mutual Fund",
+      "aliases": ["PPFAS Flexi Cap", "Parag Parikh", "PPFAS Flexi Cap Fund", "Parag Parikh Fund"]
+    },
+    {
+      "id": 2,
+      "name": "SBI Bluechip Fund",
+      "category": "Large Cap",
+      "amc": "SBI Mutual Fund",
+      "aliases": ["SBI Blue Chip", "SBI Bluechip", "SBI Blue Chip Fund"]
+    },
+    {
+      "id": 3,
+      "name": "ICICI Prudential Bluechip Fund",
+      "category": "Large Cap",
+      "amc": "ICICI Prudential",
+      "aliases": ["ICICI Bluechip", "ICICI Pru Bluechip", "ICICI Prudential Blue Chip Fund"]
+    },
+    {
+      "id": 4,
+      "name": "HDFC Flexi Cap Fund",
+      "category": "Flexi Cap",
+      "amc": "HDFC Mutual Fund",
+      "aliases": ["HDFC Flexicap", "HDFC Flexi Cap"]
+    },
+    {
+      "id": 5,
+      "name": "ICICI Prudential Value Discovery Fund",
+      "category": "Value / Flexi Cap",
+      "amc": "ICICI Prudential",
+      "aliases": ["ICICI Value Discovery", "ICICI Pru Value Discovery Fund"]
+    },
+    {
+      "id": 6,
+      "name": "Nippon India Large Cap Fund",
+      "category": "Large Cap",
+      "amc": "Nippon India",
+      "aliases": ["Nippon Large Cap", "Reliance Large Cap Fund"]
+    },
+    {
+      "id": 7,
+      "name": "Nippon India Small Cap Fund",
+      "category": "Small Cap",
+      "amc": "Nippon India",
+      "aliases": ["Nippon Small Cap", "Reliance Small Cap Fund"]
+    },
+    {
+      "id": 8,
+      "name": "SBI Small Cap Fund",
+      "category": "Small Cap",
+      "amc": "SBI Mutual Fund",
+      "aliases": ["SBI Small Cap"]
+    },
+    {
+      "id": 9,
+      "name": "HDFC Mid-Cap Opportunities Fund",
+      "category": "Mid Cap",
+      "amc": "HDFC Mutual Fund",
+      "aliases": ["HDFC Midcap Opportunities", "HDFC Mid Cap Fund", "HDFC Mid-Cap"]
+    },
+    {
+      "id": 10,
+      "name": "Kotak Emerging Equity Fund",
+      "category": "Mid Cap",
+      "amc": "Kotak Mahindra",
+      "aliases": ["Kotak Emerging Equity", "Kotak Mid Cap Fund"]
+    },
+    {
+      "id": 11,
+      "name": "Axis Bluechip Fund",
+      "category": "Large Cap",
+      "amc": "Axis Mutual Fund",
+      "aliases": ["Axis Blue Chip", "Axis Bluechip"]
+    },
+    {
+      "id": 12,
+      "name": "Mirae Asset Large Cap Fund",
+      "category": "Large Cap",
+      "amc": "Mirae Asset",
+      "aliases": ["Mirae Large Cap", "Mirae Asset Large Cap"]
+    },
+    {
+      "id": 13,
+      "name": "Aditya Birla Sun Life Flexi Cap Fund",
+      "category": "Flexi Cap",
+      "amc": "Aditya Birla Sun Life",
+      "aliases": ["ABSL Flexi Cap", "Birla Sun Life Flexi Cap", "ABSL Flexicap Fund"]
+    },
+    {
+      "id": 14,
+      "name": "UTI Nifty 50 Index Fund",
+      "category": "Index Fund",
+      "amc": "UTI Mutual Fund",
+      "aliases": ["UTI Nifty Index Fund", "UTI Nifty 50"]
+    },
+    {
+      "id": 15,
+      "name": "HDFC Nifty 50 Index Fund",
+      "category": "Index Fund",
+      "amc": "HDFC Mutual Fund",
+      "aliases": ["HDFC Nifty Index Fund", "HDFC Nifty 50"]
+    },
+    {
+      "id": 16,
+      "name": "Axis Long Term Equity Fund",
+      "category": "ELSS",
+      "amc": "Axis Mutual Fund",
+      "aliases": ["Axis ELSS", "Axis Long Term Equity", "Axis Tax Saver Fund"]
+    },
+    {
+      "id": 17,
+      "name": "Mirae Asset Tax Saver Fund",
+      "category": "ELSS",
+      "amc": "Mirae Asset",
+      "aliases": ["Mirae Tax Saver", "Mirae Asset ELSS"]
+    },
+    {
+      "id": 18,
+      "name": "DSP Flexi Cap Fund",
+      "category": "Flexi Cap",
+      "amc": "DSP Mutual Fund",
+      "aliases": ["DSP Flexicap", "DSP Flexi Cap"]
+    },
+    {
+      "id": 19,
+      "name": "Quant Small Cap Fund",
+      "category": "Small Cap",
+      "amc": "Quant Mutual Fund",
+      "aliases": ["Quant Small Cap"]
+    },
+    {
+      "id": 20,
+      "name": "Motilal Oswal Midcap Fund",
+      "category": "Mid Cap",
+      "amc": "Motilal Oswal",
+      "aliases": ["Motilal Oswal Mid Cap", "MOSL Midcap Fund"]
+    }
+  ]
+}

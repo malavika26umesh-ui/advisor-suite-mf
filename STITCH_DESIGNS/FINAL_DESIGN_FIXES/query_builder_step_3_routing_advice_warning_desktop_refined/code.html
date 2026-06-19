@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise | Query Routing (Refined)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-complete { color: #2D8653; }
+        .active-glow { box-shadow: 0 0 20px rgba(241, 153, 49, 0.15); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#747781",
+                        "on-tertiary-container": "#f19931",
+                        "neutral-400": "#9AA5B4",
+                        "error-500": "#C0392B",
+                        "primary-fixed": "#d9e2ff",
+                        "outline-variant": "#c4c6d2",
+                        "on-error-container": "#93000a",
+                        "neutral-600": "#4A5568",
+                        "surface-dim": "#dad9df",
+                        "surface-container-high": "#e8e7ee",
+                        "surface-tint": "#3d5d9d",
+                        "info-500": "#2563EB",
+                        "neutral-50": "#F7F8FA",
+                        "surface-container-highest": "#e3e2e8",
+                        "background": "#faf9ff",
+                        "source-badge-bg": "#EFF6FF",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "neutral-800": "#1A202C",
+                        "neutral-200": "#E2E8F0",
+                        "neutral-100": "#EEF0F4",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "secondary-container": "#94eafd",
+                        "primary": "#002862",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "inverse-on-surface": "#f1f0f6",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#224584",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "surface-bright": "#faf9ff",
+                        "surface-container": "#eeedf3",
+                        "on-tertiary-fixed": "#2c1600",
+                        "success-500": "#2D8653",
+                        "secondary": "#006877",
+                        "on-surface": "#1a1b20",
+                        "inverse-primary": "#afc6ff",
+                        "neutral-900": "#0F172A",
+                        "tertiary": "#422400",
+                        "surface-container-low": "#f4f3f9",
+                        "surface-container-lowest": "#ffffff",
+                        "source-badge-text": "#1E40AF",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e3e2e8",
+                        "tertiary-container": "#613700",
+                        "disclaimer-bg": "#FFF8E1",
+                        "primary-container": "#1b3f7e",
+                        "on-secondary-container": "#006b7a",
+                        "on-primary-container": "#8eadf3",
+                        "inverse-surface": "#2f3035",
+                        "warning-500": "#D97706",
+                        "surface": "#faf9ff",
+                        "on-secondary-fixed": "#001f25",
+                        "secondary-fixed": "#a4eeff",
+                        "primary-fixed-dim": "#afc6ff",
+                        "disclaimer-border": "#F59E0B",
+                        "on-surface-variant": "#434750",
+                        "on-primary-fixed": "#001a43",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-background": "#1a1b20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-4": "16px",
+                        "space-10": "40px",
+                        "space-12": "48px",
+                        "space-8": "32px",
+                        "space-1": "4px",
+                        "max-width": "1280px",
+                        "space-2": "8px",
+                        "space-16": "64px",
+                        "space-6": "24px",
+                        "space-3": "12px",
+                        "space-5": "20px"
+                    },
+                    "fontFamily": {
+                        "text-body": ["Inter"],
+                        "text-small": ["Inter"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"],
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-disclaimer": ["Inter"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-body-lg": ["Inter"],
+                        "text-h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                        "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                        "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                        "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background font-text-body text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-primary-container shadow-sm">
+<div class="max-w-max-width mx-auto flex justify-between items-center px-space-8 py-space-4">
+<div class="flex items-center gap-2 font-text-h2 text-text-h2 font-extrabold text-on-primary">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                Fundwise
+            </div>
+<nav class="hidden md:flex gap-space-8 items-center">
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors active:scale-95 duration-150" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors active:scale-95 duration-150" href="#">Education Hub</a>
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors active:scale-95 duration-150" href="#">Advisor Login</a>
+<button class="bg-on-tertiary-container text-primary font-text-h4 px-space-6 py-space-2 rounded-full hover:opacity-90 transition-all active:scale-95">Book Advisor Call</button>
+</nav>
+</div>
+</header>
+<main class="flex-grow pt-space-16 pb-space-12 flex items-center justify-center">
+<div class="w-full max-w-3xl px-space-6">
+<!-- Stepper Progress -->
+<div class="mb-space-12">
+<div class="flex items-center justify-between relative">
+<!-- Progress Line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-neutral-200 -z-10 -translate-y-1/2"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2 bg-background px-4">
+<div class="w-10 h-10 rounded-full bg-success-500 text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<span class="font-text-small text-text-small text-success-500 font-semibold">What do you need?</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2 bg-background px-4">
+<div class="w-10 h-10 rounded-full bg-success-500 text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<span class="font-text-small text-text-small text-success-500 font-semibold">Narrow your topic</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2 bg-background px-4">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg ring-4 ring-primary/10">
+<span class="font-text-h4">3</span>
+</div>
+<span class="font-text-small text-text-small text-primary font-bold">Routing / Advice</span>
+</div>
+</div>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-neutral-100 overflow-hidden" data-status="refined">
+<div class="p-space-8">
+<div class="text-center mb-space-8">
+<h1 class="font-text-h1 text-text-h1 text-primary mb-2">Finalizing Your Request</h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600">Based on your query regarding scheme-specific performance and personal allocation, we must provide a regulatory clarification.</p>
+</div>
+<!-- Regulatory Advice Warning Card (Amber) -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-6 rounded-lg mb-space-10 flex gap-space-4 items-start">
+<span class="material-symbols-outlined text-disclaimer-border text-2xl shrink-0" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h3 class="font-text-h4 text-text-h4 text-neutral-800 mb-1">Regulatory Advice Warning</h3>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-600 leading-relaxed">
+                                In compliance with SEBI (Investment Advisers) Regulations, please note that any specific mutual fund scheme recommendation or personalized portfolio strategy requires a formal assessment by a registered human advisor. Automated tools can provide information and historical data (FAQs), but they do not constitute personalized financial advice. For complex queries involving risk profiling and direct investment decisions, a consultation with a SEBI RIA is mandatory.
+                            </p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-4">
+<button class="w-full bg-on-tertiary-container text-primary font-text-h3 py-space-4 rounded-full flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">calendar_today</span>
+                            Book a call with an advisor
+                        </button>
+<div class="flex items-center gap-4 py-2">
+<div class="h-[1px] bg-neutral-200 flex-grow"></div>
+<span class="text-neutral-400 font-text-small uppercase tracking-widest">or</span>
+<div class="h-[1px] bg-neutral-200 flex-grow"></div>
+</div>
+<button class="w-full border-2 border-primary text-primary font-text-h4 py-space-3 rounded-full flex items-center justify-center gap-2 hover:bg-primary/5 transition-colors active:scale-[0.98]">
+                            Continue to FAQ anyway
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Subtle Decorative Element -->
+<div class="h-1.5 w-full bg-gradient-to-r from-primary via-on-tertiary-container to-secondary"></div>
+</div>
+<p class="text-center mt-space-6 font-text-small text-text-small text-neutral-400">
+                Response time for callback: <span class="font-semibold">Usually within 4 business hours.</span>
+</p>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-primary py-space-10 px-space-8 mt-auto border-t border-primary-container">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-space-6">
+<div class="flex flex-col gap-2">
+<div class="font-text-h3 text-text-h3 text-on-primary font-bold">Fundwise Advisory</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary-container opacity-80">© 2024 Fundwise Advisory. SEBI Registered Investment Advisor.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-space-6">
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+</div>
+</footer>
+<!-- Interactive script for button scale effects -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+</body></html>

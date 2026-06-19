@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Your Booking | Fundwise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "neutral-800": "#1A202C",
+                        "primary-fixed": "#d9e2ff",
+                        "outline": "#747781",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-tertiary-fixed": "#2c1600",
+                        "inverse-surface": "#2f3035",
+                        "on-secondary-container": "#006b7a",
+                        "inverse-on-surface": "#f1f0f6",
+                        "primary": "#002862",
+                        "tertiary-container": "#613700",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "background": "#faf9ff",
+                        "source-badge-bg": "#EFF6FF",
+                        "on-tertiary-container": "#f19931",
+                        "primary-fixed-dim": "#afc6ff",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001a43",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "neutral-600": "#4A5568",
+                        "on-surface-variant": "#434750",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e3e2e8",
+                        "on-secondary-fixed": "#001f25",
+                        "inverse-primary": "#afc6ff",
+                        "surface": "#faf9ff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "surface-container-high": "#e8e7ee",
+                        "surface-tint": "#3d5d9d",
+                        "surface-container-highest": "#e3e2e8",
+                        "on-primary-container": "#8eadf3",
+                        "neutral-400": "#9AA5B4",
+                        "surface-bright": "#faf9ff",
+                        "on-background": "#1a1b20",
+                        "neutral-50": "#F7F8FA",
+                        "warning-500": "#D97706",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "outline-variant": "#c4c6d2",
+                        "primary-container": "#1b3f7e",
+                        "neutral-900": "#0F172A",
+                        "error-500": "#C0392B",
+                        "source-badge-text": "#1E40AF",
+                        "error": "#ba1a1a",
+                        "tertiary": "#422400",
+                        "secondary-container": "#94eafd",
+                        "surface-dim": "#dad9df",
+                        "neutral-200": "#E2E8F0",
+                        "disclaimer-bg": "#FFF8E1",
+                        "disclaimer-border": "#F59E0B",
+                        "on-surface": "#1a1b20",
+                        "on-primary-fixed-variant": "#224584",
+                        "surface-container-lowest": "#ffffff",
+                        "neutral-100": "#EEF0F4",
+                        "secondary-fixed": "#a4eeff",
+                        "surface-container-low": "#f4f3f9",
+                        "secondary": "#006877",
+                        "surface-container": "#eeedf3",
+                        "error-container": "#ffdad6",
+                        "success-500": "#2D8653",
+                        "on-error": "#ffffff",
+                        "info-500": "#2563EB"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-5": "20px",
+                        "max-width": "1280px",
+                        "space-1": "4px",
+                        "space-3": "12px",
+                        "space-4": "16px",
+                        "space-2": "8px",
+                        "space-6": "24px",
+                        "space-12": "48px",
+                        "space-16": "64px",
+                        "space-10": "40px",
+                        "space-8": "32px"
+                    },
+                    "fontFamily": {
+                        "text-h1": ["Plus Jakarta Sans"],
+                        "text-body-lg": ["Inter"],
+                        "text-disclaimer": ["Inter"],
+                        "text-body": ["Inter"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-small": ["Inter"],
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                        "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                        "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                        "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .saffron-gradient {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-text-body">
+<!-- Top Navigation Shell -->
+<nav class="bg-primary shadow-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-space-2">
+<span class="material-symbols-outlined text-on-primary text-text-h3">account_balance</span>
+<span class="text-text-h3 font-text-h3 font-bold text-on-primary">Fundwise</span>
+</div>
+<button class="font-text-h4 text-text-h4 text-on-primary/90 hover:text-secondary-fixed-dim transition-colors duration-200">Advisor Login</button>
+</div>
+</nav>
+<main class="flex-grow flex items-center justify-center py-space-12 px-space-6 relative overflow-hidden">
+<!-- Abstract Background Pattern -->
+<div class="absolute inset-0 pointer-events-none opacity-5">
+
+</div>
+<div class="w-full max-w-[540px] z-10">
+<!-- Header Section -->
+<div class="text-center mb-space-8">
+<h1 class="font-text-h1 text-text-h1 text-neutral-900 mb-space-2">Manage Your Booking</h1>
+<p class="text-neutral-600 font-text-body">Review, reschedule, or cancel your upcoming advisory session.</p>
+</div>
+<!-- Management Form Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md border border-neutral-100 p-space-8" id="lookup-view">
+<div class="space-y-space-6">
+<div>
+<label class="block font-text-h4 text-text-h4 text-neutral-800 mb-space-2" for="booking-code">Booking Code</label>
+<input class="w-full h-[44px] px-space-4 bg-neutral-50 border border-neutral-200 rounded-lg font-text-code text-text-code focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/15 transition-all uppercase" id="booking-code" placeholder="FW-XXXX-XXXX" type="text" value="FW-8293-KYC1"/>
+</div>
+<div>
+<label class="block font-text-h4 text-text-h4 text-neutral-800 mb-space-2" for="email">Email Address</label>
+<input class="w-full h-[44px] px-space-4 bg-neutral-50 border border-neutral-200 rounded-lg font-text-body text-text-body focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/15 transition-all" id="email" placeholder="investor@example.com" type="email"/>
+</div>
+<button class="w-full h-[48px] saffron-gradient text-white font-text-h4 text-text-h4 rounded-lg shadow-sm hover:shadow-md active:scale-[0.98] transition-all" onclick="toggleView('result-view')">
+                        Look up my booking
+                    </button>
+</div>
+</div>
+<!-- Result View (Hidden by default) -->
+<div class="hidden space-y-space-6" id="result-view">
+<div class="bg-surface-container-lowest rounded-xl shadow-md border border-neutral-100 overflow-hidden">
+<div class="p-space-6 border-b border-neutral-100 flex justify-between items-start">
+<div>
+<span class="text-text-small font-text-small text-neutral-400 uppercase tracking-wider">Confirmed Booking</span>
+<h2 class="font-text-h3 text-text-h3 text-primary mt-space-1">Portfolio Strategy Review</h2>
+</div>
+<div class="bg-success-500/10 text-success-500 px-space-3 py-space-1 rounded-full text-text-small font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Active
+                        </div>
+</div>
+<div class="p-space-6 space-y-space-4">
+<div class="flex items-center gap-space-3 text-neutral-600">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+<span class="font-text-body">Tuesday, November 14, 2024</span>
+</div>
+<div class="flex items-center gap-space-3 text-neutral-600">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<span class="font-text-body">10:30 AM - 11:15 AM (IST)</span>
+</div>
+<div class="flex items-center gap-space-3 text-neutral-600">
+<span class="material-symbols-outlined text-secondary">person</span>
+<div class="flex flex-col">
+<span class="font-text-body font-semibold text-neutral-800">Amit Varma</span>
+<span class="text-text-small">Senior Investment Advisor</span>
+</div>
+</div>
+</div>
+<div class="p-space-6 bg-neutral-50 flex flex-col sm:flex-row gap-space-4">
+<button class="flex-1 h-[44px] border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors">
+                            Reschedule
+                        </button>
+<button class="flex-1 h-[44px] text-error hover:bg-error/5 transition-colors font-semibold rounded-lg" onclick="openModal()">
+                            Cancel booking
+                        </button>
+</div>
+</div>
+<!-- Compliance / Notice Block -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-4 rounded-r-lg">
+<div class="flex gap-space-3">
+<span class="material-symbols-outlined text-disclaimer-border">info</span>
+<div>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 leading-relaxed">
+<strong>Cancellation Policy:</strong> Bookings cancelled within 4 hours of the scheduled time may be subject to a rescheduling fee. Mutual fund investments are subject to market risks.
+                            </p>
+</div>
+</div>
+</div>
+<div class="text-center">
+<button class="text-secondary font-text-h4 text-text-h4 hover:underline" onclick="toggleView('lookup-view')">
+                        Search for another booking
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Cancellation Modal Confirmation -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-space-6" id="cancel-modal">
+<div class="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl z-10 overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="p-space-6 text-center">
+<div class="w-16 h-16 bg-error/10 rounded-full flex items-center justify-center mx-auto mb-space-4">
+<span class="material-symbols-outlined text-error text-4xl">cancel</span>
+</div>
+<h3 class="font-text-h2 text-text-h2 text-neutral-900 mb-space-2">Cancel Booking?</h3>
+<p class="text-neutral-600 font-text-body">This action will release your slot for other investors. This process cannot be undone.</p>
+</div>
+<div class="p-space-6 bg-neutral-50 flex gap-space-4">
+<button class="flex-1 h-[48px] bg-white border border-neutral-200 text-neutral-800 font-semibold rounded-lg hover:bg-neutral-100 transition-colors" onclick="closeModal()">
+                    Keep Booking
+                </button>
+<button class="flex-1 h-[48px] bg-error text-white font-semibold rounded-lg hover:bg-error/90 shadow-sm transition-all">
+                    Confirm Cancel
+                </button>
+</div>
+</div>
+</div>
+<!-- Footer Shell -->
+<footer class="bg-primary dark:bg-neutral-900 border-t-4 border-disclaimer-border">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-6">
+<div class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise</div>
+<div class="flex flex-wrap gap-space-6">
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Scheme Documents</a>
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Grievance Redressal</a>
+<a class="text-on-primary/70 hover:text-white transition-colors font-text-body text-text-body" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/70 leading-relaxed max-w-3xl">
+                © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. Past performance is not an indicator of future returns.
+            </p>
+</div>
+</footer>
+<script>
+        function toggleView(viewId) {
+            const lookupView = document.getElementById('lookup-view');
+            const resultView = document.getElementById('result-view');
+            
+            if (viewId === 'result-view') {
+                lookupView.classList.add('hidden');
+                resultView.classList.remove('hidden');
+                resultView.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4', 'duration-500');
+            } else {
+                resultView.classList.add('hidden');
+                lookupView.classList.remove('hidden');
+                lookupView.classList.add('animate-in', 'fade-in', 'slide-in-from-top-4', 'duration-500');
+            }
+        }
+
+        function openModal() {
+            const modal = document.getElementById('cancel-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('cancel-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Lightweight entrance micro-interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('lookup-view');
+            card.classList.add('animate-in', 'fade-in', 'zoom-in-95', 'duration-700');
+        });
+    </script>
+</body></html>

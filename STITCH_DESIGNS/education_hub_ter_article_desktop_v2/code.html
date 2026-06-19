@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Total Expense Ratio (TER) | Education Hub | Advisor Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#afc6ff",
+                      "on-tertiary": "#ffffff",
+                      "error-500": "#C0392B",
+                      "surface-container-high": "#e8e7ee",
+                      "on-secondary-fixed": "#001f25",
+                      "tertiary-fixed-dim": "#ffb86f",
+                      "info-500": "#2563EB",
+                      "outline": "#747781",
+                      "background": "#faf9ff",
+                      "on-secondary-container": "#006b7a",
+                      "on-surface-variant": "#434750",
+                      "neutral-800": "#1A202C",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "warning-500": "#D97706",
+                      "neutral-200": "#E2E8F0",
+                      "surface-tint": "#3d5d9d",
+                      "surface-container": "#eeedf3",
+                      "secondary-container": "#94eafd",
+                      "neutral-50": "#F7F8FA",
+                      "on-primary-fixed": "#001a43",
+                      "surface-container-low": "#f4f3f9",
+                      "surface-container-highest": "#e3e2e8",
+                      "error-container": "#ffdad6",
+                      "source-badge-text": "#1E40AF",
+                      "on-background": "#1a1b20",
+                      "on-tertiary-fixed": "#2c1600",
+                      "inverse-surface": "#2f3035",
+                      "inverse-on-surface": "#f1f0f6",
+                      "source-badge-bg": "#EFF6FF",
+                      "neutral-400": "#9AA5B4",
+                      "inverse-primary": "#afc6ff",
+                      "neutral-100": "#EEF0F4",
+                      "surface-dim": "#dad9df",
+                      "primary-fixed": "#d9e2ff",
+                      "surface": "#faf9ff",
+                      "on-primary-container": "#8eadf3",
+                      "on-primary-fixed-variant": "#224584",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#613700",
+                      "on-surface": "#1a1b20",
+                      "surface-variant": "#e3e2e8",
+                      "surface-bright": "#faf9ff",
+                      "secondary-fixed": "#a4eeff",
+                      "secondary-fixed-dim": "#7dd3e6",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c4c6d2",
+                      "disclaimer-border": "#F59E0B",
+                      "neutral-600": "#4A5568",
+                      "primary": "#1B3F7E",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed": "#ffdcbd",
+                      "neutral-900": "#0F172A",
+                      "on-tertiary-fixed-variant": "#693c00",
+                      "primary-container": "#1b3f7e",
+                      "success-500": "#2D8653",
+                      "surface-container-lowest": "#ffffff",
+                      "disclaimer-bg": "#FFF8E1",
+                      "secondary": "#006877",
+                      "tertiary": "#422400",
+                      "on-tertiary-container": "#f19931",
+                      "on-primary": "#ffffff",
+                      "brand-saffron": "#F97316"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "space-3": "12px",
+                      "space-10": "40px",
+                      "space-5": "20px",
+                      "space-12": "48px",
+                      "space-8": "32px",
+                      "space-4": "16px",
+                      "space-2": "8px",
+                      "space-16": "64px",
+                      "max-width": "1280px",
+                      "space-6": "24px",
+                      "space-1": "4px"
+              },
+              "fontFamily": {
+                      "text-h1": ["Plus Jakarta Sans"],
+                      "text-body": ["Inter"],
+                      "text-h3": ["Plus Jakarta Sans"],
+                      "text-small": ["Inter"],
+                      "text-h2": ["Plus Jakarta Sans"],
+                      "text-display": ["Plus Jakarta Sans"],
+                      "text-h4": ["Plus Jakarta Sans"],
+                      "text-disclaimer": ["Inter"],
+                      "text-code": ["JetBrains Mono"],
+                      "text-body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                      "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                      "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                      "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                      "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { @apply bg-surface text-on-surface font-text-body antialiased; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .content-area p { @apply mb-6 text-on-surface-variant font-text-body-lg; }
+        .content-area h2 { @apply mt-10 mb-4 font-text-h2 text-text-h2 text-primary; }
+        .content-area h3 { @apply mt-8 mb-3 font-text-h3 text-text-h3 text-primary; }
+        .sidebar-item { @apply transition-all duration-200 border-l-2 border-transparent pl-4 py-1 hover:border-brand-saffron hover:text-primary; }
+        .sidebar-item.active { @apply border-brand-saffron text-primary font-semibold; }
+        .compliance-border { border-left: 4px solid #F59E0B; }
+        .advisor-border { border-left: 4px solid #F97316; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Investor Navigation Bar -->
+<header class="fixed top-0 left-0 w-full h-20 z-50 bg-[#1B3F7E] text-white">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-full">
+<div class="flex items-center gap-12">
+<span class="font-text-h2 text-text-h2 font-extrabold tracking-tight">Advisor Pro</span>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-white/80 font-medium hover:text-white transition-colors" href="#">FAQ Centre</a>
+<a class="text-white font-bold border-b-2 border-white py-2" href="#">Education Hub</a>
+<a class="px-6 py-2 bg-brand-saffron text-white rounded-full font-bold hover:opacity-90 transition-opacity" href="#">Book Advisor Call</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-white/90 hover:text-white text-sm font-semibold flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-xl">login</span>
+                Advisor Login
+            </a>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-20 flex flex-col items-center">
+<!-- Layout Container -->
+<div class="max-w-7xl w-full px-8 py-12 grid grid-cols-1 md:grid-cols-10 gap-12">
+<!-- Left Column (70%) - Article Content -->
+<div class="md:col-span-7 space-y-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-on-surface-variant font-text-small text-text-small">
+<a class="hover:text-primary" href="#">Education Hub</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">Fees &amp; Costs</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-medium">TER</span>
+</nav>
+<!-- Header Section -->
+<section>
+<span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-text-small text-text-small font-semibold mb-4 uppercase tracking-wider">Fees &amp; Costs</span>
+<h1 class="font-text-h1 text-text-h1 text-primary mb-6 leading-tight">Total Expense Ratio (TER): What It Is and How It Affects You</h1>
+<div class="flex flex-wrap items-center gap-6 text-on-surface-variant font-text-small text-text-small">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+<span>14 Jan 2026</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">link</span>
+<a class="text-info-500 hover:underline flex items-center gap-1" href="#">
+                            SEBI Circular Reference 2025/12
+                            <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">schedule</span>
+<span>8 min read</span>
+</div>
+</div>
+</section>
+<hr class="border-outline-variant"/>
+<!-- Content Area -->
+<article class="content-area">
+<section id="what-is-ter">
+<h2>What is TER?</h2>
+<p>The Total Expense Ratio (TER) represents the annual operating costs of a mutual fund scheme, expressed as a percentage of the fund's daily net assets. It is a critical metric for investors as it directly reduces the net returns generated by the scheme.</p>
+<!-- Teal Definition Box -->
+<div class="bg-secondary-container/20 border-l-4 border-secondary p-6 rounded-r-xl my-8">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary text-2xl">info</span>
+<div>
+<h4 class="font-text-h4 text-text-h4 text-secondary mb-2">Definition</h4>
+<p class="font-text-body text-text-body m-0 text-on-secondary-container">
+                                    TER is the sum of all expenses incurred by a mutual fund, including management fees, administrative costs, audit fees, and marketing expenses, divided by the fund's total assets.
+                                </p>
+</div>
+</div>
+</div>
+<p>Lower TERs generally translate to higher take-home returns for the investor over the long term. In India, SEBI (Securities and Exchange Board of India) strictly regulates the maximum TER a fund can charge to protect investor interests.</p>
+</section>
+<section id="how-calculated">
+<h2>How is TER Calculated?</h2>
+<p>The calculation is straightforward but the components behind it are diverse. All expenses are accounted for on a daily basis and reflected in the fund's Net Asset Value (NAV).</p>
+<!-- Example Box -->
+<div class="border-2 border-dashed border-neutral-400 p-8 rounded-xl bg-neutral-50 my-8">
+<h4 class="font-text-h4 text-text-h4 text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">calculate</span>
+                            Calculation Example
+                        </h4>
+<div class="font-text-code text-text-code text-neutral-800 space-y-2">
+<p>Total Scheme Assets: ₹1,000 Crores</p>
+<p>Total Annual Expenses: ₹15 Crores</p>
+<div class="h-px bg-neutral-400 my-2"></div>
+<p class="text-brand-saffron">TER = (15 / 1,000) * 100 = 1.50%</p>
+</div>
+<p class="mt-4 font-text-small text-text-small italic text-neutral-600">Note: This 1.50% is deducted gradually from the daily NAV, meaning the returns you see in your statement are already net of these costs.</p>
+</div>
+</section>
+<section id="sebi-caps">
+<h2>SEBI's Maximum TER Caps</h2>
+<p>SEBI has established tiered limits based on the Assets Under Management (AUM) of the fund. As a fund grows larger, the allowed TER percentage decreases, passing the benefit of scale to the investors.</p>
+<!-- Table -->
+<div class="overflow-hidden rounded-xl border border-outline-variant my-8">
+<table class="w-full text-left font-text-body text-text-body">
+<thead class="bg-surface-container-high border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-semibold text-primary">AUM Slab (Equity Funds)</th>
+<th class="px-6 py-4 font-semibold text-primary">Maximum Permissible TER</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">First ₹500 Crores</td>
+<td class="px-6 py-4">2.25%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">Next ₹250 Crores</td>
+<td class="px-6 py-4">2.00%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">Next ₹1,250 Crores</td>
+<td class="px-6 py-4">1.75%</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4">Next ₹3,000 Crores</td>
+<td class="px-6 py-4">1.60%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</article>
+<!-- CTA Strip -->
+<div class="bg-primary text-white p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6 shadow-lg">
+<div class="text-center md:text-left">
+<h4 class="font-text-h3 text-text-h3 mb-2">Need more clarity on fees?</h4>
+<p class="text-primary-fixed-dim text-sm">Our experts can help you optimize your portfolio costs.</p>
+</div>
+<div class="flex gap-4">
+<a class="px-6 py-3 border border-primary-fixed-dim rounded-lg font-semibold hover:bg-white/10 transition-colors" href="#">Ask in FAQ Centre</a>
+<a class="px-6 py-3 bg-brand-saffron text-white rounded-lg font-bold hover:opacity-90 transition-opacity" href="#">Book a call</a>
+</div>
+</div>
+<!-- Compliance Disclaimer -->
+<div class="disclaimer-bg compliance-border p-6 rounded-r-lg">
+<div class="flex gap-3 mb-2">
+<span class="material-symbols-outlined text-warning-500">gavel</span>
+<h5 class="font-text-h4 text-text-h4 text-neutral-800">Compliance &amp; Regulatory Disclosure</h5>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-600 leading-relaxed">
+                    Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. The TER slabs mentioned above are based on SEBI (Mutual Funds) Regulations, 1996 and are subject to periodic amendments. Historical data does not guarantee future performance. Advisor Pro provides information for educational purposes only and does not constitute formal investment advice.
+                </p>
+</div>
+</div>
+<!-- Right Column (30%) - Sticky Sidebar -->
+<aside class="md:col-span-3">
+<div class="sticky top-28 space-y-8">
+<!-- TOC -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/30">
+<h5 class="font-text-h4 text-text-h4 text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">menu_book</span>
+                        In this article
+                    </h5>
+<ul class="space-y-4 font-text-body text-text-body text-on-surface-variant">
+<li><a class="sidebar-item active block" href="#what-is-ter">What is TER?</a></li>
+<li><a class="sidebar-item block" href="#how-calculated">How is TER Calculated?</a></li>
+<li><a class="sidebar-item block" href="#sebi-caps">SEBI's Maximum TER Caps</a></li>
+<li><a class="sidebar-item block" href="#impact">Long-term Impact</a></li>
+</ul>
+</div>
+<!-- Related Articles -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/30">
+<h5 class="font-text-h4 text-text-h4 text-primary mb-6">Related topics</h5>
+<div class="space-y-6">
+<a class="group flex gap-4" href="#">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Investment concept image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrgyRQFoIi1w5wEaIr9GM9KpBW2QQMml9xto1csQSp3jNvbkc22wQrjeFlmNGaBIy0EF6gwHIBks1ppUt4AmURF8UmcTpFFbdd9xLtl6sZNz7Gi305ffCf3slLPkhTws9LqrmPFLqVL4TkM-yYAcM2fuL5NJZ9vLtGl57CMYrW3cwTsS75eLr1eQTooY0HPCYYvNdo2zt-vTAyHUim4F80IETrAPENk2oPr4n-EDl02dBnvSidpircihdoooCmzxFajQ0TGIQR3LlM"/>
+</div>
+<div>
+<p class="font-text-body text-text-body font-semibold group-hover:text-primary transition-colors leading-snug">Direct vs Regular Plans</p>
+<span class="text-xs text-on-surface-variant">5 min read</span>
+</div>
+</a>
+<a class="group flex gap-4" href="#">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Tax concept image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxf-hYPJ5kUIL50HgWa0BJHLJsYEjwi-EmNXDlsCGCkronrrbvEhTr3TbN4-uVm4khaZtJLHKMMPbvIH_CyK3s_gGhUuOBp7v77vi72BFYJk_UygOnCwovVdYR2X-fgZDNrkD59sNacGNsB5MBvTyTXE65Q4CNuZUUK-tgpKOfie2L8cE__a3lk28dad0Ts8vzOHLNieFUC3nqV1B5KpSBASGD81SCyrrxSTWun_lCBCpr9dxVIOkeYHXrGjdrnEUO1rARhMRKtmqL"/>
+</div>
+<div>
+<p class="font-text-body text-text-body font-semibold group-hover:text-primary transition-colors leading-snug">STT &amp; Other Taxes</p>
+<span class="text-xs text-on-surface-variant">4 min read</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Investor Footer -->
+<footer class="bg-primary text-white py-16 mt-20">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1">
+<span class="font-text-h2 text-text-h2 font-extrabold text-white mb-6 block">Advisor Pro</span>
+<p class="text-white/70 text-sm leading-relaxed mb-6">
+                Official Education Hub for transparent mutual fund insights and personal wealth management.
+            </p>
+</div>
+<div>
+<h6 class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Resources</h6>
+<ul class="space-y-4 text-white/70 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">FAQ Centre</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Education Hub</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Fund Research</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Market Outlook</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Navigation</h6>
+<ul class="space-y-4 text-white/70 text-sm">
+<li><a class="hover:text-white transition-colors" href="#">Book a Call</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sources</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold mb-6 text-white uppercase tracking-wider text-xs">Stay Informed</h6>
+<p class="text-xs text-white/70 mb-4">Subscribe to our monthly investment digest.</p>
+<div class="flex gap-2">
+<input class="bg-white/10 border-none rounded-lg px-4 py-2 text-sm w-full focus:ring-1 focus:ring-brand-saffron placeholder-white/40" placeholder="Email address" type="email"/>
+<button class="bg-brand-saffron text-white px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-white/10">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8">
+<div class="max-w-3xl">
+<p class="text-[11px] text-white/50 leading-relaxed mb-4 uppercase font-bold tracking-widest">SEBI Compliance Note</p>
+<p class="text-[11px] text-white/50 leading-relaxed">
+                    Mutual Fund investments are subject to market risks, read all scheme related documents carefully. Advisor Pro is an AMFI Registered Mutual Fund Distributor (ARN-XXXXX). The content provided here is for educational purposes and should not be treated as investment advice. Past performance is not indicative of future returns.
+                </p>
+</div>
+<div class="flex gap-6 text-xs text-white/50">
+<a class="hover:text-white" href="#">LinkedIn</a>
+<a class="hover:text-white" href="#">Twitter</a>
+<a class="hover:text-white" href="#">YouTube</a>
+</div>
+</div>
+<p class="text-[11px] text-white/40 mt-8">© 2026 Advisor Pro Wealth Management. All Rights Reserved.</p>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.sidebar-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 120,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
+</body></html>

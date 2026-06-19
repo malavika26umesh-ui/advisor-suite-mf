@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advisor Dashboard: Availability Calendar (Desktop) - Refined</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+        }
+        .slot-booked { border-left: 4px solid #002862; }
+        .slot-open { border-left: 4px solid #006877; }
+        .slot-blocked { background: repeating-linear-gradient(45deg, transparent, transparent 10px, #f1f0f6 10px, #f1f0f6 20px); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#a4eeff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#006b7a",
+                        "inverse-primary": "#afc6ff",
+                        "on-surface": "#1a1b20",
+                        "tertiary-container": "#613700",
+                        "surface-container-highest": "#e3e2e8",
+                        "secondary": "#006877",
+                        "error-500": "#C0392B",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "inverse-on-surface": "#f1f0f6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001f25",
+                        "neutral-600": "#4A5568",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1b20",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3d5d9d",
+                        "on-primary-fixed-variant": "#224584",
+                        "primary-container": "#1b3f7e",
+                        "neutral-800": "#1A202C",
+                        "surface-container": "#eeedf3",
+                        "surface-bright": "#faf9ff",
+                        "neutral-50": "#F7F8FA",
+                        "primary-fixed-dim": "#afc6ff",
+                        "outline-variant": "#c4c6d2",
+                        "neutral-100": "#EEF0F4",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "neutral-400": "#9AA5B4",
+                        "on-tertiary-container": "#f19931",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3035",
+                        "outline": "#747781",
+                        "neutral-900": "#0F172A",
+                        "surface-container-low": "#f4f3f9",
+                        "on-surface-variant": "#434750",
+                        "neutral-200": "#E2E8F0",
+                        "disclaimer-border": "#F59E0B",
+                        "info-500": "#2563EB",
+                        "tertiary": "#422400",
+                        "surface": "#faf9ff",
+                        "primary": "#002862",
+                        "success-500": "#2D8653",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "secondary-container": "#94eafd",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-primary-container": "#8eadf3",
+                        "source-badge-bg": "#EFF6FF",
+                        "surface-dim": "#dad9df",
+                        "surface-variant": "#e3e2e8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001a43",
+                        "tertiary-fixed": "#ffdcbd",
+                        "error-container": "#ffdad6",
+                        "source-badge-text": "#1E40AF",
+                        "disclaimer-bg": "#FFF8E1",
+                        "surface-container-high": "#e8e7ee",
+                        "error": "#ba1a1a",
+                        "warning-500": "#D97706",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "background": "#faf9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-10": "40px",
+                        "space-5": "20px",
+                        "space-4": "16px",
+                        "space-12": "48px",
+                        "space-2": "8px",
+                        "space-3": "12px",
+                        "space-1": "4px",
+                        "space-6": "24px",
+                        "space-16": "64px",
+                        "max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"],
+                        "text-body": ["Inter"],
+                        "text-body-lg": ["Inter"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-h1": ["Plus Jakarta Sans"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-small": ["Inter"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-disclaimer": ["Inter"]
+                    },
+                    "fontSize": {
+                        "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                        "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                        "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-text-body overflow-hidden">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-primary dark:bg-neutral-900 shadow-sm flex flex-col py-6 px-4 z-20">
+<div class="mb-10 px-4">
+<h2 class="font-text-h2 text-text-h2 font-bold text-white">Fundwise</h2>
+<p class="text-secondary-fixed text-xs opacity-80">Wealth Management Suite</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span>Meeting Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>Meeting Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Availability</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Product Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-primary-container/30 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-60 h-screen flex flex-col">
+<!-- Top App Bar Shell -->
+<header class="h-16 bg-surface dark:bg-neutral-900 shadow-sm flex justify-between items-center px-8 z-10">
+<div class="flex items-center gap-4">
+<h1 class="font-text-h3 text-text-h3 font-bold text-primary">Availability Calendar</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-warning-500 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 hover:bg-warning-500/90 transition-all active:scale-95" onclick="document.getElementById('modal-overlay').classList.remove('hidden')">
+<span class="material-symbols-outlined">add</span>
+                Add time block
+            </button>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-auto bg-neutral-50 p-space-6 custom-scrollbar">
+<div class="max-w-[1200px] mx-auto space-y-6">
+<!-- Status Legend -->
+<div class="flex gap-6 items-center px-4 py-2 bg-white rounded-xl shadow-sm border border-neutral-200">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-white border-l-4 border-secondary rounded-sm"></div>
+<span class="text-text-small font-text-small text-neutral-600">Open Slot</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-white border-l-4 border-primary rounded-sm"></div>
+<span class="text-text-small font-text-small text-neutral-600">Booked Meeting</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 slot-blocked border border-neutral-200 rounded-sm"></div>
+<span class="text-text-small font-text-small text-neutral-600">Blocked (Personal/Out)</span>
+</div>
+</div>
+<!-- Calendar Content -->
+<div class="bg-white rounded-xl shadow-sm overflow-hidden border border-neutral-200">
+<!-- Week Header -->
+<div class="calendar-grid bg-surface-container border-b border-neutral-200 sticky top-0 z-10">
+<div class="p-4 border-r border-neutral-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">schedule</span>
+</div>
+<div class="p-4 text-center border-r border-neutral-200">
+<p class="font-text-h4 text-text-h4 text-primary">Mon</p>
+<p class="text-text-small text-outline">Oct 23</p>
+</div>
+<div class="p-4 text-center border-r border-neutral-200">
+<p class="font-text-h4 text-text-h4 text-primary">Tue</p>
+<p class="text-text-small text-outline">Oct 24</p>
+</div>
+<div class="p-4 text-center border-r border-neutral-200">
+<p class="font-text-h4 text-text-h4 text-primary">Wed</p>
+<p class="text-text-small text-outline">Oct 25</p>
+</div>
+<div class="p-4 text-center border-r border-neutral-200">
+<p class="font-text-h4 text-text-h4 text-primary">Thu</p>
+<p class="text-text-small text-outline">Oct 26</p>
+</div>
+<div class="p-4 text-center">
+<p class="font-text-h4 text-text-h4 text-primary">Fri</p>
+<p class="text-text-small text-outline">Oct 27</p>
+</div>
+</div>
+<!-- Time Slots Container -->
+<div class="relative h-[800px] overflow-y-auto custom-scrollbar">
+<div class="calendar-grid" id="calendar-body">
+<script>
+                            const grid = document.getElementById('calendar-body');
+                            const times = [
+                                "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", 
+                                "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
+                                "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
+                                "17:00", "17:30", "18:00", "18:30", "19:00"
+                            ];
+
+                            times.forEach(time => {
+                                // Label
+                                const label = document.createElement('div');
+                                label.className = "h-16 flex items-center justify-center border-r border-b border-neutral-100 text-text-small text-outline font-medium";
+                                label.innerText = time;
+                                grid.appendChild(label);
+
+                                // Slots for 5 days
+                                for(let i=0; i<5; i++) {
+                                    const slot = document.createElement('div');
+                                    slot.className = "h-16 border-r border-b border-neutral-100 p-1 group relative transition-colors hover:bg-neutral-50 cursor-pointer";
+                                    
+                                    // Mock data injection
+                                    if (time === "09:00" && i === 0) {
+                                        slot.innerHTML = `<div class="slot-booked bg-primary-fixed h-full w-full rounded p-2 overflow-hidden">
+                                            <p class="text-text-small font-semibold text-primary truncate">MF-T7B1</p>
+                                            <p class="text-[10px] text-primary/70">KYC Compliance</p>
+                                        </div>`;
+                                    } else if (time === "15:30" && i === 3) {
+                                        slot.innerHTML = `<div class="slot-booked bg-primary-fixed h-full w-full rounded p-2 overflow-hidden">
+                                            <p class="text-text-small font-semibold text-primary truncate">MF-X4R9</p>
+                                            <p class="text-[10px] text-primary/70">Portfolio Update</p>
+                                        </div>`;
+                                    } else if (time === "11:30" && i === 1) {
+                                        slot.innerHTML = `<div class="slot-open bg-secondary-container h-full w-full rounded p-2 overflow-hidden">
+                                            <p class="text-text-small font-semibold text-on-secondary-container">Available</p>
+                                        </div>`;
+                                    } else if (time === "14:00" && i === 2) {
+                                        slot.innerHTML = `<div class="slot-blocked h-full w-full rounded border border-neutral-200 flex items-center justify-center">
+                                            <p class="text-text-small text-neutral-400 italic">Personal Leave</p>
+                                        </div>`;
+                                    } else if (parseInt(time) >= 10 && parseInt(time) <= 12 && i === 3) {
+                                        slot.innerHTML = `<div class="slot-open bg-secondary-container h-full w-full rounded p-2">
+                                            <p class="text-text-small font-semibold text-on-secondary-container">Advisor Slot</p>
+                                        </div>`;
+                                    }
+
+                                    grid.appendChild(slot);
+                                }
+                            });
+                        </script>
+</div>
+</div>
+</div>
+<!-- Compliance Footer -->
+<div class="border-l-4 border-disclaimer-border bg-disclaimer-bg p-space-4 rounded-lg">
+<p class="text-text-disclaimer font-text-disclaimer text-neutral-800">
+<strong>Regulatory Notice:</strong> Availability blocks set here synchronize with your investor-facing profile. Ensure accurate representation to maintain compliance with SEBI operational standards regarding advisory availability.
+                </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay: Set Available Slot -->
+<div class="hidden fixed inset-0 bg-neutral-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" id="modal-overlay">
+<div class="bg-white w-full max-w-lg rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="p-6 border-b border-neutral-100 flex justify-between items-center bg-surface-bright">
+<h3 class="font-text-h3 text-text-h3 text-primary">Configure Availability</h3>
+<button class="text-outline hover:text-primary transition-colors" onclick="document.getElementById('modal-overlay').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-6">
+<!-- Day Pills -->
+<div>
+<label class="block text-text-small font-semibold text-neutral-600 mb-3">REPEAT ON DAYS</label>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-text-body font-semibold bg-primary text-white">M</button>
+<button class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-text-body font-semibold hover:border-primary">T</button>
+<button class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-text-body font-semibold bg-primary text-white">W</button>
+<button class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-text-body font-semibold hover:border-primary">T</button>
+<button class="w-10 h-10 rounded-full border border-neutral-200 flex items-center justify-center text-text-body font-semibold hover:border-primary">F</button>
+</div>
+</div>
+<!-- Time Range Pickers -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-text-small font-semibold text-neutral-600 mb-2">START TIME</label>
+<div class="relative">
+<input class="w-full h-11 px-4 rounded-lg border border-neutral-200 focus:border-secondary focus:ring-2 focus:ring-secondary/15 outline-none font-text-body" type="time" value="09:00"/>
+</div>
+</div>
+<div>
+<label class="block text-text-small font-semibold text-neutral-600 mb-2">END TIME</label>
+<div class="relative">
+<input class="w-full h-11 px-4 rounded-lg border border-neutral-200 focus:border-secondary focus:ring-2 focus:ring-secondary/15 outline-none font-text-body" type="time" value="17:00"/>
+</div>
+</div>
+</div>
+<!-- Slot Type -->
+<div>
+<label class="block text-text-small font-semibold text-neutral-600 mb-3">BLOCK TYPE</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center p-3 rounded-xl border-2 border-secondary bg-secondary/5">
+<span class="material-symbols-outlined text-secondary mb-1">check_circle</span>
+<span class="text-text-small font-bold text-secondary">Open</span>
+</button>
+<button class="flex flex-col items-center p-3 rounded-xl border border-neutral-200 hover:bg-neutral-50">
+<span class="material-symbols-outlined text-neutral-400 mb-1">block</span>
+<span class="text-text-small font-medium text-neutral-600">Blocked</span>
+</button>
+<button class="flex flex-col items-center p-3 rounded-xl border border-neutral-200 hover:bg-neutral-50">
+<span class="material-symbols-outlined text-neutral-400 mb-1">history</span>
+<span class="text-text-small font-medium text-neutral-600">Recurring</span>
+</button>
+</div>
+</div>
+<!-- Compliance Tag -->
+<div class="flex items-center gap-2 bg-source-badge-bg p-3 rounded-lg border border-blue-100">
+<span class="material-symbols-outlined text-info-500 text-sm">info</span>
+<span class="text-text-small text-source-badge-text">Investors can book within 15 mins of block release.</span>
+</div>
+</div>
+<div class="p-6 bg-surface-container flex gap-3">
+<button class="flex-1 h-12 rounded-lg border border-neutral-300 font-semibold text-neutral-600 hover:bg-white transition-colors" onclick="document.getElementById('modal-overlay').classList.add('hidden')">Cancel</button>
+<button class="flex-1 h-12 rounded-lg bg-warning-500 text-white font-semibold shadow-lg shadow-warning-500/20 active:scale-95 transition-all">Publish Availability</button>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interaction for slots
+    document.addEventListener('click', (e) => {
+        if(e.target.closest('.group') || e.target.closest('.calendar-grid div')) {
+            // Placeholder logic for modal opening or selection
+        }
+    });
+</script>
+</body></html>

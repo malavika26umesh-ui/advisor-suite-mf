@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise | Intent Classification (Refined)</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#747781",
+                    "on-tertiary-container": "#f19931",
+                    "neutral-400": "#9AA5B4",
+                    "error-500": "#C0392B",
+                    "primary-fixed": "#d9e2ff",
+                    "outline-variant": "#c4c6d2",
+                    "on-error-container": "#93000a",
+                    "neutral-600": "#4A5568",
+                    "surface-dim": "#dad9df",
+                    "surface-container-high": "#e8e7ee",
+                    "surface-tint": "#3d5d9d",
+                    "info-500": "#2563EB",
+                    "neutral-50": "#F7F8FA",
+                    "surface-container-highest": "#e3e2e8",
+                    "background": "#faf9ff",
+                    "source-badge-bg": "#EFF6FF",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "neutral-800": "#1A202C",
+                    "neutral-200": "#E2E8F0",
+                    "neutral-100": "#EEF0F4",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "secondary-container": "#94eafd",
+                    "primary": "#002862",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#224584",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "surface-bright": "#faf9ff",
+                    "surface-container": "#eeedf3",
+                    "on-tertiary-fixed": "#2c1600",
+                    "success-500": "#2D8653",
+                    "secondary": "#006877",
+                    "on-surface": "#1a1b20",
+                    "inverse-primary": "#afc6ff",
+                    "neutral-900": "#0F172A",
+                    "tertiary": "#422400",
+                    "surface-container-low": "#f4f3f9",
+                    "surface-container-lowest": "#ffffff",
+                    "source-badge-text": "#1E40AF",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e3e2e8",
+                    "tertiary-container": "#613700",
+                    "disclaimer-bg": "#FFF8E1",
+                    "primary-container": "#1b3f7e",
+                    "on-secondary-container": "#006b7a",
+                    "on-primary-container": "#8eadf3",
+                    "inverse-surface": "#2f3035",
+                    "warning-500": "#D97706",
+                    "surface": "#faf9ff",
+                    "on-secondary-fixed": "#001f25",
+                    "secondary-fixed": "#a4eeff",
+                    "primary-fixed-dim": "#afc6ff",
+                    "disclaimer-border": "#F59E0B",
+                    "on-surface-variant": "#434750",
+                    "on-primary-fixed": "#001a43",
+                    "tertiary-fixed": "#ffdcbd",
+                    "on-background": "#1a1b20"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-4": "16px",
+                    "space-10": "40px",
+                    "space-12": "48px",
+                    "space-8": "32px",
+                    "space-1": "4px",
+                    "max-width": "1280px",
+                    "space-2": "8px",
+                    "space-16": "64px",
+                    "space-6": "24px",
+                    "space-3": "12px",
+                    "space-5": "20px"
+            },
+            "fontFamily": {
+                    "text-body": ["Inter"],
+                    "text-small": ["Inter"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-step {
+            box-shadow: 0 0 0 4px rgba(27, 63, 126, 0.1);
+        }
+        .intent-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-text-body">
+<!-- TopNavBar (Refined) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#1B3F7E] shadow-md h-16">
+<nav class="max-w-max-width mx-auto px-space-8 flex justify-between items-center h-full">
+<div class="flex items-center gap-2 font-text-h2 text-text-h2 font-bold text-white">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span>Fundwise</span>
+</div>
+<div class="flex items-center gap-space-8">
+<div class="hidden lg:flex items-center gap-space-8 mr-space-4">
+<a class="font-text-body text-text-body text-white opacity-90 hover:opacity-100 transition-opacity" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-white opacity-90 hover:opacity-100 transition-opacity" href="#">Education Hub</a>
+</div>
+<div class="flex items-center gap-space-4">
+<button class="bg-[#E8922A] text-white px-space-6 py-2 rounded-full font-text-h4 text-text-h4 font-bold active:scale-95 duration-150 transition-all shadow-lg">
+                    Book Advisor Call
+                </button>
+<a class="hidden sm:block font-text-small text-text-small text-white opacity-70 hover:opacity-100 transition-opacity ml-2" href="#">Advisor Login</a>
+</div>
+</div>
+</nav>
+</header>
+<main class="flex-grow pt-32 pb-space-16 max-w-4xl mx-auto px-space-6 w-full">
+<!-- Step Progress Indicator (Refined) -->
+<div class="mb-space-12 max-w-2xl mx-auto">
+<div class="flex items-center justify-between relative">
+<!-- Progress Line -->
+<div class="absolute top-5 left-0 w-full h-0.5 bg-neutral-200 -z-10"></div>
+<!-- Step 1 (Active) -->
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-10 h-10 rounded-full bg-[#1B3F7E] text-white flex items-center justify-center font-bold active-step">1</div>
+<span class="font-text-small text-text-small font-semibold text-[#1B3F7E]">What do you need?</span>
+</div>
+<!-- Step 2 (Inactive) -->
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-10 h-10 rounded-full border-2 border-neutral-300 bg-white text-neutral-400 flex items-center justify-center font-bold">2</div>
+<span class="font-text-small text-text-small text-neutral-400">Narrow your topic</span>
+</div>
+<!-- Step 3 (Inactive) -->
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-10 h-10 rounded-full border-2 border-neutral-300 bg-white text-neutral-400 flex items-center justify-center font-bold">3</div>
+<span class="font-text-small text-text-small text-neutral-400">Get your answer</span>
+</div>
+</div>
+</div>
+<!-- Heading Section -->
+<div class="text-center mb-space-10">
+<h1 class="font-text-display text-text-display mb-space-2 text-primary">What brings you here today?</h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600">Choose an option to customize your mutual fund experience.</p>
+</div>
+<!-- Intent Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-6">
+<!-- Intent 1: Specific Question -->
+<button class="intent-card text-left p-space-6 bg-surface-container-lowest rounded-xl border border-neutral-100 shadow-sm transition-all flex flex-col h-full group">
+<div class="w-12 h-12 bg-secondary-container text-secondary flex items-center justify-center rounded-lg mb-space-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="help_center">help_center</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-2">Specific Question</h3>
+<p class="font-text-body text-text-body text-neutral-600">Ask about a specific mutual fund, tax implications, or market trends.</p>
+<div class="mt-auto pt-space-4 flex items-center text-secondary font-semibold font-text-small">
+                Select <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</div>
+</button>
+<!-- Intent 2: Learn -->
+<button class="intent-card text-left p-space-6 bg-surface-container-lowest rounded-xl border border-neutral-100 shadow-sm transition-all flex flex-col h-full group">
+<div class="w-12 h-12 bg-secondary-container text-secondary flex items-center justify-center rounded-lg mb-space-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="school">school</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-2">Learn</h3>
+<p class="font-text-body text-text-body text-neutral-600">Understand the basics of investing, portfolio diversification, and SIPs.</p>
+<div class="mt-auto pt-space-4 flex items-center text-secondary font-semibold font-text-small">
+                Select <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</div>
+</button>
+<!-- Intent 3: Advisor (Refined) -->
+<button class="intent-card text-left p-space-6 bg-surface-container-lowest rounded-xl border border-secondary shadow-sm transition-all flex flex-col h-full group relative overflow-hidden">
+<!-- Highlight for recommended -->
+<div class="absolute top-0 right-0 bg-secondary text-on-secondary px-3 py-1 font-text-small text-[10px] uppercase tracking-wider rounded-bl-lg font-bold">Expert Led</div>
+<div class="w-12 h-12 bg-secondary-container text-secondary flex items-center justify-center rounded-lg mb-space-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="group">group</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-2">Advisor</h3>
+<p class="font-text-body text-text-body text-neutral-600">Book a call with a SEBI-registered investment advisor.</p>
+<div class="mt-auto pt-space-4 flex items-center text-secondary font-semibold font-text-small">
+                Schedule <span class="material-symbols-outlined ml-1 text-sm">event</span>
+</div>
+</button>
+</div>
+<!-- Compliance / No Login Banner -->
+<div class="mt-space-12 p-space-4 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg flex items-center gap-space-4">
+<span class="material-symbols-outlined text-disclaimer-border" style="font-variation-settings: 'FILL' 1;">security</span>
+<div>
+<p class="font-text-h4 text-text-h4 text-neutral-800">No login required</p>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-600">Start your journey immediately. We value your privacy and do not require registration for primary exploration.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full mt-auto flex flex-col">
+<!-- Market Risk Strip -->
+<div class="bg-[#E8922A] text-primary font-text-disclaimer text-text-disclaimer py-2 px-space-8 text-center font-bold">
+        Mutual Fund investments are subject to market risks, read all scheme related documents carefully before investing.
+    </div>
+<div class="max-w-max-width mx-auto w-full py-space-10 px-space-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-space-6">
+<div class="flex flex-col gap-2">
+<div class="font-text-h3 text-text-h3 text-on-primary font-bold">Fundwise</div>
+<p class="font-text-disclaimer text-text-disclaimer opacity-80">© 2024 Fundwise Advisory. SEBI Registered Investment Advisor.</p>
+</div>
+<div class="flex flex-wrap gap-x-space-8 gap-y-space-2">
+<a class="font-text-small text-text-small opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-small text-text-small opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-small text-text-small opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-small text-text-small opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction for cards
+    const cards = document.querySelectorAll('.intent-card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Visual feedback
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                card.style.transform = '';
+            }, 150);
+            
+            // Logical transition would happen here
+            console.log('Navigating to step 2 for: ' + card.querySelector('h3').innerText);
+        });
+    });
+</script>
+</body></html>

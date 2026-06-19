@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Total Expense Ratio (TER) - Fundwise Education Hub</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1a1b20",
+                    "surface-container-high": "#e8e7ee",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "on-tertiary-fixed": "#2c1600",
+                    "error": "#ba1a1a",
+                    "source-badge-text": "#1E40AF",
+                    "primary-fixed-dim": "#afc6ff",
+                    "neutral-400": "#9AA5B4",
+                    "disclaimer-border": "#F59E0B",
+                    "surface-container": "#eeedf3",
+                    "background": "#faf9ff",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "info-500": "#2563EB",
+                    "neutral-100": "#EEF0F4",
+                    "source-badge-bg": "#EFF6FF",
+                    "secondary-fixed": "#a4eeff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcbd",
+                    "warning-500": "#D97706",
+                    "surface-container-highest": "#e3e2e8",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "surface": "#faf9ff",
+                    "neutral-50": "#F7F8FA",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#94eafd",
+                    "primary": "#002862",
+                    "on-primary-container": "#8eadf3",
+                    "surface-variant": "#e3e2e8",
+                    "on-error": "#ffffff",
+                    "neutral-200": "#E2E8F0",
+                    "on-secondary-fixed": "#001f25",
+                    "on-secondary-container": "#006b7a",
+                    "inverse-surface": "#2f3035",
+                    "on-primary-fixed-variant": "#224584",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#422400",
+                    "neutral-600": "#4A5568",
+                    "outline-variant": "#c4c6d2",
+                    "surface-tint": "#3d5d9d",
+                    "surface-dim": "#dad9df",
+                    "error-500": "#C0392B",
+                    "outline": "#747781",
+                    "secondary": "#006877",
+                    "inverse-primary": "#afc6ff",
+                    "neutral-900": "#0F172A",
+                    "disclaimer-bg": "#FFF8E1",
+                    "success-500": "#2D8653",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#434750",
+                    "tertiary-container": "#613700",
+                    "primary-container": "#1b3f7e",
+                    "surface-bright": "#faf9ff",
+                    "primary-fixed": "#d9e2ff",
+                    "on-tertiary-container": "#f19931",
+                    "on-primary-fixed": "#001a43",
+                    "on-tertiary": "#ffffff",
+                    "neutral-800": "#1A202C",
+                    "surface-container-low": "#f4f3f9",
+                    "on-background": "#1a1b20",
+                    "brand-saffron": "#E8922A",
+                    "brand-teal": "#0F7B8C"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-2": "8px",
+                    "space-1": "4px",
+                    "max-width": "1280px",
+                    "space-5": "20px",
+                    "space-3": "12px",
+                    "space-8": "32px",
+                    "space-6": "24px",
+                    "space-4": "16px",
+                    "space-12": "48px",
+                    "space-16": "64px",
+                    "space-10": "40px"
+            },
+            "fontFamily": {
+                    "text-body-lg": ["Inter"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-body": ["Inter"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-h3": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-underline {
+            position: relative;
+        }
+        .active-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+        }
+        .custom-shadow {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-surface font-text-body text-on-surface flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-primary h-[64px] shadow-sm">
+<div class="max-w-max-width mx-auto h-full flex justify-between items-center px-space-8">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2 font-text-h2 text-text-h2 font-bold text-on-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+                Fundwise
+            </a>
+<!-- Nav Links -->
+<div class="hidden md:flex items-center gap-space-8">
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 transition-colors" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-on-primary active-underline font-semibold" href="#">Education Hub</a>
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 transition-colors" href="#">Advisor Login</a>
+<button class="bg-brand-saffron text-on-primary px-space-6 py-space-2 rounded-full font-text-h4 text-text-h4 active:scale-95 duration-150 transition-all hover:brightness-110 shadow-sm">
+                    Book Advisor Call
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="mt-[64px] max-w-max-width mx-auto w-full px-space-8 py-space-10">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-space-8 font-text-small text-text-small">
+<a class="text-brand-teal hover:underline" href="#">Education Hub</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="text-brand-teal hover:underline" href="#">Fees &amp; Costs</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-neutral-400">TER</span>
+</nav>
+<div class="flex flex-col md:flex-row gap-space-10">
+<!-- Left Content Column (70%) -->
+<article class="w-full md:w-[70%]">
+<div class="bg-surface-container-lowest p-space-8 rounded-xl custom-shadow">
+<!-- Category Tag -->
+<span class="inline-block px-space-3 py-space-1 bg-source-badge-bg text-source-badge-text font-text-small text-text-small rounded-lg font-semibold mb-space-4">
+                        Fees &amp; Costs
+                    </span>
+<!-- H1 Title -->
+<h1 class="font-text-display text-text-display text-primary mb-space-6 leading-tight">
+                        Total Expense Ratio (TER): What It Is and How It Affects You
+                    </h1>
+<!-- Meta Row -->
+<div class="flex flex-wrap gap-space-6 items-center mb-space-10 text-neutral-600 font-text-small text-text-small">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                            14 Jan 2026
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">link</span>
+                            SEBI Circular Reference 2025/12
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            8 min read
+                        </div>
+</div>
+<!-- Article Body Content -->
+<div class="space-y-space-8 font-text-body-lg text-text-body-lg leading-relaxed text-neutral-800">
+<section id="what-is-ter">
+<h2 class="font-text-h1 text-text-h1 text-primary mb-space-4">What is TER?</h2>
+<p>
+                                The Total Expense Ratio (TER) represents the operational cost of managing a mutual fund scheme. For retail investors in India, understanding this metric is crucial as it directly impacts the net take-home returns. It covers everything from the fund manager's salary to administrative overheads.
+                            </p>
+<!-- Definition Callout -->
+<div class="mt-space-6 p-space-6 bg-[#F0FAFB] border-l-4 border-brand-teal rounded-r-lg">
+<p class="italic text-on-secondary-fixed-variant">
+                                    "TER is the sum of all expenses incurred by a mutual fund scheme for its management, operation, and marketing, divided by the fund's total assets."
+                                </p>
+</div>
+</section>
+<section id="how-calculated">
+<h2 class="font-text-h1 text-text-h1 text-primary mb-space-4">How is TER Calculated?</h2>
+<p>
+                                Mutual funds calculate their expenses daily. This amount is subtracted from the Net Asset Value (NAV) of the fund before the closing NAV is announced to the public. This means the returns you see on your dashboard are already net of these expenses.
+                            </p>
+<!-- Calculation Box -->
+<div class="mt-space-6 p-space-6 bg-neutral-50 border-2 border-dashed border-neutral-200 rounded-xl font-text-code text-text-code">
+<ul class="space-y-2 text-primary-container">
+<li>Total Scheme Assets: ₹1,000 Crores</li>
+<li>Total Annual Expenses: ₹15 Crores</li>
+<li class="pt-2 border-t border-neutral-200 text-brand-teal text-xl">
+                                        TER = (15 / 1,000) * 100 = 1.50%
+                                    </li>
+</ul>
+</div>
+</section>
+<section id="sebi-caps">
+<h2 class="font-text-h1 text-text-h1 text-primary mb-space-4">SEBI's Maximum TER Caps</h2>
+<p class="mb-space-6">
+                                The Securities and Exchange Board of India (SEBI) mandates strict limits on how much an AMC can charge based on the scheme's Assets Under Management (AUM). These slabs ensure economies of scale are passed to the investors.
+                            </p>
+<!-- Responsive Table -->
+<div class="overflow-hidden border border-neutral-200 rounded-xl">
+<table class="w-full text-left border-collapse">
+<thead class="bg-primary text-on-primary font-text-h4 text-text-h4">
+<tr>
+<th class="p-space-4">AUM Slab (Equity Funds)</th>
+<th class="p-space-4">Maximum Permissible TER</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-neutral-200 bg-white">
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="p-space-4">First ₹500 Crores</td>
+<td class="p-space-4 font-semibold text-brand-teal">2.25%</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="p-space-4">Next ₹250 Crores</td>
+<td class="p-space-4 font-semibold text-brand-teal">2.00%</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="p-space-4">Next ₹1,250 Crores</td>
+<td class="p-space-4 font-semibold text-brand-teal">1.75%</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="p-space-4">Next ₹3,000 Crores</td>
+<td class="p-space-4 font-semibold text-brand-teal">1.60%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- CTA Strip -->
+<div class="mt-space-12 p-space-8 bg-primary rounded-xl flex flex-col md:flex-row justify-between items-center gap-space-6 text-on-primary">
+<div>
+<h3 class="font-text-h2 text-text-h2 mb-1">Need more clarity on fees?</h3>
+<p class="opacity-80">Connect with an advisor for a personalized fee breakdown.</p>
+</div>
+<div class="flex gap-space-4">
+<button class="px-space-6 py-space-3 border border-on-primary text-on-primary rounded-full hover:bg-on-primary hover:text-primary transition-all font-text-h4 text-text-h4">
+                                    Ask in FAQ Centre
+                                </button>
+<button class="px-space-6 py-space-3 bg-brand-saffron text-on-primary rounded-full hover:brightness-110 transition-all font-text-h4 text-text-h4 shadow-lg">
+                                    Book a call
+                                </button>
+</div>
+</div>
+<!-- Compliance Disclaimer -->
+<div class="mt-space-10 p-space-6 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg flex gap-4">
+<span class="material-symbols-outlined text-warning-500 shrink-0">warning</span>
+<div class="font-text-disclaimer text-text-disclaimer text-neutral-800">
+<p class="font-semibold mb-1">Regulatory Disclosure:</p>
+<p>Mutual fund investments are subject to market risks, read all scheme related documents carefully. The TER values mentioned are indicative based on SEBI regulations as of the last update and may vary across different fund categories (Debt, Liquid, Index Funds).</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Right Sidebar Column (30%) -->
+<aside class="w-full md:w-[30%] space-y-space-8">
+<!-- Table of Contents (Sticky) -->
+<div class="sticky top-[84px] bg-white p-space-6 rounded-xl custom-shadow border border-neutral-100">
+<h4 class="font-text-h3 text-text-h3 text-primary mb-space-4 flex items-center gap-2">
+<span class="material-symbols-outlined">toc</span>
+                        In this article
+                    </h4>
+<nav class="space-y-space-2 text-neutral-600 font-text-body text-text-body">
+<a class="block py-2 px-3 rounded hover:bg-neutral-50 hover:text-brand-teal transition-all border-l-2 border-transparent hover:border-brand-teal" href="#what-is-ter">What is TER?</a>
+<a class="block py-2 px-3 rounded hover:bg-neutral-50 hover:text-brand-teal transition-all border-l-2 border-transparent hover:border-brand-teal" href="#how-calculated">How is TER Calculated?</a>
+<a class="block py-2 px-3 rounded hover:bg-neutral-50 hover:text-brand-teal transition-all border-l-2 border-transparent hover:border-brand-teal" href="#sebi-caps">SEBI's Maximum TER Caps</a>
+</nav>
+<!-- Related Topics Panel -->
+<div class="mt-space-10 pt-space-8 border-t border-neutral-100">
+<h4 class="font-text-h3 text-text-h3 text-primary mb-space-6">Related topics</h4>
+<div class="space-y-space-5">
+<a class="group block" href="#">
+<div class="flex gap-space-4 items-center">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-100 shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="A clean professional graphic showing two paths diverging, representing Direct and Regular mutual fund plans. The visual style uses a professional navy and teal color scheme with subtle glowing elements in a modern light-mode office setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9O5LKP1C34-Wz413oNOUwHVegQQgdu1HVv7CP-YGhl1QuqKNJjWU1yjfuxvvB6DwMHohYlEi2WUvBel8VCRuvAQ7QhJf9OW-z4nPXEEmDf6jMBGeZW72q65C278Zk7MBhcmPWE2RUoZuBSMr_cnN2K8XMWNXuNBKAgUT-2EBzFBiKHflTIJMwuOSRmqT3aHCef8wlErngC3F6-DGW0JFtbg2rmxtJWWOLyAGWNC3D20Uyv3i-HZ6RFjU48SEj_rl77NxWsCllifzq"/>
+</div>
+<div>
+<p class="font-text-h4 text-text-h4 text-neutral-900 group-hover:text-brand-teal transition-colors line-clamp-2">Direct vs Regular Mutual Fund Plans</p>
+<span class="text-neutral-400 text-[12px]">5 min read</span>
+</div>
+</div>
+</a>
+<a class="group block" href="#">
+<div class="flex gap-space-4 items-center">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-neutral-100 shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Abstract digital illustration representing taxes and financial growth. Icons of Indian Rupee symbol, calculation charts, and legal stamps are arranged in a bento-grid style with a corporate saffron accent color against a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4n9hVwsLRSm_GB9WHTrAUzL_3NUCc7-L7o0kW0r7wYQCnxZPBVpQygUXtFhmD4McrL-_EWKJ3yJ6_N6JmNFDU85RgoOKM3S4x6HtPmvdBSakww7sLEE8I8lOWWQXdqEJQgRyvWse_7YuuFXQev5MUmZtaxWG_SyLifsLqnwG1lKiLfA-8EEDE0Fgouxz-9w3Lkw3d_j3KwKXkzYuhBg_7rkXoKZT6DLwt9j25F22YCozpmHFuxiWIXFsSsQbyjEBt1ckJOCHH4vlO"/>
+</div>
+<div>
+<p class="font-text-h4 text-text-h4 text-neutral-900 group-hover:text-brand-teal transition-colors line-clamp-2">STT &amp; Other Transactional Taxes</p>
+<span class="text-neutral-400 text-[12px]">10 min read</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary mt-auto">
+<div class="max-w-max-width mx-auto px-space-8 py-space-12">
+<div class="flex flex-col md:flex-row justify-between items-start gap-space-10">
+<!-- Brand Column -->
+<div class="w-full md:w-1/3">
+<div class="font-text-h3 text-text-h3 font-bold mb-space-4">Fundwise</div>
+<p class="font-text-disclaimer text-text-disclaimer opacity-80 leading-relaxed max-w-sm">
+                        Fundwise Advisory is a SEBI Registered Investment Advisor (RIA) dedicated to transparent and goal-based wealth management for the Indian retail investor.
+                    </p>
+</div>
+<!-- Nav Columns -->
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-space-8 flex-1">
+<div>
+<h5 class="font-text-h4 text-text-h4 mb-space-4">Resources</h5>
+<ul class="space-y-space-2 font-text-small text-text-small">
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">FAQ Centre</a></li>
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Education Hub</a></li>
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Sources</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-text-h4 text-text-h4 mb-space-4">Legal</h5>
+<ul class="space-y-space-2 font-text-small text-text-small">
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Privacy Policy</a></li>
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Terms of Service</a></li>
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Disclosures</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-text-h4 text-text-h4 mb-space-4">Support</h5>
+<ul class="space-y-space-2 font-text-small text-text-small">
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Book a Call</a></li>
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Grievance Redressal</a></li>
+<li><a class="opacity-80 hover:opacity-100 transition-all hover:text-on-tertiary-container" href="#">Advisor Login</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Bottom Strip -->
+<div class="mt-space-12 pt-space-6 border-t border-primary-container flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-text-disclaimer text-text-disclaimer opacity-60">
+                    SEBI-compliant fintech platform · Content sourced from AMFI, SEBI, and AMC documents
+                </p>
+<p class="font-text-disclaimer text-text-disclaimer opacity-60">
+                    © 2024 Fundwise Advisory. SEBI Registered Investment Advisor.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the Table of Contents scroll highlight
+        window.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`nav a[href="#${id}"]`);
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('nav a').forEach(a => a.classList.remove('border-brand-teal', 'bg-neutral-50', 'text-brand-teal'));
+                        if(navLink) navLink.classList.add('border-brand-teal', 'bg-neutral-50', 'text-brand-teal');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('section[id]').forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise | FAQ Centre - Compliance Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .compliance-accent-border {
+            border-left: 4px solid #F59E0B;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf9ff",
+                        "surface": "#faf9ff",
+                        "on-tertiary-fixed": "#2c1600",
+                        "tertiary": "#422400",
+                        "source-badge-text": "#1E40AF",
+                        "outline": "#747781",
+                        "neutral-200": "#E2E8F0",
+                        "disclaimer-bg": "#FFF8E1",
+                        "outline-variant": "#c4c6d2",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#afc6ff",
+                        "neutral-800": "#1A202C",
+                        "neutral-600": "#4A5568",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1b20",
+                        "primary-container": "#1b3f7e",
+                        "inverse-on-surface": "#f1f0f6",
+                        "surface-container-low": "#f4f3f9",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#613700",
+                        "secondary-container": "#94eafd",
+                        "surface-variant": "#e3e2e8",
+                        "neutral-900": "#0F172A",
+                        "on-primary-fixed": "#001a43",
+                        "on-primary-fixed-variant": "#224584",
+                        "primary": "#002862",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "disclaimer-border": "#F59E0B",
+                        "background": "#faf9ff",
+                        "surface-tint": "#3d5d9d",
+                        "success-500": "#2D8653",
+                        "error-500": "#C0392B",
+                        "on-surface-variant": "#434750",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-background": "#1a1b20",
+                        "surface-container": "#eeedf3",
+                        "surface-container-highest": "#e3e2e8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-container": "#8eadf3",
+                        "on-secondary-fixed": "#001f25",
+                        "on-error": "#ffffff",
+                        "neutral-400": "#9AA5B4",
+                        "info-500": "#2563EB",
+                        "source-badge-bg": "#EFF6FF",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "secondary-fixed": "#a4eeff",
+                        "secondary": "#006877",
+                        "warning-500": "#D97706",
+                        "on-tertiary-container": "#f19931",
+                        "surface-dim": "#dad9df",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcbd",
+                        "surface-container-lowest": "#ffffff",
+                        "neutral-100": "#EEF0F4",
+                        "neutral-50": "#F7F8FA",
+                        "surface-container-high": "#e8e7ee",
+                        "inverse-surface": "#2f3035",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#006b7a",
+                        "inverse-primary": "#afc6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-1": "4px",
+                        "space-4": "16px",
+                        "space-3": "12px",
+                        "space-16": "64px",
+                        "max-width": "1280px",
+                        "space-12": "48px",
+                        "space-10": "40px",
+                        "space-5": "20px",
+                        "space-2": "8px",
+                        "space-8": "32px",
+                        "space-6": "24px"
+                    },
+                    "fontFamily": {
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-body": ["Inter"],
+                        "text-body-lg": ["Inter"],
+                        "text-small": ["Inter"],
+                        "text-h1": ["Plus Jakarta Sans"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-disclaimer": ["Inter"]
+                    },
+                    "fontSize": {
+                        "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                        "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                        "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-text-body">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-primary-container dark:bg-primary-container shadow-sm flex justify-between items-center px-space-8 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-2 font-text-h2 text-text-h2 font-bold text-on-primary">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+            Fundwise
+        </div>
+<nav class="hidden md:flex gap-space-6 items-center">
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors" href="#">Education Hub</a>
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors" href="#">Advisor Login</a>
+<button class="bg-on-tertiary-container text-on-tertiary-fixed px-space-5 py-space-2 rounded-lg font-text-h4 text-text-h4 hover:scale-95 duration-150 transition-transform">
+                Book Advisor Call
+            </button>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-space-16 pt-space-8 pb-space-16 max-w-max-width mx-auto px-space-8">
+<!-- Breadcrumb & Header Section -->
+<div class="mb-space-10">
+<nav class="flex items-center gap-2 text-neutral-600 font-text-small text-text-small mb-space-4">
+<a class="hover:text-primary transition-colors" href="#">FAQ Centre</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-semibold text-primary">Compliance Check</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-4">
+<h1 class="font-text-h1 text-text-h1 text-primary">
+                    Should I invest in ELSS or index funds?
+                </h1>
+<div class="inline-flex items-center gap-2 bg-disclaimer-bg px-space-3 py-space-1 rounded-full border border-disclaimer-border text-on-tertiary-fixed font-text-small text-text-small">
+<span class="material-symbols-outlined text-[18px] text-warning-500" data-icon="gavel" style="font-variation-settings: 'FILL' 1;">gavel</span>
+                    Compliance Review Active
+                </div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-10">
+<!-- Main Content Area -->
+<div class="lg:col-span-8 space-y-space-8">
+<!-- Compliance Deflection Banner -->
+<div class="bg-disclaimer-bg rounded-xl p-space-8 compliance-accent-border shadow-sm border border-neutral-100">
+<div class="flex items-start gap-space-4 mb-space-4">
+<span class="material-symbols-outlined text-warning-500 text-[32px]" data-icon="info_i">info_i</span>
+<div>
+<h2 class="font-text-h2 text-text-h2 text-on-tertiary-fixed mb-space-2">This question needs personalised investment advice</h2>
+<p class="font-text-body text-text-body text-neutral-800 leading-relaxed">
+                                Under **SEBI (Investment Advisers) Regulations, 2013**, providing a specific recommendation on whether you should choose ELSS (Equity Linked Savings Schemes) over Index Funds constitutes investment advice. Such advice must be based on an individual's financial goals, risk profile, and investment horizon.
+                            </p>
+</div>
+</div>
+<div class="mt-space-6 border-t border-disclaimer-border/20 pt-space-6">
+<p class="font-text-h4 text-text-h4 text-neutral-800 mb-space-4">To help you understand the concepts better, you can explore:</p>
+<div class="flex flex-wrap gap-space-3">
+<button class="bg-neutral-100 hover:bg-primary hover:text-on-primary text-primary px-space-4 py-space-2 rounded-full font-text-body text-text-body transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                                What is an ELSS fund?
+                            </button>
+<button class="bg-neutral-100 hover:bg-primary hover:text-on-primary text-primary px-space-4 py-space-2 rounded-full font-text-body text-text-body transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                                What is an index fund?
+                            </button>
+</div>
+</div>
+<div class="mt-space-10 flex flex-col sm:flex-row gap-space-4">
+<button class="bg-primary text-on-primary px-space-6 py-space-3 rounded-lg font-text-h4 text-text-h4 flex-1 hover:opacity-90 transition-opacity">
+                            Speak with a professional for tailored advice
+                        </button>
+<button class="bg-on-tertiary-container text-on-tertiary-fixed px-space-6 py-space-3 rounded-lg font-text-h4 text-text-h4 flex-1 hover:opacity-90 transition-opacity">
+                            Book a call with a SEBI-registered advisor
+                        </button>
+</div>
+</div>
+<!-- Descriptive Visual Placeholder -->
+<div class="relative rounded-xl overflow-hidden h-64 shadow-md bg-neutral-200">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional and clean office environment for a financial advisory firm in India. Soft sunlight filters through large windows illuminating a desk with a laptop and organized financial documents. The aesthetic is corporate yet warm, using a color palette of navy blue and soft amber to evoke trust and clarity. Minimalist modern architecture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXLncqOMVUrk3fiAMN4o2pfM-uzpqoEaO0nrA122E9Hy0pcqIoCJ03GZy0KsZgWv5dJ72bjnI9wFJ0YQxuw4BENmFuTKxi8CrQVxMyfMP7FxhvsgNkj9rvu5PIkLMsFZlUA-qW96lGYyX3_Han3YkXZLHyIiNmk5DlvLJupPLaN1htLXs-xL2FeyAYwncExpdHZiU-RQg4N2uL425pxdRyQlfRDJP0jpKjH0C5wVzg4X8pgrM7w57fCzsChjQRZKkIRx9HQ3S0TQt4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-space-6 left-space-6">
+<span class="bg-primary text-on-primary px-space-3 py-1 rounded text-text-small font-text-small uppercase tracking-wider">Education Hub</span>
+</div>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 space-y-space-6">
+<!-- Fee Explainer Panel -->
+<section class="bg-surface-container-lowest p-space-6 rounded-xl border border-neutral-100 shadow-sm">
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+                        Fee Structure
+                    </h3>
+<p class="font-text-body text-text-body text-neutral-600 mb-space-4">
+                        Fundwise operates on a transparent, flat-fee model for advisory services. We do not receive commissions from fund houses.
+                    </p>
+<ul class="space-y-space-2 font-text-small text-text-small text-neutral-800">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success-500 text-[18px]">check_circle</span>
+                            No entry or exit load for advice
+                        </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success-500 text-[18px]">check_circle</span>
+                            SEBI-mandated fee caps apply
+                        </li>
+</ul>
+</section>
+<!-- Covered Schemes Panel -->
+<section class="bg-surface-container-lowest p-space-6 rounded-xl border border-neutral-100 shadow-sm">
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+                        Covered Schemes
+                    </h3>
+<div class="space-y-space-3">
+<div class="flex justify-between items-center p-space-2 bg-neutral-50 rounded">
+<span class="font-text-small text-text-small font-medium">Equity Funds (ELSS)</span>
+<span class="material-symbols-outlined text-neutral-400">arrow_outward</span>
+</div>
+<div class="flex justify-between items-center p-space-2 bg-neutral-50 rounded">
+<span class="font-text-small text-text-small font-medium">Index &amp; ETFs</span>
+<span class="material-symbols-outlined text-neutral-400">arrow_outward</span>
+</div>
+<div class="flex justify-between items-center p-space-2 bg-neutral-50 rounded">
+<span class="font-text-small text-text-small font-medium">Debt &amp; Hybrid</span>
+<span class="material-symbols-outlined text-neutral-400">arrow_outward</span>
+</div>
+</div>
+</section>
+<!-- Generic CTA Panel -->
+<section class="bg-primary p-space-8 rounded-xl text-on-primary shadow-lg text-center relative overflow-hidden">
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-white/5 rounded-full blur-2xl"></div>
+<h3 class="font-text-h2 text-text-h2 mb-space-3 relative z-10">Need personalised guidance?</h3>
+<p class="font-text-body text-text-body mb-space-6 opacity-90 relative z-10">
+                        Get a comprehensive financial plan tailored to your life goals and risk appetite.
+                    </p>
+<button class="w-full bg-on-tertiary-container text-on-tertiary-fixed py-space-3 rounded-lg font-text-h4 text-text-h4 font-bold hover:scale-105 transition-transform">
+                        Book a Call
+                    </button>
+</section>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary text-on-primary w-full border-t border-primary-container mt-auto">
+<div class="max-w-max-width mx-auto px-space-8 py-space-10">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-8 mb-space-8">
+<div class="font-text-h3 text-text-h3 text-on-primary font-bold">Fundwise Advisory</div>
+<div class="flex flex-wrap gap-space-6">
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<div class="border-t border-on-primary/10 pt-space-6 space-y-space-4">
+<p class="font-text-disclaimer text-text-disclaimer opacity-70">
+                    © 2024 Fundwise Advisory. SEBI Registered Investment Advisor. Registration No. INA000000000.
+                </p>
+<div class="bg-white/5 p-space-4 rounded compliance-accent-border">
+<p class="font-text-disclaimer text-text-disclaimer italic text-on-primary/90">
+                        Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI, membership of BASL and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.
+                    </p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

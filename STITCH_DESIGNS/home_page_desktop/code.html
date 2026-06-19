@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise IntelliSuite MF - Mutual Fund Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh-gradient {
+            background-color: #faf9ff;
+            background-image: radial-gradient(at 0% 0%, rgba(217, 226, 255, 0.5) 0px, transparent 50%),
+                              radial-gradient(at 100% 0%, rgba(164, 238, 255, 0.3) 0px, transparent 50%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e3e2e8",
+                      "primary-fixed": "#d9e2ff",
+                      "source-badge-text": "#1E40AF",
+                      "disclaimer-bg": "#FFF8E1",
+                      "on-primary-fixed": "#001a43",
+                      "tertiary-fixed": "#ffdcbd",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e8e7ee",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "background": "#faf9ff",
+                      "warning-500": "#D97706",
+                      "tertiary": "#422400",
+                      "surface": "#faf9ff",
+                      "neutral-200": "#E2E8F0",
+                      "disclaimer-border": "#F59E0B",
+                      "info-500": "#2563EB",
+                      "primary": "#002862",
+                      "success-500": "#2D8653",
+                      "secondary-fixed-dim": "#7dd3e6",
+                      "secondary-container": "#94eafd",
+                      "on-tertiary-fixed": "#2c1600",
+                      "source-badge-bg": "#EFF6FF",
+                      "surface-dim": "#dad9df",
+                      "on-primary-container": "#8eadf3",
+                      "inverse-surface": "#2f3035",
+                      "outline": "#747781",
+                      "surface-container-low": "#f4f3f9",
+                      "neutral-900": "#0F172A",
+                      "on-surface-variant": "#434750",
+                      "neutral-50": "#F7F8FA",
+                      "on-tertiary-fixed-variant": "#693c00",
+                      "primary-fixed-dim": "#afc6ff",
+                      "outline-variant": "#c4c6d2",
+                      "neutral-100": "#EEF0F4",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "neutral-400": "#9AA5B4",
+                      "on-tertiary-container": "#f19931",
+                      "surface-tint": "#3d5d9d",
+                      "on-primary-fixed-variant": "#224584",
+                      "surface-container": "#eeedf3",
+                      "surface-bright": "#faf9ff",
+                      "primary-container": "#1b3f7e",
+                      "neutral-800": "#1A202C",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f1f0f6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#001f25",
+                      "neutral-600": "#4A5568",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1a1b20",
+                      "tertiary-container": "#613700",
+                      "surface-container-highest": "#e3e2e8",
+                      "secondary": "#006877",
+                      "error-500": "#C0392B",
+                      "tertiary-fixed-dim": "#ffb86f",
+                      "secondary-fixed": "#a4eeff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#006b7a",
+                      "inverse-primary": "#afc6ff",
+                      "on-surface": "#1a1b20"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "space-16": "64px",
+                      "max-width": "1280px",
+                      "space-6": "24px",
+                      "space-8": "32px",
+                      "space-3": "12px",
+                      "space-1": "4px",
+                      "space-2": "8px",
+                      "space-4": "16px",
+                      "space-12": "48px",
+                      "space-5": "20px",
+                      "space-10": "40px"
+              },
+              "fontFamily": {
+                      "text-body-lg": ["Inter"],
+                      "text-display": ["Plus Jakarta Sans"],
+                      "text-h1": ["Plus Jakarta Sans"],
+                      "text-h3": ["Plus Jakarta Sans"],
+                      "text-small": ["Inter"],
+                      "text-h4": ["Plus Jakarta Sans"],
+                      "text-disclaimer": ["Inter"],
+                      "text-h2": ["Plus Jakarta Sans"],
+                      "text-code": ["JetBrains Mono"],
+                      "text-body": ["Inter"]
+              },
+              "fontSize": {
+                      "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                      "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                      "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                      "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                      "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-text-body overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-primary sticky top-0 z-50 shadow-md h-space-16">
+<div class="max-w-max-width mx-auto px-space-6 flex justify-between items-center h-full">
+<!-- Brand -->
+<div class="flex items-center gap-space-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-3xl" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="font-text-h3 text-text-h3 font-bold text-on-primary">IntelliSuite MF</span>
+</div>
+<!-- Nav Links -->
+<nav class="hidden md:flex items-center gap-space-8">
+<a class="font-text-h4 text-text-h4 text-on-primary/90 hover:text-secondary-fixed-dim transition-colors" href="#">FAQ Centre</a>
+<a class="font-text-h4 text-text-h4 text-on-primary/90 hover:text-secondary-fixed-dim transition-colors" href="#">Education Hub</a>
+<a class="bg-warning-500 hover:bg-warning-500/90 text-on-primary px-space-5 py-space-2 rounded-full font-text-h4 text-text-h4 font-bold transition-transform active:scale-95" href="#">Book Advisor Call</a>
+<a class="font-text-small text-text-small text-on-primary/70 hover:text-white transition-colors" href="#">Advisor Login</a>
+</nav>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative bg-mesh-gradient overflow-hidden">
+<div class="max-w-max-width mx-auto px-space-6 py-space-12 lg:py-space-16 grid grid-cols-1 lg:grid-cols-12 gap-space-10 items-center">
+<!-- Hero Content -->
+<div class="lg:col-span-7 flex flex-col gap-space-6">
+<div>
+<span class="inline-flex items-center px-space-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full font-text-small text-text-small font-semibold tracking-wide uppercase">
+                        SEBI-Compliant · AMFI-Grounded
+                    </span>
+</div>
+<h1 class="font-text-display text-text-display lg:text-[48px] text-primary tracking-tight leading-[1.1]">
+                    Clear, factual information about mutual funds — no advice, no guesswork.
+                </h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600 max-w-xl">
+                    Get answers to your mutual fund questions from official AMFI and SEBI sources. Or book a call with a SEBI-registered advisor when you need personalised guidance.
+                </p>
+<div class="flex flex-wrap gap-space-4 mt-space-2">
+<button class="bg-warning-500 hover:bg-warning-500/90 text-on-primary px-space-8 py-space-4 rounded-xl font-text-h3 text-text-h3 font-bold shadow-lg transition-all hover:-translate-y-1 active:translate-y-0">
+                        Start with a Question
+                    </button>
+<button class="border-2 border-primary text-primary hover:bg-primary/5 px-space-8 py-space-4 rounded-xl font-text-h3 text-text-h3 font-bold transition-all">
+                        Browse Education Hub
+                    </button>
+</div>
+<!-- Trust Bar -->
+<div class="flex flex-wrap gap-space-6 mt-space-6 pt-space-6 border-t border-neutral-200">
+<div class="flex items-center gap-space-2 text-neutral-600 font-text-small text-text-small">
+<span class="material-symbols-outlined text-success-500">verified</span>
+                        Source-cited answers
+                    </div>
+<div class="flex items-center gap-space-2 text-neutral-600 font-text-small text-text-small">
+<span class="material-symbols-outlined text-info-500">do_not_disturb_on</span>
+                        No investment advice
+                    </div>
+<div class="flex items-center gap-space-2 text-neutral-600 font-text-small text-text-small">
+<span class="material-symbols-outlined text-primary">gavel</span>
+                        SEBI-compliant
+                    </div>
+</div>
+</div>
+<!-- Hero Illustration -->
+<div class="lg:col-span-5 relative group">
+<div class="absolute -inset-4 bg-primary-fixed/20 blur-3xl rounded-full group-hover:bg-primary-fixed/30 transition-all duration-700"></div>
+<div class="relative z-10 w-full aspect-square bg-white/40 backdrop-blur-sm rounded-[40px] border border-white/60 p-space-6 shadow-2xl flex items-center justify-center">
+<img class="w-full h-full object-contain drop-shadow-xl" data-alt="A professional clean vector illustration of a digital interface showing financial charts and an advisor figure. The style is modern with soft teal and navy accents, featuring clean lines and a friendly corporate aesthetic suitable for a high-end mutual fund intelligence platform. The lighting is bright and airy, emphasizing trust and clarity." src="https://lh3.googleusercontent.com/aida/AP1WRLufSS3asGBo0i4iBceZxbw_lqZ19JZ08V5MEiFjyP5DCtEXxm8j1RqMWG2aXLArXpIIAmC9T7VDuCF2JCZSkvsFxG9cEuMw_TieAKGZjOTRcFIqwvKWms-YzsMFAa3J15gpQ9N33VONqEx38sEtXVX09AQDhCEfoN3bCR-rlqtrXAwN0ndTtZ2vL4FTbODwNfHA7NFLeLxg1beN8KrtlA03n5rd7I5-TexHVPQBB8CuBDoLM_kcTOKxXwY"/>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="bg-surface py-space-12 lg:py-space-16 border-t border-neutral-100">
+<div class="max-w-max-width mx-auto px-space-6">
+<div class="text-center mb-space-12">
+<h2 class="font-text-h2 text-text-h2 text-primary">Three ways to get the clarity you need</h2>
+<div class="h-1 w-20 bg-warning-500 mx-auto mt-space-3 rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-8">
+<!-- Card 1 -->
+<div class="bg-white p-space-8 rounded-2xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow group">
+<div class="w-14 h-14 rounded-xl bg-secondary-container/30 flex items-center justify-center mb-space-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl">chat_bubble</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-3">Ask a Specific Question</h3>
+<p class="font-text-body text-text-body text-neutral-600">Get factual, source-backed responses based on latest regulatory guidelines.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-space-8 rounded-2xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow group">
+<div class="w-14 h-14 rounded-xl bg-primary-fixed/30 flex items-center justify-center mb-space-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">school</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-3">Explore and Learn</h3>
+<p class="font-text-body text-text-body text-neutral-600">Browse our comprehensive hub of articles, explainers, and compliance guides.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-white p-space-8 rounded-2xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow group">
+<div class="w-14 h-14 rounded-xl bg-tertiary-fixed/40 flex items-center justify-center mb-space-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-warning-500 text-3xl">call</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-primary mb-space-3">Book an Advisor Call</h3>
+<p class="font-text-body text-text-body text-neutral-600">Connect with certified professionals for deep-dives into your unique goals.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Topic Strip -->
+<section class="bg-[#F0FAFB] border-y border-secondary/10 py-space-6">
+<div class="max-w-max-width mx-auto px-space-6 flex flex-col md:flex-row items-center justify-between gap-space-4">
+<div class="flex items-center gap-space-2 shrink-0">
+<span class="material-symbols-outlined text-secondary font-bold">trending_up</span>
+<span class="font-text-h4 text-text-h4 text-secondary">This week, investors are asking about:</span>
+</div>
+<div class="flex flex-wrap gap-space-3 justify-center">
+<a class="bg-white border border-secondary/30 px-space-4 py-1.5 rounded-full font-text-small text-text-small text-secondary hover:bg-secondary hover:text-white transition-all cursor-pointer" href="#">Exit load on ELSS</a>
+<a class="bg-white border border-secondary/30 px-space-4 py-1.5 rounded-full font-text-small text-text-small text-secondary hover:bg-secondary hover:text-white transition-all cursor-pointer" href="#">TER explained</a>
+<a class="bg-white border border-secondary/30 px-space-4 py-1.5 rounded-full font-text-small text-text-small text-secondary hover:bg-secondary hover:text-white transition-all cursor-pointer" href="#">Direct vs Regular plan</a>
+<a class="bg-white border border-secondary/30 px-space-4 py-1.5 rounded-full font-text-small text-text-small text-secondary hover:bg-secondary hover:text-white transition-all cursor-pointer" href="#">How to redeem SIP</a>
+</div>
+</div>
+</section>
+<!-- Compliance Banner -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border py-space-4">
+<div class="max-w-max-width mx-auto px-space-6 text-center">
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 leading-relaxed italic">
+                Disclaimer: Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Fundwise IntelliSuite MF provides information based on regulatory documents and does not provide financial advice.
+            </p>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary">
+<div class="max-w-max-width mx-auto px-space-6 py-space-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-10">
+<!-- Brand & Regulatory -->
+<div class="lg:col-span-5 space-y-space-6">
+<div class="flex items-center gap-space-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-2xl" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="font-text-h4 text-text-h4 font-bold">IntelliSuite MF</span>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/70 leading-relaxed max-w-md">
+                        © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks. We prioritize transparency and regulatory compliance in every investor interaction.
+                    </p>
+<div class="flex gap-space-4">
+<a class="text-on-primary/60 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-primary/60 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-on-primary/60 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+<!-- Links Column 1 -->
+<div class="lg:col-span-2 flex flex-col gap-space-3">
+<h4 class="font-text-h4 text-text-h4 font-bold mb-space-2 text-secondary-fixed-dim">Resources</h4>
+<a class="font-text-body text-text-body text-on-primary/80 hover:text-white hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-body text-text-body text-on-primary/80 hover:text-white hover:underline transition-all" href="#">Education Hub</a>
+<a class="font-text-body text-text-body text-on-primary/80 hover:text-white hover:underline transition-all" href="#">Sitemap</a>
+</div>
+<!-- Links Column 2 -->
+<div class="lg:col-span-2 flex flex-col gap-space-3">
+<h4 class="font-text-h4 text-text-h4 font-bold mb-space-2 text-secondary-fixed-dim">Legal</h4>
+<a class="font-text-body text-text-body text-on-primary/80 hover:text-white hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-body text-text-body text-on-primary/80 hover:text-white hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-body text-text-body text-on-primary/80 hover:text-white hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+<!-- Links Column 3 -->
+<div class="lg:col-span-3 flex flex-col gap-space-4">
+<h4 class="font-text-h4 text-text-h4 font-bold mb-space-2 text-secondary-fixed-dim">Contact</h4>
+<div class="flex items-start gap-space-3">
+<span class="material-symbols-outlined text-on-primary/60">location_on</span>
+<span class="font-text-disclaimer text-text-disclaimer text-on-primary/80" data-location="Mumbai, India">Mumbai HQ, Financial District, Maharashtra</span>
+</div>
+<div class="flex items-center gap-space-3">
+<span class="material-symbols-outlined text-on-primary/60">support_agent</span>
+<span class="font-text-disclaimer text-text-disclaimer text-on-primary/80">1800-FUNDWISE-001</span>
+</div>
+</div>
+</div>
+<!-- Bottom Legal Bar -->
+<div class="mt-space-12 pt-space-6 border-t border-white/10 text-center">
+<span class="font-text-small text-text-small text-on-primary/40">
+                    Registration No. INA00000000 | Validity: Perpetual | Registered Office: Fundwise Towers, Mumbai 400001.
+                </span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and subtle scroll effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    }
+                });
+            }, observerOptions);
+
+            // Select elements to animate on scroll
+            const cards = document.querySelectorAll('.bg-white.p-space-8');
+            cards.forEach(card => {
+                card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+                observer.observe(card);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise - Topic Narrowing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#006b7a",
+                    "neutral-600": "#4A5568",
+                    "on-surface-variant": "#434750",
+                    "tertiary-fixed": "#ffdcbd",
+                    "error-500": "#C0392B",
+                    "on-tertiary-container": "#f19931",
+                    "disclaimer-bg": "#FFF8E1",
+                    "success-500": "#2D8653",
+                    "secondary-fixed": "#a4eeff",
+                    "primary": "#002862",
+                    "surface-dim": "#dad9df",
+                    "neutral-400": "#9AA5B4",
+                    "on-secondary-fixed": "#001f25",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#224584",
+                    "surface-container-low": "#f4f3f9",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "inverse-primary": "#afc6ff",
+                    "background": "#faf9ff",
+                    "surface": "#faf9ff",
+                    "neutral-900": "#0F172A",
+                    "secondary": "#006877",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#3d5d9d",
+                    "error-container": "#ffdad6",
+                    "info-500": "#2563EB",
+                    "inverse-on-surface": "#f1f0f6",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e2e8",
+                    "surface-bright": "#faf9ff",
+                    "on-tertiary": "#ffffff",
+                    "neutral-800": "#1A202C",
+                    "error": "#ba1a1a",
+                    "tertiary": "#422400",
+                    "primary-container": "#1b3f7e",
+                    "disclaimer-border": "#F59E0B",
+                    "primary-fixed-dim": "#afc6ff",
+                    "surface-container": "#eeedf3",
+                    "source-badge-bg": "#EFF6FF",
+                    "outline": "#747781",
+                    "on-primary-container": "#8eadf3",
+                    "on-background": "#1a1b20",
+                    "on-surface": "#1a1b20",
+                    "on-tertiary-fixed": "#2c1600",
+                    "surface-container-highest": "#e3e2e8",
+                    "surface-container-high": "#e8e7ee",
+                    "neutral-50": "#F7F8FA",
+                    "primary-fixed": "#d9e2ff",
+                    "inverse-surface": "#2f3035",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "warning-500": "#D97706",
+                    "source-badge-text": "#1E40AF",
+                    "neutral-200": "#E2E8F0",
+                    "secondary-container": "#94eafd",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "on-primary-fixed": "#001a43",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "neutral-100": "#EEF0F4",
+                    "tertiary-container": "#613700",
+                    "outline-variant": "#c4c6d2",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-12": "48px",
+                    "space-5": "20px",
+                    "space-8": "32px",
+                    "space-6": "24px",
+                    "space-3": "12px",
+                    "space-4": "16px",
+                    "space-10": "40px",
+                    "space-1": "4px",
+                    "max-width": "1280px",
+                    "space-2": "8px",
+                    "space-16": "64px"
+            },
+            "fontFamily": {
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-body": ["Inter"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-code": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .topic-pill-selected {
+            background-color: #002862 !important;
+            color: #ffffff !important;
+            border-color: #002862 !important;
+        }
+        .step-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-text-body">
+<!-- Top Navigation Anchor -->
+<nav class="bg-primary shadow-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-space-2">
+<span class="material-symbols-outlined text-on-primary text-text-h3">account_balance</span>
+<span class="text-text-h3 font-text-h3 font-bold text-on-primary">Fundwise</span>
+</div>
+<div class="flex items-center gap-space-6">
+<a class="text-on-primary/90 hover:text-white transition-colors duration-200 font-text-h4 text-text-h4" href="#">Advisor Login</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center px-space-6 py-space-10">
+<div class="w-full max-w-[640px] flex flex-col gap-space-8">
+<!-- Header & Progress -->
+<div class="flex flex-col gap-space-4">
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-space-2 text-neutral-600 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span class="font-text-h4 text-text-h4">Back</span>
+</button>
+<!-- Stepper -->
+<div class="flex items-center gap-space-3">
+<div class="flex items-center gap-space-2">
+<div class="w-8 h-8 rounded-full bg-success-500 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="h-1 w-12 bg-success-500 rounded-full"></div>
+</div>
+<div class="flex items-center gap-space-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white border-2 border-primary">
+<span class="font-text-h4 text-text-h4">2</span>
+</div>
+<div class="h-1 w-12 bg-neutral-200 rounded-full"></div>
+</div>
+<div class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-400 border border-neutral-200">
+<span class="font-text-h4 text-text-h4">3</span>
+</div>
+</div>
+</div>
+<h1 class="font-text-h1 text-text-h1 text-primary mt-space-4">What would you like to learn about?</h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600">Select one or more topics to help us tailor your learning experience.</p>
+</div>
+<!-- Topic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-4" id="topic-grid">
+<!-- Topic Pill 1 -->
+<button class="group flex items-center justify-between p-space-4 bg-white border border-neutral-200 rounded-xl hover:border-primary hover:bg-neutral-50 transition-all duration-200 text-left shadow-sm" onclick="togglePill(this)">
+<span class="font-text-h4 text-text-h4 text-neutral-800 group-hover:text-primary">Types of mutual funds</span>
+<span class="material-symbols-outlined text-neutral-400 group-hover:text-primary opacity-0 group-focus:opacity-100">check_circle</span>
+</button>
+<!-- Topic Pill 2 -->
+<button class="group flex items-center justify-between p-space-4 bg-white border border-neutral-200 rounded-xl hover:border-primary hover:bg-neutral-50 transition-all duration-200 text-left shadow-sm" onclick="togglePill(this)">
+<span class="font-text-h4 text-text-h4 text-neutral-800 group-hover:text-primary">How SIPs work</span>
+<span class="material-symbols-outlined text-neutral-400 group-hover:text-primary opacity-0 group-focus:opacity-100">check_circle</span>
+</button>
+<!-- Topic Pill 3 -->
+<button class="group flex items-center justify-between p-space-4 bg-white border border-neutral-200 rounded-xl hover:border-primary hover:bg-neutral-50 transition-all duration-200 text-left shadow-sm" onclick="togglePill(this)">
+<span class="font-text-h4 text-text-h4 text-neutral-800 group-hover:text-primary">Tax implications</span>
+<span class="material-symbols-outlined text-neutral-400 group-hover:text-primary opacity-0 group-focus:opacity-100">check_circle</span>
+</button>
+<!-- Topic Pill 4 -->
+<button class="group flex items-center justify-between p-space-4 bg-white border border-neutral-200 rounded-xl hover:border-primary hover:bg-neutral-50 transition-all duration-200 text-left shadow-sm" onclick="togglePill(this)">
+<span class="font-text-h4 text-text-h4 text-neutral-800 group-hover:text-primary">Understanding fees and costs</span>
+<span class="material-symbols-outlined text-neutral-400 group-hover:text-primary opacity-0 group-focus:opacity-100">check_circle</span>
+</button>
+<!-- Topic Pill 5 -->
+<button class="group flex items-center justify-between p-space-4 bg-white border border-neutral-200 rounded-xl hover:border-primary hover:bg-neutral-50 transition-all duration-200 text-left shadow-sm md:col-span-2" onclick="togglePill(this)">
+<span class="font-text-h4 text-text-h4 text-neutral-800 group-hover:text-primary">My rights as an investor</span>
+<span class="material-symbols-outlined text-neutral-400 group-hover:text-primary opacity-0 group-focus:opacity-100">check_circle</span>
+</button>
+</div>
+<!-- Action Button -->
+<div class="pt-space-6">
+<button class="w-full py-space-4 bg-[#F59E0B] hover:bg-[#D97706] text-white font-text-h4 text-text-h4 rounded-lg shadow-md transition-all active:scale-95">
+                    Continue
+                </button>
+</div>
+<!-- Compliance Disclaimer Block -->
+<div class="mt-space-10 p-space-4 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg">
+<div class="flex gap-space-3">
+<span class="material-symbols-outlined text-disclaimer-border">info</span>
+<div class="flex flex-col gap-space-1">
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 leading-relaxed">
+                            Mutual fund investments are subject to market risks, read all scheme related documents carefully. The selection of topics is for educational purposes only and does not constitute financial advice. Fundwise Advisory Services is a SEBI Registered Investment Advisor.
+                        </p>
+<div class="flex items-center gap-space-1 mt-space-2">
+<span class="px-space-2 py-[2px] bg-source-badge-bg text-source-badge-text text-[10px] font-bold rounded uppercase tracking-wider">SEBI Reg No: INA000000000</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Anchor -->
+<footer class="bg-primary dark:bg-neutral-900 border-t-4 border-disclaimer-border">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-6">
+<div class="flex flex-col gap-space-2">
+<span class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise</span>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/70 max-w-md">
+                        © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-x-space-6 gap-y-space-2">
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Scheme Documents</a>
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Grievance Redressal</a>
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Compliance Disclosures</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        function togglePill(element) {
+            const isSelected = element.classList.contains('topic-pill-selected');
+            const icon = element.querySelector('.material-symbols-outlined');
+            const label = element.querySelector('span:first-child');
+
+            if (isSelected) {
+                element.classList.remove('topic-pill-selected', 'border-primary', 'bg-primary');
+                element.classList.add('bg-white', 'border-neutral-200');
+                label.classList.remove('text-white');
+                label.classList.add('text-neutral-800');
+                icon.style.opacity = '0';
+                icon.style.color = '#9AA5B4';
+            } else {
+                element.classList.add('topic-pill-selected');
+                element.classList.remove('bg-white', 'border-neutral-200');
+                label.classList.remove('text-neutral-800');
+                label.classList.add('text-white');
+                icon.style.opacity = '1';
+                icon.style.color = '#ffffff';
+                icon.style.fontVariationSettings = "'FILL' 1";
+            }
+        }
+    </script>
+</body></html>

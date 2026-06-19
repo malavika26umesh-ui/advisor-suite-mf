@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise | Intent Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#006b7a",
+                    "neutral-600": "#4A5568",
+                    "on-surface-variant": "#434750",
+                    "tertiary-fixed": "#ffdcbd",
+                    "error-500": "#C0392B",
+                    "on-tertiary-container": "#f19931",
+                    "disclaimer-bg": "#FFF8E1",
+                    "success-500": "#2D8653",
+                    "secondary-fixed": "#a4eeff",
+                    "primary": "#002862",
+                    "surface-dim": "#dad9df",
+                    "neutral-400": "#9AA5B4",
+                    "on-secondary-fixed": "#001f25",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#224584",
+                    "surface-container-low": "#f4f3f9",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "inverse-primary": "#afc6ff",
+                    "background": "#faf9ff",
+                    "surface": "#faf9ff",
+                    "neutral-900": "#0F172A",
+                    "secondary": "#006877",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#3d5d9d",
+                    "error-container": "#ffdad6",
+                    "info-500": "#2563EB",
+                    "inverse-on-surface": "#f1f0f6",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e2e8",
+                    "surface-bright": "#faf9ff",
+                    "on-tertiary": "#ffffff",
+                    "neutral-800": "#1A202C",
+                    "error": "#ba1a1a",
+                    "tertiary": "#422400",
+                    "primary-container": "#1b3f7e",
+                    "disclaimer-border": "#F59E0B",
+                    "primary-fixed-dim": "#afc6ff",
+                    "surface-container": "#eeedf3",
+                    "source-badge-bg": "#EFF6FF",
+                    "outline": "#747781",
+                    "on-primary-container": "#8eadf3",
+                    "on-background": "#1a1b20",
+                    "on-surface": "#1a1b20",
+                    "on-tertiary-fixed": "#2c1600",
+                    "surface-container-highest": "#e3e2e8",
+                    "surface-container-high": "#e8e7ee",
+                    "neutral-50": "#F7F8FA",
+                    "primary-fixed": "#d9e2ff",
+                    "inverse-surface": "#2f3035",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "warning-500": "#D97706",
+                    "source-badge-text": "#1E40AF",
+                    "neutral-200": "#E2E8F0",
+                    "secondary-container": "#94eafd",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "on-primary-fixed": "#001a43",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "neutral-100": "#EEF0F4",
+                    "tertiary-container": "#613700",
+                    "outline-variant": "#c4c6d2",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-12": "48px",
+                    "space-5": "20px",
+                    "space-8": "32px",
+                    "space-6": "24px",
+                    "space-3": "12px",
+                    "space-4": "16px",
+                    "space-10": "40px",
+                    "space-1": "4px",
+                    "max-width": "1280px",
+                    "space-2": "8px",
+                    "space-16": "64px"
+            },
+            "fontFamily": {
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-body": ["Inter"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-code": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            background-color: rgba(0, 104, 119, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 min-h-screen flex flex-col font-text-body text-on-background">
+<!-- Top Navigation Shell (Suppressed as per task, but TopAppBar JSON defines it) -->
+<nav class="bg-primary shadow-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-space-3">
+<span class="material-symbols-outlined text-primary-fixed text-3xl" data-icon="account_balance">account_balance</span>
+<span class="text-text-h3 font-text-h3 font-bold text-on-primary">Fundwise</span>
+</div>
+<button class="bg-secondary px-space-4 py-space-2 rounded-lg font-text-h4 text-text-h4 text-on-primary hover:opacity-90 transition-all active:scale-95">
+                Advisor Login
+            </button>
+</div>
+</nav>
+<main class="flex-grow flex items-center justify-center py-space-12 px-space-4">
+<div class="w-full max-w-[640px] flex flex-col gap-space-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Progress Stepper -->
+<div class="flex items-center justify-center w-full">
+<div class="flex items-center w-full max-w-sm">
+<!-- Step 1: Active -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary z-10 border-4 border-white shadow-sm">
+<span class="font-bold">1</span>
+</div>
+<span class="mt-2 font-text-small text-text-small font-semibold text-primary">Intent</span>
+</div>
+<!-- Line -->
+<div class="flex-grow h-0.5 bg-neutral-200 -mt-6"></div>
+<!-- Step 2: Inactive -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-600 z-10 border-4 border-white">
+<span class="font-bold">2</span>
+</div>
+<span class="mt-2 font-text-small text-text-small text-neutral-600">Details</span>
+</div>
+<!-- Line -->
+<div class="flex-grow h-0.5 bg-neutral-200 -mt-6"></div>
+<!-- Step 3: Inactive -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-600 z-10 border-4 border-white">
+<span class="font-bold">3</span>
+</div>
+<span class="mt-2 font-text-small text-text-small text-neutral-600">Advice</span>
+</div>
+</div>
+</div>
+<!-- Content Header -->
+<div class="text-center">
+<h1 class="font-text-h1 text-text-h1 text-on-background mb-space-2">What brings you here today?</h1>
+<p class="font-text-body text-text-body text-neutral-600">Choose an option to customize your mutual fund experience.</p>
+</div>
+<!-- Intent Cards Grid -->
+<div class="grid grid-cols-1 gap-space-4">
+<!-- Specific Question Card -->
+<button class="group flex items-start gap-space-4 p-space-6 bg-surface-container-lowest border-2 border-transparent rounded-xl text-left transition-all duration-200 card-hover hover:border-secondary shadow-sm">
+<div class="w-12 h-12 flex-shrink-0 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container transition-colors group-hover:bg-secondary group-hover:text-on-secondary">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+</div>
+<div>
+<h3 class="font-text-h3 text-text-h3 text-on-background mb-space-1">Specific Question</h3>
+<p class="font-text-body text-text-body text-neutral-600">Ask about a specific mutual fund, tax implications, or market trends.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Learn Card -->
+<button class="group flex items-start gap-space-4 p-space-6 bg-surface-container-lowest border-2 border-transparent rounded-xl text-left transition-all duration-200 card-hover hover:border-secondary shadow-sm">
+<div class="w-12 h-12 flex-shrink-0 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container transition-colors group-hover:bg-secondary group-hover:text-on-secondary">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+</div>
+<div>
+<h3 class="font-text-h3 text-text-h3 text-on-background mb-space-1">Learn</h3>
+<p class="font-text-body text-text-body text-neutral-600">Understand the basics of investing, portfolio diversification, and SIPs.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Advisor Card -->
+<button class="group flex items-start gap-space-4 p-space-6 bg-surface-container-lowest border-2 border-transparent rounded-xl text-left transition-all duration-200 card-hover hover:border-secondary shadow-sm">
+<div class="w-12 h-12 flex-shrink-0 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container transition-colors group-hover:bg-secondary group-hover:text-on-secondary">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+</div>
+<div>
+<h3 class="font-text-h3 text-text-h3 text-on-background mb-space-1">Advisor</h3>
+<p class="font-text-body text-text-body text-neutral-600">Get matched with a certified professional for personalized financial planning.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Bottom Note -->
+<div class="flex items-center justify-center gap-space-2 py-space-4 opacity-70">
+<span class="material-symbols-outlined text-sm" data-icon="lock_open">lock_open</span>
+<p class="font-text-small text-text-small font-medium tracking-wide">No login required</p>
+</div>
+<!-- Disclaimer Block (From Style Guidance) -->
+<div class="mt-space-4 p-space-4 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg">
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800">
+                    Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Fundwise does not provide direct execution services.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-primary border-t-4 border-disclaimer-border">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-6">
+<div class="flex items-center gap-space-2">
+<span class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise</span>
+</div>
+<div class="flex flex-wrap gap-x-space-6 gap-y-space-2">
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Scheme Documents</a>
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Grievance Redressal</a>
+<a class="font-text-body text-text-body text-on-primary/70 hover:text-white transition-colors" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<div class="text-on-primary/60 font-text-disclaimer text-text-disclaimer">
+                © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('button.card-hover').forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                    // Logic to proceed to next step would go here
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Our Sources — Fundwise Transparent Data Corpus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#434750",
+                    "surface-variant": "#e3e2e8",
+                    "surface-container-high": "#e8e7ee",
+                    "on-background": "#1a1b20",
+                    "inverse-primary": "#afc6ff",
+                    "on-secondary": "#ffffff",
+                    "success-500": "#2D8653",
+                    "neutral-200": "#E2E8F0",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#f1f0f6",
+                    "error": "#ba1a1a",
+                    "disclaimer-border": "#F59E0B",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "surface-dim": "#dad9df",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eeedf3",
+                    "on-tertiary-container": "#f19931",
+                    "source-badge-bg": "#EFF6FF",
+                    "primary-fixed-dim": "#afc6ff",
+                    "on-surface": "#1a1b20",
+                    "neutral-900": "#0F172A",
+                    "neutral-800": "#1A202C",
+                    "primary-container": "#1b3f7e",
+                    "primary": "#002862",
+                    "neutral-50": "#F7F8FA",
+                    "surface-container-highest": "#e3e2e8",
+                    "neutral-400": "#9AA5B4",
+                    "surface-container-low": "#f4f3f9",
+                    "neutral-600": "#4A5568",
+                    "on-primary-fixed-variant": "#224584",
+                    "info-500": "#2563EB",
+                    "primary-fixed": "#d9e2ff",
+                    "secondary-fixed": "#a4eeff",
+                    "tertiary": "#422400",
+                    "outline": "#747781",
+                    "surface-tint": "#3d5d9d",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#94eafd",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#faf9ff",
+                    "secondary": "#006877",
+                    "on-secondary-container": "#006b7a",
+                    "on-secondary-fixed": "#001f25",
+                    "background": "#faf9ff",
+                    "on-tertiary-fixed": "#2c1600",
+                    "warning-500": "#D97706",
+                    "tertiary-fixed": "#ffdcbd",
+                    "error-500": "#C0392B",
+                    "inverse-surface": "#2f3035",
+                    "on-primary-fixed": "#001a43",
+                    "disclaimer-bg": "#FFF8E1",
+                    "neutral-100": "#EEF0F4",
+                    "source-badge-text": "#1E40AF",
+                    "outline-variant": "#c4c6d2",
+                    "surface": "#faf9ff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "tertiary-container": "#613700",
+                    "on-primary-container": "#8eadf3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-4": "16px",
+                    "space-6": "24px",
+                    "space-2": "8px",
+                    "space-10": "40px",
+                    "space-12": "48px",
+                    "space-1": "4px",
+                    "space-8": "32px",
+                    "max-width": "1280px",
+                    "space-3": "12px",
+                    "space-5": "20px",
+                    "space-16": "64px"
+            },
+            "fontFamily": {
+                    "text-small": ["Inter"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-body": ["Inter"]
+            },
+            "fontSize": {
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-open .accordion-content {
+            max-height: 500px;
+        }
+        .accordion-open .chevron-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 text-on-surface font-text-body">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 h-16 flex justify-between items-center px-space-8 max-w-max-width mx-auto bg-primary shadow-sm">
+<div class="flex items-center gap-space-4">
+<span class="font-text-h3 text-text-h3 font-bold text-on-primary">Fundwise</span>
+</div>
+<nav class="hidden md:flex items-center gap-space-6 font-text-body text-text-body">
+<a class="text-on-primary/80 hover:text-on-primary hover:bg-primary-container transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95" href="#">Market Insights</a>
+<a class="text-on-primary/80 hover:text-on-primary hover:bg-primary-container transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95" href="#">Fund Explorer</a>
+<a class="text-on-primary/80 hover:text-on-primary hover:bg-primary-container transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95" href="#">Portfolio</a>
+<a class="text-on-primary border-b-2 border-tertiary-fixed-dim pb-1 px-3 cursor-pointer active:scale-95" href="#">Help Center</a>
+</nav>
+<button class="bg-tertiary-fixed-dim text-on-tertiary-fixed font-semibold px-space-4 py-space-2 rounded-lg transition-transform active:scale-95">
+            Advisor Login
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="mt-24 mb-20 max-w-[900px] mx-auto px-space-5">
+<!-- Header Section -->
+<section class="mb-space-12 text-center md:text-left">
+<h1 class="font-text-display text-text-display text-primary mb-space-2">Our Sources — Transparent Data Corpus</h1>
+<p class="font-text-body-lg text-text-body-lg text-on-surface-variant max-w-2xl">
+                Every factual answer on this platform traces to one of these official, publicly accessible sources. We prioritize regulatory compliance and accuracy in every advisory interaction.
+            </p>
+</section>
+<!-- Source Categories Accordions -->
+<div class="space-y-space-4 mb-space-16">
+<!-- Category 1: AMFI -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden accordion-item shadow-sm accordion-open">
+<button class="w-full flex items-center justify-between p-space-6 hover:bg-surface-container transition-colors group" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-space-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div class="text-left">
+<h3 class="font-text-h3 text-text-h3 text-primary">AMFI India</h3>
+<p class="font-text-small text-text-small text-on-surface-variant">Real-time NAV and Scheme Master Listing</p>
+</div>
+</div>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-space-6 pb-space-6">
+<div class="pt-space-2 border-t border-outline-variant space-y-space-4 pt-space-4">
+<p class="text-text-body text-on-surface">Data sourced primarily through the Association of Mutual Funds in India (AMFI) for historical and current performance metrics.</p>
+<div class="bg-surface-container-low p-space-4 rounded-lg">
+<div class="flex items-center gap-2 mb-2 text-primary font-semibold">
+<span class="material-symbols-outlined">link</span>
+<span class="font-text-code text-text-code">mfapi.in</span>
+</div>
+<p class="text-text-small text-on-surface-variant">Primary open-source endpoint for NAV extraction. Automated synchronization every 12 hours.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 2: SEBI -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden accordion-item shadow-sm">
+<button class="w-full flex items-center justify-between p-space-6 hover:bg-surface-container transition-colors group" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-space-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div class="text-left">
+<h3 class="font-text-h3 text-text-h3 text-primary">SEBI</h3>
+<p class="font-text-small text-text-small text-on-surface-variant">Regulatory circulars and compliance frameworks</p>
+</div>
+</div>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-space-6 pb-space-6">
+<div class="pt-space-2 border-t border-outline-variant space-y-space-4 pt-space-4">
+<div class="grid grid-cols-1 gap-3">
+<div class="flex items-start gap-3 p-3 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg">
+<span class="material-symbols-outlined text-warning-500">priority_high</span>
+<div>
+<span class="font-text-code text-text-code block">SEBI/HO/IMD/DF2/CIR/P/2019/101</span>
+<p class="text-text-small text-on-surface-variant">Framework for Product Labeling in Mutual Fund schemes - Risk-o-meter.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-3 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg">
+<span class="material-symbols-outlined text-warning-500">priority_high</span>
+<div>
+<span class="font-text-code text-text-code block">SEBI/HO/IMD/DF3/CIR/P/2020/197</span>
+<p class="text-text-small text-on-surface-variant">Restructuring of Mutual Fund Schemes - Categorization and Rationalization.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 3: AMC Websites -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden accordion-item shadow-sm border-l-4 border-on-tertiary-container">
+<button class="w-full flex items-center justify-between p-space-6 hover:bg-surface-container transition-colors group" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-space-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="text-left">
+<h3 class="font-text-h3 text-text-h3 text-primary">Individual AMC Websites</h3>
+<p class="font-text-small text-text-small text-on-surface-variant">SID, KIM, and SAI documentation</p>
+</div>
+</div>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-space-6 pb-space-6">
+<div class="pt-space-2 border-t border-outline-variant space-y-space-4 pt-space-4">
+<p class="text-text-body text-on-surface">Legal fund disclosures are parsed directly from official Asset Management Company portals. This includes Scheme Information Documents (SID) and Key Information Memorandums (KIM).</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-neutral-100 rounded-full text-text-small text-neutral-800 border border-neutral-200">SBI MF</span>
+<span class="px-3 py-1 bg-neutral-100 rounded-full text-text-small text-neutral-800 border border-neutral-200">HDFC MF</span>
+<span class="px-3 py-1 bg-neutral-100 rounded-full text-text-small text-neutral-800 border border-neutral-200">ICICI Pru MF</span>
+<span class="px-3 py-1 bg-neutral-100 rounded-full text-text-small text-neutral-800 border border-neutral-200">Mirae Asset</span>
+<span class="px-3 py-1 bg-neutral-100 rounded-full text-text-small text-neutral-800 border border-neutral-200">Quant MF</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 4: Data Providers -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden accordion-item shadow-sm">
+<button class="w-full flex items-center justify-between p-space-6 hover:bg-surface-container transition-colors group" onclick="toggleAccordion(this)">
+<div class="flex items-center gap-space-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">database</span>
+</div>
+<div class="text-left">
+<h3 class="font-text-h3 text-text-h3 text-primary">Infrastructure Data Providers</h3>
+<p class="font-text-small text-text-small text-on-surface-variant">Core technology for data ingestion</p>
+</div>
+</div>
+<span class="material-symbols-outlined chevron-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content px-space-6 pb-space-6">
+<div class="pt-space-2 border-t border-outline-variant space-y-space-4 pt-space-4">
+<div class="grid md:grid-cols-2 gap-4">
+<div class="p-4 border border-outline-variant rounded-lg">
+<h4 class="font-text-h4 text-text-h4 text-primary mb-1">mfapi.in</h4>
+<p class="text-text-small text-on-surface-variant">Standardized open-access API for daily NAV updates across all registered Indian Mutual Fund schemes.</p>
+</div>
+<div class="p-4 border border-outline-variant rounded-lg">
+<h4 class="font-text-h4 text-text-h4 text-primary mb-1">mfdata.in</h4>
+<p class="text-text-small text-on-surface-variant">Schema-level metadata repository providing historical classification and category mapping.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top 20 Schemes Section -->
+<section class="mb-space-16">
+<div class="flex items-center justify-between mb-space-6">
+<h2 class="font-text-h2 text-text-h2 text-primary">Top 20 Validated Schemes</h2>
+<span class="bg-source-badge-bg text-source-badge-text font-text-small text-text-small px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                Verified Dataset
+                </span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<table class="w-full border-collapse text-left">
+<thead class="bg-surface-container text-on-surface font-semibold font-text-body">
+<tr>
+<th class="px-space-6 py-4 border-b border-outline-variant">Scheme Name</th>
+<th class="px-space-6 py-4 border-b border-outline-variant">Category</th>
+<th class="px-space-6 py-4 border-b border-outline-variant">AMC</th>
+</tr>
+</thead>
+<tbody class="text-on-surface-variant font-text-body text-text-body">
+<tr class="hover:bg-neutral-50 transition-colors h-12">
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium">SBI Bluechip Fund</td>
+<td class="px-space-6 py-4 border-b border-outline-variant">Equity: Large Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium text-primary">SBI Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors h-12">
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium">HDFC Flexi Cap Fund</td>
+<td class="px-space-6 py-4 border-b border-outline-variant">Equity: Flexi Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium text-primary">HDFC Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors h-12">
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium">Mirae Asset Large Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant">Equity: Large Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium text-primary">Mirae Asset MF</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors h-12">
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium">ICICI Pru Bluechip</td>
+<td class="px-space-6 py-4 border-b border-outline-variant">Equity: Large Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium text-primary">ICICI Prudential MF</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors h-12">
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium">Parag Parikh Flexi Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant">Equity: Flexi Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium text-primary">PPFAS Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors h-12">
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium">Nippon India Small Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant">Equity: Small Cap</td>
+<td class="px-space-6 py-4 border-b border-outline-variant font-medium text-primary">Nippon India MF</td>
+</tr>
+<tr class="bg-surface-container-low/30 h-12">
+<td class="px-space-6 py-4 text-center italic text-text-small text-neutral-400 font-medium" colspan="3">Showing 6 of 20 high-fidelity schemes. Full list available upon advisor request.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-space-4 flex items-start gap-3 p-space-4 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg shadow-sm">
+<span class="material-symbols-outlined text-warning-500">info</span>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800">
+<strong>Footnote:</strong> Our FAQ Centre only provides verified answers for these 20 schemes. Queries about other schemes return an out-of-scope message to prevent algorithmic hallucination.
+                </p>
+</div>
+</section>
+<!-- Source Refresh Policy -->
+<section class="bg-primary text-on-primary p-space-8 rounded-2xl shadow-lg relative overflow-hidden">
+<!-- Decorative Pattern -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-on-primary/5 rounded-full -mr-16 -mt-16"></div>
+<h2 class="font-text-h2 text-text-h2 mb-space-6 flex items-center gap-2">
+<span class="material-symbols-outlined">sync</span>
+                Source Refresh Policy
+            </h2>
+<div class="grid md:grid-cols-3 gap-space-6 text-on-primary/90 font-text-body text-text-body">
+<div class="space-y-2 p-space-4">
+<h4 class="font-bold text-tertiary-fixed-dim">Review Frequency</h4>
+<p class="">All cited external links and PDF document hashes are verified **Monthly** by our compliance audit team.</p>
+</div>
+<div class="space-y-2 p-space-4">
+<h4 class="font-bold text-tertiary-fixed-dim">Broken Links</h4>
+<p class="">Automatic detection of 404/dead links triggers a replacement or archive fallback within **48 hours**.</p>
+</div>
+<div class="space-y-2 p-space-4">
+<h4 class="font-bold text-tertiary-fixed-dim">New Circulars</h4>
+<p class="">Major SEBI or AMFI regulatory changes are integrated into the FAQ logic within **7 business days** of release.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-space-8 py-space-12 flex flex-col items-center gap-space-4 border-t border-outline-variant bg-surface-container-low">
+<div class="font-text-h4 text-text-h4 font-semibold text-primary">Fundwise</div>
+<div class="flex gap-space-6">
+<a class="text-on-surface-variant hover:text-primary underline transition-all font-text-disclaimer text-text-disclaimer" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all font-text-disclaimer text-text-disclaimer" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all font-text-disclaimer text-text-disclaimer" href="#">Compliance Disclosure</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all font-text-disclaimer text-text-disclaimer" href="#">Grievance Redressal</a>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-surface-variant text-center max-w-2xl mt-4">
+            © 2024 Fundwise Financial Advisory. SEBI Registered Investment Advisor (INA000000000). Investment in securities markets are subject to market risks. Read all scheme related documents carefully before investing.
+        </p>
+</footer>
+<script>
+        function toggleAccordion(element) {
+            const parent = element.parentElement;
+            const isOpen = parent.classList.contains('accordion-open');
+            
+            // Close all others
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('accordion-open');
+            });
+
+            // Toggle current
+            if (!isOpen) {
+                parent.classList.add('accordion-open');
+            }
+        }
+
+        // Initialize first accordion open
+        document.addEventListener('DOMContentLoaded', () => {
+            const first = document.querySelector('.accordion-item');
+            if(first) first.classList.add('accordion-open');
+        });
+    </script>
+
+
+</body></html>

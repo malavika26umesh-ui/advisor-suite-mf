@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Topic Narrowing | Fundwise Advisory</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "outline": "#747781",
+                "on-tertiary-container": "#f19931",
+                "neutral-400": "#9AA5B4",
+                "error-500": "#C0392B",
+                "primary-fixed": "#d9e2ff",
+                "outline-variant": "#c4c6d2",
+                "on-error-container": "#93000a",
+                "neutral-600": "#4A5568",
+                "surface-dim": "#dad9df",
+                "surface-container-high": "#e8e7ee",
+                "surface-tint": "#3d5d9d",
+                "info-500": "#2563EB",
+                "neutral-50": "#F7F8FA",
+                "surface-container-highest": "#e3e2e8",
+                "background": "#faf9ff",
+                "source-badge-bg": "#EFF6FF",
+                "on-primary": "#ffffff",
+                "on-error": "#ffffff",
+                "on-secondary": "#ffffff",
+                "neutral-800": "#1A202C",
+                "neutral-200": "#E2E8F0",
+                "neutral-100": "#EEF0F4",
+                "error": "#ba1a1a",
+                "tertiary-fixed-dim": "#ffb86f",
+                "secondary-container": "#94eafd",
+                "primary": "#002862",
+                "on-secondary-fixed-variant": "#004e5a",
+                "inverse-on-surface": "#f1f0f6",
+                "secondary-fixed-dim": "#7dd3e6",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed-variant": "#224584",
+                "on-tertiary-fixed-variant": "#693c00",
+                "surface-bright": "#faf9ff",
+                "surface-container": "#eeedf3",
+                "on-tertiary-fixed": "#2c1600",
+                "success-500": "#2D8653",
+                "secondary": "#006877",
+                "on-surface": "#1a1b20",
+                "inverse-primary": "#afc6ff",
+                "neutral-900": "#0F172A",
+                "tertiary": "#422400",
+                "surface-container-low": "#f4f3f9",
+                "surface-container-lowest": "#ffffff",
+                "source-badge-text": "#1E40AF",
+                "error-container": "#ffdad6",
+                "surface-variant": "#e3e2e8",
+                "tertiary-container": "#613700",
+                "disclaimer-bg": "#FFF8E1",
+                "primary-container": "#1b3f7e",
+                "on-secondary-container": "#006b7a",
+                "on-primary-container": "#8eadf3",
+                "inverse-surface": "#2f3035",
+                "warning-500": "#D97706",
+                "surface": "#faf9ff",
+                "on-secondary-fixed": "#001f25",
+                "secondary-fixed": "#a4eeff",
+                "primary-fixed-dim": "#afc6ff",
+                "disclaimer-border": "#F59E0B",
+                "on-surface-variant": "#434750",
+                "on-primary-fixed": "#001a43",
+                "tertiary-fixed": "#ffdcbd",
+                "on-background": "#1a1b20"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "space-4": "16px",
+                "space-10": "40px",
+                "space-12": "48px",
+                "space-8": "32px",
+                "space-1": "4px",
+                "max-width": "1280px",
+                "space-2": "8px",
+                "space-16": "64px",
+                "space-6": "24px",
+                "space-3": "12px",
+                "space-5": "20px"
+            },
+            "fontFamily": {
+                "text-body": ["Inter"],
+                "text-small": ["Inter"],
+                "text-h3": ["Plus Jakarta Sans"],
+                "text-code": ["JetBrains Mono"],
+                "text-h2": ["Plus Jakarta Sans"],
+                "text-h4": ["Plus Jakarta Sans"],
+                "text-disclaimer": ["Inter"],
+                "text-display": ["Plus Jakarta Sans"],
+                "text-body-lg": ["Inter"],
+                "text-h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-ring {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #002862;
+        }
+        .transition-standard {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-text-body overflow-x-hidden" data-screen-status="refined">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#1B3F7E] shadow-sm">
+<nav class="max-w-max-width mx-auto px-space-8 py-space-4 flex justify-between items-center">
+<div class="flex items-center gap-2 font-text-h2 text-text-h2 font-bold text-white">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+            Fundwise
+        </div>
+<div class="hidden md:flex gap-space-8 items-center">
+<a class="font-text-body text-text-body text-white opacity-90 hover:opacity-100 transition-colors" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-white opacity-90 hover:opacity-100 transition-colors" href="#">Education Hub</a>
+<a class="font-text-body text-text-body text-white opacity-90 hover:opacity-100 transition-colors" href="#">Advisor Login</a>
+<button class="bg-[#f19931] text-[#002862] font-text-h4 text-text-h4 px-space-6 py-space-2 rounded-full font-bold active:scale-95 duration-150 transition-standard">
+                Book Advisor Call
+            </button>
+</div>
+</nav>
+</header>
+<main class="flex-grow pt-space-16 pb-space-12 flex flex-col items-center">
+<!-- Main Content Container -->
+<div class="w-full max-w-4xl px-space-6 mt-space-10">
+<!-- Back Button & Progress Wrapper -->
+<div class="flex flex-col gap-space-8 mb-space-10">
+<button class="flex items-center gap-2 text-primary font-semibold hover:translate-x-[-4px] transition-standard w-fit">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-text-h4 text-text-h4">Back</span>
+</button>
+<!-- Stepper Progress Indicator -->
+<div class="flex items-center justify-between relative px-space-8">
+<!-- Progress Line -->
+<div class="absolute top-5 left-space-12 right-space-12 h-[2px] bg-neutral-200 -z-10"></div>
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-10 h-10 rounded-full bg-success-500 text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-text-small text-text-small font-semibold text-success-500 text-center">What do you need?</span>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10 shadow-md">
+<span class="font-text-h4 text-text-h4">2</span>
+</div>
+<span class="font-text-small text-text-small font-semibold text-primary text-center">Narrow your topic</span>
+</div>
+<!-- Step 3: Inactive -->
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-10 h-10 rounded-full bg-neutral-200 text-neutral-400 flex items-center justify-center">
+<span class="font-text-h4 text-text-h4">3</span>
+</div>
+<span class="font-text-small text-text-small font-semibold text-neutral-400 opacity-60 text-center">Get your answer</span>
+</div>
+</div>
+</div>
+<!-- Page Header -->
+<div class="text-center mb-space-10">
+<h1 class="font-text-display text-text-display mb-2 text-primary">What's your question about?</h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600">Select the category that best describes your inquiry so we can provide the most relevant advisory.</p>
+</div>
+<!-- Topic Selection Bento Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-neutral-100 p-space-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-4" id="topic-grid">
+<!-- Option 1 -->
+<label class="group relative flex items-center p-space-5 border-2 border-neutral-100 rounded-lg cursor-pointer hover:border-primary-container hover:bg-surface-container-low transition-standard">
+<input class="hidden peer" name="topic" type="radio" value="fees"/>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container group-hover:bg-primary group-hover:text-white transition-standard">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<div class="ml-space-4">
+<h3 class="font-text-h3 text-text-h3 text-neutral-800">Fees &amp; charges</h3>
+<p class="font-text-small text-text-small text-neutral-600">Expense ratios, exit loads, and advisory costs.</p>
+</div>
+<div class="absolute right-space-5 opacity-0 peer-checked:opacity-100 transition-standard">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="group relative flex items-center p-space-5 border-2 border-neutral-100 rounded-lg cursor-pointer hover:border-primary-container hover:bg-surface-container-low transition-standard">
+<input class="hidden peer" name="topic" type="radio" value="scheme"/>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container group-hover:bg-primary group-hover:text-white transition-standard">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+</div>
+<div class="ml-space-4">
+<h3 class="font-text-h3 text-text-h3 text-neutral-800">Scheme details</h3>
+<p class="font-text-small text-text-small text-neutral-600">Portfolio holdings, NAV history, and benchmarks.</p>
+</div>
+<div class="absolute right-space-5 opacity-0 peer-checked:opacity-100 transition-standard">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="group relative flex items-center p-space-5 border-2 border-neutral-100 rounded-lg cursor-pointer hover:border-primary-container hover:bg-surface-container-low transition-standard">
+<input class="hidden peer" name="topic" type="radio" value="processes"/>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container group-hover:bg-primary group-hover:text-white transition-standard">
+<span class="material-symbols-outlined text-3xl">account_tree</span>
+</div>
+<div class="ml-space-4">
+<h3 class="font-text-h3 text-text-h3 text-neutral-800">Processes</h3>
+<p class="font-text-small text-text-small text-neutral-600">Redemptions, SIP changes, and tax statements.</p>
+</div>
+<div class="absolute right-space-5 opacity-0 peer-checked:opacity-100 transition-standard">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+</div>
+</label>
+<!-- Option 4 -->
+<label class="group relative flex items-center p-space-5 border-2 border-neutral-100 rounded-lg cursor-pointer hover:border-primary-container hover:bg-surface-container-low transition-standard">
+<input class="hidden peer" name="topic" type="radio" value="regulatory"/>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container group-hover:bg-primary group-hover:text-white transition-standard">
+<span class="material-symbols-outlined text-3xl">gavel</span>
+</div>
+<div class="ml-space-4">
+<h3 class="font-text-h3 text-text-h3 text-neutral-800">Regulatory questions</h3>
+<p class="font-text-small text-text-small text-neutral-600">SEBI guidelines, nomination, and KYC norms.</p>
+</div>
+<div class="absolute right-space-5 opacity-0 peer-checked:opacity-100 transition-standard">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+</div>
+</label>
+<!-- Option 5: Span full width -->
+<label class="group relative flex items-center p-space-5 border-2 border-neutral-100 rounded-lg cursor-pointer hover:border-primary-container hover:bg-surface-container-low transition-standard md:col-span-2">
+<input class="hidden peer" name="topic" type="radio" value="other"/>
+<div class="w-12 h-12 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container group-hover:bg-primary group-hover:text-white transition-standard">
+<span class="material-symbols-outlined text-3xl">more_horiz</span>
+</div>
+<div class="ml-space-4">
+<h3 class="font-text-h3 text-text-h3 text-neutral-800">Something else</h3>
+<p class="font-text-small text-text-small text-neutral-600">For inquiries not covered by the categories above.</p>
+</div>
+<div class="absolute right-space-5 opacity-0 peer-checked:opacity-100 transition-standard">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+</div>
+</label>
+</div>
+<!-- Action Button -->
+<div class="mt-space-8 pt-space-8 border-t border-neutral-100 flex justify-end">
+<button class="bg-[#f19931] text-[#002862] px-space-12 py-space-4 rounded-lg font-text-h4 text-text-h4 font-bold shadow-md hover:shadow-lg active:scale-95 transition-standard">
+                    Continue
+                </button>
+</div>
+</div>
+<!-- Information Context -->
+<div class="mt-space-10 p-space-6 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-disclaimer-border">info</span>
+<div>
+<h4 class="font-text-h4 text-text-h4 text-neutral-800 mb-1">Why specify a topic?</h4>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-600">Topic narrowing ensures your query is routed to the specialized advisor most proficient in that specific regulatory or performance domain, minimizing response latency.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Area -->
+<footer class="bg-primary mt-auto">
+<div class="max-w-max-width mx-auto py-space-10 px-space-8 flex flex-col md:flex-row justify-between items-start gap-space-8">
+<div class="flex flex-col gap-4">
+<div class="font-text-h3 text-text-h3 text-on-primary font-bold">Fundwise</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary opacity-80 max-w-sm">
+                © 2024 Fundwise Advisory. SEBI Registered Investment Advisor (Reg No: INA00000XXXX). All mutual fund investments are subject to market risks.
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-x-space-12 gap-y-space-4">
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<!-- Amber Regulatory Strip -->
+<div class="bg-on-tertiary-container text-primary py-space-2 px-space-8">
+<div class="max-w-max-width mx-auto flex items-center justify-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<p class="font-text-disclaimer text-text-disclaimer font-semibold whitespace-nowrap">
+                Regulatory Disclosure: Past performance is not indicative of future returns. Please read all scheme related documents carefully before investing.
+            </p>
+</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction for radio selection
+    const radioOptions = document.querySelectorAll('input[name="topic"]');
+    radioOptions.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            // Clear previous active styles
+            document.querySelectorAll('#topic-grid label').forEach(label => {
+                label.classList.remove('border-primary', 'bg-surface-container');
+                label.classList.add('border-neutral-100');
+            });
+            
+            // Add active style to selected
+            if (e.target.checked) {
+                const parentLabel = e.target.closest('label');
+                parentLabel.classList.remove('border-neutral-100');
+                parentLabel.classList.add('border-primary', 'bg-surface-container');
+            }
+        });
+    });
+
+    // Simple enter animation
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('#topic-grid label');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.4s ease-out';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    });
+</script>
+</body></html>

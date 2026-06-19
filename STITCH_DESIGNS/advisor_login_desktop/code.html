@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advisor Login | Financial Intelligence Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#a4eeff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#006b7a",
+                    "inverse-primary": "#afc6ff",
+                    "on-surface": "#1a1b20",
+                    "tertiary-container": "#613700",
+                    "surface-container-highest": "#e3e2e8",
+                    "secondary": "#006877",
+                    "error-500": "#C0392B",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "inverse-on-surface": "#f1f0f6",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#001f25",
+                    "neutral-600": "#4A5568",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#1a1b20",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#3d5d9d",
+                    "on-primary-fixed-variant": "#224584",
+                    "primary-container": "#1b3f7e",
+                    "neutral-800": "#1A202C",
+                    "surface-container": "#eeedf3",
+                    "surface-bright": "#faf9ff",
+                    "neutral-50": "#F7F8FA",
+                    "primary-fixed-dim": "#afc6ff",
+                    "outline-variant": "#c4c6d2",
+                    "neutral-100": "#EEF0F4",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "neutral-400": "#9AA5B4",
+                    "on-tertiary-container": "#f19931",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2f3035",
+                    "outline": "#747781",
+                    "neutral-900": "#0F172A",
+                    "surface-container-low": "#f4f3f9",
+                    "on-surface-variant": "#434750",
+                    "neutral-200": "#E2E8F0",
+                    "disclaimer-border": "#F59E0B",
+                    "info-500": "#2563EB",
+                    "tertiary": "#422400",
+                    "surface": "#faf9ff",
+                    "primary": "#002862",
+                    "success-500": "#2D8653",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "secondary-container": "#94eafd",
+                    "on-tertiary-fixed": "#2c1600",
+                    "on-primary-container": "#8eadf3",
+                    "source-badge-bg": "#EFF6FF",
+                    "surface-dim": "#dad9df",
+                    "surface-variant": "#e3e2e8",
+                    "primary-fixed": "#d9e2ff",
+                    "on-primary-fixed": "#001a43",
+                    "tertiary-fixed": "#ffdcbd",
+                    "error-container": "#ffdad6",
+                    "source-badge-text": "#1E40AF",
+                    "disclaimer-bg": "#FFF8E1",
+                    "surface-container-high": "#e8e7ee",
+                    "error": "#ba1a1a",
+                    "warning-500": "#D97706",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "background": "#faf9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-10": "40px",
+                    "space-5": "20px",
+                    "space-4": "16px",
+                    "space-12": "48px",
+                    "space-2": "8px",
+                    "space-8": "32px",
+                    "space-3": "12px",
+                    "space-1": "4px",
+                    "space-6": "24px",
+                    "space-16": "64px",
+                    "max-width": "1280px"
+            },
+            "fontFamily": {
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-body": ["Inter"],
+                    "text-body-lg": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"]
+            },
+            "fontSize": {
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .otp-input {
+            letter-spacing: 1.5em;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .otp-input::placeholder {
+            letter-spacing: normal;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .saffron-button {
+            background-color: #F59E0B; /* Closest to saffron in our palette or warning-500 */
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .saffron-button:hover {
+            background-color: #D97706;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+        .saffron-button:active {
+            transform: scale(0.98);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-text-body text-on-surface antialiased">
+<!-- Main Container: Split Screen -->
+<main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Left Panel: Brand & Value Props (50% Navy) -->
+<section class="md:w-1/2 bg-primary relative flex flex-col justify-between p-8 md:p-16 overflow-hidden">
+<!-- Background Decorative Element -->
+<div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+
+</div>
+<!-- Header: Logo & Tagline -->
+<div class="relative z-10 fade-in-up" style="animation-delay: 0.1s;">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary font-bold">account_balance</span>
+</div>
+<h2 class="font-text-h2 text-text-h2 text-white">Advisor Pro</h2>
+</div>
+<p class="font-text-h4 text-text-h4 text-secondary-fixed opacity-90">Advisor Intelligence Suite</p>
+</div>
+<!-- Middle: Value Props -->
+<div class="relative z-10 flex flex-col gap-8 my-12 md:my-0">
+<div class="fade-in-up" style="animation-delay: 0.3s;">
+<div class="glass-panel p-6 rounded-xl flex items-start gap-4 hover:bg-white/5 transition-all">
+<div class="p-3 bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary-fixed">event_upcoming</span>
+</div>
+<div>
+<h3 class="font-text-h4 text-text-h4 text-white mb-1">Meeting Queue</h3>
+<p class="font-text-body text-text-body text-primary-fixed-dim">Streamlined agenda management for high-net-worth individual consultations.</p>
+</div>
+</div>
+</div>
+<div class="fade-in-up" style="animation-delay: 0.4s;">
+<div class="glass-panel p-6 rounded-xl flex items-start gap-4 hover:bg-white/5 transition-all">
+<div class="p-3 bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary-fixed">monitoring</span>
+</div>
+<div>
+<h3 class="font-text-h4 text-text-h4 text-white mb-1">Product Pulse</h3>
+<p class="font-text-body text-text-body text-primary-fixed-dim">Real-time market insights and regulatory updates for Indian Mutual Funds.</p>
+</div>
+</div>
+</div>
+<div class="fade-in-up" style="animation-delay: 0.5s;">
+<div class="glass-panel p-6 rounded-xl flex items-start gap-4 hover:bg-white/5 transition-all">
+<div class="p-3 bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary-fixed">calendar_month</span>
+</div>
+<div>
+<h3 class="font-text-h4 text-text-h4 text-white mb-1">Availability</h3>
+<p class="font-text-body text-text-body text-primary-fixed-dim">Precision scheduling with intelligent time-blocking for client success.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Graphic/Atmosphere -->
+<div class="relative z-10 mt-auto fade-in-up" style="animation-delay: 0.7s;">
+<div class="flex items-center gap-2 text-primary-fixed-dim opacity-60">
+<span class="material-symbols-outlined text-sm">security</span>
+<span class="font-text-small text-text-small uppercase tracking-widest">Enterprise Grade Security</span>
+</div>
+</div>
+</section>
+<!-- Right Panel: Login Form (50% White) -->
+<section class="md:w-1/2 bg-surface flex flex-col justify-center items-center px-6 py-12 md:px-12 md:py-16 relative">
+<!-- Form Card -->
+<div class="w-full max-w-md space-y-10 fade-in-up" style="animation-delay: 0.2s;">
+<div class="text-center md:text-left">
+<h1 class="font-text-h1 text-text-h1 text-on-surface mb-2">Advisor Log In</h1>
+<p class="font-text-body text-text-body text-on-surface-variant">Access your wealth management dashboard and client analytics.</p>
+</div>
+<form class="space-y-6" id="loginForm">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-text-h4 text-text-h4 text-on-surface" for="email">Official Email ID</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full h-12 pl-10 pr-4 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/10 focus:border-primary transition-all font-text-body text-text-body outline-none" id="email" name="email" placeholder="name@firm.com" required="" type="email"/>
+</div>
+</div>
+<!-- Send OTP Button -->
+<button class="saffron-button w-full h-12 rounded-lg text-white font-semibold flex items-center justify-center gap-2 shadow-sm" id="sendOtpBtn" type="button">
+<span>Send OTP</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- OTP Field (Hidden until Send OTP clicked) -->
+<div class="space-y-4 pt-4 opacity-0 h-0 overflow-hidden transition-all duration-500" id="otpSection">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="font-text-h4 text-text-h4 text-on-surface" for="otp">Enter 6-Digit OTP</label>
+<button class="font-text-small text-text-small text-primary hover:underline" type="button">Resend OTP</button>
+</div>
+<input class="otp-input w-full h-14 bg-white border-2 border-outline-variant rounded-lg focus:ring-0 focus:border-primary transition-all text-xl font-bold text-on-surface outline-none" id="otp" maxlength="6" name="otp" placeholder="••••••" type="text"/>
+</div>
+<div class="p-3 bg-success-500/5 border border-success-500/20 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-success-500">check_circle</span>
+<span class="font-text-small text-text-small text-success-500">OTP sent to your registered email address.</span>
+</div>
+<button class="bg-primary hover:bg-neutral-900 w-full h-12 rounded-lg text-white font-semibold flex items-center justify-center gap-2 transition-all shadow-md active:scale-95" type="submit">
+<span>Verify and Dashboard</span>
+</button>
+</div>
+</form>
+<!-- Help Link -->
+<div class="text-center md:text-left">
+<p class="font-text-body text-text-body text-on-surface-variant">
+                        Trouble logging in? <a class="text-primary font-semibold hover:underline" href="#">Contact Support</a>
+</p>
+</div>
+</div>
+<!-- SEBI Note (Sticky to bottom) -->
+<div class="mt-auto pt-16 w-full max-w-2xl px-4 fade-in-up" style="animation-delay: 0.8s;">
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-4 rounded-r-lg">
+<div class="flex items-center gap-2 mb-1 text-warning-500">
+<span class="material-symbols-outlined text-sm">gavel</span>
+<span class="font-text-disclaimer text-text-disclaimer font-bold uppercase tracking-wider">SEBI Compliance Note</span>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-surface-variant">
+                        Mutual fund investments are subject to market risks. Read all scheme-related documents carefully before investing. Registered Investment Advisors (RIA) must maintain records of all interactions and advice provided to clients as per SEBI (Investment Advisers) Regulations, 2013. Unauthorized access to this portal is strictly prohibited and subject to legal action.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interaction for OTP display
+        const sendOtpBtn = document.getElementById('sendOtpBtn');
+        const otpSection = document.getElementById('otpSection');
+        const emailInput = document.getElementById('email');
+
+        sendOtpBtn.addEventListener('click', () => {
+            if (emailInput.checkValidity()) {
+                // Change button state
+                sendOtpBtn.innerHTML = '<span>OTP Sent</span><span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1">check_circle</span>';
+                sendOtpBtn.classList.replace('saffron-button', 'bg-neutral-200');
+                sendOtpBtn.classList.replace('text-white', 'text-neutral-600');
+                sendOtpBtn.disabled = true;
+
+                // Show OTP section
+                otpSection.classList.remove('h-0', 'opacity-0', 'overflow-hidden');
+                otpSection.classList.add('h-auto', 'opacity-100');
+                
+                // Focus OTP input
+                setTimeout(() => {
+                    document.getElementById('otp').focus();
+                }, 300);
+            } else {
+                emailInput.reportValidity();
+            }
+        });
+
+        // Auto-format OTP input
+        const otpInput = document.getElementById('otp');
+        otpInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        // Form submission simulation
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Authenticating...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Authentication successful. Redirecting to Financial Intelligence Suite Dashboard...');
+            }, 1500);
+        });
+    </script>
+</body></html>

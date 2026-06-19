@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advisor Pro | Pre-Meeting Brief</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9ff;
+        }
+        .saffron-accent {
+            border-left: 4px solid #D97706;
+        }
+        .bento-inner-shadow {
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "secondary-fixed": "#a4eeff",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#006b7a",
+                "inverse-primary": "#afc6ff",
+                "on-surface": "#1a1b20",
+                "tertiary-container": "#613700",
+                "surface-container-highest": "#e3e2e8",
+                "secondary": "#006877",
+                "error-500": "#C0392B",
+                "tertiary-fixed-dim": "#ffb86f",
+                "inverse-on-surface": "#f1f0f6",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed": "#001f25",
+                "neutral-600": "#4A5568",
+                "surface-container-lowest": "#ffffff",
+                "on-background": "#1a1b20",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#3d5d9d",
+                "on-primary-fixed-variant": "#224584",
+                "primary-container": "#1b3f7e",
+                "neutral-800": "#1A202C",
+                "surface-container": "#eeedf3",
+                "surface-bright": "#faf9ff",
+                "neutral-50": "#F7F8FA",
+                "primary-fixed-dim": "#afc6ff",
+                "outline-variant": "#c4c6d2",
+                "neutral-100": "#EEF0F4",
+                "on-error": "#ffffff",
+                "on-tertiary-fixed-variant": "#693c00",
+                "neutral-400": "#9AA5B4",
+                "on-tertiary-container": "#f19931",
+                "on-primary": "#ffffff",
+                "inverse-surface": "#2f3035",
+                "outline": "#747781",
+                "neutral-900": "#0F172A",
+                "surface-container-low": "#f4f3f9",
+                "on-surface-variant": "#434750",
+                "neutral-200": "#E2E8F0",
+                "disclaimer-border": "#F59E0B",
+                "info-500": "#2563EB",
+                "tertiary": "#422400",
+                "surface": "#faf9ff",
+                "primary": "#002862",
+                "success-500": "#2D8653",
+                "secondary-fixed-dim": "#7dd3e6",
+                "secondary-container": "#94eafd",
+                "on-tertiary-fixed": "#2c1600",
+                "on-primary-container": "#8eadf3",
+                "source-badge-bg": "#EFF6FF",
+                "surface-dim": "#dad9df",
+                "surface-variant": "#e3e2e8",
+                "primary-fixed": "#d9e2ff",
+                "on-primary-fixed": "#001a43",
+                "tertiary-fixed": "#ffdcbd",
+                "error-container": "#ffdad6",
+                "source-badge-text": "#1E40AF",
+                "disclaimer-bg": "#FFF8E1",
+                "surface-container-high": "#e8e7ee",
+                "error": "#ba1a1a",
+                "warning-500": "#D97706",
+                "on-secondary-fixed-variant": "#004e5a",
+                "background": "#faf9ff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "space-10": "40px",
+                "space-5": "20px",
+                "space-4": "16px",
+                "space-12": "48px",
+                "space-2": "8px",
+                "space-8": "32px",
+                "space-3": "12px",
+                "space-1": "4px",
+                "space-6": "24px",
+                "space-16": "64px",
+                "max-width": "1280px"
+              },
+              "fontFamily": {
+                "text-h2": ["Plus Jakarta Sans"],
+                "text-code": ["JetBrains Mono"],
+                "text-body": ["Inter"],
+                "text-body-lg": ["Inter"],
+                "text-display": ["Plus Jakarta Sans"],
+                "text-h1": ["Plus Jakarta Sans"],
+                "text-h3": ["Plus Jakarta Sans"],
+                "text-small": ["Inter"],
+                "text-h4": ["Plus Jakarta Sans"],
+                "text-disclaimer": ["Inter"]
+              },
+              "fontSize": {
+                "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background">
+<!-- Sidebar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-primary flex flex-col py-6 px-4 shadow-sm z-50">
+<div class="mb-10">
+<h2 class="font-text-h2 text-text-h2 font-bold text-white">Advisor Pro</h2>
+<p class="text-secondary-fixed text-[10px] uppercase tracking-wider font-semibold opacity-70">Wealth Management Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-text-body text-text-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-text-body text-text-body">Meeting Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-text-body text-text-body">Meeting Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-text-body text-text-body">Availability</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-text-body text-text-body">Product Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-text-body text-text-body">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/10 space-y-1">
+<button class="w-full bg-warning-500 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 mb-6 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                New Meeting
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-primary-fixed-dim hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-text-body text-text-body">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary-fixed-dim hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-text-body text-text-body">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Top App Bar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-16 bg-surface flex justify-between items-center px-8 shadow-sm z-40">
+<div class="flex items-center gap-8">
+<h1 class="font-text-h3 text-text-h3 font-bold text-primary">Financial Intelligence Suite</h1>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Overview</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 rounded-full border-none bg-surface-container-low text-text-body focus:ring-2 focus:ring-primary w-64" placeholder="Search investor profile..." type="text"/>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-60 pt-24 pb-16 px-8 flex justify-center">
+<div class="w-full max-width-800 max-w-[800px] flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-text-small text-outline font-text-small">
+<a class="hover:text-primary transition-colors" href="#">Meeting Queue</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface-variant font-semibold">Pre-Meeting Brief</span>
+</nav>
+<!-- Header Card -->
+<section class="bg-white rounded-xl shadow-sm saffron-accent p-6 flex justify-between items-start">
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<span class="font-text-code text-text-code px-3 py-1 bg-surface-container text-primary rounded-md">MF-T7Q1</span>
+<h2 class="font-text-h1 text-text-h1 text-on-surface">Investor Briefing</h2>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-text-body text-text-body font-medium">Tomorrow, Oct 24 • 10:30 AM - 11:15 AM</span>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-success-500/10 text-success-500 rounded-full">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-text-small font-semibold">Verified Identity</span>
+</div>
+</section>
+<!-- Grid Layout for Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Topic Category & Investor Context -->
+<div class="col-span-12 space-y-6">
+<div class="bg-white rounded-xl shadow-sm p-6 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-text-h4 text-text-h4 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">category</span>
+                                Topic Category
+                            </h3>
+<span class="px-4 py-1 bg-primary-container text-on-primary-container rounded-full font-bold text-text-small">Equity Portfolio Rebalancing</span>
+</div>
+<div class="pt-4 border-t border-neutral-100">
+<h3 class="font-text-h4 text-text-h4 text-on-surface mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">comment</span>
+                                Investor's Stated Context
+                            </h3>
+<div class="relative bg-surface-container-low rounded-2xl rounded-tl-none p-5 text-on-surface-variant font-text-body italic">
+                                "I've been reading about the mid-cap volatility and I'm worried about my exposure in the current market cycle. I want to understand if we should move more towards large-cap or stay the course for my daughter's education fund."
+                                <div class="absolute -top-2 left-0 w-4 h-4 bg-surface-container-low" style="clip-path: polygon(0 0, 100% 100%, 0 100%);"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Queries & Pulse Theme -->
+<div class="col-span-12 md:col-span-7 space-y-6">
+<div class="bg-white rounded-xl shadow-sm p-6 h-full">
+<h3 class="font-text-h4 text-text-h4 text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">live_help</span>
+                            FAQ Queries from Session
+                        </h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-2 bg-neutral-100 text-on-surface-variant rounded-lg text-text-small border border-neutral-200">Tax implications of STCG</span>
+<span class="px-3 py-2 bg-neutral-100 text-on-surface-variant rounded-lg text-text-small border border-neutral-200">SIP vs Lumpsum in Midcaps</span>
+<span class="px-3 py-2 bg-neutral-100 text-on-surface-variant rounded-lg text-text-small border border-neutral-200">Index Fund Tracking Error</span>
+<span class="px-3 py-2 bg-neutral-100 text-on-surface-variant rounded-lg text-text-small border border-neutral-200">Lock-in period for ELSS</span>
+<span class="px-3 py-2 bg-neutral-100 text-on-surface-variant rounded-lg text-text-small border border-neutral-200">Dividend Reinvestment Plan</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-5 space-y-6">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed rounded-xl shadow-sm p-6 h-full relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">analytics</span>
+</div>
+<h3 class="font-text-h4 text-text-h4 mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined">trending_up</span>
+                            Pulse Theme This Week
+                        </h3>
+<p class="font-text-body-lg text-text-body-lg font-bold leading-tight">
+                            "Navigating Mid-Cap Corrections in Indian Markets"
+                        </p>
+<p class="text-text-small mt-2 opacity-80">
+                            Macro insight focusing on historical recovery patterns for SEBI-defined mid-cap funds.
+                        </p>
+</div>
+</div>
+<!-- Relevant Articles -->
+<div class="col-span-12">
+<div class="bg-white rounded-xl shadow-sm p-6">
+<h3 class="font-text-h4 text-text-h4 text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">article</span>
+                            Recommended Preparatory Reading
+                        </h3>
+<div class="space-y-3">
+<a class="group flex items-center justify-between p-3 rounded-lg hover:bg-surface-container transition-all border border-transparent hover:border-outline-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-info-500/10 flex items-center justify-center text-info-500">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div>
+<p class="font-text-body font-semibold text-on-surface group-hover:text-primary transition-colors">Tax Efficiency in Portfolio Rebalancing (2024)</p>
+<p class="text-text-small text-outline">Internal Compliance Briefing • 4 min read</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="group flex items-center justify-between p-3 rounded-lg hover:bg-surface-container transition-all border border-transparent hover:border-outline-variant" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-info-500/10 flex items-center justify-center text-info-500">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<div>
+<p class="font-text-body font-semibold text-on-surface group-hover:text-primary transition-colors">Historical Performance of Large vs Mid Cap in Rate-Cut Cycles</p>
+<p class="text-text-small text-outline">Macro Research Dept • 7 min read</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Compliance Note -->
+<div class="col-span-12">
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-4 rounded-r-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-warning-500 mt-0.5">security</span>
+<p class="font-text-disclaimer text-text-disclaimer text-on-surface-variant">
+<strong>Compliance Notice:</strong> This pre-meeting brief is generated for advisor preparation only. This brief does not contain: PII (Personally Identifiable Information) or specific folio numbers. Always verify investor details directly during the authenticated session.
+                        </p>
+</div>
+</div>
+<!-- Actions -->
+<div class="col-span-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-6 py-2 text-on-surface-variant font-semibold hover:bg-neutral-100 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Back to Queue
+                    </button>
+<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+<button class="px-8 py-3 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary/5 active:scale-95 transition-all">
+                            Reschedule
+                        </button>
+<button class="px-8 py-3 bg-warning-500 text-white font-bold rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Mark as Complete
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction: Mark as Complete toast logic
+        document.querySelector('button.bg-warning-500').addEventListener('click', function() {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Processing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.classList.remove('bg-warning-500');
+                btn.classList.add('bg-success-500');
+                btn.innerHTML = '<span class="material-symbols-outlined">done_all</span> Brief Ready';
+                
+                // Alert simulation
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-8 right-8 bg-inverse-surface text-inverse-on-surface px-6 py-4 rounded-xl shadow-2xl z-[100] flex items-center gap-3 animate-bounce';
+                toast.innerHTML = '<span class="material-symbols-outlined text-success-500">check_circle</span> <span>Brief MF-T7Q1 marked as completed and synced.</span>';
+                document.body.appendChild(toast);
+                
+                setTimeout(() => toast.remove(), 4000);
+            }, 1200);
+        });
+
+        // Add subtle hover lift to bento cards
+        document.querySelectorAll('.shadow-sm').forEach(card => {
+            card.classList.add('transition-all', 'duration-300', 'hover:shadow-md', 'hover:-translate-y-0.5');
+        });
+    </script>
+</body></html>

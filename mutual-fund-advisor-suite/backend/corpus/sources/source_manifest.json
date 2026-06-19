@@ -1,0 +1,24 @@
+{
+  "scheme_documents": [
+    {
+      "scheme_id": 1,
+      "scheme_name": "Parag Parikh Flexi Cap Fund",
+      "documents": [
+        {"type": "SID", "filename": "ppfas_flexi_cap_sid.pdf", "source_url": "https://amc.ppfas.com/sid", "last_verified": "2024-01-01"},
+        {"type": "KIM", "filename": "ppfas_flexi_cap_kim.pdf", "source_url": "https://amc.ppfas.com/kim"},
+        {"type": "factsheet", "filename": "ppfas_flexi_cap_factsheet.pdf", "source_url": "https://amc.ppfas.com/factsheet"}
+      ]
+    },
+    {
+      "scheme_id": 2,
+      "scheme_name": "HDFC Flexi Cap Fund",
+      "documents": [
+        {"type": "SID", "filename": "hdfc_flexi_cap_sid.pdf", "source_url": "https://www.hdfcfund.com/sid", "last_verified": "2024-01-01"}
+      ]
+    }
+  ],
+  "regulatory_documents": [
+    {"type": "SEBI_circular", "title": "TER Circular Oct 2018", "url": "https://www.sebi.gov.in/legal/circulars/oct-2018/ter", "filename": "sebi_ter_circular_2018.pdf"},
+    {"type": "AMFI", "title": "Investor Education — Fees", "url": "https://www.amfiindia.com/investor-education/fees"}
+  ]
+}

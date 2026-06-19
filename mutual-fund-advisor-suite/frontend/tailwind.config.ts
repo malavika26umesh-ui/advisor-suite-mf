@@ -1,0 +1,86 @@
+import type { Config } from "tailwindcss";
+
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        "brand-navy": "#1B3F7E",
+        "brand-teal": "#0F7B8C",
+        "brand-saffron": "#E8922A",
+        "neutral-50": "#F7F8FA",
+        "neutral-100": "#EEF0F4",
+        "neutral-200": "#E2E8F0",
+        "neutral-400": "#9AA5B4",
+        "neutral-600": "#4A5568",
+        "neutral-800": "#1A202C",
+        "neutral-900": "#0F172A",
+        "success-500": "#2D8653",
+        "success-50": "#F0FAF4",
+        "warning-500": "#D97706",
+        "warning-50": "#FFFBEB",
+        "error-500": "#C0392B",
+        "error-50": "#FEF2F2",
+        "info-500": "#2563EB",
+        "info-50": "#EFF6FF",
+        "disclaimer-bg": "#FFF8E1",
+        "disclaimer-border": "#F59E0B",
+        "source-badge-bg": "#EFF6FF",
+        "source-badge-text": "#1E40AF",
+      },
+      fontFamily: {
+        heading: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
+      },
+      fontSize: {
+        display: ["36px", { lineHeight: "1.2", fontWeight: "700" }],
+        "text-h1": ["28px", { lineHeight: "1.3", fontWeight: "700" }],
+        "text-h2": ["22px", { lineHeight: "1.35", fontWeight: "600" }],
+        "text-h3": ["18px", { lineHeight: "1.4", fontWeight: "600" }],
+        "text-h4": ["16px", { lineHeight: "1.45", fontWeight: "600" }],
+        "body-lg": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+        body: ["14px", { lineHeight: "1.6", fontWeight: "400" }],
+        small: ["12px", { lineHeight: "1.5", fontWeight: "400" }],
+        disclaimer: ["13px", { lineHeight: "1.55", fontWeight: "400" }],
+        code: ["15px", { lineHeight: "1.4", fontWeight: "700" }],
+      },
+      spacing: {
+        "space-1": "4px",
+        "space-2": "8px",
+        "space-3": "12px",
+        "space-4": "16px",
+        "space-5": "20px",
+        "space-6": "24px",
+        "space-8": "32px",
+        "space-10": "40px",
+        "space-12": "48px",
+        "space-16": "64px",
+      },
+      maxWidth: {
+        "max-width": "1280px",
+      },
+      keyframes: {
+        shimmer: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
+        "mic-pulse": {
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.15)", opacity: "0.7" },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 2s linear infinite",
+        "mic-pulse": "mic-pulse 800ms ease-in-out infinite",
+      },
+      boxShadow: {
+        "level-1": "0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)",
+        "level-2": "0 4px 12px rgba(0,0,0,0.12)",
+        "level-3": "0 8px 24px rgba(0,0,0,0.16)",
+        "level-4": "0 16px 40px rgba(0,0,0,0.20)",
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config;

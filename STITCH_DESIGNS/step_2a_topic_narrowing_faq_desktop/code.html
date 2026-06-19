@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise - Topic Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006b7a",
+                        "neutral-600": "#4A5568",
+                        "on-surface-variant": "#434750",
+                        "tertiary-fixed": "#ffdcbd",
+                        "error-500": "#C0392B",
+                        "on-tertiary-container": "#f19931",
+                        "disclaimer-bg": "#FFF8E1",
+                        "success-500": "#2D8653",
+                        "secondary-fixed": "#a4eeff",
+                        "primary": "#002862",
+                        "surface-dim": "#dad9df",
+                        "neutral-400": "#9AA5B4",
+                        "on-secondary-fixed": "#001f25",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#224584",
+                        "surface-container-low": "#f4f3f9",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "inverse-primary": "#afc6ff",
+                        "background": "#faf9ff",
+                        "surface": "#faf9ff",
+                        "neutral-900": "#0F172A",
+                        "secondary": "#006877",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#3d5d9d",
+                        "error-container": "#ffdad6",
+                        "info-500": "#2563EB",
+                        "inverse-on-surface": "#f1f0f6",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e2e8",
+                        "surface-bright": "#faf9ff",
+                        "on-tertiary": "#ffffff",
+                        "neutral-800": "#1A202C",
+                        "error": "#ba1a1a",
+                        "tertiary": "#422400",
+                        "primary-container": "#1b3f7e",
+                        "disclaimer-border": "#F59E0B",
+                        "primary-fixed-dim": "#afc6ff",
+                        "surface-container": "#eeedf3",
+                        "source-badge-bg": "#EFF6FF",
+                        "outline": "#747781",
+                        "on-primary-container": "#8eadf3",
+                        "on-background": "#1a1b20",
+                        "on-surface": "#1a1b20",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-container-highest": "#e3e2e8",
+                        "surface-container-high": "#e8e7ee",
+                        "neutral-50": "#F7F8FA",
+                        "primary-fixed": "#d9e2ff",
+                        "inverse-surface": "#2f3035",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "warning-500": "#D97706",
+                        "source-badge-text": "#1E40AF",
+                        "neutral-200": "#E2E8F0",
+                        "secondary-container": "#94eafd",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "on-primary-fixed": "#001a43",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "neutral-100": "#EEF0F4",
+                        "tertiary-container": "#613700",
+                        "outline-variant": "#c4c6d2",
+                        "surface-container-lowest": "#ffffff",
+                        "saffron-primary": "#F19931"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-12": "48px",
+                        "space-5": "20px",
+                        "space-8": "32px",
+                        "space-6": "24px",
+                        "space-3": "12px",
+                        "space-4": "16px",
+                        "space-10": "40px",
+                        "space-1": "4px",
+                        "max-width": "1280px",
+                        "space-2": "8px",
+                        "space-16": "64px"
+                    },
+                    "fontFamily": {
+                        "text-h1": ["Plus Jakarta Sans"],
+                        "text-body-lg": ["Inter"],
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-body": ["Inter"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-small": ["Inter"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-disclaimer": ["Inter"],
+                        "text-code": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                        "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                        "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                        "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-complete {
+            background-color: #2D8653;
+            color: white;
+        }
+        .step-active {
+            background-color: #002862;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(0, 40, 98, 0.1);
+        }
+        .step-pending {
+            background-color: #EEF0F4;
+            color: #9AA5B4;
+        }
+        .topic-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .topic-pill:hover {
+            border-color: #002862;
+            background-color: #f0f7ff;
+        }
+        .topic-pill.selected {
+            border-color: #002862;
+            background-color: #002862;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-text-body">
+<!-- Top AppBar Component -->
+<header class="bg-primary shadow-md sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center space-x-space-3">
+<span class="material-symbols-outlined text-on-primary text-text-h2">account_balance</span>
+<span class="font-text-h3 text-text-h3 font-bold text-on-primary">Fundwise</span>
+</div>
+<button class="font-text-h4 text-text-h4 text-on-primary/90 hover:text-white hover:text-secondary-fixed-dim transition-colors duration-200">
+                Advisor Login
+            </button>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center py-space-12 px-space-4">
+<div class="w-full max-w-[640px] flex flex-col space-y-space-8">
+<!-- Navigation & Progress Area -->
+<div class="flex flex-col space-y-space-6">
+<button class="flex items-center text-primary font-text-h4 hover:opacity-80 transition-opacity w-fit group">
+<span class="material-symbols-outlined mr-space-1 group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back
+                </button>
+<!-- Stepper -->
+<div class="flex items-center justify-between relative px-2">
+<!-- Progress Line Background -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-neutral-200 -translate-y-1/2 z-0"></div>
+<!-- Completed Line -->
+<div class="absolute top-1/2 left-0 w-1/2 h-[2px] bg-success-500 -translate-y-1/2 z-0"></div>
+<!-- Step 1 (Complete) -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full flex items-center justify-center step-complete font-bold text-text-h4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="mt-space-2 font-text-small text-text-small text-success-500 font-semibold">General Info</span>
+</div>
+<!-- Step 2 (Active) -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full flex items-center justify-center step-active font-bold text-text-h4">
+                            2
+                        </div>
+<span class="mt-space-2 font-text-small text-text-small text-primary font-bold">Topic Detail</span>
+</div>
+<!-- Step 3 (Pending) -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full flex items-center justify-center step-pending font-bold text-text-h4">
+                            3
+                        </div>
+<span class="mt-space-2 font-text-small text-text-small text-neutral-400">Review</span>
+</div>
+</div>
+</div>
+<!-- Content Canvas -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-neutral-100 p-space-8">
+<div class="space-y-space-6">
+<h1 class="font-text-h1 text-text-h1 text-primary text-center">What's your question about?</h1>
+<p class="font-text-body text-text-body text-neutral-600 text-center max-w-md mx-auto">
+                        Narrowing down your topic helps our advisors provide the most accurate compliance-backed information.
+                    </p>
+<!-- Bento-inspired Topic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-4 pt-space-4" id="topic-grid">
+<button class="topic-pill flex items-center p-space-4 border-2 border-neutral-100 rounded-lg text-left hover:shadow-md" onclick="selectTopic(this)">
+<span class="material-symbols-outlined mr-space-3 text-secondary">payments</span>
+<span class="font-text-h4 text-text-h4">Fees &amp; charges</span>
+</button>
+<button class="topic-pill flex items-center p-space-4 border-2 border-neutral-100 rounded-lg text-left hover:shadow-md" onclick="selectTopic(this)">
+<span class="material-symbols-outlined mr-space-3 text-secondary">description</span>
+<span class="font-text-h4 text-text-h4">Scheme details</span>
+</button>
+<button class="topic-pill flex items-center p-space-4 border-2 border-neutral-100 rounded-lg text-left hover:shadow-md" onclick="selectTopic(this)">
+<span class="material-symbols-outlined mr-space-3 text-secondary">account_tree</span>
+<span class="font-text-h4 text-text-h4">Processes</span>
+</button>
+<button class="topic-pill flex items-center p-space-4 border-2 border-neutral-100 rounded-lg text-left hover:shadow-md" onclick="selectTopic(this)">
+<span class="material-symbols-outlined mr-space-3 text-secondary">gavel</span>
+<span class="font-text-h4 text-text-h4">Regulatory questions</span>
+</button>
+<button class="topic-pill flex items-center p-space-4 border-2 border-neutral-100 rounded-lg text-left hover:shadow-md md:col-span-2" onclick="selectTopic(this)">
+<span class="material-symbols-outlined mr-space-3 text-secondary">help_center</span>
+<span class="font-text-h4 text-text-h4">Something else</span>
+</button>
+</div>
+<div class="pt-space-8 flex justify-center">
+<button class="bg-[#F19931] hover:bg-[#D97706] text-white font-text-h4 text-text-h4 px-space-16 py-space-4 rounded-full shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+                            Continue
+                        </button>
+</div>
+</div>
+</div>
+<!-- Compliance Disclaimer Block -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-5 rounded-r-lg">
+<div class="flex items-start space-x-space-3">
+<span class="material-symbols-outlined text-disclaimer-border mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 leading-relaxed">
+<strong>Regulatory Disclosure:</strong> Fundwise Advisory Services provides information based on current SEBI regulations. The topics categorized above are intended for efficient routing and do not constitute financial advice. All mutual fund investments are subject to market risks. Please read all scheme related documents carefully before investing.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-primary border-t-4 border-disclaimer-border">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-wrap gap-space-6 text-on-primary/70 font-text-body text-text-body">
+<a class="hover:text-white transition-colors" href="#">Scheme Documents</a>
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Grievance Redressal</a>
+<a class="hover:text-white transition-colors" href="#">Compliance Disclosures</a>
+</div>
+<div class="border-t border-on-primary/10 pt-space-6">
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/60">
+                    © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor. Mutual fund investments are subject to market risks.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        function selectTopic(element) {
+            // Remove selection from all pills
+            const pills = document.querySelectorAll('.topic-pill');
+            pills.forEach(pill => {
+                pill.classList.remove('selected');
+                pill.querySelector('span:first-child').classList.remove('text-on-primary');
+                pill.querySelector('span:first-child').classList.add('text-secondary');
+            });
+            
+            // Add selection to clicked pill
+            element.classList.add('selected');
+            const icon = element.querySelector('span:first-child');
+            icon.classList.remove('text-secondary');
+            icon.classList.add('text-on-primary');
+        }
+    </script>
+</body></html>

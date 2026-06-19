@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sources &amp; Corpus Transparency (Desktop) - v3 (Refined)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#747781",
+                        "on-surface": "#1a1b20",
+                        "on-error": "#ffffff",
+                        "surface": "#faf9ff",
+                        "surface-variant": "#e3e2e8",
+                        "on-surface-variant": "#434750",
+                        "on-secondary-fixed": "#001f25",
+                        "disclaimer-border": "#F59E0B",
+                        "neutral-800": "#1A202C",
+                        "surface-container-highest": "#e3e2e8",
+                        "warning-500": "#D97706",
+                        "source-badge-text": "#1E40AF",
+                        "error": "#ba1a1a",
+                        "source-badge-bg": "#EFF6FF",
+                        "on-background": "#1a1b20",
+                        "surface-tint": "#3d5d9d",
+                        "surface-dim": "#dad9df",
+                        "surface-container": "#eeedf3",
+                        "neutral-100": "#EEF0F4",
+                        "surface-container-low": "#f4f3f9",
+                        "on-tertiary-fixed": "#2c1600",
+                        "success-500": "#2D8653",
+                        "primary-container": "#1b3f7e",
+                        "inverse-primary": "#afc6ff",
+                        "on-tertiary": "#ffffff",
+                        "neutral-50": "#F7F8FA",
+                        "surface-container-high": "#e8e7ee",
+                        "background": "#faf9ff",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "outline-variant": "#c4c6d2",
+                        "disclaimer-bg": "#FFF8E1",
+                        "on-tertiary-container": "#f19931",
+                        "neutral-600": "#4A5568",
+                        "neutral-400": "#9AA5B4",
+                        "error-500": "#C0392B",
+                        "info-500": "#2563EB",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "tertiary-container": "#613700",
+                        "on-secondary-container": "#006b7a",
+                        "surface-bright": "#faf9ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#94eafd",
+                        "secondary": "#006877",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3035",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "neutral-200": "#E2E8F0",
+                        "on-primary-fixed": "#001a43",
+                        "on-primary-container": "#8eadf3",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#422400",
+                        "inverse-on-surface": "#f1f0f6",
+                        "on-primary-fixed-variant": "#224584",
+                        "neutral-900": "#0F172A",
+                        "primary-fixed-dim": "#afc6ff",
+                        "tertiary-fixed": "#ffdcbd",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "primary-fixed": "#d9e2ff",
+                        "primary": "#002862",
+                        "secondary-fixed": "#a4eeff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-5": "20px",
+                        "space-3": "12px",
+                        "space-6": "24px",
+                        "space-2": "8px",
+                        "space-4": "16px",
+                        "space-12": "48px",
+                        "max-width": "1280px",
+                        "space-16": "64px",
+                        "space-10": "40px",
+                        "space-1": "4px",
+                        "space-8": "32px"
+                    },
+                    "fontFamily": {
+                        "text-body-lg": ["Inter"],
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-small": ["Inter"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-disclaimer": ["Inter"],
+                        "text-h1": ["Plus Jakarta Sans"],
+                        "text-display": ["Plus Jakarta Sans"],
+                        "text-body": ["Inter"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                        "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                        "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                        "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .compliance-accent {
+            border-left: 4px solid #F59E0B;
+        }
+        .bento-shadow {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-text-body">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 right-0 w-full h-16 bg-surface dark:bg-neutral-900 shadow-sm z-50">
+<div class="flex justify-between items-center px-8 h-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-text-h3 text-text-h3 font-bold text-primary dark:text-secondary-fixed">Fundwise</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Overview</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-4 py-1.5 border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48" placeholder="Search data..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-primary dark:bg-neutral-900 shadow-sm z-40 hidden md:flex flex-col py-6 px-4">
+<div class="mb-10 px-2">
+<h2 class="font-text-h2 text-text-h2 font-bold text-white">Fundwise</h2>
+<p class="text-xs text-primary-fixed-dim opacity-70 uppercase tracking-widest mt-1">Wealth Management Suite</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-medium">Meeting Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-medium">Meeting Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-medium">Availability</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-medium">Product Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white hover:bg-primary-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<button class="mt-4 mb-8 bg-[#F59E0B] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+        New Meeting
+    </button>
+<div class="border-t border-white/10 pt-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-2 text-primary-fixed-dim hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary-fixed-dim hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-60 pt-24 pb-16 px-8 min-h-screen">
+<div class="max-w-[900px] mx-auto">
+<!-- Header Section -->
+<nav class="mb-6 flex items-center gap-2 text-neutral-600 font-text-small">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Sources</span>
+</nav>
+<div class="mb-12">
+<h1 class="font-text-h1 text-text-h1 text-primary mb-3">Our Sources — Full Transparency</h1>
+<p class="font-text-body-lg text-text-body-lg text-on-surface-variant max-w-2xl">
+                We maintain an uncompromising commitment to data integrity. Our intelligence suite draws exclusively from official regulatory bodies and primary asset management sources.
+            </p>
+</div>
+<!-- Section 1: Regulatory & Data Sources -->
+<section class="mb-16">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">verified_user</span>
+<h2 class="font-text-h2 text-text-h2">Regulatory &amp; Data Sources</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-xl bento-shadow overflow-hidden border border-outline-variant">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-text-h4 text-text-h4 text-on-surface">Data Provider</th>
+<th class="px-6 py-4 font-text-h4 text-text-h4 text-on-surface">Scope of Data</th>
+<th class="px-6 py-4 font-text-h4 text-text-h4 text-on-surface">Official Link</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-semibold text-primary">AMFI India</td>
+<td class="px-6 py-4 text-on-surface-variant">AUM data, categorization, and monthly industry trends.</td>
+<td class="px-6 py-4">
+<a class="inline-flex items-center gap-1 text-secondary font-bold hover:underline" href="#">
+                                    amfiindia.com <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-semibold text-primary">SEBI</td>
+<td class="px-6 py-4 text-on-surface-variant">Regulatory filings, risk mandates, and compliance logs.</td>
+<td class="px-6 py-4">
+<a class="inline-flex items-center gap-1 text-secondary font-bold hover:underline" href="#">
+                                    sebi.gov.in <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-semibold text-primary">AMC Websites</td>
+<td class="px-6 py-4 text-on-surface-variant">Direct fund fact sheets, portfolio disclosures.</td>
+<td class="px-6 py-4">
+<span class="text-neutral-400 italic">Various Primary URLs</span>
+</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-semibold text-primary">mfapi.in</td>
+<td class="px-6 py-4 text-on-surface-variant">Real-time NAV history and historic performance benchmarks.</td>
+<td class="px-6 py-4">
+<a class="inline-flex items-center gap-1 text-secondary font-bold hover:underline" href="#">
+                                    mfapi.in <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-neutral-50 transition-colors">
+<td class="px-6 py-4 font-semibold text-primary">mfdata.in</td>
+<td class="px-6 py-4 text-on-surface-variant">Advanced quantitative metrics and factor analysis.</td>
+<td class="px-6 py-4">
+<a class="inline-flex items-center gap-1 text-secondary font-bold hover:underline" href="#">
+                                    mfdata.in <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 2: The 20 Schemes We Cover -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">inventory_2</span>
+<h2 class="font-text-h2 text-text-h2">The 20 Schemes We Cover</h2>
+</div>
+<span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">Top 20 by AUM</span>
+</div>
+<!-- Info Box -->
+<div class="mb-8 border border-secondary bg-secondary-container/20 rounded-xl p-5 flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-0.5">info</span>
+<div>
+<h4 class="font-text-h4 text-text-h4 text-on-secondary-container mb-1">Institutional Scope Disclaimer</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                        To ensure the highest depth of analysis and data fidelity, Fundwise focuses exclusively on the top 20 mutual fund schemes in India by Assets Under Management (AUM). This curated approach allows for daily tracking of complex portfolio shifts that generic aggregators often miss.
+                    </p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl bento-shadow overflow-hidden border border-outline-variant">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3 font-text-small text-on-surface-variant font-bold uppercase tracking-wider">#</th>
+<th class="px-6 py-3 font-text-small text-on-surface-variant font-bold uppercase tracking-wider">Scheme Name</th>
+<th class="px-6 py-3 font-text-small text-on-surface-variant font-bold uppercase tracking-wider">Category</th>
+<th class="px-6 py-3 font-text-small text-on-surface-variant font-bold uppercase tracking-wider">AMC</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-text-body text-text-body">
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">01</td>
+<td class="px-6 py-3 font-semibold">Parag Parikh Flexi Cap Fund</td>
+<td class="px-6 py-3">Flexi Cap</td>
+<td class="px-6 py-3">PPFAS Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">02</td>
+<td class="px-6 py-3 font-semibold">SBI Bluechip Fund</td>
+<td class="px-6 py-3">Large Cap</td>
+<td class="px-6 py-3">SBI Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">03</td>
+<td class="px-6 py-3 font-semibold">ICICI Prudential Bluechip Fund</td>
+<td class="px-6 py-3">Large Cap</td>
+<td class="px-6 py-3">ICICI Prudential</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">04</td>
+<td class="px-6 py-3 font-semibold">HDFC Flexi Cap Fund</td>
+<td class="px-6 py-3">Flexi Cap</td>
+<td class="px-6 py-3">HDFC Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">05</td>
+<td class="px-6 py-3 font-semibold">ICICI Prudential Value Discovery Fund</td>
+<td class="px-6 py-3">Value / Flexi Cap</td>
+<td class="px-6 py-3">ICICI Prudential</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">06</td>
+<td class="px-6 py-3 font-semibold">Nippon India Large Cap Fund</td>
+<td class="px-6 py-3">Large Cap</td>
+<td class="px-6 py-3">Nippon India</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">07</td>
+<td class="px-6 py-3 font-semibold">Nippon India Small Cap Fund</td>
+<td class="px-6 py-3">Small Cap</td>
+<td class="px-6 py-3">Nippon India</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">08</td>
+<td class="px-6 py-3 font-semibold">SBI Small Cap Fund</td>
+<td class="px-6 py-3">Small Cap</td>
+<td class="px-6 py-3">SBI Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">09</td>
+<td class="px-6 py-3 font-semibold">HDFC Mid-Cap Opportunities Fund</td>
+<td class="px-6 py-3">Mid Cap</td>
+<td class="px-6 py-3">HDFC Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">10</td>
+<td class="px-6 py-3 font-semibold">Kotak Emerging Equity Fund</td>
+<td class="px-6 py-3">Mid Cap</td>
+<td class="px-6 py-3">Kotak Mahindra</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">11</td>
+<td class="px-6 py-3 font-semibold">Axis Bluechip Fund</td>
+<td class="px-6 py-3">Large Cap</td>
+<td class="px-6 py-3">Axis Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">12</td>
+<td class="px-6 py-3 font-semibold">Mirae Asset Large Cap Fund</td>
+<td class="px-6 py-3">Large Cap</td>
+<td class="px-6 py-3">Mirae Asset</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">13</td>
+<td class="px-6 py-3 font-semibold">Aditya Birla Sun Life Flexi Cap Fund</td>
+<td class="px-6 py-3">Flexi Cap</td>
+<td class="px-6 py-3">Aditya Birla Sun Life</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">14</td>
+<td class="px-6 py-3 font-semibold">UTI Nifty 50 Index Fund</td>
+<td class="px-6 py-3">Index Fund</td>
+<td class="px-6 py-3">UTI Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">15</td>
+<td class="px-6 py-3 font-semibold">HDFC Nifty 50 Index Fund</td>
+<td class="px-6 py-3">Index Fund</td>
+<td class="px-6 py-3">HDFC Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">16</td>
+<td class="px-6 py-3 font-semibold">Axis Long Term Equity Fund</td>
+<td class="px-6 py-3">ELSS</td>
+<td class="px-6 py-3">Axis Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">17</td>
+<td class="px-6 py-3 font-semibold">Mirae Asset Tax Saver Fund</td>
+<td class="px-6 py-3">ELSS</td>
+<td class="px-6 py-3">Mirae Asset</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">18</td>
+<td class="px-6 py-3 font-semibold">DSP Flexi Cap Fund</td>
+<td class="px-6 py-3">Flexi Cap</td>
+<td class="px-6 py-3">DSP Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">19</td>
+<td class="px-6 py-3 font-semibold">Quant Small Cap Fund</td>
+<td class="px-6 py-3">Small Cap</td>
+<td class="px-6 py-3">Quant Mutual Fund</td>
+</tr>
+<tr class="hover:bg-neutral-50">
+<td class="px-6 py-3 text-neutral-400">20</td>
+<td class="px-6 py-3 font-semibold">Motilal Oswal Midcap Fund</td>
+<td class="px-6 py-3">Mid Cap</td>
+<td class="px-6 py-3">Motilal Oswal</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Section 3: Source Refresh Policy -->
+<section class="mb-16">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1">sync</span>
+<h2 class="font-text-h2 text-text-h2">Source Refresh Policy</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white border-l-4 border-[#F59E0B] p-6 rounded-r-xl bento-shadow flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-disclaimer-bg text-warning-500 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<h3 class="font-text-h1 text-text-h1 text-primary mb-1">Monthly</h3>
+<p class="text-on-surface-variant font-bold text-sm uppercase">Full Audit Cycle</p>
+<p class="text-neutral-600 text-xs mt-3">Re-verification of all portfolio weights and statutory disclosures.</p>
+</div>
+<div class="bg-white border-l-4 border-[#F59E0B] p-6 rounded-r-xl bento-shadow flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-disclaimer-bg text-warning-500 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<h3 class="font-text-h1 text-text-h1 text-primary mb-1">48 Hours</h3>
+<p class="text-on-surface-variant font-bold text-sm uppercase">NAV Refresh SLA</p>
+<p class="text-neutral-600 text-xs mt-3">Maximum lag allowed for official NAV synchronization via AMFI/MFAPI.</p>
+</div>
+<div class="bg-white border-l-4 border-[#F59E0B] p-6 rounded-r-xl bento-shadow flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-disclaimer-bg text-warning-500 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">history</span>
+</div>
+<h3 class="font-text-h1 text-text-h1 text-primary mb-1">7 Days</h3>
+<p class="text-on-surface-variant font-bold text-sm uppercase">Circular Update</p>
+<p class="text-neutral-600 text-xs mt-3">Monitoring of new SEBI circulars and implementation into advice logic.</p>
+</div>
+</div>
+</section>
+<!-- Compliance Strip -->
+<div class="compliance-accent bg-disclaimer-bg p-6 rounded-r-xl mb-12">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-warning-500" style="font-variation-settings: 'FILL' 1">gavel</span>
+<div>
+<h4 class="font-text-h4 text-text-h4 text-warning-500 mb-2 uppercase tracking-wide">Statutory Compliance Note</h4>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 leading-relaxed">
+                        Mutual fund investments are subject to market risks. Read all scheme related documents carefully. Fundwise acts as a data aggregator and analytical platform; users are encouraged to verify specific metrics on the official AMC fact sheets provided in the "Regulatory Sources" table above before finalizing any financial decisions. Past performance is not indicative of future returns.
+                    </p>
+<div class="mt-4 flex items-center gap-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-source-badge-bg text-source-badge-text font-text-small font-bold">
+                            SEBI REG: INA000012345
+                        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-source-badge-bg text-source-badge-text font-text-small font-bold">
+                            AMFI REG: ARN-67890
+                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Updated Footer -->
+<footer class="bg-primary text-white py-12 md:ml-60">
+<div class="max-w-[900px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-10">
+<div>
+<h3 class="font-text-h3 text-text-h3 mb-4">Fundwise</h3>
+<p class="text-primary-fixed-dim text-sm leading-relaxed">
+                India's premier intelligence suite for professional wealth managers and retail investors prioritizing transparency.
+            </p>
+</div>
+<div>
+<h4 class="font-bold text-sm uppercase mb-4 text-secondary-fixed">Resources</h4>
+<ul class="space-y-2 text-sm text-primary-fixed-dim">
+<li><a class="hover:text-white" href="#">Education Hub</a></li>
+<li><a class="hover:text-white" href="#">FAQs</a></li>
+<li><a class="hover:text-white" href="#">Sources &amp; Transparency</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm uppercase mb-4 text-secondary-fixed">Support</h4>
+<ul class="space-y-2 text-sm text-primary-fixed-dim">
+<li><a class="hover:text-white" href="#">Book a Call</a></li>
+<li><a class="hover:text-white" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-white" href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[900px] mx-auto px-8 mt-12 pt-8 border-t border-white/10 flex justify-between items-center text-xs text-primary-fixed-dim">
+<span>© 2024 Fundwise Financial Intelligence. All rights reserved.</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-white">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white">mail</span>
+</div>
+</div>
+</footer>
+<script>
+    // Simple Micro-interaction: Hover scaling on cards
+    document.querySelectorAll('.bento-shadow').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-2px)';
+            card.style.transition = 'transform 0.2s ease-out';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Advisor Dashboard: Product Pulse (Desktop) - Refined</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#a4eeff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#006b7a",
+                        "inverse-primary": "#afc6ff",
+                        "on-surface": "#1a1b20",
+                        "tertiary-container": "#613700",
+                        "surface-container-highest": "#e3e2e8",
+                        "secondary": "#006877",
+                        "error-500": "#C0392B",
+                        "tertiary-fixed-dim": "#ffb86f",
+                        "inverse-on-surface": "#f1f0f6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001f25",
+                        "neutral-600": "#4A5568",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1b20",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3d5d9d",
+                        "on-primary-fixed-variant": "#224584",
+                        "primary-container": "#1b3f7e",
+                        "neutral-800": "#1A202C",
+                        "surface-container": "#eeedf3",
+                        "surface-bright": "#faf9ff",
+                        "neutral-50": "#F7F8FA",
+                        "primary-fixed-dim": "#afc6ff",
+                        "outline-variant": "#c4c6d2",
+                        "neutral-100": "#EEF0F4",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "neutral-400": "#9AA5B4",
+                        "on-tertiary-container": "#f19931",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3035",
+                        "outline": "#747781",
+                        "neutral-900": "#0F172A",
+                        "surface-container-low": "#f4f3f9",
+                        "on-surface-variant": "#434750",
+                        "neutral-200": "#E2E8F0",
+                        "disclaimer-border": "#F59E0B",
+                        "info-500": "#2563EB",
+                        "tertiary": "#422400",
+                        "surface": "#faf9ff",
+                        "primary": "#002862",
+                        "success-500": "#2D8653",
+                        "secondary-fixed-dim": "#7dd3e6",
+                        "secondary-container": "#94eafd",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-primary-container": "#8eadf3",
+                        "source-badge-bg": "#EFF6FF",
+                        "surface-dim": "#dad9df",
+                        "surface-variant": "#e3e2e8",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#001a43",
+                        "tertiary-fixed": "#ffdcbd",
+                        "error-container": "#ffdad6",
+                        "source-badge-text": "#1E40AF",
+                        "disclaimer-bg": "#FFF8E1",
+                        "surface-container-high": "#e8e7ee",
+                        "error": "#ba1a1a",
+                        "warning-500": "#D97706",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "background": "#faf9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "space-10": "40px",
+                        "space-5": "20px",
+                        "space-4": "16px",
+                        "space-12": "48px",
+                        "space-2": "8px",
+                        "space-1": "4px",
+                        "space-3": "12px",
+                        "space-6": "24px",
+                        "space-8": "32px",
+                        "space-16": "64px"
+                    },
+                    "fontFamily": {
+                        "text-h2": ["Plus Jakarta Sans"],
+                        "text-code": ["JetBrains Mono"],
+                        "text-body": ["Inter"],
+                        "text-h3": ["Plus Jakarta Sans"],
+                        "text-h4": ["Plus Jakarta Sans"],
+                        "text-disclaimer": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #faf9ff; }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .saffron-action { background-color: #F59E0B; transition: transform 0.2s ease; }
+        .saffron-action:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-primary dark:bg-neutral-900 shadow-sm flex flex-col py-6 px-4">
+<div class="mb-10">
+<h1 class="font-text-h2 text-text-h2 font-bold text-white">Fundwise</h1>
+<p class="text-secondary-fixed text-xs opacity-80">Wealth Management Suite</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-text-body text-text-body">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-text-body text-text-body">Meeting Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-text-body text-text-body">Meeting Briefs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-text-body text-text-body">Availability</span>
+</a>
+<!-- Active Tab: Product Pulse -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-text-body text-text-body">Product Pulse</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-text-body text-text-body">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-4 space-y-2">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined">help</span>
+<span class="font-text-body text-text-body">Support</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-primary-fixed-dim hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-text-body text-text-body">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-60 min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-240px)] h-16 bg-surface dark:bg-neutral-900 shadow-sm z-50 flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<span class="font-text-h3 text-text-h3 font-bold text-primary dark:text-secondary-fixed">Financial Intelligence Suite</span>
+<nav class="flex gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Overview</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search investor data..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">notifications</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADRv5YdUvnyHxlj05epbcFkgq2GwBBo2BwyAfZqzCsEqWcIDzakd5KUw0lKu4vwk9N7jA5XjI7R9F9RdYRqKl_QRGi5Viq9X_4TimQKpCFPlcdhLzb93q-X8lLlXgrK8cBSgQlw3vzLfA2rriNDUlgGmhQ1QmIZyTX6SYhABXcpWQS-gkkZZbU5o6QqIVwjAYVoK4uBUypOufsBc0ClYp4O44Xvo_JQh2WGHdGYVR__lm1__8NEcRdSMuaRxMUwRLu2Nt1FGc2uqVi"/>
+</div>
+</div>
+</header>
+<!-- Pulse Content Canvas -->
+<div class="pt-24 px-8 pb-12">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-text-code text-text-code uppercase tracking-wider mb-2">WEEKLY PRODUCT PULSE</span>
+<h2 class="font-text-h1 text-text-h1 text-primary">Intelligence Report: Q3 Week 4</h2>
+<p class="text-on-surface-variant font-text-body mt-1">Aggregated insights from 1,240 retail investor interactions.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-outline text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">download</span> Export PDF
+                    </button>
+<button class="flex items-center gap-2 px-6 py-2 rounded-lg bg-primary text-white font-semibold hover:shadow-lg transition-all">
+<span class="material-symbols-outlined">share</span> Share with Team
+                    </button>
+</div>
+</div>
+<!-- Main Bento Grid -->
+<div class="bento-grid">
+<!-- 1. Top Investor Themes -->
+<section class="col-span-8 bg-white rounded-xl shadow-sm p-6 border-l-4 border-primary">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-text-h3 text-text-h3 text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">trending_up</span> Top Investor Themes
+                        </h3>
+<span class="text-text-small text-outline">Last 7 Days</span>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant group hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 rounded bg-primary text-white text-[10px] font-bold">#1</span>
+<span class="font-text-code text-primary-container text-lg">412</span>
+</div>
+<p class="font-text-h4 text-text-h4 mb-1">Market Volatility Fear</p>
+<p class="text-text-small text-on-surface-variant">Concern regarding mid-cap correction cycles.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant group hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 rounded bg-neutral-400 text-white text-[10px] font-bold">#2</span>
+<span class="font-text-code text-primary-container text-lg">285</span>
+</div>
+<p class="font-text-h4 text-text-h4 mb-1">Taxation Queries</p>
+<p class="text-text-small text-on-surface-variant">Clarification on new LTCG structure for debt funds.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant group hover:border-primary transition-all">
+<div class="flex justify-between items-start mb-3">
+<span class="px-2 py-0.5 rounded bg-neutral-400 text-white text-[10px] font-bold">#3</span>
+<span class="font-text-code text-primary-container text-lg">198</span>
+</div>
+<p class="font-text-h4 text-text-h4 mb-1">Passive vs Active</p>
+<p class="text-text-small text-on-surface-variant">Shift towards Index funds for core portfolio.</p>
+</div>
+</div>
+</section>
+<!-- 6. Corpus Refresh Status -->
+<section class="col-span-4 bg-success-500/5 rounded-xl border border-success-500/20 p-6 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-success-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-success-500/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-text-h3 text-text-h3 text-success-500 mb-1">Corpus Refresh Successful</h3>
+<p class="text-on-surface-variant text-text-body px-4">All 142 AMC fund houses synchronized at 06:00 IST today.</p>
+<div class="mt-6 font-text-code text-xs text-success-500 bg-white border border-success-500/20 px-3 py-1 rounded-full">
+                        VERSION: 2.4.1-STABLE
+                    </div>
+</section>
+<!-- 2. Anonymized Investor Quotes -->
+<section class="col-span-12">
+<h3 class="font-text-h3 text-text-h3 text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">forum</span> Investor Voice Bubbles
+                    </h3>
+<div class="flex flex-wrap gap-4">
+<div class="max-w-md p-4 rounded-2xl rounded-bl-none bg-secondary-container text-on-secondary-container shadow-sm transform hover:-rotate-1 transition-transform">
+<p class="font-text-body text-text-body italic">"I'm seeing my SIPs in red for the first time in 2 years. Is the India growth story still intact or should I stop?"</p>
+<p class="text-xs font-bold mt-2 opacity-70">— Retail Investor, Bengaluru</p>
+</div>
+<div class="max-w-md p-4 rounded-2xl rounded-br-none bg-surface-container-high text-on-surface shadow-sm transform hover:rotate-1 transition-transform">
+<p class="font-text-body text-text-body italic">"Why am I being charged 1% even after 364 days? The exit load calculation is very confusing in the brochure."</p>
+<p class="text-xs font-bold mt-2 opacity-70">— HNI Client, Mumbai</p>
+</div>
+<div class="max-w-md p-4 rounded-2xl rounded-bl-none bg-primary text-white shadow-sm transform hover:-rotate-1 transition-transform">
+<p class="font-text-body text-text-body italic">"Can you explain if the Arbitrage fund is safer than a Liquid fund given the current market volatility?"</p>
+<p class="text-xs font-bold mt-2 opacity-70">— New Investor, Delhi</p>
+</div>
+</div>
+</section>
+<!-- 3. Key Observation -->
+<section class="col-span-7 bg-white rounded-xl shadow-sm p-6 border border-outline-variant">
+<h3 class="font-text-h3 text-text-h3 text-primary mb-4">Strategic Summary</h3>
+<div class="space-y-4">
+<p class="font-text-body text-text-body-lg text-on-surface leading-relaxed">
+                            Investor sentiment has shifted from aggressive growth to <span class="font-bold text-primary">capital preservation</span> over the last 14 days. While SIP inflows remain robust, there is a marked increase in queries regarding "Risk-off" assets. Advisors should proactively communicate the benefits of Large-cap stability and rebalancing strategies to mitigate psychological panic during minor drawdowns.
+                        </p>
+<div class="p-4 bg-disclaimer-bg border-l-4 border-disclaimer-border rounded-r-lg">
+<p class="text-text-disclaimer font-text-disclaimer text-on-surface-variant italic">
+                                Compliance Note: Ensure all volatility communication includes historical 5-year rolling return charts to provide perspective.
+                            </p>
+</div>
+</div>
+</section>
+<!-- 4. Fee Confusion Spotlight -->
+<section class="col-span-5 bg-disclaimer-bg border-2 border-dashed border-disclaimer-border rounded-xl p-6 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-warning-500">warning</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-warning-500" style="font-variation-settings: 'FILL' 1;">error</span>
+<h3 class="font-text-h3 text-text-h3 text-warning-500">Fee Confusion Spotlight</h3>
+</div>
+<div class="mb-4">
+<span class="text-[32px] font-bold text-on-surface tracking-tight">'Exit Load'</span>
+<p class="text-text-body text-on-surface-variant mt-2">Investors are frequently mistaking the 12-month period for a calendar year rather than 365 days from the date of allotment.</p>
+</div>
+<div class="bg-white/60 p-3 rounded-lg border border-disclaimer-border/20">
+<p class="text-text-small font-bold text-primary mb-1">RECOMMENDED SCRIPT:</p>
+<p class="text-text-small text-on-surface-variant">"The exit load window is a 'Rolling 365 Days' per installment, not a fixed annual date."</p>
+</div>
+</div>
+</section>
+<!-- 2. Add a new section "3 Product Recommendations" for the internal product team -->
+<section class="col-span-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-text-h3 text-text-h3 text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">assignment_turned_in</span> 3 Product Recommendations
+                        </h3>
+<p class="text-text-small text-outline">Actionable tasks for the Internal Product Team</p>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<!-- Recommendation 1 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant p-6 hover:shadow-md transition-all flex flex-col h-full">
+<div class="flex items-center gap-3 mb-4">
+<span class="h-8 w-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold font-text-code">01</span>
+<span class="material-symbols-outlined text-primary">calculate</span>
+</div>
+<h4 class="font-text-h4 text-text-h4 text-primary mb-3">Education Hub: Exit Load Calculator</h4>
+<p class="text-text-body text-on-surface-variant flex-1">
+                                Add an exit load calculator to the Education Hub — 'how much exit load will I pay' was asked 34 times this week with no direct FAQ answer available.
+                            </p>
+<div class="mt-6 pt-4 border-t border-outline-variant flex justify-between items-center text-xs font-bold text-primary">
+<span class="bg-primary/5 px-2 py-1 rounded">URGENT</span>
+<span class="flex items-center gap-1">VIEW SPEC <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+<!-- Recommendation 2 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant p-6 hover:shadow-md transition-all flex flex-col h-full">
+<div class="flex items-center gap-3 mb-4">
+<span class="h-8 w-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold font-text-code">02</span>
+<span class="material-symbols-outlined text-primary">quiz</span>
+</div>
+<h4 class="font-text-h4 text-text-h4 text-primary mb-3">New FAQ Entry: SIP Redemptions</h4>
+<p class="text-text-body text-on-surface-variant flex-1">
+                                Add a dedicated FAQ entry: 'Does exit load apply if I only redeem part of my SIP?' — asked 21 times this week.
+                            </p>
+<div class="mt-6 pt-4 border-t border-outline-variant flex justify-between items-center text-xs font-bold text-primary">
+<span class="bg-primary/5 px-2 py-1 rounded">CONTENT UPDATE</span>
+<span class="flex items-center gap-1">VIEW SPEC <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+<!-- Recommendation 3 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant p-6 hover:shadow-md transition-all flex flex-col h-full">
+<div class="flex items-center gap-3 mb-4">
+<span class="h-8 w-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold font-text-code">03</span>
+<span class="material-symbols-outlined text-primary">article</span>
+</div>
+<h4 class="font-text-h4 text-text-h4 text-primary mb-3">First Redemption Guide</h4>
+<p class="text-text-body text-on-surface-variant flex-1">
+                                Create a 'First Redemption Guide' article in the Education Hub — redemption-related queries rose 40% this week.
+                            </p>
+<div class="mt-6 pt-4 border-t border-outline-variant flex justify-between items-center text-xs font-bold text-primary">
+<span class="bg-primary/5 px-2 py-1 rounded">EDUCATION</span>
+<span class="flex items-center gap-1">VIEW SPEC <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Compliance -->
+<footer class="mt-12 pt-8 border-t border-outline-variant flex justify-between text-text-disclaimer text-outline">
+<div class="max-w-2xl">
+<p>Internal Advisor Report only. Not for public distribution. Performance data source: AMFI Consolidated Data as of 2023-10-27.</p>
+</div>
+<div class="flex gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">verified_user</span> Regulatory Compliant</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">lock</span> ISO 27001 Certified</span>
+</div>
+</footer>
+</div>
+</main>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.group, .bg-white.rounded-xl.shadow-sm').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'all 0.2s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

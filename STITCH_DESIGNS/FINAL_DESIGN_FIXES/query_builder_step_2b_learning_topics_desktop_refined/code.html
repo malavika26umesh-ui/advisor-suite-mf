@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fundwise | Topic Narrowing - Learning (Refined)</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#747781",
+                    "on-tertiary-container": "#f19931",
+                    "neutral-400": "#9AA5B4",
+                    "error-500": "#C0392B",
+                    "primary-fixed": "#d9e2ff",
+                    "outline-variant": "#c4c6d2",
+                    "on-error-container": "#93000a",
+                    "neutral-600": "#4A5568",
+                    "surface-dim": "#dad9df",
+                    "surface-container-high": "#e8e7ee",
+                    "surface-tint": "#3d5d9d",
+                    "info-500": "#2563EB",
+                    "neutral-50": "#F7F8FA",
+                    "surface-container-highest": "#e3e2e8",
+                    "background": "#faf9ff",
+                    "source-badge-bg": "#EFF6FF",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "neutral-800": "#1A202C",
+                    "neutral-200": "#E2E8F0",
+                    "neutral-100": "#EEF0F4",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "secondary-container": "#94eafd",
+                    "primary": "#002862",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#224584",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "surface-bright": "#faf9ff",
+                    "surface-container": "#eeedf3",
+                    "on-tertiary-fixed": "#2c1600",
+                    "success-500": "#2D8653",
+                    "secondary": "#006877",
+                    "on-surface": "#1a1b20",
+                    "inverse-primary": "#afc6ff",
+                    "neutral-900": "#0F172A",
+                    "tertiary": "#422400",
+                    "surface-container-low": "#f4f3f9",
+                    "surface-container-lowest": "#ffffff",
+                    "source-badge-text": "#1E40AF",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e3e2e8",
+                    "tertiary-container": "#613700",
+                    "disclaimer-bg": "#FFF8E1",
+                    "primary-container": "#1B3F7E",
+                    "on-secondary-container": "#006b7a",
+                    "on-primary-container": "#8eadf3",
+                    "inverse-surface": "#2f3035",
+                    "warning-500": "#D97706",
+                    "surface": "#faf9ff",
+                    "on-secondary-fixed": "#001f25",
+                    "secondary-fixed": "#a4eeff",
+                    "primary-fixed-dim": "#afc6ff",
+                    "disclaimer-border": "#F59E0B",
+                    "on-surface-variant": "#434750",
+                    "on-primary-fixed": "#001a43",
+                    "tertiary-fixed": "#ffdcbd",
+                    "on-background": "#1a1b20"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-4": "16px",
+                    "space-10": "40px",
+                    "space-12": "48px",
+                    "space-8": "32px",
+                    "space-1": "4px",
+                    "max-width": "1280px",
+                    "space-2": "8px",
+                    "space-16": "64px",
+                    "space-6": "24px",
+                    "space-3": "12px",
+                    "space-5": "20px"
+            },
+            "fontFamily": {
+                    "text-body": ["Inter"],
+                    "text-small": ["Inter"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .btn-active-state:active { transform: scale(0.95); transition-duration: 150ms; }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col font-text-body text-on-background overflow-x-hidden">
+<!-- Refined NavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#1B3F7E] shadow-sm">
+<div class="max-w-max-width mx-auto flex justify-between items-center px-space-8 py-space-4">
+<div class="flex items-center gap-2 font-text-h2 text-text-h2 font-bold text-white">
+<span class="material-symbols-outlined text-3xl" data-weight="fill">account_balance_wallet</span>
+<span>Fundwise</span>
+</div>
+<div class="flex items-center gap-space-8">
+<nav class="hidden md:flex items-center space-x-space-8">
+<a class="font-text-body text-text-body text-white/90 hover:text-white transition-colors" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-white/90 hover:text-white transition-colors" href="#">Education Hub</a>
+<a class="font-text-body text-text-body text-white border-b-2 border-on-tertiary-container pb-1" href="#">Advisor Login</a>
+</nav>
+<button class="bg-on-tertiary-container text-primary px-space-5 py-space-2 rounded-lg font-text-h4 text-text-h4 font-bold btn-active-state shadow-md">
+                Book Advisor Call
+            </button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-space-16 px-space-4">
+<div class="max-w-3xl mx-auto">
+<!-- Refined Step Progress Indicator -->
+<div class="flex items-center justify-between mb-space-12 px-space-4">
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border-2 bg-success-500 border-success-500 text-white shadow-sm">
+<span class="material-symbols-outlined text-xl">check</span>
+</div>
+<span class="font-text-small text-text-small text-neutral-600 font-semibold">What do you need?</span>
+</div>
+<div class="flex-grow h-[2px] bg-neutral-200 -mt-8 mx-2"></div>
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-on-tertiary-container bg-white text-on-tertiary-container ring-4 ring-orange-50 shadow-sm">
+<span class="font-text-h4 text-text-h4">2</span>
+</div>
+<span class="font-text-small text-text-small text-on-tertiary-container font-bold">Narrow your topic</span>
+</div>
+<div class="flex-grow h-[2px] bg-neutral-200 -mt-8 mx-2"></div>
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-neutral-400 bg-white text-neutral-400">
+<span class="font-text-h4 text-text-h4">3</span>
+</div>
+<span class="font-text-small text-text-small text-neutral-400">Get your answer</span>
+</div>
+</div>
+<!-- Query Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-neutral-100 overflow-hidden">
+<!-- Header Section -->
+<div class="p-space-6 md:p-space-10 pb-0">
+<button class="flex items-center gap-2 text-primary font-semibold hover:underline mb-space-6 text-sm">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                    Back
+                </button>
+<div class="mb-space-8">
+<h1 class="font-text-h1 text-text-h1 text-primary mb-space-2">What would you like to learn about?</h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600">Select a specific area of interest so our advisor-grade system can provide the most relevant guidance.</p>
+</div>
+</div>
+<!-- Refined Topic Card Wrapper -->
+<div class="px-space-6 md:px-space-10 pb-space-10">
+<div class="bg-white rounded-xl border border-neutral-100 p-space-6 shadow-sm">
+<div class="space-y-space-3" id="topic-container">
+<label class="flex items-center p-space-4 border border-neutral-200 rounded-lg cursor-pointer hover:bg-surface-container-low transition-all group active:scale-[0.99]" data-topic="types">
+<input class="hidden peer" name="topic" type="radio" value="types"/>
+<div class="w-5 h-5 rounded-full border-2 border-neutral-400 peer-checked:border-on-tertiary-container peer-checked:bg-on-tertiary-container flex items-center justify-center transition-colors group-hover:border-on-tertiary-container">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-space-4 font-text-h4 text-text-h4 text-on-surface transition-colors group-hover:text-primary">Types of mutual funds</span>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:text-on-tertiary-container">school</span>
+</label>
+<label class="flex items-center p-space-4 border border-neutral-200 rounded-lg cursor-pointer hover:bg-surface-container-low transition-all group active:scale-[0.99]" data-topic="sip">
+<input class="hidden peer" name="topic" type="radio" value="sip"/>
+<div class="w-5 h-5 rounded-full border-2 border-neutral-400 peer-checked:border-on-tertiary-container peer-checked:bg-on-tertiary-container flex items-center justify-center transition-colors group-hover:border-on-tertiary-container">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-space-4 font-text-h4 text-text-h4 text-on-surface transition-colors group-hover:text-primary">How SIPs work</span>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:text-on-tertiary-container">monitoring</span>
+</label>
+<label class="flex items-center p-space-4 border border-neutral-200 rounded-lg cursor-pointer hover:bg-surface-container-low transition-all group active:scale-[0.99]" data-topic="tax">
+<input class="hidden peer" name="topic" type="radio" value="tax"/>
+<div class="w-5 h-5 rounded-full border-2 border-neutral-400 peer-checked:border-on-tertiary-container peer-checked:bg-on-tertiary-container flex items-center justify-center transition-colors group-hover:border-on-tertiary-container">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-space-4 font-text-h4 text-text-h4 text-on-surface transition-colors group-hover:text-primary">Tax implications</span>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:text-on-tertiary-container">account_balance</span>
+</label>
+<label class="flex items-center p-space-4 border border-neutral-200 rounded-lg cursor-pointer hover:bg-surface-container-low transition-all group active:scale-[0.99]" data-topic="fees">
+<input class="hidden peer" name="topic" type="radio" value="fees"/>
+<div class="w-5 h-5 rounded-full border-2 border-neutral-400 peer-checked:border-on-tertiary-container peer-checked:bg-on-tertiary-container flex items-center justify-center transition-colors group-hover:border-on-tertiary-container">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-space-4 font-text-h4 text-text-h4 text-on-surface transition-colors group-hover:text-primary">Understanding fees and costs</span>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:text-on-tertiary-container">payments</span>
+</label>
+<label class="flex items-center p-space-4 border border-neutral-200 rounded-lg cursor-pointer hover:bg-surface-container-low transition-all group active:scale-[0.99]" data-topic="rights">
+<input class="hidden peer" name="topic" type="radio" value="rights"/>
+<div class="w-5 h-5 rounded-full border-2 border-neutral-400 peer-checked:border-on-tertiary-container peer-checked:bg-on-tertiary-container flex items-center justify-center transition-colors group-hover:border-on-tertiary-container">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-space-4 font-text-h4 text-text-h4 text-on-surface transition-colors group-hover:text-primary">My rights as an investor</span>
+<span class="material-symbols-outlined ml-auto text-neutral-400 group-hover:text-on-tertiary-container">gavel</span>
+</label>
+</div>
+</div>
+<div class="flex justify-end pt-space-6">
+<button class="bg-on-tertiary-container text-primary font-bold px-12 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all btn-active-state opacity-50 cursor-not-allowed" disabled="" id="continue-btn">
+                        Continue
+                    </button>
+</div>
+</div>
+</div>
+<!-- Help Tip -->
+<div class="mt-space-6 p-space-4 flex gap-4 bg-source-badge-bg rounded-lg border border-blue-100">
+<span class="material-symbols-outlined text-source-badge-text">lightbulb</span>
+<p class="font-text-small text-text-small text-source-badge-text">
+<strong>Advisor Pro Tip:</strong> Understanding tax implications early can significantly boost your long-term CAGR by choosing tax-efficient schemes like ELSS.
+            </p>
+</div>
+</div>
+</main>
+<!-- Refined Navy Footer -->
+<footer class="w-full py-space-10 px-space-8 mt-auto flex flex-col bg-[#002862] border-t border-primary-container">
+<div class="max-w-max-width mx-auto w-full">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-6 mb-space-8">
+<div class="font-text-h3 text-text-h3 text-white flex items-center gap-2">
+<span class="material-symbols-outlined" data-weight="fill">account_balance_wallet</span>
+                Fundwise
+            </div>
+<div class="flex flex-wrap gap-space-6">
+<a class="font-text-small text-text-small text-white/80 hover:text-white hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-small text-text-small text-white/80 hover:text-white hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-small text-text-small text-white/80 hover:text-white hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-small text-text-small text-white/80 hover:text-white hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<!-- Amber Disclosure -->
+<div class="bg-[#FFF8E1] border-l-4 border-[#F59E0B] p-space-4 rounded-r-lg mb-space-6">
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 leading-relaxed">
+<strong>Regulatory Disclosure:</strong> Investment in mutual funds is subject to market risks. Please read all scheme-related documents carefully before investing. Fundwise Advisory is a SEBI Registered Investment Advisor (RIA Registration No: INA000012345). Past performance is not indicative of future results.
+            </p>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-space-6 border-t border-white/10">
+<p class="font-text-disclaimer text-text-disclaimer text-white/60">© 2024 Fundwise Advisory. SEBI Registered Investment Advisor.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<span class="px-2 py-1 bg-white/5 text-[10px] text-white/80 rounded border border-white/10 uppercase tracking-widest">ISO 27001 Certified</span>
+<span class="px-2 py-1 bg-white/5 text-[10px] text-white/80 rounded border border-white/10 uppercase tracking-widest">SEBI Reg: INA000012345</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    const topicContainer = document.getElementById('topic-container');
+    const continueBtn = document.getElementById('continue-btn');
+    const radioInputs = document.querySelectorAll('input[name="topic"]');
+    const labels = topicContainer.querySelectorAll('label');
+
+    radioInputs.forEach((input, index) => {
+        input.addEventListener('change', () => {
+            continueBtn.disabled = false;
+            continueBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            continueBtn.classList.add('hover:bg-on-tertiary-container/90');
+
+            labels.forEach(label => {
+                label.classList.remove('bg-orange-50', 'border-on-tertiary-container');
+                label.classList.add('border-neutral-200');
+            });
+
+            if (input.checked) {
+                labels[index].classList.add('bg-orange-50', 'border-on-tertiary-container');
+                labels[index].classList.remove('border-neutral-200');
+            }
+        });
+    });
+
+    continueBtn.addEventListener('click', () => {
+        if(!continueBtn.disabled) {
+            continueBtn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2">progress_activity</span> Processing...';
+            setTimeout(() => {
+                alert('Moving to Step 3: Generating your personalized learning hub...');
+                continueBtn.innerHTML = 'Continue';
+            }, 800);
+        }
+    });
+</script>
+</body></html>

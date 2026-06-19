@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmation | Fundwise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#434750",
+                    "surface-variant": "#e3e2e8",
+                    "surface-container-high": "#e8e7ee",
+                    "on-background": "#1a1b20",
+                    "inverse-primary": "#afc6ff",
+                    "on-secondary": "#ffffff",
+                    "success-500": "#2D8653",
+                    "neutral-200": "#E2E8F0",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#f1f0f6",
+                    "error": "#ba1a1a",
+                    "disclaimer-border": "#F59E0B",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "surface-dim": "#dad9df",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#eeedf3",
+                    "on-tertiary-container": "#f19931",
+                    "source-badge-bg": "#EFF6FF",
+                    "primary-fixed-dim": "#afc6ff",
+                    "on-surface": "#1a1b20",
+                    "neutral-900": "#0F172A",
+                    "neutral-800": "#1A202C",
+                    "primary-container": "#1b3f7e",
+                    "primary": "#002862",
+                    "neutral-50": "#F7F8FA",
+                    "surface-container-highest": "#e3e2e8",
+                    "neutral-400": "#9AA5B4",
+                    "surface-container-low": "#f4f3f9",
+                    "neutral-600": "#4A5568",
+                    "on-primary-fixed-variant": "#224584",
+                    "info-500": "#2563EB",
+                    "primary-fixed": "#d9e2ff",
+                    "secondary-fixed": "#a4eeff",
+                    "tertiary": "#422400",
+                    "outline": "#747781",
+                    "surface-tint": "#3d5d9d",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#94eafd",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#faf9ff",
+                    "secondary": "#006877",
+                    "on-secondary-container": "#006b7a",
+                    "on-secondary-fixed": "#001f25",
+                    "background": "#faf9ff",
+                    "on-tertiary-fixed": "#2c1600",
+                    "warning-500": "#D97706",
+                    "tertiary-fixed": "#ffdcbd",
+                    "error-500": "#C0392B",
+                    "inverse-surface": "#2f3035",
+                    "on-primary-fixed": "#001a43",
+                    "disclaimer-bg": "#FFF8E1",
+                    "neutral-100": "#EEF0F4",
+                    "source-badge-text": "#1E40AF",
+                    "outline-variant": "#c4c6d2",
+                    "surface": "#faf9ff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "tertiary-container": "#613700",
+                    "on-primary-container": "#8eadf3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-4": "16px",
+                    "space-6": "24px",
+                    "space-2": "8px",
+                    "space-10": "40px",
+                    "space-12": "48px",
+                    "space-1": "4px",
+                    "space-8": "32px",
+                    "max-width": "1280px",
+                    "space-3": "12px",
+                    "space-5": "20px",
+                    "space-16": "64px"
+            },
+            "fontFamily": {
+                    "text-small": ["Inter"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-body": ["Inter"]
+            },
+            "fontSize": {
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        body { margin: 0; padding: 0; background-color: #F7F8FA; }
+        .email-container { max-width: 600px; margin: 40px auto; background-color: #ffffff; overflow: hidden; }
+    </style>
+</head>
+<body class="bg-neutral-50 font-text-body text-text-body">
+<!-- Email Container -->
+<div class="email-container shadow-sm border border-outline-variant rounded-lg">
+<!-- Header -->
+<header class="bg-primary-container p-space-6 flex justify-between items-center">
+<span class="font-text-h3 text-text-h3 font-bold text-on-primary">Fundwise</span>
+<div class="flex items-center gap-space-1 bg-white/10 px-space-3 py-space-1 rounded-full">
+<span class="text-white font-semibold text-[14px]">Booking Confirmed</span>
+<span class="material-symbols-outlined text-white text-[18px]">check_circle</span>
+</div>
+</header>
+<!-- Body Content -->
+<main class="p-space-10 bg-white">
+<h1 class="font-text-h2 text-text-h2 text-on-surface mb-space-8">Your advisor call is booked</h1>
+<!-- Details Card -->
+<div class="bg-neutral-50 border border-neutral-200 rounded-xl p-space-6 mb-space-8">
+<p class="text-center text-on-surface-variant font-text-disclaimer text-text-disclaimer mb-space-2 uppercase tracking-wider">Your Unique Booking Code</p>
+<div class="bg-white border-2 border-dashed border-primary-fixed-dim rounded-lg py-space-4 mb-space-8 flex justify-center items-center">
+<span class="font-text-code text-[28px] text-primary tracking-widest">MF-K4R2</span>
+</div>
+<div class="space-y-space-4 border-t border-neutral-200 pt-space-6">
+<div class="flex items-start gap-space-3">
+<span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">topic</span>
+<div>
+<p class="text-on-surface-variant text-text-small font-text-small">Topic</p>
+<p class="text-on-surface font-semibold font-text-body">Fees &amp; Charges</p>
+</div>
+</div>
+<div class="flex items-start gap-space-3">
+<span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">calendar_today</span>
+<div>
+<p class="text-on-surface-variant text-text-small font-text-small">Date &amp; Time</p>
+<p class="text-on-surface font-semibold font-text-body">Friday, 16 Jan 2026 · 3:00 PM IST</p>
+</div>
+</div>
+<div class="flex items-start gap-space-3">
+<span class="material-symbols-outlined text-primary-fixed-dim mt-0.5">person</span>
+<div>
+<p class="text-on-surface-variant text-text-small font-text-small">Advisor</p>
+<p class="text-on-surface font-semibold font-text-body">SEBI-registered advisor: Rajesh Varma</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Instruction Message -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-4 mb-space-8 rounded-r-lg">
+<p class="text-on-surface font-text-body text-text-body leading-relaxed">
+                    Please share this Booking Code with your advisor at the start of your call for verification and compliance recording.
+                </p>
+</div>
+<!-- Support Action -->
+<div class="text-center">
+<a class="text-primary font-semibold text-text-body font-text-body hover:underline transition-all inline-flex items-center gap-space-1" href="#">
+                    Reschedule or Cancel <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</main>
+<!-- Compliance Disclaimer -->
+<section class="px-space-10 py-space-6 bg-surface-container-low border-t border-outline-variant">
+<p class="text-on-surface-variant font-text-disclaimer text-text-disclaimer italic">
+                Note: Investment in mutual funds is subject to market risks. Read all scheme related documents carefully before investing. This advisor session is strictly for educational and guidance purposes.
+            </p>
+</section>
+<!-- Footer (Shared Component Guidance) -->
+<footer class="w-full px-space-8 py-space-12 flex flex-col items-center gap-space-4 border-t border-outline-variant bg-surface-container-low dark:bg-neutral-900">
+<div class="font-text-h4 text-text-h4 font-semibold text-primary">Fundwise</div>
+<div class="flex flex-wrap justify-center gap-space-4 mb-space-4">
+<a class="font-text-disclaimer text-text-disclaimer text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-disclaimer text-text-disclaimer text-on-surface-variant hover:text-primary underline transition-all" href="#">Terms of Service</a>
+<a class="font-text-disclaimer text-text-disclaimer text-on-surface-variant hover:text-primary underline transition-all" href="#">Compliance Disclosure</a>
+<a class="font-text-disclaimer text-text-disclaimer text-on-surface-variant hover:text-primary underline transition-all" href="#">Grievance Redressal</a>
+</div>
+<div class="flex gap-space-4 mb-space-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Unsubscribe</a>
+<span class="text-outline-variant">|</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Manage Preferences</a>
+</div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-surface-variant text-center max-w-md">
+                © 2024 Fundwise Financial Advisory. SEBI Registered Investment Advisor (INA000000000).<br/>
+                12th Floor, Financial District, Gachibowli, Hyderabad, Telangana - 500032.
+            </p>
+</footer>
+</div>
+<!-- Micro-interaction for Copy Code (Optional script) -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const codeBlock = document.querySelector('.font-text-code');
+            codeBlock.style.cursor = 'pointer';
+            codeBlock.addEventListener('click', () => {
+                const text = codeBlock.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalColor = codeBlock.style.color;
+                    codeBlock.style.color = '#2D8653';
+                    const temp = codeBlock.innerText;
+                    codeBlock.innerText = 'COPIED!';
+                    setTimeout(() => {
+                        codeBlock.innerText = temp;
+                        codeBlock.style.color = originalColor;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body></html>

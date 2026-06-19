@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ Centre | Fundwise Advisory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=JetBrains+Mono:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#faf9ff",
+                    "surface": "#faf9ff",
+                    "on-tertiary-fixed": "#2c1600",
+                    "tertiary": "#422400",
+                    "source-badge-text": "#1E40AF",
+                    "outline": "#747781",
+                    "neutral-200": "#E2E8F0",
+                    "disclaimer-bg": "#FFF8E1",
+                    "outline-variant": "#c4c6d2",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#afc6ff",
+                    "neutral-800": "#1A202C",
+                    "neutral-600": "#4A5568",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1a1b20",
+                    "primary-container": "#1b3f7e",
+                    "inverse-on-surface": "#f1f0f6",
+                    "surface-container-low": "#f4f3f9",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#613700",
+                    "secondary-container": "#94eafd",
+                    "surface-variant": "#e3e2e8",
+                    "neutral-900": "#0F172A",
+                    "on-primary-fixed": "#001a43",
+                    "on-primary-fixed-variant": "#224584",
+                    "primary": "#002862",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "disclaimer-border": "#F59E0B",
+                    "background": "#faf9ff",
+                    "surface-tint": "#3d5d9d",
+                    "success-500": "#2D8653",
+                    "error-500": "#C0392B",
+                    "on-surface-variant": "#434750",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-background": "#1a1b20",
+                    "surface-container": "#eeedf3",
+                    "surface-container-highest": "#e3e2e8",
+                    "primary-fixed": "#d9e2ff",
+                    "on-primary-container": "#8eadf3",
+                    "on-secondary-fixed": "#001f25",
+                    "on-error": "#ffffff",
+                    "neutral-400": "#9AA5B4",
+                    "info-500": "#2563EB",
+                    "source-badge-bg": "#EFF6FF",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "secondary-fixed": "#a4eeff",
+                    "secondary": "#006877",
+                    "warning-500": "#D97706",
+                    "on-tertiary-container": "#f19931",
+                    "surface-dim": "#dad9df",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcbd",
+                    "surface-container-lowest": "#ffffff",
+                    "neutral-100": "#EEF0F4",
+                    "neutral-50": "#F7F8FA",
+                    "surface-container-high": "#e8e7ee",
+                    "inverse-surface": "#2f3035",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#006b7a",
+                    "inverse-primary": "#afc6ff",
+                    "saffron": "#F59E0B"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-1": "4px",
+                    "space-4": "16px",
+                    "space-3": "12px",
+                    "space-16": "64px",
+                    "max-width": "1280px",
+                    "space-12": "48px",
+                    "space-10": "40px",
+                    "space-5": "20px",
+                    "space-2": "8px",
+                    "space-8": "32px",
+                    "space-6": "24px"
+            },
+            "fontFamily": {
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-body": ["Inter"],
+                    "text-body-lg": ["Inter"],
+                    "text-small": ["Inter"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-display": ["Plus Jakarta Sans"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-nav-link {
+            border-bottom: 2px solid #f19931;
+            padding-bottom: 4px;
+        }
+        body {
+            background-color: #F7F8FA;
+            color: #1a1b20;
+        }
+        .bento-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-text-body text-text-body">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-primary-container shadow-sm">
+<div class="max-w-max-width mx-auto flex justify-between items-center px-space-8 py-space-4">
+<div class="flex items-center gap-2 font-text-h2 text-text-h2 font-bold text-on-primary">
+<span class="material-symbols-outlined text-saffron" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                Fundwise
+            </div>
+<nav class="hidden md:flex items-center gap-space-8">
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors" href="#">Home</a>
+<a class="font-text-body text-text-body text-on-primary border-b-2 border-on-tertiary-container pb-1" href="#">FAQ Centre</a>
+<a class="font-text-body text-text-body text-on-primary-container opacity-90 hover:opacity-100 hover:text-on-tertiary-container transition-colors" href="#">Advisor Login</a>
+</nav>
+<button class="bg-saffron hover:bg-opacity-90 text-white px-space-6 py-space-2 rounded-full font-text-h4 text-text-h4 transition-all active:scale-95 duration-150">
+                Book Advisor Call
+            </button>
+</div>
+</header>
+<!-- Main Content Grid -->
+<main class="flex-grow pt-space-16 mt-space-10 mb-space-12 max-w-max-width mx-auto px-space-8 w-full">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-8">
+<!-- Left Column (65%) -->
+<div class="md:col-span-8 space-y-space-8">
+<section>
+<h1 class="font-text-h1 text-text-h1 text-primary mb-space-4">How can we help you today?</h1>
+<div class="relative group">
+<span class="absolute left-space-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-neutral-400">search</span>
+<input class="w-full h-space-12 pl-space-12 pr-space-4 rounded-xl border border-neutral-200 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-text-body text-text-body" placeholder="Search for questions about mutual funds, taxation, or redemptions..." type="text" value="Are there any exit loads on Liquid Funds?"/>
+</div>
+</section>
+<!-- Active Answer Card -->
+<div class="bento-card p-space-6 border-l-4 border-saffron">
+<div class="flex items-center gap-space-2 text-saffron mb-space-2">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-text-h4 text-text-h4">Advisor-Verified Answer</span>
+</div>
+<h2 class="font-text-h2 text-text-h2 mb-space-4 text-neutral-900">Are there any exit loads on Liquid Funds?</h2>
+<div class="space-y-space-4 text-neutral-600 leading-relaxed">
+<p>As per SEBI regulations, liquid funds carry a tiered exit load if redeemed within 7 days of investment. Redemption on Day 1 carries an exit load of 0.0070%, which progressively reduces to 0.0045% by Day 6. From Day 7 onwards, there is no exit load on liquid fund redemptions.</p>
+<div class="flex items-center gap-space-2 py-space-2">
+<span class="bg-source-badge-bg text-source-badge-text text-text-small font-medium px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span>
+                                SEBI Circular SEBI/HO/IMD/DF2/CIR/P/2019/101
+                            </span>
+</div>
+<!-- Compliance Disclaimer -->
+<div class="bg-disclaimer-bg border-l-4 border-disclaimer-border p-space-4 rounded-r-lg">
+<div class="flex items-start gap-space-2">
+<span class="material-symbols-outlined text-disclaimer-border mt-1">info</span>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800 italic">
+                                    Mutual Fund investments are subject to market risks, read all scheme related documents carefully. The above information is based on current regulatory guidelines which are subject to change.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary FAQ Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-6">
+<div class="bento-card p-space-6 hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-space-3">payments</span>
+<h3 class="font-text-h3 text-text-h3 text-neutral-900 mb-space-2">Redemption Timeframes</h3>
+<p class="font-text-body text-text-body text-neutral-600">Understand the T+1, T+2, and T+3 settlement cycles for different scheme categories like Liquid, Equity, and International funds.</p>
+</div>
+<a class="mt-space-4 text-primary font-semibold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="bento-card p-space-6 hover:-translate-y-1 transition-all flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-space-3">account_balance</span>
+<h3 class="font-text-h3 text-text-h3 text-neutral-900 mb-space-2">Taxation on Gains</h3>
+<p class="font-text-body text-text-body text-neutral-600">A detailed breakdown of STCG and LTCG for equity and debt-oriented funds under the latest Finance Act regulations.</p>
+</div>
+<a class="mt-space-4 text-primary font-semibold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (35%) -->
+<aside class="md:col-span-4 space-y-space-6">
+<!-- Fee Explainer Panel -->
+<div class="bento-card p-space-6 bg-primary text-on-primary">
+<h3 class="font-text-h3 text-text-h3 mb-space-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-saffron">transcribe</span>
+                        Why Fundwise?
+                    </h3>
+<div class="space-y-space-4">
+<div class="border-l-2 border-on-primary-container pl-space-4">
+<p class="font-bold text-saffron mb-1">Flat Fee Model</p>
+<p class="text-text-small font-text-small opacity-80">We charge a fixed quarterly advisory fee. We do not take commissions from fund houses.</p>
+</div>
+<div class="border-l-2 border-on-primary-container pl-space-4">
+<p class="font-bold text-saffron mb-1">Direct-Only Focus</p>
+<p class="text-text-small font-text-small opacity-80">We only recommend Direct Plans of mutual funds, helping you save up to 1% in annual expenses.</p>
+</div>
+</div>
+</div>
+<!-- Verified Schemes Counter -->
+<div class="bento-card p-space-6">
+<h3 class="font-text-h3 text-text-h3 text-neutral-900 mb-space-4">Verified Schemes</h3>
+<div class="grid grid-cols-2 gap-space-4">
+<div class="bg-neutral-50 p-space-3 rounded-lg">
+<p class="text-text-display font-text-display text-primary">120+</p>
+<p class="text-text-small font-text-small text-neutral-600 uppercase tracking-wider">Equity</p>
+</div>
+<div class="bg-neutral-50 p-space-3 rounded-lg">
+<p class="text-text-display font-text-display text-primary">85+</p>
+<p class="text-text-small font-text-small text-neutral-600 uppercase tracking-wider">Debt</p>
+</div>
+<div class="bg-neutral-50 p-space-3 rounded-lg">
+<p class="text-text-display font-text-display text-primary">45</p>
+<p class="text-text-small font-text-small text-neutral-600 uppercase tracking-wider">Hybrid</p>
+</div>
+<div class="bg-neutral-50 p-space-3 rounded-lg">
+<p class="text-text-display font-text-display text-primary">200+</p>
+<p class="text-text-small font-text-small text-neutral-600 uppercase tracking-wider">Index/ETFs</p>
+</div>
+</div>
+</div>
+<!-- Generic CTA Panel -->
+<div class="bento-card p-space-8 text-center bg-surface-container-high border border-outline-variant">
+<span class="material-symbols-outlined text-4xl text-primary mb-space-4">support_agent</span>
+<h3 class="font-text-h2 text-text-h2 text-neutral-900 mb-space-2">Need personalised guidance?</h3>
+<p class="font-text-body text-text-body text-neutral-600 mb-space-6">
+                        Speak to a SEBI-registered investment advisor about your specific situation.
+                    </p>
+<button class="w-full bg-saffron hover:bg-opacity-90 text-white font-bold py-space-4 rounded-xl transition-all shadow-md active:scale-95">
+                        Book a Call
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary border-t border-primary-container">
+<div class="max-w-max-width mx-auto py-space-10 px-space-8 flex flex-col md:flex-row justify-between items-start gap-space-8">
+<div class="space-y-space-4 max-w-md">
+<div class="font-text-h3 text-text-h3 text-on-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-saffron" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                    Fundwise
+                </div>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary-container opacity-80">
+                    © 2024 Fundwise Advisory. SEBI Registered Investment Advisor (Registration No. INA000000000). SEBI Bhawan, BKC, Mumbai.
+                </p>
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary-container opacity-60">
+                    Registration granted by SEBI, membership of BASL and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-x-space-12 gap-y-space-4">
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Scheme Documents</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Grievance Redressal</a>
+<a class="font-text-small text-text-small text-on-primary-container opacity-80 hover:text-on-primary hover:underline transition-all" href="#">Compliance Disclosures</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple search bar focus micro-interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Understanding Exit Load | Fundwise FAQ Centre</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "info-500": "#2563EB",
+                    "source-badge-bg": "#EFF6FF",
+                    "neutral-600": "#4A5568",
+                    "neutral-50": "#F7F8FA",
+                    "surface-bright": "#faf9ff",
+                    "background": "#faf9ff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "neutral-100": "#EEF0F4",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d9e2ff",
+                    "on-surface": "#1a1b20",
+                    "tertiary-fixed": "#ffdcbd",
+                    "on-secondary-container": "#006b7a",
+                    "surface-container-highest": "#e3e2e8",
+                    "on-primary-fixed-variant": "#224584",
+                    "inverse-surface": "#2f3035",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#3d5d9d",
+                    "surface-dim": "#dad9df",
+                    "secondary": "#006877",
+                    "disclaimer-border": "#F59E0B",
+                    "source-badge-text": "#1E40AF",
+                    "primary-fixed-dim": "#afc6ff",
+                    "inverse-on-surface": "#f1f0f6",
+                    "secondary-fixed": "#a4eeff",
+                    "on-tertiary-container": "#f19931",
+                    "error-500": "#C0392B",
+                    "primary": "#002862",
+                    "tertiary-fixed-dim": "#ffb86f",
+                    "neutral-200": "#E2E8F0",
+                    "tertiary-container": "#613700",
+                    "surface-container-high": "#e8e7ee",
+                    "secondary-container": "#94eafd",
+                    "surface-container-low": "#f4f3f9",
+                    "secondary-fixed-dim": "#7dd3e6",
+                    "outline": "#747781",
+                    "neutral-400": "#9AA5B4",
+                    "disclaimer-bg": "#FFF8E1",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#422400",
+                    "on-secondary-fixed": "#001f25",
+                    "on-primary-container": "#8eadf3",
+                    "primary-container": "#1b3f7e",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeedf3",
+                    "on-primary-fixed": "#001a43",
+                    "success-500": "#2D8653",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "surface-variant": "#e3e2e8",
+                    "inverse-primary": "#afc6ff",
+                    "neutral-800": "#1A202C",
+                    "on-surface-variant": "#434750",
+                    "surface": "#faf9ff",
+                    "outline-variant": "#c4c6d2",
+                    "neutral-900": "#0F172A",
+                    "warning-500": "#D97706",
+                    "on-tertiary-fixed": "#2c1600",
+                    "on-background": "#1a1b20"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "space-5": "20px",
+                    "space-2": "8px",
+                    "space-4": "16px",
+                    "space-16": "64px",
+                    "space-8": "32px",
+                    "space-3": "12px",
+                    "space-10": "40px",
+                    "max-width": "1280px",
+                    "space-12": "48px",
+                    "space-6": "24px",
+                    "space-1": "4px"
+            },
+            "fontFamily": {
+                    "text-body": ["Inter"],
+                    "text-h4": ["Plus Jakarta Sans"],
+                    "text-small": ["Inter"],
+                    "text-h2": ["Plus Jakarta Sans"],
+                    "text-body-lg": ["Inter"],
+                    "text-h3": ["Plus Jakarta Sans"],
+                    "text-code": ["JetBrains Mono"],
+                    "text-h1": ["Plus Jakarta Sans"],
+                    "text-disclaimer": ["Inter"],
+                    "text-display": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "text-body": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h4": ["16px", {"lineHeight": "1.45", "fontWeight": "600"}],
+                    "text-small": ["12px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "text-h2": ["22px", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "text-body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "text-h3": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "text-code": ["15px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "text-h1": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "text-disclaimer": ["13px", {"lineHeight": "1.55", "fontWeight": "400"}],
+                    "text-display": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .compliance-border {
+            border-left: 4px solid #F59E0B;
+        }
+        .advisor-border {
+            border-left: 4px solid #D97706; /* Saffron/Amber */
+        }
+        .teal-accent-border {
+            border-left: 4px solid #006877; /* brand-teal equivalent */
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 font-text-body text-on-surface">
+<!-- Top Navigation Shell -->
+<header class="bg-primary dark:bg-neutral-900 shadow-md docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-space-6 py-space-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-space-3">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="account_balance">account_balance</span>
+<span class="text-text-h3 font-text-h3 font-bold text-on-primary dark:text-primary-fixed">Fundwise</span>
+</div>
+<nav class="hidden md:flex gap-space-8 items-center">
+<a class="font-text-h4 text-text-h4 text-on-primary/90 hover:text-white transition-colors duration-200" href="#">Invest</a>
+<a class="font-text-h4 text-text-h4 text-secondary-fixed-dim border-b-2 border-secondary-fixed-dim pb-1" href="#">FAQ Centre</a>
+<a class="font-text-h4 text-text-h4 text-on-primary/90 hover:text-white transition-colors duration-200" href="#">Portfolio</a>
+</nav>
+<button class="bg-on-primary-container text-primary font-text-h4 text-text-h4 px-space-4 py-space-2 rounded-lg hover:bg-white transition-all active:scale-95">
+                Advisor Login
+            </button>
+</div>
+</header>
+<main class="max-w-[720px] mx-auto px-space-4 py-space-10 min-h-screen">
+<!-- Breadcrumbs -->
+<nav class="mb-space-6 flex items-center gap-space-2 text-neutral-600 font-text-small text-text-small">
+<a class="hover:text-primary transition-colors" href="#">FAQ Centre</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-semibold">Fee Explainer</span>
+</nav>
+<!-- Header Card -->
+<section class="bg-white rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.08)] teal-accent-border p-space-6 mb-space-6">
+<div class="flex flex-col gap-space-4">
+<div>
+<span class="bg-warning-500 text-white font-text-code text-[11px] px-space-3 py-1 rounded-full uppercase tracking-wider">
+                        WEEKLY FEE EXPLAINER
+                    </span>
+</div>
+<h1 class="font-text-h1 text-text-h1 text-primary">Understanding Exit Load</h1>
+<p class="font-text-body-lg text-text-body-lg text-neutral-600">
+                    A comprehensive guide to how exit loads impact your mutual fund returns and why they exist in the regulatory framework.
+                </p>
+</div>
+</section>
+<!-- Content Card: Numbered List -->
+<section class="bg-white rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.08)] p-space-8 mb-space-8">
+<div class="space-y-space-8">
+<!-- Point 1 -->
+<div class="flex gap-space-5">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">1</div>
+<div class="space-y-space-2">
+<h3 class="font-text-h3 text-text-h3 text-primary">Definition of Exit Load</h3>
+<p class="text-neutral-600 text-text-body">Exit load is a fee charged by Asset Management Companies (AMCs) when an investor sells or redeems their mutual fund units within a specific pre-defined period from the date of investment.</p>
+</div>
+</div>
+<!-- Point 2 -->
+<div class="flex gap-space-5">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">2</div>
+<div class="space-y-space-2">
+<h3 class="font-text-h3 text-text-h3 text-primary">The "Discouragement" Logic</h3>
+<p class="text-neutral-600 text-text-body">The primary objective is to discourage premature withdrawals. By penalizing early exits, AMCs aim to ensure stability in the fund's corpus and protect long-term investors from the costs of frequent liquidity management.</p>
+</div>
+</div>
+<!-- Point 3 -->
+<div class="flex gap-space-5">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">3</div>
+<div class="space-y-space-2">
+<h3 class="font-text-h3 text-text-h3 text-primary">Calculation Methodology</h3>
+<p class="text-neutral-600 text-text-body">It is typically expressed as a percentage of the Net Asset Value (NAV). For example, if the NAV is ₹100 and the exit load is 1%, ₹1 will be deducted, and the investor will receive ₹99 per unit.</p>
+</div>
+</div>
+<!-- Point 4 -->
+<div class="flex gap-space-5">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">4</div>
+<div class="space-y-space-2">
+<h3 class="font-text-h3 text-text-h3 text-primary">Holding Period Requirements</h3>
+<p class="text-neutral-600 text-text-body">Different funds have different windows. Equity funds often have a 1-year exit load window, while liquid funds might have a sliding scale load that disappears after just 7 days.</p>
+</div>
+</div>
+<!-- Point 5 -->
+<div class="flex gap-space-5">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">5</div>
+<div class="space-y-space-2">
+<h3 class="font-text-h3 text-text-h3 text-primary">FIFO (First-In, First-Out) Rule</h3>
+<p class="text-neutral-600 text-text-body">When you redeem partially, AMCs apply the FIFO principle. The units bought first are considered sold first, which helps in determining if those specific units have crossed the exit-load-free threshold.</p>
+</div>
+</div>
+<!-- Point 6 -->
+<div class="flex gap-space-5">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">6</div>
+<div class="space-y-space-2">
+<h3 class="font-text-h3 text-text-h3 text-primary">Taxation Interaction</h3>
+<p class="text-neutral-600 text-text-body">The exit load paid is not tax-deductible. It is treated as a reduction in the sale consideration, effectively reducing your capital gains (or increasing your loss) for tax calculation purposes.</p>
+</div>
+</div>
+</div>
+<!-- Source Row -->
+<div class="mt-space-10 pt-space-6 border-t border-neutral-100 flex flex-wrap gap-space-3 items-center">
+<span class="text-text-small font-text-small text-neutral-400 uppercase tracking-tight">Verified Sources:</span>
+<div class="flex items-center gap-space-1 bg-source-badge-bg text-source-badge-text px-space-3 py-1 rounded-full text-text-small font-text-small">
+<span>SEBI Circulars</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="flex items-center gap-space-1 bg-source-badge-bg text-source-badge-text px-space-3 py-1 rounded-full text-text-small font-text-small">
+<span>AMFI Guidelines</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</div>
+</div>
+</section>
+<!-- Advisory Footer Action -->
+<div class="flex flex-col md:flex-row gap-space-4 mb-space-12">
+<a class="flex-1 bg-white border border-primary text-primary font-text-h4 text-text-h4 py-space-4 px-space-6 rounded-lg flex items-center justify-center gap-space-2 hover:bg-neutral-50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                Return to FAQ Centre
+            </a>
+<button class="flex-1 bg-warning-500 text-white font-text-h4 text-text-h4 py-space-4 px-space-6 rounded-lg flex items-center justify-center gap-space-2 hover:opacity-90 shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+                Book a Call with Advisor
+            </button>
+</div>
+</main>
+<!-- Compliance Disclaimer Block -->
+<aside class="w-full bg-disclaimer-bg compliance-border py-space-8 px-space-6 border-t-4 border-disclaimer-border">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row gap-space-6 items-start">
+<div class="bg-disclaimer-border/10 p-space-2 rounded-full">
+<span class="material-symbols-outlined text-disclaimer-border" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<h4 class="font-text-h4 text-text-h4 text-on-tertiary-fixed-variant mb-space-2 uppercase tracking-wide">Regulatory Disclaimer</h4>
+<p class="font-text-disclaimer text-text-disclaimer text-neutral-800">
+                    Mutual Fund investments are subject to market risks, read all scheme related documents carefully. The information provided above regarding Exit Loads is for educational purposes only and may vary between different Asset Management Companies (AMCs) and specific fund categories. Fundwise Advisory Services does not guarantee the accuracy of historical fee structures for all listed schemes. Investors are advised to check the latest KIM (Key Information Memorandum) before investing. Exit loads are subject to change as per SEBI regulations and AMC discretion.
+                </p>
+</div>
+</div>
+</aside>
+<!-- Footer Shell -->
+<footer class="bg-primary dark:bg-neutral-900 text-on-primary">
+<div class="flex flex-col w-full space-y-space-6 px-space-6 py-space-10 max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-space-6">
+<div class="flex items-center gap-space-3">
+<span class="material-symbols-outlined text-white text-2xl" data-icon="account_balance">account_balance</span>
+<span class="font-text-h4 text-text-h4 font-bold text-on-primary">Fundwise Advisory</span>
+</div>
+<div class="flex flex-wrap gap-x-space-8 gap-y-space-2">
+<a class="text-on-primary/70 font-text-body text-text-body hover:text-white transition-colors" href="#">Scheme Documents</a>
+<a class="text-on-primary/70 font-text-body text-text-body hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 font-text-body text-text-body hover:text-white transition-colors" href="#">Grievance Redressal</a>
+<a class="text-on-primary/70 font-text-body text-text-body hover:text-white transition-colors" href="#">Compliance Disclosures</a>
+</div>
+</div>
+<div class="pt-space-6 border-t border-white/10">
+<p class="font-text-disclaimer text-text-disclaimer text-on-primary/60 leading-relaxed max-w-3xl">
+                    © 2024 Fundwise Advisory Services. SEBI Registered Investment Advisor (Registration No. INA000000000). Mutual fund investments are subject to market risks. Registered Office: 12th Floor, Financial District, Mumbai, Maharashtra 400001. 
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for hover effects on cards
+        document.querySelectorAll('section').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.replace('shadow-[0_1px_3px_rgba(0,0,0,0.08)]', 'shadow-md');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.replace('shadow-md', 'shadow-[0_1px_3px_rgba(0,0,0,0.08)]');
+            });
+        });
+    </script>
+</body></html>
