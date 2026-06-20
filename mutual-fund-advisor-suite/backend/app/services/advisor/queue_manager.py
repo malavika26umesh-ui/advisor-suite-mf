@@ -52,7 +52,7 @@ class MeetingQueueManager:
         if not booking:
             return False
             
-        slot_res = await self.db.execute(select(AdvisorSlot).where(AdvisorSlot.id == new_slot_id, AdvisorSlot.is_blocked == False))
+        slot_res = await self.db.execute(select(AdvisorSlot).where(AdvisorSlot.id == new_slot_id, AdvisorSlot.is_blocked.is_(False)))
         new_slot = slot_res.scalars().first()
         if not new_slot:
             return False

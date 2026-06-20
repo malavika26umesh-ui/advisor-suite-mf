@@ -9,7 +9,6 @@ load_dotenv("../.env")
 from corpus.ingestion.pdf_extractor import PDFExtractor
 from corpus.ingestion.chunker import DocumentChunker
 from corpus.ingestion.embedder import ChunkEmbedder
-from app.core.config import settings
 
 def ingest_scheme_docs():
     manifest_path = os.path.join("corpus", "sources", "source_manifest.json")

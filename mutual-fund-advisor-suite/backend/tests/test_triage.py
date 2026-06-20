@@ -1,4 +1,3 @@
-import pytest
 from app.services.triage.classifier import TriageClassifier
 
 classifier = TriageClassifier()

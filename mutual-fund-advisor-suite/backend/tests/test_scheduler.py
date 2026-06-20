@@ -1,7 +1,7 @@
 import pytest
 import re
 from fastapi.testclient import TestClient
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from app.core.config import settings
 settings.SENDGRID_API_KEY = "test_api_key"
 

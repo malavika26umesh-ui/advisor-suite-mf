@@ -1,5 +1,5 @@
 # Starting Prompts — Mutual Fund Advisor Intelligence Suite
-# One prompt per Claude Code session (Sprint 1 through Sprint 20)
+# One prompt per Claude Code session (Sprint 1 through Sprint 20; Sprint 19 is split into four sub-sprint sessions: 19-CI, 19-BACKEND, 19-FRONTEND, 19-SMOKE)
 
 ---
 
@@ -1210,16 +1210,52 @@ AT THE END OF THIS SESSION:
 
 ---
 
-## SPRINT 19 STARTING PROMPT
+## SPRINT 19 — split into four starting prompts
+
+Sprint 19 (Deployment & CI/CD) is broken into four sub-sprints, each its own session, because of a real dependency chain: CI/CD has no dependency on either deploy; the frontend's final config needs the backend's live URL; the backend's CORS needs the frontend's live URL back; the smoke test needs both live. Run in this order: **19-CI** (anytime) → **19-BACKEND** → **19-FRONTEND** → **19-SMOKE**. See `ImplementationPlan.md`'s Sprint 19 section for full task detail and the Render fallback.
+
+---
+
+## SPRINT 19-CI STARTING PROMPT
 
 ```
 You are Claude Code continuing work on the Mutual Fund Advisor Intelligence Suite.
 
-READ FIRST: ImplementationPlan.md — Sprints 1–18 Handover Notes, then Sprint 19 specification.
+READ FIRST: ImplementationPlan.md — Sprints 1–18 Handover Notes, then the Sprint 19 / SPRINT 19-CI specification.
 
-SPRINT 19 GOAL: Deploy the frontend to Vercel and backend to Railway, configure production environment variables, switch to PostgreSQL, set up CI/CD on GitHub Actions, and verify the production deployment end-to-end.
+SPRINT 19-CI GOAL: Set up GitHub Actions CI/CD — lint, typecheck, and tests on every PR; deploy-hook triggers on merge to main.
 
-CONTEXT: The application is complete and tested. This sprint is deployment only — no feature changes.
+CONTEXT: This sub-sprint has no dependency on the backend or frontend deployments existing yet — it can run before, after, or in parallel with them. No feature changes.
+
+WHAT TO DO:
+
+1. GitHub Actions CI/CD (.github/workflows/ci.yml):
+   On PR to main:
+   - Frontend: npm ci, npm run build, npm run typecheck (tsc --noEmit)
+   - Backend: pip install -r requirements-dev.txt, ruff check ., mypy app/, pytest tests/ -v --tb=short
+   On merge to main:
+   - Railway: add Railway deploy hook URL as GitHub secret RAILWAY_DEPLOY_HOOK, curl the webhook (use a placeholder secret if 19-BACKEND hasn't run yet — note this in Handover Notes so it gets confirmed later)
+   - Vercel: deploys automatically via git integration (no extra step needed)
+
+AT THE END OF THIS SESSION:
+1. Open TEST_CASES.md and run TC-19.7 (GitHub Actions CI run passes: lint, typecheck, full test suite all green). Record PASS/FAIL/BLOCKED.
+2. Report a one-line summary, e.g. "TC-19.7 passed" or "TC-19.7 failed: [reason]".
+3. Mark SPRINT 19-CI COMPLETED in ImplementationPlan.md.
+4. Fill SPRINT 19-CI Handover Notes with: whether the deploy-hook secrets are real or placeholder (and which sub-sprint needs to confirm them).
+```
+
+---
+
+## SPRINT 19-BACKEND STARTING PROMPT
+
+```
+You are Claude Code continuing work on the Mutual Fund Advisor Intelligence Suite.
+
+READ FIRST: ImplementationPlan.md — Sprints 1–18 Handover Notes, then the Sprint 19 / SPRINT 19-BACKEND specification.
+
+SPRINT 19-BACKEND GOAL: Deploy the backend to Railway (or Render, see fallback in ImplementationPlan.md), switch to PostgreSQL, and verify it's live.
+
+CONTEXT: This sub-sprint has no dependency on the frontend deployment. SPRINT 19-FRONTEND depends on this sub-sprint's output (the production backend URL), so the Handover Notes for this session must record it clearly.
 
 WHAT TO DO:
 
@@ -1231,53 +1267,93 @@ WHAT TO DO:
    b. Add Railway PostgreSQL add-on, note the DATABASE_URL connection string
    c. In Railway environment variables: set all variables from .env.example with production values
       - DATABASE_URL: Railway PostgreSQL URL (starts with postgresql+asyncpg://)
-      - FRONTEND_URL: Vercel production URL (set after Vercel deploy — update CORS)
       - All API keys: ANTHROPIC, OPENAI, PINECONE, SENDGRID, ELEVENLABS
       - SECRET_KEY: generate with `openssl rand -hex 32`
       - PRODUCT_TEAM_EMAIL: team email for Pulse delivery
+      - Leave FRONTEND_URL unset or pointed at localhost for now — SPRINT 19-FRONTEND will update it once the real Vercel URL exists
    d. Update alembic/env.py: ensure it works with asyncpg PostgreSQL URL
    e. Run migration in Railway: `railway run alembic upgrade head`
    f. Verify all tables created: check Railway PostgreSQL dashboard
    g. Verify /health endpoint on Railway URL returns {"status": "ok"}
+   h. Note the Railway deploy hook URL for SPRINT 19-CI to confirm against its placeholder secret
 
-3. Vercel deployment:
+If using the Render fallback instead (see ImplementationPlan.md's Sprint 19-BACKEND "Alternative: Render" section), substitute Render's web service + free Postgres steps for 2a-2g above; everything else is unchanged.
+
+AT THE END OF THIS SESSION:
+1. Open TEST_CASES.md and run TC-19.2 (GET /health returns 200) and TC-19.3 (Alembic migrations apply cleanly). Record PASS/FAIL/BLOCKED for each.
+2. Report a one-line summary, e.g. "2/2 passed" or "TC-19.3 failed: [reason]".
+3. Mark SPRINT 19-BACKEND COMPLETED in ImplementationPlan.md.
+4. Fill SPRINT 19-BACKEND Handover Notes with: the production backend URL (Railway or Render), confirmation all 10 tables migrated, the deploy hook URL, any deployment issues encountered. SPRINT 19-FRONTEND cannot start without the URL recorded here.
+```
+
+---
+
+## SPRINT 19-FRONTEND STARTING PROMPT
+
+```
+You are Claude Code continuing work on the Mutual Fund Advisor Intelligence Suite.
+
+READ FIRST: ImplementationPlan.md — Sprints 1–18 Handover Notes, then the Sprint 19 / SPRINT 19-FRONTEND specification. SPRINT 19-BACKEND Handover Notes have the production backend URL this sub-sprint needs.
+
+SPRINT 19-FRONTEND GOAL: Deploy the frontend to Vercel, point it at the live backend, and close the CORS loop back on the backend.
+
+CONTEXT: Requires SPRINT 19-BACKEND to be complete — this sub-sprint cannot start without a real backend URL. Do not proceed if SPRINT 19-BACKEND's Handover Notes don't have one.
+
+WHAT TO DO:
+
+1. Vercel deployment:
    a. Create vercel.json in frontend/ directory:
-      {"rewrites": [{"source": "/api/:path*", "destination": "https://[RAILWAY_URL]/api/:path*"}]}
-      Replace [RAILWAY_URL] with actual Railway deployment URL
+      {"rewrites": [{"source": "/api/:path*", "destination": "https://[BACKEND_URL]/api/:path*"}]}
+      Replace [BACKEND_URL] with the real URL from SPRINT 19-BACKEND's Handover Notes
    b. Connect Vercel to GitHub repo, set Root Directory: frontend
-   c. Add Vercel environment variable: VITE_API_BASE_URL = Railway backend URL
+   c. Add Vercel environment variable: VITE_API_BASE_URL = backend URL
    d. Update frontend/src/services/api.ts to use import.meta.env.VITE_API_BASE_URL if set
    e. Deploy to Vercel
    f. Verify home page loads on Vercel production URL
 
-4. Update backend CORS:
-   In app/main.py, update CORS origins to include Vercel production URL (in addition to localhost)
+2. Close the CORS loop on the backend:
+   In app/main.py, update CORS origins to include the new Vercel production URL (in addition to localhost) — this is the follow-up SPRINT 19-BACKEND deferred. Redeploy the backend if needed for this to take effect.
 
-5. Re-ingest corpus on production:
+3. Re-ingest corpus on production (only if needed):
    Run corpus ingestion scripts against production Pinecone index (if using same index: nothing to do. If new production index: run python ingest_corpus.py --source scheme_docs + --source regulatory)
 
-6. GitHub Actions CI/CD update (.github/workflows/ci.yml):
-   On PR to main: 
-   - Frontend: npm ci, npm run build, npm run typecheck (tsc --noEmit)
-   - Backend: pip install -r requirements-dev.txt, ruff check ., mypy app/, pytest tests/ -v --tb=short
-   On merge to main:
-   - Railway: add Railway deploy hook URL as GitHub secret RAILWAY_DEPLOY_HOOK, curl the webhook
-   - Vercel: deploys automatically via git integration (no extra step needed)
+4. Confirm the Vercel deploy hook for SPRINT 19-CI's merge-to-main automation (deploys automatically via git integration — verify it actually fired on this deploy).
 
-7. Production smoke test (run in browser on production URLs):
+AT THE END OF THIS SESSION:
+1. Open TEST_CASES.md and run TC-19.1 (Vercel deployment builds and is reachable). Record PASS/FAIL/BLOCKED.
+2. Confirm a request from the live frontend actually reaches the live backend (not just that both load independently) — this is the CORS check.
+3. Report a one-line summary, e.g. "TC-19.1 passed, CORS confirmed both ways".
+4. Mark SPRINT 19-FRONTEND COMPLETED in ImplementationPlan.md.
+5. Fill SPRINT 19-FRONTEND Handover Notes with: the production frontend URL, confirmation CORS works both ways, any deployment issues encountered. SPRINT 19-SMOKE cannot start without both this and SPRINT 19-BACKEND's URLs recorded.
+```
+
+---
+
+## SPRINT 19-SMOKE STARTING PROMPT
+
+```
+You are Claude Code continuing work on the Mutual Fund Advisor Intelligence Suite.
+
+READ FIRST: ImplementationPlan.md — Sprints 1–18 Handover Notes, then the Sprint 19 / SPRINT 19-SMOKE specification. SPRINT 19-BACKEND and SPRINT 19-FRONTEND Handover Notes have the production URLs this sub-sprint needs.
+
+SPRINT 19-SMOKE GOAL: Verify the production deployment works end-to-end — this is the final infrastructure gate before Sprint 20.
+
+CONTEXT: Requires both SPRINT 19-BACKEND and SPRINT 19-FRONTEND complete and pointed at each other. No feature changes — verification only.
+
+WHAT TO DO:
+
+1. Production smoke test (run in browser on production URLs):
    a. Home page loads on Vercel URL
    b. Navigate to FAQ Centre, search "What is the exit load for Parag Parikh Flexi Cap Fund?" — answer appears with source badge and disclaimer
    c. Navigate to /advisor/login, enter a seeded advisor email, receive OTP email from SendGrid
-   d. Check Railway logs: verify APScheduler registered the Monday 9AM Pulse job
+   d. Check backend logs: verify APScheduler registered the Monday 9AM Pulse job
 
 AT THE END OF THIS SESSION:
-1. Record production URLs (Vercel + Railway) in Sprint 19 Handover Notes
-2. Record all environment variables set (keys only, not values) in Handover Notes
-3. Verify production smoke test passes before marking complete
-4. Open TEST_CASES.md and run every test case under "SPRINT 19" (TC-19.1 through TC-19.7). Record PASS/FAIL/BLOCKED for each in that section's Sprint Test Log table.
-5. Report a one-line summary, e.g. "7/7 passed" or "5/7 passed — TC-19.4 and TC-19.5 failed: [reason]". This is the final infrastructure gate before the acceptance-criteria sprint — do not mark complete if any test fails.
-6. Mark Sprint 19 COMPLETED in ImplementationPlan.md
-7. Fill Sprint 19 Handover Notes with: production URLs, migration confirmation, any deployment issues encountered
+1. Record production URLs (Vercel + backend) in SPRINT 19-SMOKE Handover Notes
+2. Open TEST_CASES.md and run TC-19.4, TC-19.5, TC-19.6. Record PASS/FAIL/BLOCKED for each.
+3. Report a one-line summary, e.g. "3/3 passed" or "2/3 passed — TC-19.5 failed: [reason]". This is the final infrastructure gate before the acceptance-criteria sprint — do not mark complete if any test fails.
+4. Mark SPRINT 19-SMOKE COMPLETED in ImplementationPlan.md.
+5. Fill SPRINT 19-SMOKE Handover Notes with: production URLs, smoke test results, any deployment issues encountered. Sprint 20 cannot start without this sub-sprint complete.
 ```
 
 ---
@@ -1287,11 +1363,11 @@ AT THE END OF THIS SESSION:
 ```
 You are Claude Code completing the final sprint of the Mutual Fund Advisor Intelligence Suite.
 
-READ FIRST: ImplementationPlan.md — ALL previous Handover Notes (1–19), then Sprint 20 specification. Sprint 19 Handover Notes have the production URLs.
+READ FIRST: ImplementationPlan.md — ALL previous Handover Notes (1–19, including all four Sprint 19 sub-sprints: 19-CI, 19-BACKEND, 19-FRONTEND, 19-SMOKE), then Sprint 20 specification. SPRINT 19-SMOKE Handover Notes have the production URLs.
 
 SPRINT 20 GOAL: Systematically verify every acceptance criterion from PRD §12 against the production deployment. Fix any remaining gaps. Produce the final updated ImplementationPlan.md.
 
-CONTEXT: The platform is deployed to production (URLs in Sprint 19 Handover Notes). All 7 features are built. This is the final verification session.
+CONTEXT: The platform is deployed to production (URLs in SPRINT 19-SMOKE Handover Notes). All 7 features are built. This is the final verification session.
 
 WHAT TO DO — verify each AC checkbox against production:
 

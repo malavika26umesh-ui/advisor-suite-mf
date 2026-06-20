@@ -1,6 +1,4 @@
 from datetime import datetime, timedelta
-from sqlalchemy.orm import Session
-from typing import Optional
 
 from app.services.rag.corpus_check import CorpusChecker
 from app.services.triage.classifier import TriageClassifier

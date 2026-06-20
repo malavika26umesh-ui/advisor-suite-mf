@@ -1,0 +1,7 @@
+[lint.per-file-ignores]
+# Tests intentionally set env vars / monkeypatch settings before importing app.main,
+# so the import can't be moved to the top of the file.
+"tests/*.py" = ["E402"]
+# Standalone scripts call load_dotenv() before importing modules that read env vars
+# at import time, so the import can't be moved to the top of the file.
+"corpus/scripts/*.py" = ["E402"]

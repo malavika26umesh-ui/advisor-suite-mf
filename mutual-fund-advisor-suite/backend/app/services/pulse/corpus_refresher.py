@@ -1,6 +1,6 @@
 import json
 from datetime import date
-from typing import List, Optional
+from typing import List
 
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_groq import ChatGroq

@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
-from app.models.scheduler_models import AdvisorSlot, Booking, Advisor
+from app.models.scheduler_models import AdvisorSlot, Booking
 from datetime import datetime, timedelta
 
 class SlotManager:
@@ -13,7 +13,7 @@ class SlotManager:
         result = await session.execute(
             select(AdvisorSlot)
             .options(selectinload(AdvisorSlot.advisor))
-            .where(AdvisorSlot.is_blocked == False)
+            .where(AdvisorSlot.is_blocked.is_(False))
             .where(AdvisorSlot.start_time > now)
             .where(AdvisorSlot.start_time <= max_time)
             .order_by(AdvisorSlot.start_time.asc())

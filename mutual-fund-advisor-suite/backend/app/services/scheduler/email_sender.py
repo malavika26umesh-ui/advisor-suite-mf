@@ -1,4 +1,3 @@
-import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from app.models.scheduler_models import Booking

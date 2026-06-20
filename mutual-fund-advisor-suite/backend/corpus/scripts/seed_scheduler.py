@@ -6,9 +6,8 @@ from datetime import datetime, timedelta
 # Add backend directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from app.core.database import async_session_maker, engine
+from app.core.database import async_session_maker
 from app.models.scheduler_models import Advisor, AdvisorSlot
 
 async def seed_scheduler():

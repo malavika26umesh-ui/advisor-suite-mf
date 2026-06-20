@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm install
+      - run: npm ci
       - run: npm run build
       - run: npm run typecheck
 
@@ -32,4 +32,26 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt -r requirements-dev.txt
-      - run: pytest tests/ -v
+      - run: ruff check .
+      - name: mypy (non-blocking)
+        # 127 pre-existing errors stem from the models layer using old-style SQLAlchemy
+        # Column() declarations instead of Mapped[]/mapped_column() typed declarative
+        # style. Fixing that is a structural model migration across every app/models/*.py
+        # file, out of scope for a CI/CD-only sprint. Kept as a visible, non-blocking
+        # signal rather than silently dropped — see Sprint 19-CI Handover Notes.
+        run: mypy app/ || true
+      - run: pytest tests/ -v --tb=short
+
+  deploy:
+    needs: [frontend, backend]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Railway deploy hook
+        # Vercel deploys automatically via its GitHub git integration — no step needed here.
+        # RAILWAY_DEPLOY_HOOK is set as a GitHub secret once Sprint 19-BACKEND creates the
+        # Railway project and generates the real hook URL (placeholder/unset until then).
+        if: env.RAILWAY_DEPLOY_HOOK != ''
+        env:
+          RAILWAY_DEPLOY_HOOK: ${{ secrets.RAILWAY_DEPLOY_HOOK }}
+        run: curl -fsSL -X POST "$RAILWAY_DEPLOY_HOOK"

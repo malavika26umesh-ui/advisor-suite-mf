@@ -1,6 +1,5 @@
-import os
 import json
-from typing import List, Dict, Any, Tuple
+from typing import List, Any
 from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage, HumanMessage, ToolMessage
 from app.models.faq_schemas import FAQAnswer

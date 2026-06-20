@@ -1,4 +1,3 @@
-import os
 from pydantic import BaseModel
 from pinecone import Pinecone
 from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings

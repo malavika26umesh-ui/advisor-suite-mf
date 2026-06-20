@@ -21,7 +21,7 @@ class AdvisorAuth:
 
     async def request_otp(self, email: str) -> bool:
         # Check if advisor exists
-        result = await self.db.execute(select(Advisor).where(Advisor.email == email, Advisor.is_active == True))
+        result = await self.db.execute(select(Advisor).where(Advisor.email == email, Advisor.is_active.is_(True)))
         advisor = result.scalars().first()
         if not advisor:
             return False
@@ -50,7 +50,7 @@ class AdvisorAuth:
         # get latest unused OTP
         result = await self.db.execute(
             select(OTPStore)
-            .where(OTPStore.email == email, OTPStore.used == False, OTPStore.expires_at > datetime.utcnow())
+            .where(OTPStore.email == email, OTPStore.used.is_(False), OTPStore.expires_at > datetime.utcnow())
             .order_by(OTPStore.id.desc())
         )
         otp_record = result.scalars().first()
@@ -77,7 +77,7 @@ class AdvisorAuth:
             email = payload.get("sub")
             if not email:
                 return None
-            result = await self.db.execute(select(Advisor).where(Advisor.email == email, Advisor.is_active == True))
+            result = await self.db.execute(select(Advisor).where(Advisor.email == email, Advisor.is_active.is_(True)))
             return result.scalars().first()
         except jwt.PyJWTError:
             return None

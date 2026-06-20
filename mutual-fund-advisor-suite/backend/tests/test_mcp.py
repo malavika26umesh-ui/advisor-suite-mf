@@ -1,10 +1,7 @@
 import pytest
-from httpx import AsyncClient
-from datetime import datetime
 
 from app.main import app
 from app.services.mcp.queue_manager import MCPQueueManager, MCPPIIError
-from app.models.db_models import MCPActionLog
 from app.core.database import async_session_maker
 
 @pytest.mark.asyncio

@@ -2,7 +2,6 @@ import random
 import string
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import update
 from app.models.scheduler_models import Booking
 from app.core.security import hash_email, encrypt_data
 from datetime import datetime, timedelta, date

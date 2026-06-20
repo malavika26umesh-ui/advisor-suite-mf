@@ -9,7 +9,6 @@ from app.core.database import get_db
 from app.models.scheduler_models import Advisor
 from app.services.advisor.auth import get_current_advisor
 from app.services.mcp.queue_manager import MCPQueueManager
-from app.services.mcp.tools import DocAppendTool, CalendarHoldCreatorTool, EmailDraftGeneratorTool
 
 router = APIRouter(prefix="/api/mcp", tags=["mcp"])
 

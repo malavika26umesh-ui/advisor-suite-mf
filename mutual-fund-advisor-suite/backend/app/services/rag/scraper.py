@@ -17,9 +17,9 @@ def scrape_varsity(search_query: str) -> str:
         links = soup.select("a")
         # Find the first valid chapter link
         article_url = None
-        for l in links:
-            if "href" in l.attrs and "/chapter/" in l["href"]:
-                article_url = l["href"]
+        for link in links:
+            if "href" in link.attrs and "/chapter/" in link["href"]:
+                article_url = link["href"]
                 break
         
         if not article_url:

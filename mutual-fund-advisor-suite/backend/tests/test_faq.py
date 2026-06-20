@@ -22,8 +22,12 @@ def override_get_db():
     finally:
         db.close()
 
-app.dependency_overrides[get_db] = override_get_db
 client = TestClient(app)
+
+def setup_module(module):
+    # Deferred to test-run time (not import time) so this sync override doesn't leak
+    # into other test files during pytest's collection phase, before their own tests run.
+    app.dependency_overrides[get_db] = override_get_db
 
 def test_tc_7_1_and_7_2_exit_load_answered():
     session_id = str(uuid.uuid4())
@@ -117,7 +121,7 @@ def test_tc_7_8_ambiguous_scheme():
     assert res.status_code == 200
     data = res.json()
     if data.get("answer") and data["answer"].get("clarification_question"):
-        assert type(data["answer"]["clarification_question"]) == str
+        assert isinstance(data["answer"]["clarification_question"], str)
 
 def test_tc_7_9_session_faq_log_created():
     session_id = str(uuid.uuid4())
@@ -134,3 +138,10 @@ def test_tc_7_10_covered_schemes():
     assert res.status_code == 200
     data = res.json()
     assert len(data) == 20
+
+def teardown_module(module):
+    # This module overrides the real async get_db with a sync sqlite session at import
+    # time; without removing it, every test file collected afterward in the same pytest
+    # run inherits the sync override and fails with "object ChunkedIteratorResult can't
+    # be used in 'await' expression".
+    app.dependency_overrides.pop(get_db, None)

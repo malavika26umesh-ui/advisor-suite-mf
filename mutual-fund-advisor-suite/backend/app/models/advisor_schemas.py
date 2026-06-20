@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List
-from datetime import datetime, date
+from datetime import datetime
 
 class OTPRequest(BaseModel):
     email: EmailStr
