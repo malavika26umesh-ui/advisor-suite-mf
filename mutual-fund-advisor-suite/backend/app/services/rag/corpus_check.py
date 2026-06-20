@@ -21,25 +21,21 @@ class CorpusChecker:
                 if alias.lower() in query_lower:
                     return True, None
 
-        # Check for generic out of scope scheme names.
-        # specifically if it says "fund" but we didn't match an in-scope scheme.
-        match = re.search(r'([a-z]+\s+[a-z]+\s+(?:fund|scheme))', query_lower)
+        # Check for a generic (non-Top-20) scheme name by looking for a run of
+        # Title-Case words ending in "Fund"/"Scheme" in the ORIGINAL (not
+        # lowercased) query. This both (a) captures the full scheme name instead
+        # of just the last two words before "fund" — the previous regex truncated
+        # "Franklin India Bluechip Fund" down to "India Bluechip Fund" — and
+        # (b) avoids a real false-positive the old substring-based generic-term
+        # filter had: "a fund" matches as a literal substring of "...ia fund"
+        # (e.g. "India Fund"), which silently misclassified schemes like "Tata
+        # Digital India Fund" as a generic phrase and let them through as
+        # in-scope. Genuinely generic phrasing ("the fund", "my fund", "a fund")
+        # is lowercase and simply won't match a Title-Case pattern, so no
+        # explicit generic-term denylist is needed at all.
+        match = re.search(r'((?:[A-Z][a-zA-Z&]*\s+){1,5}(?:Fund|Scheme))\b', query)
         if match:
             extracted = match.group(1).strip()
-            generic_terms = [
-                "mutual fund", "flexi cap fund", "index fund", "elss fund", 
-                "liquid fund", "debt fund", "equity fund", "the fund", "a fund", 
-                "this fund", "that fund", "best fund", "good fund", "any fund", 
-                "which fund", "my fund"
-            ]
-            
-            is_generic = False
-            for term in generic_terms:
-                if term in extracted:
-                    is_generic = True
-                    break
-                    
-            if not is_generic:
-                return False, extracted.title()
-                
+            return False, extracted
+
         return True, None

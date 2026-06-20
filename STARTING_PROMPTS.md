@@ -1377,5 +1377,122 @@ DEFINITION OF DONE: All PRD §12 ACs pass (or are documented as known limitation
 
 ---
 
+## SPRINT 21 STARTING PROMPT
+
+```
+You are Claude Code continuing work on the Mutual Fund Advisor Intelligence Suite.
+
+READ FIRST: ImplementationPlan.md — ALL previous Handover Notes (1–20), then Sprint 21 specification.
+Sprint 11 Handover Notes have the PIIGuard implementation. Sprint 13 has the advisor auth middleware. Sprint 15 has the Pulse API (run_weekly_pulse). Sprint 14 has the DashboardLayout sidebar.
+
+SPRINT 21 GOAL: Build the complete F8 MCP Orchestration & Approval Centre — three required MCP tools (Doc Append, Calendar Hold Creator, Email Draft Generator), the mcp_action_log table, the backend approval API, and the Approval Centre frontend page in the Advisor Dashboard. Every MCP action must be queued as "pending" and require explicit advisor approval before executing.
+
+CONTEXT: This sprint satisfies the capstone requirement of demonstrating ≥3 MCP tool calls with a visible human-approval step. All trigger points wire into existing services (BookingService, run_weekly_pulse, BriefBuilder). No new user-facing flows — this is advisor-side tooling only.
+
+WHAT TO BUILD:
+
+1. app/models/db_models.py — add MCPActionLog model:
+   Fields: id, tool_name (str), status (pending/approved/rejected), inputs_json (str), output_json (str|None), triggered_at, resolved_at, resolved_by, booking_id (FK nullable), pulse_report_id (FK nullable)
+   Alembic migration: alembic revision --autogenerate -m "add_mcp_action_log"
+
+2. app/services/mcp/tools.py — three MCP tool classes:
+   MCPToolBase: name, description, input_schema (JSON Schema dict), output_schema (JSON Schema dict), validate_inputs(), run()
+   DocAppendTool:
+     Inputs: date(str), booking_code(str|None), top_themes(list[str]), pulse_snippet(str), fee_explainer_summary(str)
+     Output: {appended: true, log_entry_id: str, target: "local"}
+     v1 behaviour: appends JSON entry to backend/mcp_shared_log.json (create if absent)
+   CalendarHoldCreatorTool:
+     Inputs: topic_category(str), slot_datetime(str ISO8601), booking_code(str)
+     Output: {event_title: str, start: str, end: str, duration_minutes: 30, status: "tentative", event_id: str}
+     event_title format: "[HOLD] Advisor Call — {booking_code} — {topic_category}"
+     v1 behaviour: generates mock event object (no real calendar API call)
+   EmailDraftGeneratorTool:
+     Inputs: advisor_name(str), advisor_email(str), pulse_snippet(str), booking_code(str), investor_context(str|None)
+     Output: {subject: str, body: str, to: str, cc: null}
+     Subject: "Pre-meeting brief: {booking_code}"
+     Body: advisor greeting + Pulse market context snippet + investor topic + Booking Code reminder + advisor referral disclaimer
+     v1 behaviour on approval: send via EmailSender.send_advisor_pre_meeting_draft() — NEVER auto-sends
+
+3. app/services/mcp/queue_manager.py — MCPQueueManager:
+   queue_action(tool_name, inputs, booking_id=None, pulse_report_id=None) → MCPActionLog
+     - Looks up tool in TOOL_REGISTRY, validates inputs against tool.input_schema
+     - Runs PIIGuard.detect_pii() on JSON-serialised inputs — raises MCPPIIError if PII found
+     - Creates MCPActionLog row with status="pending"
+   approve_action(action_id, resolved_by) → MCPActionLog
+     - Sets status="approved", resolved_at=now(), resolved_by
+     - Calls MCPExecutor.execute(action), stores output in output_json
+     - Raises 409 if action already approved or rejected
+   reject_action(action_id, resolved_by) → MCPActionLog
+     - Sets status="rejected", resolved_at=now(), resolved_by — no execution
+   get_pending_actions() → list[MCPActionLog]
+   get_action_history(limit=50) → list[MCPActionLog]
+
+4. app/services/mcp/executor.py — MCPExecutor:
+   TOOL_REGISTRY = {"doc_append": DocAppendTool(), "calendar_hold_creator": CalendarHoldCreatorTool(), "email_draft_generator": EmailDraftGeneratorTool()}
+   execute(action: MCPActionLog) → dict: calls tool.run(json.loads(action.inputs_json))
+
+5. Trigger points — wire into existing services:
+   a. BookingService.create_booking() (Sprint 11): after booking saved, call:
+      mcp_queue.queue_action("calendar_hold_creator", {...}, booking_id=booking.id)
+      mcp_queue.queue_action("doc_append", {...}, booking_id=booking.id)
+      (Use try/except — if queuing fails, log warning but do NOT fail the booking)
+   b. run_weekly_pulse() (Sprint 15, pulse/scheduler.py): after pulse saved, call:
+      mcp_queue.queue_action("doc_append", {...}, pulse_report_id=report.id)
+   c. GET /api/advisor/meetings/{id}/brief route (Sprint 13): after brief assembled, call:
+      mcp_queue.queue_action("email_draft_generator", {...}, booking_id=booking.id)
+      (Only queue if no email_draft_generator action already pending for this booking_id)
+
+6. app/api/routes/mcp.py — all routes require get_current_advisor dependency:
+   GET  /api/mcp/pending              → list[MCPActionLogItem]
+   GET  /api/mcp/history              → list[MCPActionLogItem]
+   POST /api/mcp/actions/{id}/approve → MCPActionLogItem
+   POST /api/mcp/actions/{id}/reject  → MCPActionLogItem
+   GET  /api/mcp/tools                → list[ToolSchema] (public — no auth)
+   MCPActionLogItem response: {id, tool_name, status, inputs (dict, not string), output (dict|null), triggered_at, resolved_at, resolved_by, booking_code (from booking join, nullable)}
+
+7. frontend/src/services/mcp.service.ts — typed API client:
+   getPendingActions(), getHistory(), approveAction(id), rejectAction(id), getToolSchemas()
+   Types: MCPActionLogItem, ToolSchema
+
+8. frontend/src/pages/AdvisorApprovalCentre.tsx — Approval Centre page:
+   - Add to DashboardLayout sidebar: "Approval Centre" nav item with red badge showing pending count
+   - Pending Actions tab (default view):
+     Fetches GET /api/mcp/pending on mount; polls every 30s
+     Empty state: "No pending actions. All MCP actions have been reviewed." (light gray, check icon)
+     One card per pending action:
+       - Header row: colour-coded tool chip (Doc Append = teal, Calendar Hold = navy, Email Draft = saffron) + Status: PENDING pill + trigger time ("X min ago")
+       - Booking Code monospace (if applicable) — OR "Pulse Report" if pulse-triggered
+       - Action summary line (1 sentence describing what will happen on approval)
+       - [View Details ▼] toggle — reveals full inputs as readable key-value pairs (label: value, not raw JSON)
+       - [Reject] outlined gray button → opens modal: "Are you sure? This MCP action will not execute." with Cancel / Confirm Reject
+       - [✓ Approve] filled saffron primary button → calls approveAction, shows spinner, card moves to History on success
+   - History tab:
+     Fetches GET /api/mcp/history
+     Status badges: approved (green), rejected (red)
+     Approved cards: expandable to show output details
+     Empty state for history: "No past actions yet."
+   - Notification badge: fetches pending count every 30s, shows on sidebar nav item
+
+9. tests/test_mcp.py — ALL must pass:
+   - queue "calendar_hold_creator" with valid inputs → status="pending", MCPActionLog row created, no execution
+   - queue "email_draft_generator" with PAN in inputs → MCPPIIError raised, no row created
+   - approve "calendar_hold_creator" → status="approved", output_json has {event_title, start, end, status: "tentative"}
+   - reject "doc_append" → status="rejected", output_json is None
+   - approve already-approved action → 409 Conflict
+   - GET /api/mcp/pending → returns only pending items (approved/rejected excluded)
+   - GET /api/mcp/tools → returns 3 items each with name, description, input_schema keys
+
+AT THE END OF THIS SESSION:
+1. Complete the demo scenario: create a test booking → verify 2 MCP actions queued (calendar_hold + doc_append). Trigger pulse → verify doc_append queued. Open brief → verify email_draft queued. Open Approval Centre → confirm all 3 simultaneously visible as pending.
+2. Approve all 3 one by one → verify output_json populated for each, moved to History tab.
+3. Run pytest tests/test_mcp.py — all 7 tests must pass.
+4. Open TEST_CASES.md and run every test case under "SPRINT 21" (TC-21.1 through TC-21.9). Record PASS/FAIL/BLOCKED for each in that section's Sprint Test Log table.
+5. Report a one-line summary, e.g. "9/9 passed" or "7/9 passed — TC-21.4 and TC-21.7 failed: [reason]". TC-21.5 (no auto-send on email draft) and TC-21.6 (no PII in any MCP input) are P0 — do not close the sprint if either fails.
+6. Mark Sprint 21 COMPLETED in ImplementationPlan.md
+7. Fill Sprint 21 Handover Notes with: how trigger points were wired without breaking existing services, mcp_shared_log.json location, any 409 conflict edge cases encountered
+```
+
+---
+
 *End of STARTING_PROMPTS.md*  
-*Total sessions: 20 | Each session is a complete, self-contained Claude Code context*
+*Total sessions: 21 | Each session is a complete, self-contained Claude Code context*

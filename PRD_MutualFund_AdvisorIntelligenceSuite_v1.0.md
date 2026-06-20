@@ -31,6 +31,7 @@
    - 8.5 Voice Appointment Scheduler
    - 8.6 Advisor Dashboard & Pre-Meeting Brief
    - 8.7 Product Pulse
+   - 8.8 MCP Orchestration & Approval Centre
 9. [Data Sources & Corpus](#9-data-sources--corpus)
 10. [User Flows & Journeys](#10-user-flows--journeys)
 11. [Success Metrics & KPIs](#11-success-metrics--kpis)
@@ -48,11 +49,12 @@ The **Mutual Fund Advisor Intelligence Suite** is an AI-powered web platform for
 
 The platform solves two interconnected problems: investors cannot easily access clear, factual information about mutual funds; and advisors are overwhelmed by query volume while lacking the tools to contextualise individual client sessions.
 
-The platform consists of seven features across three functional pillars:
+The platform consists of eight features across four functional pillars:
 
 - **Information Pillar** — Guided Query Builder, FAQ Centre, Asset Discovery & Education Hub
 - **Operations Pillar** — Triage & Routing Engine, Voice Appointment Scheduler, Advisor Dashboard & Pre-Meeting Brief
 - **Intelligence Pillar** — Product Pulse
+- **Orchestration Pillar** — MCP Orchestration & Approval Centre
 
 All features comply strictly with SEBI and AMFI guidelines. The platform provides **factual information only** — it never constitutes investment advice. Personalised advice is the exclusive domain of the SEBI-registered advisors operating through the platform.
 
@@ -279,6 +281,7 @@ The platform is structured around **three functional pillars**, with each pillar
 | F5 | Voice Appointment Scheduler | Operations | Investor |
 | F6 | Advisor Dashboard & Pre-Meeting Brief | Operations | Advisor |
 | F7 | Product Pulse | Intelligence | Advisor / Product Team |
+| F8 | MCP Orchestration & Approval Centre | Orchestration | Advisor / Platform Admin |
 
 ### Scope Note: Corpus Boundary for v1
 
@@ -681,6 +684,93 @@ No PII enters the Pulse pipeline. All data is aggregated and anonymised at inges
 
 ---
 
+### F8 — MCP Orchestration & Approval Centre
+
+#### Purpose
+Implements the Model Context Protocol (MCP) orchestration layer that logs platform outputs to a shared document, creates tentative advisor calendar holds, and drafts pre-meeting advisor emails — all gated behind a visible human-approval step. This feature fulfils the capstone requirement to demonstrate at least three MCP tool calls in the orchestration layer, with the Approval Centre serving as the human-in-the-loop control surface.
+
+**Every MCP action is queued as a pending item and must be explicitly approved or rejected by an authorised user (advisor or platform admin) before it executes.** No MCP action auto-executes on creation.
+
+#### Required MCP Tools
+
+| Tool | Inputs | Output | Notes |
+|---|---|---|---|
+| **Doc Append** | `date`, `top_themes`, `pulse_snippet`, `fee_explainer_summary`, `booking_code` | Appended entry in the shared platform log document | Runs after a booking is confirmed and the Pulse is available |
+| **Calendar Hold Creator** | `topic_category`, `slot_datetime`, `booking_code` | Tentative calendar hold with Booking Code in the event title | Created when a booking is confirmed via F5; hold is tentative until approved |
+| **Email Draft Generator** | `advisor_details`, `pulse_snippet`, `booking_code`, `investor_context` | Draft pre-meeting email with Pulse market context — **no auto-send** | Draft only; advisor must review and approve before the email is sent |
+
+#### Approval Centre — UI
+
+The Approval Centre is a dedicated view accessible from the Advisor Dashboard sidebar. It displays all pending MCP actions (across all three tool types) in a queue with the following per-item controls:
+
+| Control | Behaviour |
+|---|---|
+| **Approve** | Executes the MCP action immediately; marks item as `approved` in the log |
+| **Reject** | Cancels the pending action; marks item as `rejected`; no MCP call is made |
+| **View Details** | Expands the item to show full inputs and the expected output before deciding |
+
+**Approval Centre Card Layout (per pending item):**
+```
+┌─────────────────────────────────────────────────────┐
+│  🔔 [MCP Tool Name]           Status: PENDING        │
+│  Booking Code: MF-K4R2        Triggered: 2 min ago   │
+├─────────────────────────────────────────────────────┤
+│  Topic: Exit load on debt fund                       │
+│  Slot: Friday 3:00 PM                                │
+│  Action: Create tentative calendar hold              │
+├─────────────────────────────────────────────────────┤
+│  [View Details ▼]    [Reject]    [✓ Approve]         │
+└─────────────────────────────────────────────────────┘
+```
+
+#### MCP Action Trigger Points
+
+| Trigger Event | MCP Actions Queued |
+|---|---|
+| Booking confirmed (F5 Step 6) | Calendar Hold Creator + Doc Append |
+| Pulse generated (F7 Monday 9AM) | Doc Append (with Pulse summary) |
+| Advisor opens Pre-Meeting Brief (F6) | Email Draft Generator |
+
+All three actions can therefore be pending simultaneously after a booking is confirmed and the Pulse has been generated — exactly the scenario demonstrated in the capstone demo.
+
+#### MCP Action Log
+
+Every MCP action (pending, approved, or rejected) is recorded in the `mcp_action_log` table:
+- `id`, `tool_name`, `status` (pending / approved / rejected), `inputs_json`, `output_json` (nullable), `triggered_at`, `resolved_at`, `resolved_by` (advisor ID or `admin`), `booking_id` (nullable FK)
+
+This log is auditable and displayed in the Approval Centre history view.
+
+#### MCP Tool Implementation Notes
+
+**Doc Append Tool:**
+- Target document: a shared Google Doc or Notion page (configurable via `MCP_DOC_APPEND_TARGET` env var)
+- For v1 (capstone): append to a local JSON file (`mcp_shared_log.json`) if no live document integration is configured — the tool schema and approval flow are identical regardless of the target
+- Entry format: `{date, booking_code, top_themes: [str], pulse_snippet: str, fee_explainer_summary: str}`
+
+**Calendar Hold Creator Tool:**
+- Creates a tentative (not confirmed) calendar event
+- For v1 (capstone): mock calendar output stored in `mcp_action_log.output_json` — the data structure matches what a real Google Calendar MCP tool would produce
+- Event title format: `[HOLD] Advisor Call — {booking_code} — {topic_category}`
+- Duration: 30 minutes (default advisor session length)
+
+**Email Draft Generator Tool:**
+- Generates a draft, never sends automatically
+- Draft structure: Subject: `Pre-meeting brief: {booking_code}`, Body: advisor greeting + Pulse market context snippet + investor topic + reminder of Booking Code
+- Draft stored in `mcp_action_log.output_json`; on approval, email is sent via SendGrid (same as F5 email sender)
+- The draft must reference the Pulse top theme as "market context" (not investor-specific data)
+
+#### Optional MCP Tools (Bonus — not required for v1)
+- **Slack / Teams Notification MCP** — sends a Slack message to the advisor's workspace when a new booking is confirmed
+- **Review Ingestion Automation MCP** — automates ingestion of new review CSV uploads into the Pulse pipeline
+
+#### Compliance Rules for MCP
+- No MCP action may include PII (PAN, Aadhaar, folio, account number) in its inputs or outputs
+- Email drafts must include the standard advisor referral disclaimer
+- No MCP action may constitute investment advice — drafts are pre-meeting logistics only
+- The Approval Centre must always show the full inputs of a pending action before the user can approve it (no blind approvals)
+
+---
+
 ## 9. Data Sources & Corpus
 
 ### Primary Sources (Mandatory — All FAQ and Education content must trace to these)
@@ -997,6 +1087,22 @@ FAQ Centre now returns improved exit load answer for all future queries
 - [ ] Corpus refresh is confirmed and versioned within 24 hours of Pulse delivery
 - [ ] Pulse is visible as a pinned card in Advisor Dashboard
 
+### F8 — MCP Orchestration & Approval Centre
+
+- [ ] All three required MCP tools (Doc Append, Calendar Hold Creator, Email Draft Generator) are implemented with correct input/output schemas
+- [ ] Booking confirmation (F5) automatically queues Calendar Hold Creator + Doc Append as pending MCP actions
+- [ ] Pulse generation (F7) automatically queues Doc Append as a pending MCP action
+- [ ] Advisor opening a Pre-Meeting Brief (F6) automatically queues Email Draft Generator as a pending MCP action
+- [ ] Approval Centre view is accessible from the Advisor Dashboard sidebar
+- [ ] Approval Centre displays all pending MCP actions with full input details visible before approving
+- [ ] Each pending item has Approve and Reject controls — no action auto-executes without approval
+- [ ] Approved actions execute and record their output in `mcp_action_log`
+- [ ] Rejected actions are logged as rejected with no execution
+- [ ] No MCP action input or output contains PII (PAN, Aadhaar, folio, account number)
+- [ ] Email Draft Generator produces a draft only — no auto-send under any circumstance
+- [ ] `mcp_action_log` table retains full audit trail (inputs, outputs, triggered_at, resolved_at, resolved_by)
+- [ ] At least 3 simultaneous pending MCP actions can be displayed in the Approval Centre (demo requirement)
+
 ---
 
 ## 13. Technical Constraints & Architecture Notes
@@ -1014,6 +1120,14 @@ FAQ Centre now returns improved exit load answer for all future queries
 - Voice STT: Whisper API
 - Voice TTS: ElevenLabs or Google Cloud TTS for agent voice output
 
+### MCP Orchestration Layer
+- MCP tools implemented as FastAPI service classes conforming to the Model Context Protocol tool schema
+- Three required tools: `doc_append`, `calendar_hold_creator`, `email_draft_generator`
+- All MCP calls are asynchronous and queued as pending actions in `mcp_action_log` before any execution
+- MCP tool execution is gated behind an approval step — no tool auto-executes on trigger
+- For v1 / capstone: Doc Append writes to a local `mcp_shared_log.json`; Calendar Hold stores a structured mock event in `mcp_action_log`; Email Draft is stored in `mcp_action_log` and sent via SendGrid only on approval
+- Tool schemas expose `name`, `description`, `input_schema` (JSON Schema), and `output_schema` — callable via the MCP protocol standard
+
 ### Data Pipeline
 - AMFI NAV data: Fetched nightly from amfiindia.com and mfapi.in
 - SID/KIM documents: PDF extraction pipeline; re-indexed weekly or on AMC update
@@ -1023,11 +1137,12 @@ FAQ Centre now returns improved exit load answer for all future queries
 ### Storage
 - No persistent investor data beyond: hashed email (for booking), session FAQ logs (7 days), booking records
 - Advisor data: email, OTP credentials, availability settings, meeting records
+- MCP data: `mcp_action_log` table — full audit trail retained indefinitely (small volume)
 - All storage India-resident (AWS Mumbai or Google Cloud Mumbai region) for data residency compliance
 
 ### Email
 - Transactional email: SendGrid or AWS SES
-- Uses: Booking confirmation, post-meeting feedback, advisor OTP, Pulse delivery
+- Uses: Booking confirmation, post-meeting feedback, advisor OTP, Pulse delivery, MCP email drafts (on approval)
 
 ### Deployment
 - Frontend: Vercel (or equivalent)
@@ -1153,5 +1268,5 @@ The illustrative list deliberately spans 7 equity categories (Large Cap, Flexi C
 
 ---
 
-*End of Document — Version 1.1 Draft (Updated: Scoped to Top 20 Schemes)*
+*End of Document — Version 1.2 Draft (Updated: Added F8 MCP Orchestration & Approval Centre)*
 *Next Review: [To be scheduled with Engineering, Design, and Compliance leads]*

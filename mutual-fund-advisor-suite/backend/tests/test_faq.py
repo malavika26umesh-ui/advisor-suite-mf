@@ -48,6 +48,31 @@ def test_tc_7_3_non_top_20():
     assert data["status"] == "out_of_scope"
     assert data["out_of_scope_scheme"] is not None
 
+# Sprint 17 — TC-17.9: 5 non-Top-20 schemes, all must return out_of_scope with
+# no hallucinated answer text. Found and fixed two real bugs in
+# CorpusChecker.is_in_scope() during this sprint: (1) the old regex only
+# captured the last 2 words before "fund", truncating multi-word scheme names;
+# (2) the generic-term substring filter had a false positive where "a fund"
+# matched inside "...ia fund" endings (e.g. "India Fund"), silently treating
+# real out-of-scope schemes as generic in-scope phrasing.
+NON_TOP_20_SCHEMES = [
+    "Franklin India Bluechip Fund",
+    "Tata Digital India Fund",
+    "Canara Robeco Equity Diversified Fund",
+    "L&T Midcap Fund",
+    "Sundaram Select Midcap Fund",
+]
+
+@pytest.mark.parametrize("scheme_name", NON_TOP_20_SCHEMES)
+def test_tc_17_9_non_top_20_schemes_out_of_scope(scheme_name):
+    session_id = str(uuid.uuid4())
+    res = client.post("/api/faq/query", json={"query": f"What is the exit load for {scheme_name}?", "session_id": session_id})
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "out_of_scope", f"{scheme_name!r} should be out_of_scope, got {data['status']!r}"
+    assert data["out_of_scope_scheme"] is not None
+    assert data["answer"] is None, f"No answer should ever be generated for an out-of-scope scheme — got: {data['answer']}"
+
 def test_tc_7_4_elss_advice():
     session_id = str(uuid.uuid4())
     res = client.post("/api/faq/query", json={"query": "Should I invest in ELSS?", "session_id": session_id})

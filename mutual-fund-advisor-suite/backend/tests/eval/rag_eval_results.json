@@ -1,0 +1,231 @@
+{
+  "results": [
+    {
+      "query": "What is the exit load for Parag Parikh Flexi Cap Fund?",
+      "category": "scheme_fee",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.5,
+      "relevance": 0.9,
+      "reasoning": "The answer provides a specific claim (1% exit load) but does not specify the source or context for the information, and while the source is cited, it is only an abbreviation and not a clear and reliable source."
+    },
+    {
+      "query": "What is the exit load for SBI Bluechip Fund?",
+      "category": "scheme_fee",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.8,
+      "relevance": 0.8,
+      "reasoning": "The answer avoids fabricating claims, but it's unclear if the 1% exit load is indeed accurate, and the cited source 'SID' is not provided, making the faithfulness score less than perfect."
+    },
+    {
+      "query": "What is the TER of HDFC Flexi Cap Fund?",
+      "category": "scheme_fee",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.95,
+      "reasoning": "The system properly avoided making unverified claims about the TER of HDFC Flexi Cap Fund."
+    },
+    {
+      "query": "Does Axis Bluechip Fund charge a stamp duty on purchase?",
+      "category": "scheme_fee",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.8,
+      "reasoning": "The system correctly refuses to make any claims about the fund's charges, thus maintaining faithfulness, but could provide a more complete refusal by suggesting potential sources or actions to find the information."
+    },
+    {
+      "query": "What is the exit load structure for ICICI Prudential Bluechip Fund?",
+      "category": "scheme_fee",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.5,
+      "relevance": 0.8,
+      "reasoning": "The answer lacks specificity about the conditions for the 1% exit load, and the cited source is not provided, but it does provide a relevant piece of information."
+    },
+    {
+      "query": "How do I redeem my mutual fund units?",
+      "category": "process",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.8,
+      "reasoning": "The answer is generally accurate, but the statement about Parag Parikh Financial Services Private Limited being the asset management company is specific and not directly supported by the cited sources."
+    },
+    {
+      "query": "How do I start a SIP?",
+      "category": "process",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.8,
+      "relevance": 0.9,
+      "reasoning": "The answer provides general steps to start a SIP, but lacks specificity to Parag Parikh Flexi Cap Fund or the cited source SID, which may indicate the answer is not entirely faithful to the source."
+    },
+    {
+      "query": "How do I download my capital gains statement?",
+      "category": "process",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.8,
+      "relevance": 0.9,
+      "reasoning": "The answer provides a general overview of possible ways to download the capital gains statement, but does not specify exact locations or contact information, maintaining faithfulness in the absence of further details."
+    },
+    {
+      "query": "How do I update my KYC details?",
+      "category": "process",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer provides a clear and direct response to the query with specific, verifiable information from a cited source."
+    },
+    {
+      "query": "How do I file a complaint against an AMC?",
+      "category": "process",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.9,
+      "reasoning": "The answer accurately provides a generic process for filing a complaint, without making any unverified claims."
+    },
+    {
+      "query": "What is the difference between direct and regular plans?",
+      "category": "concept",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer accurately attributes the difference between direct and regular plans to the absence of a distributor commission, without making any unsubstantiated claims."
+    },
+    {
+      "query": "What is NAV in mutual funds?",
+      "category": "concept",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer directly defines NAV without making any unsubstantiated claims, and it is a complete and on-topic response to the query."
+    },
+    {
+      "query": "What is the difference between SWP and STP?",
+      "category": "concept",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer accurately and clearly explains the differences between SWP and STP without making any unsubstantiated claims."
+    },
+    {
+      "query": "What is AUM in the context of mutual funds?",
+      "category": "concept",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer accurately and completely defines AUM in the context of mutual funds without making any unsubstantiated claims."
+    },
+    {
+      "query": "What does the Riskometer indicate?",
+      "category": "concept",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.8,
+      "reasoning": "The answer is a refusal that is both faithful and relevant, providing a valid reason for not answering the question."
+    },
+    {
+      "query": "What is a KIM?",
+      "category": "regulatory",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer accurately defines KIM and avoids making any unsubstantiated claims."
+    },
+    {
+      "query": "What is a SID?",
+      "category": "regulatory",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.0,
+      "relevance": 1.0,
+      "reasoning": "The answer claims the SID is given by AMFI, but the cited sources do not support this claim or provide any evidence that the information is accurate."
+    },
+    {
+      "query": "What rights do I have to access my account statements?",
+      "category": "regulatory",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.8,
+      "relevance": 0.9,
+      "reasoning": "The answer accurately cites a regulation, but the specific right to access account statements is not explicitly mentioned in the SEBI (Investment Advisers) Regulations, 2013."
+    },
+    {
+      "query": "What is the SEBI circular on Total Expense Ratio about?",
+      "category": "regulatory",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.8,
+      "reasoning": "The answer accurately states the lack of information in the knowledge base without making any claims."
+    },
+    {
+      "query": "Can I nominate someone for my mutual fund folio?",
+      "category": "regulatory",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 0.0,
+      "relevance": 0.7,
+      "reasoning": "The answer is partially unfaithful because it explicitly claims a specific mutual fund's nomination facility is available, but it doesn't cite any external or trustworthy sources to support this claim, other than an internal SID that may not be publicly accessible to verify."
+    },
+    {
+      "query": "What is the benchmark for SBI Bluechip Fund?",
+      "category": "scheme_detail",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The answer directly and accurately mentions the benchmark for SBI Bluechip Fund without making any unsubstantiated claims."
+    },
+    {
+      "query": "What category does Nippon India Small Cap Fund belong to?",
+      "category": "scheme_detail",
+      "status": "answered",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.9,
+      "reasoning": "The answer accurately classifies the fund without making any unsubstantiated claims or referencing specific, non-attributable information."
+    },
+    {
+      "query": "Who is the fund manager for Parag Parikh Flexi Cap Fund?",
+      "category": "scheme_detail",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 1.0,
+      "reasoning": "The system accurately refuses to make specific unverified claims and instead provides a clear indication of its knowledge limitations."
+    },
+    {
+      "query": "What is the lock-in period for Axis Long Term Equity Fund?",
+      "category": "scheme_detail",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.8,
+      "reasoning": "The answer is a correct and honest refusal to answer, but could be slightly more comprehensive by explaining the general process of how one might find the lock-in period for a specific fund."
+    },
+    {
+      "query": "What is the riskometer rating for UTI Nifty 50 Index Fund?",
+      "category": "scheme_detail",
+      "status": "no_answer",
+      "cited_source": true,
+      "faithfulness": 1.0,
+      "relevance": 0.8,
+      "reasoning": "The system's response is a refusal to answer, which is faithfulness=1.0 by definition, and is also a contextually appropriate response given the system's lack of verified information, but slightly lower relevance due to the brevity of the response."
+    }
+  ],
+  "avg_faithfulness": 0.848,
+  "avg_relevance": 0.898
+}

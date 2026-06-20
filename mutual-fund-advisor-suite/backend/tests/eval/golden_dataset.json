@@ -1,0 +1,177 @@
+[
+  {
+    "category": "scheme_fee",
+    "query": "What is the exit load for Parag Parikh Flexi Cap Fund?",
+    "expected_contains": "exit load",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_fee",
+    "query": "What is the exit load for SBI Bluechip Fund?",
+    "expected_contains": "exit load",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_fee",
+    "query": "What is the TER of HDFC Flexi Cap Fund?",
+    "expected_contains": "expense ratio",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_fee",
+    "query": "Does Axis Bluechip Fund charge a stamp duty on purchase?",
+    "expected_contains": "stamp duty",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_fee",
+    "query": "What is the exit load structure for ICICI Prudential Bluechip Fund?",
+    "expected_contains": "exit load",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "process",
+    "query": "How do I redeem my mutual fund units?",
+    "expected_contains": "redemption",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "process",
+    "query": "How do I start a SIP?",
+    "expected_contains": "SIP",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "process",
+    "query": "How do I download my capital gains statement?",
+    "expected_contains": "capital gains",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "process",
+    "query": "How do I update my KYC details?",
+    "expected_contains": "KYC",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "process",
+    "query": "How do I file a complaint against an AMC?",
+    "expected_contains": "SCORES",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "concept",
+    "query": "What is the difference between direct and regular plans?",
+    "expected_contains": "distributor commission",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "concept",
+    "query": "What is NAV in mutual funds?",
+    "expected_contains": "Net Asset Value",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "concept",
+    "query": "What is the difference between SWP and STP?",
+    "expected_contains": "withdrawal",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "concept",
+    "query": "What is AUM in the context of mutual funds?",
+    "expected_contains": "Assets Under Management",
+    "source_should_match": "AMFI",
+    "should_cite_source": true
+  },
+  {
+    "category": "concept",
+    "query": "What does the Riskometer indicate?",
+    "expected_contains": "risk",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "regulatory",
+    "query": "What is a KIM?",
+    "expected_contains": "Key Information Memorandum",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "regulatory",
+    "query": "What is a SID?",
+    "expected_contains": "Scheme Information Document",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "regulatory",
+    "query": "What rights do I have to access my account statements?",
+    "expected_contains": "Consolidated Account Statement",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "regulatory",
+    "query": "What is the SEBI circular on Total Expense Ratio about?",
+    "expected_contains": "Total Expense Ratio",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "regulatory",
+    "query": "Can I nominate someone for my mutual fund folio?",
+    "expected_contains": "nominate",
+    "source_should_match": "SEBI",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_detail",
+    "query": "What is the benchmark for SBI Bluechip Fund?",
+    "expected_contains": "benchmark",
+    "source_should_match": "factsheet",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_detail",
+    "query": "What category does Nippon India Small Cap Fund belong to?",
+    "expected_contains": "Small Cap",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_detail",
+    "query": "Who is the fund manager for Parag Parikh Flexi Cap Fund?",
+    "expected_contains": "fund manager",
+    "source_should_match": "factsheet",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_detail",
+    "query": "What is the lock-in period for Axis Long Term Equity Fund?",
+    "expected_contains": "lock-in",
+    "source_should_match": "SID",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_detail",
+    "query": "What is the riskometer rating for UTI Nifty 50 Index Fund?",
+    "expected_contains": "riskometer",
+    "source_should_match": "factsheet",
+    "should_cite_source": true
+  }
+]

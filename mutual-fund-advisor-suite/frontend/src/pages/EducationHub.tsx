@@ -5,12 +5,15 @@ import {
   Warning,
   ArrowRight,
   X,
+  Robot,
 } from '@phosphor-icons/react';
 import { Card, Skeleton } from '../components/ui';
 import { SECTION_META, fundTypePill } from '../components/features/education/educationMeta';
 import { educationService } from '../services/education.service';
+import { faqService } from '../services/faq.service';
 import { EDUCATION_COMPLIANCE_STRIP } from '../utils/compliance';
 import type {
+  FAQResponse,
   EducationArticleSummary,
   EducationCategory,
   EducationSearchResult,
@@ -28,6 +31,8 @@ export default function EducationHub() {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<EducationSearchResult[] | null>(null);
   const [searching, setSearching] = useState(false);
+  const [ragLoading, setRagLoading] = useState(false);
+  const [aiResponse, setAiResponse] = useState<FAQResponse | null>(null);
 
   const [highlighted, setHighlighted] = useState<EducationCategory | null>(null);
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -76,22 +81,48 @@ export default function EducationHub() {
   const sectionCount = (category: EducationCategory) =>
     sections.find((s) => s.category === category)?.article_count ?? 0;
 
-  const handleSearchSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmed = query.trim();
+  const runSearch = async (trimmed: string) => {
     if (!trimmed) return;
     setSearching(true);
+    setRagLoading(true);
+    setAiResponse(null);
     try {
       const results = await educationService.search(trimmed);
       setSearchResults(results);
     } finally {
       setSearching(false);
     }
+
+    try {
+      const ragResult = await faqService.queryFAQ(trimmed, 'education-hub-session-' + Date.now());
+      setAiResponse(ragResult);
+    } catch (e) {
+      console.error('RAG failed', e);
+    } finally {
+      setRagLoading(false);
+    }
   };
+
+  const handleSearchSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await runSearch(query.trim());
+  };
+
+  // ?q= deep link: arrives here from the Query Builder's RoutingStep, which
+  // routes "educational" queries to /education?q=...
+  useEffect(() => {
+    const qParam = searchParams.get('q');
+    if (qParam && qParam.trim()) {
+      setQuery(qParam);
+      runSearch(qParam.trim());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   const clearSearch = () => {
     setQuery('');
     setSearchResults(null);
+    setAiResponse(null);
   };
 
   return (
@@ -166,6 +197,41 @@ export default function EducationHub() {
                 Clear search
               </button>
             </div>
+
+            {/* ══ AI ANSWER BLOCK ════════════════════════════ */}
+            {(ragLoading || aiResponse) && (
+              <div className="mb-8 p-5 bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl border border-teal-100">
+                <div className="flex items-center gap-2 mb-3 text-brand-teal font-semibold">
+                   <Robot size={24} weight="duotone" />
+                   <h3>AI Overview</h3>
+                </div>
+                {ragLoading ? (
+                  <div className="flex items-center gap-3 text-neutral-600">
+                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-brand-teal"></div>
+                     Generating your answer...
+                  </div>
+                ) : aiResponse ? (
+                  <div className="text-neutral-800 text-[15px] leading-relaxed">
+                    {aiResponse.status === 'advice_deflected' ? (
+                        <p>We cannot provide investment advice, but please explore the related educational articles below.</p>
+                    ) : aiResponse.status === 'out_of_scope' ? (
+                        <p>This question seems to be outside the scope of mutual funds. Please ask a mutual fund related question.</p>
+                    ) : (
+                        <div>
+                            <p>{aiResponse.answer?.answer_text}</p>
+                            {aiResponse.answer?.source_badges && aiResponse.answer.source_badges.length > 0 && (
+                                <div className="mt-3 flex gap-2">
+                                    {aiResponse.answer.source_badges.map(b => (
+                                        <span key={b} className="text-xs font-semibold bg-white border border-teal-200 text-teal-700 px-2 py-1 rounded-md">Source: {b}</span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    )}
+                  </div>
+                ) : null}
+              </div>
+            )}
 
             {searching ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

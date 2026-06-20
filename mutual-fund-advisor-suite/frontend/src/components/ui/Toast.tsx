@@ -17,10 +17,11 @@ export interface ToastMessage {
   id: string;
   message: string;
   variant: ToastVariant;
+  action?: { label: string; onClick: () => void };
 }
 
 interface ToastContextValue {
-  addToast: (message: string, variant?: ToastVariant) => void;
+  addToast: (message: string, variant?: ToastVariant, action?: { label: string; onClick: () => void }) => void;
 }
 
 // ─────────────────────────────────────────────
@@ -95,7 +96,21 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onDismiss }) => {
       ].join(' ')}
     >
       <span className="shrink-0 mt-0.5">{config.icon}</span>
-      <p className="text-[14px] font-medium flex-1">{toast.message}</p>
+      <div className="flex-1 flex flex-col gap-1">
+        <p className="text-[14px] font-medium">{toast.message}</p>
+        {toast.action && (
+          <button
+            type="button"
+            onClick={() => {
+              toast.action!.onClick();
+              onDismiss(toast.id);
+            }}
+            className="text-[13px] font-bold text-left hover:underline w-fit opacity-90 hover:opacity-100"
+          >
+            {toast.action.label}
+          </button>
+        )}
+      </div>
       <button
         type="button"
         onClick={() => onDismiss(toast.id)}
@@ -125,9 +140,9 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, []);
 
   const addToast = useCallback(
-    (message: string, variant: ToastVariant = 'info') => {
+    (message: string, variant: ToastVariant = 'info', action?: { label: string; onClick: () => void }) => {
       const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
-      setToasts((prev) => [...prev, { id, message, variant }]);
+      setToasts((prev) => [...prev, { id, message, variant, action }]);
       const timer = setTimeout(() => dismiss(id), 4000);
       timers.current.set(id, timer);
     },

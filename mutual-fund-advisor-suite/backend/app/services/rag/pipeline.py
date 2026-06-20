@@ -35,7 +35,8 @@ class FAQPipeline:
             chunks = self.retriever.retrieve_with_scheme_filter(query, scheme_detected, top_k=5)
         else:
             # We must pass namespace to retrieve
-            chunks = self.retriever.retrieve(query, namespace="regulatory", top_k=5)
+            ns = "education" if triage_result.bucket == "educational" else "regulatory"
+            chunks = self.retriever.retrieve(query, namespace=ns, top_k=5)
             
         # 4. Answer Builder
         answer = self.answer_builder.build(query, chunks, scheme_detected)

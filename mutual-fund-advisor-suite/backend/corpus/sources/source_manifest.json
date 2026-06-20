@@ -20,5 +20,11 @@
   "regulatory_documents": [
     {"type": "SEBI_circular", "title": "TER Circular Oct 2018", "url": "https://www.sebi.gov.in/legal/circulars/oct-2018/ter", "filename": "sebi_ter_circular_2018.pdf"},
     {"type": "AMFI", "title": "Investor Education — Fees", "url": "https://www.amfiindia.com/investor-education/fees"}
+  ],
+  "education_documents": [
+    {"type": "education", "title": "FAQs on Mutual Funds", "filename": "FAQsOnMfs-3-1.pdf", "url": "Education_Hub"},
+    {"type": "education", "title": "Investor Awareness Program", "filename": "InvestorsAwarenessProgrampresentation.pdf", "url": "Education_Hub"},
+    {"type": "education", "title": "Introduction to Mutual Funds", "filename": "PPT8_IntroductiontoMutualFundsInvesting.pdf", "url": "Education_Hub"},
+    {"type": "education", "title": "Understanding Mutual Funds", "filename": "g2understanding.pdf", "url": "Education_Hub"}
   ]
 }

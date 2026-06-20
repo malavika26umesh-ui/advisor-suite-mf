@@ -108,10 +108,14 @@ class EducationService:
     async def search(self, db: AsyncSession, q: str, limit: int = 10) -> List[SearchResult]:
         # FTS5 MATCH syntax treats quotes/hyphens/asterisks specially — strip everything
         # except alphanumerics so arbitrary user input can't break the query.
+        # OR (not the FTS5 bareword default of AND) — natural-language questions
+        # are full of filler words ("what", "is", "a") that the matching article's
+        # body rarely contains verbatim; requiring every term to match excludes the
+        # obviously-right result. bm25 ranking still surfaces the best match first.
         terms = re.findall(r"[A-Za-z0-9]+", q)
         if not terms:
             return []
-        fts_query = " ".join(terms)
+        fts_query = " OR ".join(terms)
 
         rows = (
             await db.execute(

@@ -69,10 +69,15 @@ export default {
           "0%, 100%": { transform: "scale(1)", opacity: "1" },
           "50%": { transform: "scale(1.15)", opacity: "0.7" },
         },
+        "checkmark-pop": {
+          "0%": { transform: "scale(0)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
       },
       animation: {
         shimmer: "shimmer 2s linear infinite",
         "mic-pulse": "mic-pulse 800ms ease-in-out infinite",
+        "checkmark-pop": "checkmark-pop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
       },
       boxShadow: {
         "level-1": "0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)",

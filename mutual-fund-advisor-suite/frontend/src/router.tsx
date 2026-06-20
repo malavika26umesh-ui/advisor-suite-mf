@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import PageLayout from "./components/layout/PageLayout";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 import Home from "./pages/Home";
 import FAQCentre from "./pages/FAQCentre";
@@ -18,28 +19,40 @@ import AdvisorDashboard from "./pages/AdvisorDashboard";
 import AdvisorBrief from "./pages/AdvisorBrief";
 import AdvisorCalendar from "./pages/AdvisorCalendar";
 import AdvisorPulse from "./pages/AdvisorPulse";
+import AdvisorApprovalCentre from "./pages/AdvisorApprovalCentre";
+import AdvisorRoute from "./components/AdvisorRoute";
+
+const withErrorBoundary = (component: React.ReactNode) => (
+  <ErrorBoundary>{component}</ErrorBoundary>
+);
 
 export const router = createBrowserRouter([
   // ── Investor-facing pages (wrapped in NavBar + Footer) ──────────────────────
   {
-    element: <PageLayout />,
+    element: withErrorBoundary(<PageLayout />),
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/query-builder", element: <QueryBuilder /> },
-      { path: "/faq", element: <FAQCentre /> },
-      { path: "/faq/fee-explainer", element: <FeeExplainerDetail /> },
-      { path: "/education", element: <EducationHub /> },
-      { path: "/education/:slug", element: <EducationArticle /> },
-      { path: "/schedule", element: <VoiceScheduler /> },
-      { path: "/schedule/manage", element: <RescheduleCancel /> },
-      { path: "/sources", element: <Sources /> },
+      { path: "/", element: withErrorBoundary(<Home />) },
+      { path: "/query-builder", element: withErrorBoundary(<QueryBuilder />) },
+      { path: "/faq", element: withErrorBoundary(<FAQCentre />) },
+      { path: "/faq/fee-explainer", element: withErrorBoundary(<FeeExplainerDetail />) },
+      { path: "/education", element: withErrorBoundary(<EducationHub />) },
+      { path: "/education/:slug", element: withErrorBoundary(<EducationArticle />) },
+      { path: "/schedule", element: withErrorBoundary(<VoiceScheduler />) },
+      { path: "/schedule/manage", element: withErrorBoundary(<RescheduleCancel />) },
+      { path: "/sources", element: withErrorBoundary(<Sources />) },
     ],
   },
 
   // ── Advisor portal pages (own shell, Sprint 14) ─────────────────────────────
-  { path: "/advisor/login", element: <AdvisorLogin /> },
-  { path: "/advisor", element: <AdvisorDashboard /> },
-  { path: "/advisor/brief/:id", element: <AdvisorBrief /> },
-  { path: "/advisor/calendar", element: <AdvisorCalendar /> },
-  { path: "/advisor/pulse", element: <AdvisorPulse /> },
+  { path: "/advisor/login", element: withErrorBoundary(<AdvisorLogin />) },
+  {
+    element: withErrorBoundary(<AdvisorRoute />),
+    children: [
+      { path: "/advisor", element: withErrorBoundary(<AdvisorDashboard />) },
+      { path: "/advisor/brief/:id", element: withErrorBoundary(<AdvisorBrief />) },
+      { path: "/advisor/calendar", element: withErrorBoundary(<AdvisorCalendar />) },
+      { path: "/advisor/pulse", element: withErrorBoundary(<AdvisorPulse />) },
+      { path: "/advisor/approval-centre", element: withErrorBoundary(<AdvisorApprovalCentre />) },
+    ],
+  },
 ]);

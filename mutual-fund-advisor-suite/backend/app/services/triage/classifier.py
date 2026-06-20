@@ -1,11 +1,13 @@
 import os
 import json
 import re
+from functools import lru_cache
 from typing import Literal, Optional, Tuple
 from pydantic import BaseModel
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 from .signals import check_hard_coded_signals
+from app.core.config import settings
 
 # Load scheme aliases
 with open(os.path.join(os.path.dirname(__file__), '../../../corpus/sources/top20_schemes.json'), 'r') as f:
@@ -22,9 +24,13 @@ class TriageResult(BaseModel):
     escalation_flag: bool
 
 # Initialize Groq
-groq_api_key = os.environ.get("GROQ_API_KEY", "mock_key_for_tests")
-if groq_api_key != "mock_key_for_tests":
-    model = ChatGroq(model_name="llama3-8b-8192", groq_api_key=groq_api_key, model_kwargs={"response_format": {"type": "json_object"}})
+# NOTE: os.environ.get() never sees .env-only vars — same bug fixed in Sprint
+# 15/17 elsewhere. Using `settings.GROQ_API_KEY`. Also switched off
+# `llama3-8b-8192`, which Groq has decommissioned (confirmed via a live 400
+# model_decommissioned error in Sprint 15).
+groq_api_key = settings.GROQ_API_KEY
+if groq_api_key:
+    model = ChatGroq(model_name="llama-3.1-8b-instant", groq_api_key=groq_api_key, model_kwargs={"response_format": {"type": "json_object"}})
 else:
     model = None
 
@@ -46,6 +52,7 @@ class TriageClassifier:
             
         return False, None
 
+    @lru_cache(maxsize=256)
     def _llm_classify(self, query: str) -> Tuple[str, float]:
         system_instruction = """
         You are a compliance classifier for an Indian mutual fund information platform. Classify the investor query into exactly one of:

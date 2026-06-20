@@ -15,6 +15,8 @@ from app.models import db_models
 from app.models import triage_log
 from app.models import faq_models
 from app.models import education_models
+from app.models import scheduler_models
+from app.models import pulse_models
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)

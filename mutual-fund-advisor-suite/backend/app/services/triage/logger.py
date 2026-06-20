@@ -14,5 +14,9 @@ async def log_triage_result(db: AsyncSession, session_id: str, query: str, resul
     )
     db.add(db_log)
     await db.commit()
-    await db.refresh(db_log)
+    # No db.refresh() here — the caller (POST /api/triage/classify) discards
+    # this return value entirely, so refreshing just adds an unnecessary extra
+    # round-trip to every classify call for no benefit. Found during Sprint
+    # 17's performance baseline (P95 triage latency was marginally over the
+    # 2s target even after caching the LLM call itself).
     return db_log

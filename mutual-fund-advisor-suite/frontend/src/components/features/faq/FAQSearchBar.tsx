@@ -77,7 +77,14 @@ export const FAQSearchBar: React.FC<FAQSearchBarProps> = ({
     } catch (err: any) {
       console.error('FAQ Search error:', err);
       onSearchError(err);
-      addToast(err.response?.data?.detail || 'Failed to search FAQ. Please try again.', 'error');
+      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        addToast('Request timed out. Please try again.', 'error', {
+          label: 'Retry',
+          onClick: () => handleSearch(searchQuery),
+        });
+      } else {
+        addToast(err.response?.data?.detail || 'Failed to search FAQ. Please try again.', 'error');
+      }
     }
   };
 

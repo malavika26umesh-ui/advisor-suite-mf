@@ -59,6 +59,30 @@ def ingest_regulatory():
     embedded_chunks = embedder.embed(all_chunks)
     upload_to_pinecone(embedded_chunks, namespace="regulatory")
 
+def ingest_education():
+    manifest_path = os.path.join("corpus", "sources", "source_manifest.json")
+    with open(manifest_path, "r") as f:
+        manifest = json.load(f)
+    
+    extractor = PDFExtractor()
+    chunker = DocumentChunker()
+    embedder = ChunkEmbedder()
+    
+    all_chunks = []
+    
+    for doc in manifest.get("education_documents", []):
+        if "filename" not in doc:
+            continue
+        filepath = os.path.join("corpus", "sources", doc["filename"])
+        pages = extractor.extract(filepath, doc["type"])
+        chunks = chunker.chunk(pages, None, doc["type"], doc.get("url", ""))
+        all_chunks.extend(chunks)
+        
+    print(f"Extracted {len(all_chunks)} chunks for education_documents.")
+    
+    embedded_chunks = embedder.embed(all_chunks)
+    upload_to_pinecone(embedded_chunks, namespace="education")
+
 def upload_to_pinecone(embedded_chunks, namespace):
     api_key = os.environ.get("PINECONE_API_KEY")
     if not api_key:
@@ -112,7 +136,7 @@ def verify_pinecone():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source", choices=["scheme_docs", "regulatory"])
+    parser.add_argument("--source", choices=["scheme_docs", "regulatory", "education"])
     parser.add_argument("--verify", action="store_true")
     args = parser.parse_args()
     
@@ -122,5 +146,7 @@ if __name__ == "__main__":
         ingest_scheme_docs()
     elif args.source == "regulatory":
         ingest_regulatory()
+    elif args.source == "education":
+        ingest_education()
     else:
         parser.print_help()

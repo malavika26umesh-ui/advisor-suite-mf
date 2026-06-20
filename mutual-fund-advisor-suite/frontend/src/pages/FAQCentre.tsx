@@ -19,6 +19,7 @@ export const FAQCentre: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const topicParam = searchParams.get('topic');
+  const qParam = searchParams.get('q');
 
   // State Machine
   const [state, setState] = useState<FAQState>('idle');
@@ -60,6 +61,16 @@ export const FAQCentre: React.FC = () => {
       }
     }
   }, [topicParam]);
+
+  // Handle auto-searching on mount if ?q= is present (arrives here from the
+  // Query Builder's RoutingStep, which routes "factual" queries to /faq?q=...).
+  useEffect(() => {
+    if (qParam && qParam.trim()) {
+      setQuery(qParam);
+      triggerAutoSearch(qParam);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qParam]);
 
   const triggerAutoSearch = async (prefilledQuery: string) => {
     setState('loading');

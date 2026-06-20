@@ -6,7 +6,7 @@ export const faqService = {
     const response = await api.post<FAQResponse>("/faq/query", {
       query,
       session_id: sessionId,
-    });
+    }, { timeout: 30000 });
     return response.data;
   },
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type BadgeStatus = 'confirmed' | 'pending' | 'cancelled' | 'completed';
+export type BadgeStatus = 'confirmed' | 'pending' | 'cancelled' | 'completed' | 'rescheduled';
 
 export interface BadgeProps {
   status: BadgeStatus;
@@ -30,6 +30,11 @@ const STATUS_CONFIG: Record<
     bg: 'bg-neutral-50',
     text: 'text-neutral-400',
     label: 'Completed',
+  },
+  rescheduled: {
+    bg: 'bg-info-50',
+    text: 'text-info-500',
+    label: 'Rescheduled',
   },
 };
 
