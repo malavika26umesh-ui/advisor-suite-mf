@@ -58,7 +58,7 @@ At the **end of every sprint**, before the session closes, the active Claude Cod
 | 18 | Mobile Responsiveness & Accessibility | `COMPLETED` | WCAG 2.1 AA, Error Boundaries, Timeouts |
 | 19-CI | CI/CD (Sprint 19 sub-sprint) | `COMPLETED` | GitHub Actions: ruff+pytest gate, mypy informational, build/typecheck, deploy hook on merge (placeholder until 19-BACKEND) |
 | 19-BACKEND | Backend Deploy + Postgres Migration (Sprint 19 sub-sprint) | `COMPLETED` | Render live at advisor-suite-mf.onrender.com, `/health` 200, Postgres migrated (10/10 tables), 2 missing-dependency bugs fixed |
-| 19-FRONTEND | Frontend Deploy (Sprint 19 sub-sprint) | `PENDING` | Vercel live, CORS confirmed both ways |
+| 19-FRONTEND | Frontend Deploy (Sprint 19 sub-sprint) | `COMPLETED` | Vercel live at advisor-suite-mf-frontend.vercel.app, CORS confirmed both ways end-to-end |
 | 19-SMOKE | Production Integration & Smoke Test (Sprint 19 sub-sprint) | `PENDING` | FAQ + OTP smoke test pass, Pulse job confirmed |
 | 20 | Acceptance Criteria Verification & Final Polish | `PENDING` | All AC from PRD §12 verified |
 | 21 | F8: MCP Orchestration & Approval Centre | `PENDING` | MCP tools, mcp_action_log, Approval Centre UI |
@@ -2797,7 +2797,7 @@ Railway requires a credit card and only gives ~$1/month free credit after the in
 ---
 
 #### SPRINT 19-FRONTEND — Vercel Deployment
-**Status:** `PENDING`
+**Status:** `COMPLETED`
 **Dependency:** Requires 19-BACKEND's production URL (Railway or Render). Must complete before 19-SMOKE.
 
 **Tasks**
@@ -2812,12 +2812,25 @@ Railway requires a credit card and only gives ~$1/month free credit after the in
 - Follow-up on the backend: update `FRONTEND_URL` (CORS) on Railway/Render to this new Vercel URL — this closes the two-way URL dependency between 19-BACKEND and 19-FRONTEND
 
 **Definition of Done**
-- [ ] Frontend live on Vercel URL (no build errors)
-- [ ] All API calls from Vercel frontend reach the backend (CORS confirmed working both ways)
-- [ ] Vercel deploy hook confirmed for 19-CI's merge-to-main automation
+- [x] Frontend live on Vercel URL (no build errors)
+- [x] All API calls from Vercel frontend reach the backend (CORS confirmed working both ways)
+- [x] Vercel deploy hook confirmed for 19-CI's merge-to-main automation — N/A, see Handover Notes: Vercel (like Render) auto-deploys via its own GitHub integration, no manual hook needed
 
 **Handover Notes**
-*(To be filled in at end of sub-sprint — must include the production frontend URL)*
+
+**Production frontend URL: `https://advisor-suite-mf-frontend.vercel.app/`**
+
+**Architecture decision — rewrite, not direct cross-origin calls.** The frontend's `api.ts` already used a relative `baseURL: "/api"`, with Vite's dev-server `proxy` config forwarding `/api` to `localhost:8000` locally. `vercel.json`'s rewrite (`/api/:path*` → the live Render backend) replicates that exact pattern in production, so the browser only ever talks to the Vercel origin — no code change was needed to `api.ts` for the app to work. Still added an explicit `VITE_API_BASE_URL` override in `api.ts` (defaults to the relative path if unset) to match the original spec literally, and still closed CORS on the backend as defense-in-depth, even though the rewrite path alone doesn't strictly require it.
+
+**CORS — `app/main.py` updated** from a single hardcoded origin to `list({settings.FRONTEND_URL, "http://localhost:5173"})`, so production and local dev both work without further code changes once `FRONTEND_URL` is set correctly.
+
+**One real bug found and fixed during verification:** the first CORS check (`curl -X OPTIONS ... -H "Origin: https://advisor-suite-mf-frontend.vercel.app"`) returned `400 Disallowed CORS origin` even after `FRONTEND_URL` was set on Render. Root cause: the Vercel URL had been entered into Render's `FRONTEND_URL` env var **with a trailing slash** (`.../vercel.app/`), but browsers never send a trailing slash in the `Origin` header — exact-string mismatch. Fixed by removing the trailing slash in Render's env var and redeploying; preflight then returned `200` with a matching `access-control-allow-origin` header.
+
+**Verified end-to-end, not just independently:** `curl https://advisor-suite-mf-frontend.vercel.app/api/faq/covered-schemes` (i.e., through Vercel's rewrite, exactly how the real app calls it) returned the live 20-scheme list from the Render backend with `200` — confirming the full round-trip, not just that each service loads on its own.
+
+**Deploy hook:** none configured or needed — confirmed Vercel deploys automatically on every push to `main` via its GitHub integration, same as Render. `ci.yml`'s `deploy` job (which would have curled a Railway hook) was already removed in Sprint 19-BACKEND for the same reason.
+
+**No Vercel env vars were required** for this deploy (`VITE_API_BASE_URL` was left unset — the relative-path + rewrite approach doesn't need it).
 
 ---
 
