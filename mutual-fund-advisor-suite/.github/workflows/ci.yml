@@ -42,16 +42,8 @@ jobs:
         run: mypy app/ || true
       - run: pytest tests/ -v --tb=short
 
-  deploy:
-    needs: [frontend, backend]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Railway deploy hook
-        # Vercel deploys automatically via its GitHub git integration — no step needed here.
-        # RAILWAY_DEPLOY_HOOK is set as a GitHub secret once Sprint 19-BACKEND creates the
-        # Railway project and generates the real hook URL (placeholder/unset until then).
-        if: env.RAILWAY_DEPLOY_HOOK != ''
-        env:
-          RAILWAY_DEPLOY_HOOK: ${{ secrets.RAILWAY_DEPLOY_HOOK }}
-        run: curl -fsSL -X POST "$RAILWAY_DEPLOY_HOOK"
+# No separate deploy job: both Render (backend) and Vercel (frontend) are connected
+# directly to this GitHub repo and auto-deploy on every push to main via their own
+# git integrations — confirmed empirically during Sprint 19-BACKEND (two pushes to
+# main each triggered a Render rebuild with no manual hook). A deploy-hook curl step
+# was originally planned here for Railway; dropped when the project moved to Render.
