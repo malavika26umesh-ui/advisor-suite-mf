@@ -20,7 +20,8 @@ class EmailSender:
             response = self.sg.send(message)
             return response.status_code in [200, 201, 202]
         except Exception as e:
-            print(f"Error sending email: {e}")
+            body = getattr(e, "body", None)
+            print(f"Error sending email: {e} | body: {body}")
             return False
 
     def send_booking_confirmation(self, email: str, booking: Booking) -> bool:
