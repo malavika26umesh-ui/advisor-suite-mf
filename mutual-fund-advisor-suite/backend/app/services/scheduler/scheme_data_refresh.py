@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 from datetime import datetime, timezone
@@ -36,7 +37,10 @@ async def run_daily_scheme_data_refresh() -> None:
         url = scheme["url"]
         try:
             page_text = await fetch_page_text(url)
-            parsed = extract_scheme_parameters(page_text, scheme_name)
+            # extract_scheme_parameters makes a blocking, synchronous Groq API
+            # call. Run it on a worker thread so it can't stall the event loop
+            # and freeze every other request the server is handling.
+            parsed = await asyncio.to_thread(extract_scheme_parameters, page_text, scheme_name)
             sentences = build_parameter_sentences(scheme_name, parsed)
             for sentence in sentences:
                 store.upsert_parameter(

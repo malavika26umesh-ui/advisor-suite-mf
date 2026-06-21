@@ -1,3 +1,5 @@
+import asyncio
+import threading
 from unittest.mock import AsyncMock, patch
 import pytest
 from app.services.scheduler.scheme_data_refresh import run_daily_scheme_data_refresh
@@ -42,3 +44,28 @@ async def test_refresh_skips_failing_scheme_and_continues():
 
         assert mock_store.upsert_parameter.call_count == 1
         assert mock_store.upsert_parameter.call_args.kwargs["scheme_name"] == "Scheme B"
+
+
+@pytest.mark.asyncio
+async def test_refresh_runs_extraction_off_the_event_loop_thread():
+    schemes_payload = [{"id": 1, "name": "Scheme A", "url": "https://a.com"}]
+    main_thread = threading.current_thread()
+    extraction_thread = {}
+
+    def capture_thread_extract(page_text, scheme_name):
+        extraction_thread["thread"] = threading.current_thread()
+        return {"nav_value": 1.0, "nav_date": "2026-06-21", "aum_value": None, "exit_load_text": None}
+
+    with patch("app.services.scheduler.scheme_data_refresh._load_scheme_urls", return_value=schemes_payload), \
+         patch("app.services.scheduler.scheme_data_refresh.fetch_page_text", new=AsyncMock(return_value="page text")), \
+         patch("app.services.scheduler.scheme_data_refresh.extract_scheme_parameters", side_effect=capture_thread_extract), \
+         patch("app.services.scheduler.scheme_data_refresh.SchemeLiveDataStore"):
+        await run_daily_scheme_data_refresh()
+
+    # extract_scheme_parameters makes a blocking, synchronous network call
+    # (ChatGroq.invoke). If it were called directly instead of via
+    # asyncio.to_thread, it would run on the event loop's own thread and
+    # block every other request the server is handling for the call's full
+    # duration -- in production, this freezes the entire site during the
+    # daily refresh. Running it on a worker thread is what we're verifying.
+    assert extraction_thread["thread"] is not main_thread
