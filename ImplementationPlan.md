@@ -59,7 +59,7 @@ At the **end of every sprint**, before the session closes, the active Claude Cod
 | 19-CI | CI/CD (Sprint 19 sub-sprint) | `COMPLETED` | GitHub Actions: ruff+pytest gate, mypy informational, build/typecheck, deploy hook on merge (placeholder until 19-BACKEND) |
 | 19-BACKEND | Backend Deploy + Postgres Migration (Sprint 19 sub-sprint) | `COMPLETED` | Render live at advisor-suite-mf.onrender.com, `/health` 200, Postgres migrated (10/10 tables), 2 missing-dependency bugs fixed |
 | 19-FRONTEND | Frontend Deploy (Sprint 19 sub-sprint) | `COMPLETED` | Vercel live at advisor-suite-mf-frontend.vercel.app, CORS confirmed both ways end-to-end |
-| 19-SMOKE | Production Integration & Smoke Test (Sprint 19 sub-sprint) | `PENDING` | FAQ + OTP smoke test pass, Pulse job confirmed |
+| 19-SMOKE | Production Integration & Smoke Test (Sprint 19 sub-sprint) | `COMPLETED` | 7/7 TC-19.x passing; fixed SPA routing, seeded prod DB, full SendGrid setup, direct Pulse job proof |
 | 20 | Acceptance Criteria Verification & Final Polish | `PENDING` | All AC from PRD §12 verified |
 | 21 | F8: MCP Orchestration & Approval Centre | `PENDING` | MCP tools, mcp_action_log, Approval Centre UI |
 
@@ -2835,7 +2835,7 @@ Railway requires a credit card and only gives ~$1/month free credit after the in
 ---
 
 #### SPRINT 19-SMOKE — Production Integration & Smoke Test
-**Status:** `PENDING`
+**Status:** `COMPLETED`
 **Dependency:** Requires 19-BACKEND and 19-FRONTEND both complete and pointed at each other.
 
 **Tasks**
@@ -2845,12 +2845,31 @@ Railway requires a credit card and only gives ~$1/month free credit after the in
 - Re-ingest corpus on production if a new Pinecone index is used for prod (if reusing the same index, nothing to do)
 
 **Definition of Done**
-- [ ] Production smoke test: FAQ query returns correct answer with source and disclaimer
-- [ ] Advisor OTP login succeeds end-to-end against production
-- [ ] Pulse APScheduler job confirmed registered in production logs
+- [x] Production smoke test: FAQ query returns correct answer with source and disclaimer
+- [x] Advisor OTP login succeeds end-to-end against production
+- [x] Pulse APScheduler job confirmed registered in production logs
 
 **Handover Notes**
-*(To be filled in at end of sub-sprint — this is the final infrastructure gate before Sprint 20)*
+
+**Production URLs:** Frontend `https://advisor-suite-mf-frontend.vercel.app/` · Backend `https://advisor-suite-mf.onrender.com`
+
+**Result: 7/7 TC-19.x passing** (TC-19.1–19.7, see `TEST_CASES.md`). This sub-sprint surfaced and fixed more real bugs than any other Sprint 19 sub-sprint — verification work kept finding genuine gaps, not just confirming things worked.
+
+**1. SPA routing bug (`vercel.json`).** Direct navigation to `/faq` (the actual smoke-test instruction) returned a Vercel `404` — only the home page mapped to a real static file; every other React Router route had nothing for Vercel's filesystem router to match. Added the standard SPA catch-all rewrite (`/(.*) → /index.html`, ordered after the `/api/*` rewrite so it doesn't shadow it). Static assets are unaffected — Vercel serves real files before falling through to rewrites. Verified with real Playwright browser automation against the live URL, not just curl: confirmed the rendered page shows the answer text, a "Sources:" row with SID badge, and the exact compliance disclaimer.
+
+**2. Found the actual source of the "mystery shell" from earlier this sprint.** Investigated and ruled out: no hooks in this project's `.claude/settings.local.json`, no hooks in global `~/.claude/settings.json`, no cron jobs in `CronList`, and the superpowers plugin only has a benign `SessionStart` hook. The `scheduled_tasks.lock` PID matched this very session's own `claude.exe --resume` process — not a separate one. Strong remaining suspect: Cursor IDE (present in PATH) with a git auto-commit/sync extension, given an unexplained `"chore: sync latest changes"` commit appeared on `origin/main` mid-session containing temporary debug scripts that were never intentionally committed. Cleaned those up in a follow-up commit. Not fully resolved — flagging for the user to check their own open editors/tools.
+
+**3. Vercel was connected to a different, disconnected GitHub repo.** `vercel.json`'s SPA fix wasn't deploying — turned out Vercel's project was wired to `advisor-suite-mf-frontend`, a separate repo (single flattened "Initial commit", apparently auto-created during the original Vercel import flow), not the canonical `advisor-suite-mf`. Per explicit decision, kept both repos rather than reconnecting Vercel — synced `advisor-suite-mf-frontend` to match `main` via a one-time full-tree copy (robocopy, excluding `.git`/`node_modules`/build artifacts/`.claude`) and committed/pushed there directly. **This now needs manual dual-pushing for any future change that needs to reach Vercel** — there is no automated sync between the two repos.
+
+**4. Production database had zero seeded data.** `POST /auth/request-otp` returned `404 {"detail":"Advisor not found"}` — migrations create empty tables only. Ran `corpus/scripts/seed_scheduler.py` against production (with confirmation) to seed 2 advisors + 7 days of slots.
+
+**5. SendGrid setup, done fully this sprint (TC-19.5's tracked follow-up from Sprint 19-BACKEND, resolved).** In order: verified a Single Sender (`malavika26.umesh@gmail.com`) instead of the unowned `advisorsuite.mf` domain; updated `from_email` in `email_sender.py` to match; generated an API key (Mail Send: Full Access only) and set `SENDGRID_API_KEY` on Render — first attempt got `401 Unauthorized` (bad key, regenerated), then `403 Forbidden` with no detail (added error-body logging to `email_sender.py`'s except handler, since `str(e)` alone only shows the HTTP status, not SendGrid's actual rejection reason — this is a permanent improvement, not throwaway debug), which revealed "from address does not match a verified Sender Identity" — resolved itself after a few minutes (sender-verification propagation delay, not a config error). **Then discovered the seeded advisor email itself was undeliverable** — `advisor1@advisorsuite.mf` is fictional, no real MX records — confirmed via SendGrid's audit log ("unable to get mx info"). Updated `advisor1`'s production email to `malavika26.umesh@gmail.com` (decision: kept permanently, not reverted) to actually test real delivery. Final confirmation: OTP email received (landed in Spam — expected for a brand-new sending domain, not a defect) and `verify-otp` accepted it with a valid JWT returned.
+
+**6. Pulse job registration — upgraded from inference to direct proof.** Sprint 19-BACKEND's Handover Notes documented this via inference only (no crash on `/health` ⇒ startup succeeded). This sprint, attempted to verify directly via Render's Logs tab — found nothing, which led to discovering **no `logging.basicConfig()` exists anywhere in the app**, so APScheduler's own INFO-level "job added" messages never reach any log stream regardless of platform access level (not a Render free-tier limitation). Added one line to `cron_jobs.py` printing registered job IDs explicitly. Confirmed in logs: `[scheduler] started with jobs: ['delete_expired_transcripts', 'weekly_product_pulse']`.
+
+**Re-ingest corpus:** not needed — same Pinecone index used for dev and production.
+
+**No feature changes were made beyond what verification required** — every code change this sprint (SPA rewrite, `from_email`, error-body logging, scheduler diagnostic print) was a deployment-correctness fix surfaced by actually trying to run the smoke test for real, not new functionality.
 
 ---
 
