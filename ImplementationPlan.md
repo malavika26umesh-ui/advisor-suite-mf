@@ -46,7 +46,7 @@ At the **end of every sprint**, before the session closes, the active Claude Cod
 | 7 | F2: FAQ Centre (Backend) | `COMPLETED` | RAG query engine, compliance filter, answer API |
 | 8 | F2: FAQ Centre (Frontend) | `COMPLETED` | FAQ search, answer cards, deflection, fee explainer, mobile view |
 | 9 | F3: Education Hub (Backend + Content) | `PENDING` | Content model, 39 articles across 5 sections, search API (FTS5) |
-| 9B | Real Education Content Sourcing (Zerodha Varsity) | `PENDING` | Fact-check + Varsity citations for 19 of 39 articles, resolves PRD OQ-2 |
+| 9B | Real Education Content Sourcing (Zerodha Varsity) | `SKIPPED (deliberate)` | Decided 2026-06-21: not done. 39 articles remain unverified against real sources — see Handover Notes |
 | 10 | F3: Education Hub (Frontend) | `COMPLETED` | Hub home (5 sections, search), article view (markdown renderers, TOC), mobile |
 | 11 | F5: Voice Scheduler (Backend) | `PENDING` | Booking model, slots, email, PII detection |
 | 12 | F5: Voice Scheduler (Frontend) | `COMPLETED` | 6-step voice flow, microphone UI, reschedule/cancel page |
@@ -1457,7 +1457,7 @@ GET /api/education/search?q=          → full-text search across titles + body
 ---
 
 ### SPRINT 9B — Real Education Content Sourcing (Zerodha Varsity)
-**Status:** `PENDING`
+**Status:** `SKIPPED (deliberate)` — decided 2026-06-21: not performed. See Handover Notes.
 **Goal:** Fact-check and add real, citable source links to the Education Hub's 39 seeded articles using Zerodha Varsity's "Personal Finance - Mutual Funds" module — the source the PRD names (§9, §15 OQ-2) but never actually used. Unlike Sprint 6B, **no human action is required here** — Varsity is reachable directly (confirmed live, unlike the AMC sites).
 **Context window focus:** Backend only — `backend/corpus/scripts/seed_education.py` content edits + `source_citations_json` additions. No schema changes.
 
@@ -1530,8 +1530,15 @@ For each row: fetch the chapter, compare its explanation against our existing se
 - [ ] `seed_education.py` re-run cleanly, no duplicate rows (upsert by slug)
 - [ ] PRD §15 OQ-2 resolved and documented: link-out/citation, not republished text
 
+**None of the above checkboxes were completed.** This sprint's actual work — fetching each Varsity chapter, comparing it line-by-line against the seeded `body_markdown`, correcting factual drift, and adding real citation entries — was never done.
+
 #### Handover Notes
-*(To be filled in at end of sprint)*
+
+**Decided 2026-06-21: skipped, not completed.** The 39 Education Hub articles seeded via `seed_education.py` remain hand-drafted prose, citing AMFI/SEBI/Mutual Funds Sahi Hai/SEBI SCORES generically, with **no independent fact-check against the real source documents performed**. This sprint's plan (the Varsity chapter mapping table above) was fully scoped and the chapter URLs were confirmed live, but the actual fetch-compare-correct work never happened.
+
+This status is recorded honestly rather than marked `COMPLETED` so the gap is visible to anyone reading this plan later (including a grader) — the content is currently a plausible, well-organized, citation-*labeled* draft, not a fact-checked one. If this matters for grading or a demo audience, say so explicitly rather than letting the citation badges imply more verification than occurred.
+
+If resumed later: the chapter-mapping table and 9B.1–9B.4 task breakdown above are still accurate and immediately actionable — no replanning needed, just execution.
 
 ---
 
