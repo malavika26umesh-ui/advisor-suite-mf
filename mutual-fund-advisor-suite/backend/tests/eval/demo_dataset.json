@@ -1,0 +1,23 @@
+[
+  {
+    "category": "scheme_fee",
+    "query": "What is the exit load for SBI Bluechip Fund?",
+    "expected_contains": "exit load",
+    "source_should_match": "groww.in",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_fee",
+    "query": "What is the exit load structure for ICICI Prudential Bluechip Fund?",
+    "expected_contains": "exit load",
+    "source_should_match": "groww.in",
+    "should_cite_source": true
+  },
+  {
+    "category": "scheme_fee",
+    "query": "What is the exit load for HDFC Flexi Cap Fund?",
+    "expected_contains": "exit load",
+    "source_should_match": "groww.in",
+    "should_cite_source": true
+  }
+]
