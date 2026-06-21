@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import triage, faq, education, scheduler, advisor, pulse, mcp
+from app.api.routes import triage, faq, education, scheduler, advisor, pulse, mcp, admin
 from app.core.config import settings
 
 from contextlib import asynccontextmanager
@@ -29,6 +29,7 @@ app.include_router(scheduler.router)
 app.include_router(advisor.router)
 app.include_router(pulse.router)
 app.include_router(mcp.router)
+app.include_router(admin.router)
 
 
 @app.get("/health")

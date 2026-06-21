@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     ELEVENLABS_API_KEY: str = ""
     DATABASE_URL: str = "sqlite+aiosqlite:///./dev.db"
     SECRET_KEY: str = ""
+    ADMIN_REFRESH_TOKEN: str = ""
     FRONTEND_URL: str = "http://localhost:5173"
 
 
