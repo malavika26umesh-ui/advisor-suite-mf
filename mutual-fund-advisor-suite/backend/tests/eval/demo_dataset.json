@@ -8,14 +8,14 @@
   },
   {
     "category": "scheme_fee",
-    "query": "What is the exit load structure for ICICI Prudential Bluechip Fund?",
-    "expected_contains": "exit load",
+    "query": "What is the NAV of Parag Parikh Flexi Cap Fund?",
+    "expected_contains": "NAV",
     "source_should_match": "groww.in",
     "should_cite_source": true
   },
   {
     "category": "scheme_fee",
-    "query": "What is the exit load for HDFC Flexi Cap Fund?",
+    "query": "What is the exit load for Kotak Emerging Equity Fund?",
     "expected_contains": "exit load",
     "source_should_match": "groww.in",
     "should_cite_source": true
