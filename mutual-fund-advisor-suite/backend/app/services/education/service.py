@@ -1,7 +1,7 @@
 import re
 from typing import List, Optional
 
-from sqlalchemy import text
+from sqlalchemy import or_
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
@@ -106,34 +106,40 @@ class EducationService:
         return [_to_summary(a) for a in result.scalars().all()]
 
     async def search(self, db: AsyncSession, q: str, limit: int = 10) -> List[SearchResult]:
-        # FTS5 MATCH syntax treats quotes/hyphens/asterisks specially — strip everything
-        # except alphanumerics so arbitrary user input can't break the query.
-        # OR (not the FTS5 bareword default of AND) — natural-language questions
-        # are full of filler words ("what", "is", "a") that the matching article's
-        # body rarely contains verbatim; requiring every term to match excludes the
-        # obviously-right result. bm25 ranking still surfaces the best match first.
+        # Plain ILIKE OR-matching, not SQLite FTS5 — FTS5 virtual tables/MATCH syntax
+        # don't exist in PostgreSQL (this is what broke in production after the
+        # Sprint 19 SQLite->Postgres migration: "syntax error at or near MATCH").
+        # OR across terms (not AND): natural-language questions are full of filler
+        # words ("what", "is", "a") that the matching article's body rarely contains
+        # verbatim; requiring every term to match excludes the obviously-right result.
         terms = re.findall(r"[A-Za-z0-9]+", q)
         if not terms:
             return []
-        fts_query = " OR ".join(terms)
 
-        rows = (
-            await db.execute(
-                text(
-                    """
-                    SELECT ed.slug, ed.title, ed.category, ed.body_markdown
-                    FROM education_articles_fts
-                    JOIN education_articles ed ON ed.id = education_articles_fts.rowid
-                    WHERE education_articles_fts MATCH :query AND ed.is_published = 1
-                    ORDER BY rank
-                    LIMIT :limit
-                    """
-                ),
-                {"query": fts_query, "limit": limit},
-            )
-        ).all()
+        conditions = [
+            EducationArticle.title.ilike(f"%{term}%") | EducationArticle.body_markdown.ilike(f"%{term}%")
+            for term in terms
+        ]
+        result = await db.execute(
+            select(EducationArticle).where(EducationArticle.is_published.is_(True), or_(*conditions))
+        )
+        articles = result.scalars().all()
+
+        def relevance(article: EducationArticle) -> int:
+            title_lower = article.title.lower()
+            body_lower = article.body_markdown.lower()
+            score = 0
+            for term in terms:
+                term_lower = term.lower()
+                if term_lower in title_lower:
+                    score += 2
+                if term_lower in body_lower:
+                    score += 1
+            return score
+
+        articles.sort(key=relevance, reverse=True)
 
         return [
-            SearchResult(slug=row.slug, title=row.title, category=row.category, excerpt=_excerpt(row.body_markdown))
-            for row in rows
+            SearchResult(slug=a.slug, title=a.title, category=a.category, excerpt=_excerpt(a.body_markdown))
+            for a in articles[:limit]
         ]
