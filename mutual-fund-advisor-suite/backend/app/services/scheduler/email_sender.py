@@ -8,7 +8,9 @@ class EmailSender:
         self.sg = None
         if hasattr(settings, 'SENDGRID_API_KEY') and settings.SENDGRID_API_KEY:
             self.sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
-        self.from_email = "no-reply@advisorsuite.mf"
+        # Must match the verified Single Sender in SendGrid, not a fictional
+        # domain — SendGrid rejects sends from unverified From addresses.
+        self.from_email = "malavika26.umesh@gmail.com"
 
     def _send_email(self, message: Mail) -> bool:
         if not self.sg:
