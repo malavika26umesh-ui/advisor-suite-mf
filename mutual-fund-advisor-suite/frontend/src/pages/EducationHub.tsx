@@ -215,6 +215,8 @@ export default function EducationHub() {
                         <p>We cannot provide investment advice, but please explore the related educational articles below.</p>
                     ) : aiResponse.status === 'no_answer' ? (
                         <p>We don't have verified information about this. Please explore the related educational articles below.</p>
+                    ) : aiResponse.status === 'clarification_needed' ? (
+                        <p>{aiResponse.answer?.clarification_question ?? 'Could you clarify your question?'}</p>
                     ) : (
                         <div>
                             <p>{aiResponse.answer?.answer_text}</p>
