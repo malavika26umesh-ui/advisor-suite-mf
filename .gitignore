@@ -1,3 +1,4 @@
 sendgridkey.txt
 *.key
 secrets.txt
+.worktrees/
