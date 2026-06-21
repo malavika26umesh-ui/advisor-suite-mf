@@ -40,22 +40,29 @@ chromadb==1.5.9
 `chromadb==1.5.9` was already installed into `.venv` during planning. Run: `cd mutual-fund-advisor-suite/backend && source .venv/Scripts/activate && pip show chromadb`
 Expected: `Version: 1.5.9`. If missing, run `pip install -r requirements.txt`.
 
-- [ ] **Step 3: Create the scheme URL config file**
+- [ ] **Step 3: Create the scheme URL config file (Top 10 pilot)**
+
+This pilot covers the first 10 of the locked Top 20 schemes (`top20_schemes.json` ids 1–10), using the Groww URLs provided in `URL_Schemes.md`, in the same order. `id`/`name` are copied verbatim from `top20_schemes.json` — never substituted — per the locked-scheme-list rule in `CLAUDE.md`.
 
 Create `mutual-fund-advisor-suite/backend/corpus/sources/scheme_urls.json`:
 ```json
 {
   "schemes": [
-    {
-      "id": 1,
-      "name": "Parag Parikh Flexi Cap Fund",
-      "url": "https://example-data-provider.com/parag-parikh-flexi-cap-fund"
-    }
+    { "id": 1, "name": "Parag Parikh Flexi Cap Fund", "url": "https://groww.in/mutual-funds/parag-parikh-long-term-value-fund-direct-growth" },
+    { "id": 2, "name": "SBI Bluechip Fund", "url": "https://groww.in/mutual-funds/sbi-large-cap-direct-plan-growth" },
+    { "id": 3, "name": "ICICI Prudential Bluechip Fund", "url": "https://groww.in/mutual-funds/icici-prudential-us-bluechip-equity-fund-direct-growth" },
+    { "id": 4, "name": "HDFC Flexi Cap Fund", "url": "https://groww.in/mutual-funds/hdfc-equity-fund-direct-growth" },
+    { "id": 5, "name": "ICICI Prudential Value Discovery Fund", "url": "https://groww.in/mutual-funds/icici-prudential-value-direct-growth" },
+    { "id": 6, "name": "Nippon India Large Cap Fund", "url": "https://groww.in/mutual-funds/nippon-india-large-cap-fund-direct-growth" },
+    { "id": 7, "name": "Nippon India Small Cap Fund", "url": "https://groww.in/mutual-funds/nippon-india-small-cap-fund-direct-growth" },
+    { "id": 8, "name": "SBI Small Cap Fund", "url": "https://groww.in/mutual-funds/sbi-small-midcap-fund-direct-growth" },
+    { "id": 9, "name": "HDFC Mid-Cap Opportunities Fund", "url": "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth" },
+    { "id": 10, "name": "Kotak Emerging Equity Fund", "url": "https://groww.in/mutual-funds/kotak-emerging-equity-scheme-direct-growth" }
   ]
 }
 ```
 
-`id` and `name` must match an entry in `top20_schemes.json`. Replace the placeholder `url` with the real URL once it's provided — add one entry per provided URL; schemes without an entry here simply aren't covered by live data yet (no error, no fabricated data).
+Schemes 11–20 have no entry yet and simply aren't covered by live data in this pilot (no error, no fabricated data) — add them the same way once their URLs are provided.
 
 - [ ] **Step 4: Commit**
 
@@ -753,6 +760,65 @@ Expected: PASS — all tests pass, including `tests/test_faq.py`, `tests/test_ch
 
 ---
 
-## Notes for whoever provides the real scheme URLs
+### Task 8: Manual pilot run against the real Top 10 URLs
 
-Once real URLs are added to `corpus/sources/scheme_urls.json` (Task 1, Step 3), running `run_daily_scheme_data_refresh()` once manually (`python -c "import asyncio; from app.services.scheduler.scheme_data_refresh import run_daily_scheme_data_refresh; asyncio.run(run_daily_scheme_data_refresh())"`) will populate the real Chroma collection immediately, rather than waiting for the next 10:00 IST run.
+**Files:**
+- None created or modified — this exercises the real pipeline end-to-end against the live `groww.in` URLs from Task 1, instead of waiting for the next scheduled 10:00 IST run.
+
+**Interfaces:**
+- Consumes: `run_daily_scheme_data_refresh()` from Task 6, `scheme_urls.json` from Task 1.
+- Produces: a populated `chroma_store/` collection with real data for the 10 piloted schemes, used to manually sanity-check the FAQ Centre end-to-end.
+
+- [ ] **Step 1: Confirm `GROQ_API_KEY` is set**
+
+Run: `cd mutual-fund-advisor-suite/backend && source .venv/Scripts/activate && python -c "from app.core.config import settings; print(bool(settings.GROQ_API_KEY))"`
+Expected: `True`. If `False`, the extractor (Task 3) will return all-null fields for every scheme and no documents will be written — set `GROQ_API_KEY` in `.env` before continuing.
+
+- [ ] **Step 2: Run the refresh once manually**
+
+Run:
+```bash
+cd mutual-fund-advisor-suite/backend && source .venv/Scripts/activate && python -c "import asyncio; from app.services.scheduler.scheme_data_refresh import run_daily_scheme_data_refresh; asyncio.run(run_daily_scheme_data_refresh())"
+```
+Expected: one `Refreshed N parameter(s) for <scheme>` line per scheme (or a `Scheme data refresh failed for ...` line if `groww.in` blocks the scrape or changes markup — that scheme is skipped, the run continues for the rest, no exception propagates).
+
+- [ ] **Step 3: Inspect what landed in Chroma**
+
+Run:
+```bash
+cd mutual-fund-advisor-suite/backend && source .venv/Scripts/activate && python -c "
+from app.services.rag.chroma_store import SchemeLiveDataStore
+store = SchemeLiveDataStore()
+print('Total documents:', store.count())
+result = store.collection.get()
+for doc_id, meta in zip(result['ids'], result['metadatas']):
+    print(doc_id, '->', meta)
+"
+```
+Expected: up to 30 documents (10 schemes x up to 3 parameters), each with `scheme_name`, `parameter`, `source_url`, `fetched_at` metadata. Some schemes may have fewer than 3 if the LLM couldn't find a given field on the page — this is expected behavior, not a bug, per the "never fabricate" rule.
+
+- [ ] **Step 4: Sanity-check one real FAQ query through the live pipeline**
+
+Run:
+```bash
+cd mutual-fund-advisor-suite/backend && source .venv/Scripts/activate && python -c "
+import asyncio
+from app.services.rag.pipeline import FAQPipeline
+from app.core.database import async_session_maker
+
+async def main():
+    pipeline = FAQPipeline()
+    async with async_session_maker() as db:
+        response = await pipeline.query('What is the exit load for SBI Bluechip Fund?', 'manual-test-session', db)
+        print(response.status)
+        print(response.answer.answer_text if response.answer else None)
+        print(response.answer.source_urls if response.answer else None)
+
+asyncio.run(main())
+"
+```
+Expected: `status` is `answered`, `answer_text` references the real exit load text scraped from the SBI Bluechip Fund's groww.in page (not the "We don't have verified information..." fallback), and `source_urls` contains the real groww.in URL.
+
+- [ ] **Step 5: Note any scraping gaps for follow-up**
+
+If Step 2 logged any `Scheme data refresh failed` lines, or Step 3 shows fewer than 3 parameters for a scheme, note which scheme/field is missing — this is the signal for whether `groww.in`'s markup needs a scraper tweak (e.g. JS-rendered content `httpx`+`BeautifulSoup` can't see) before expanding past the Top 10 pilot to all 20 schemes. No code change is required as part of this task; this step is diagnostic only.
