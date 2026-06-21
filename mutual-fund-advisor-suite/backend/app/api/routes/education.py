@@ -8,13 +8,17 @@ from app.models.education_models import CATEGORIES
 from app.models.education_schemas import (
     ArticleDetail,
     ArticleSummary,
+    EducationQARequest,
+    EducationQAResponse,
     SearchResult,
     SectionSummary,
 )
 from app.services.education.service import EducationService
+from app.services.education.qa_service import EducationQAService
 
 router = APIRouter(prefix="/api/education", tags=["education"])
 service = EducationService()
+qa_service = EducationQAService()
 
 
 @router.get("/sections", response_model=List[SectionSummary])
@@ -49,3 +53,8 @@ async def get_article(slug: str, db: AsyncSession = Depends(get_db)):
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
     return article
+
+
+@router.post("/ask", response_model=EducationQAResponse)
+async def ask_education_question(request: EducationQARequest, db: AsyncSession = Depends(get_db)):
+    return await qa_service.ask(request.query, request.session_id, db)
