@@ -29,3 +29,5 @@ def start_scheduler():
 
     if not scheduler.running:
         scheduler.start()
+
+    print(f"[scheduler] started with jobs: {[j.id for j in scheduler.get_jobs()]}")
