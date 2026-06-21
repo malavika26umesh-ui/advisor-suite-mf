@@ -2,3 +2,9 @@ sendgridkey.txt
 *.key
 secrets.txt
 .worktrees/
+
+chroma_store/
+__pycache__/
+*.pyc
+.venv/
+node_modules/

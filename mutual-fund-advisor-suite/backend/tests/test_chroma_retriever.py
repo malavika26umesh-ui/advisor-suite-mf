@@ -33,15 +33,13 @@ def test_retrieve_with_scheme_filter_returns_seeded_chunk(retriever):
     assert chunks[0].page_number is None
 
 
-def test_retrieve_with_scheme_filter_falls_back_to_mock_when_empty(retriever):
+def test_retrieve_with_scheme_filter_returns_empty_when_no_match(retriever):
     chunks = retriever.retrieve_with_scheme_filter("exit load", "Some Fund", top_k=5)
 
-    assert len(chunks) == 1
-    assert chunks[0].doc_type == "Live Scheme Data"
+    assert chunks == []
 
 
-def test_retrieve_general_falls_back_to_mock_when_empty(retriever):
+def test_retrieve_general_returns_empty_when_no_match(retriever):
     chunks = retriever.retrieve("Who won the cricket world cup?", namespace="regulatory", top_k=5)
 
-    assert len(chunks) == 1
-    assert chunks[0].doc_type == "Live Scheme Data"
+    assert chunks == []

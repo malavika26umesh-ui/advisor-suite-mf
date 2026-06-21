@@ -31,7 +31,7 @@ def setup_module(module):
 
 def test_tc_7_1_and_7_2_exit_load_answered():
     session_id = str(uuid.uuid4())
-    res = client.post("/api/faq/query", json={"query": "What is the exit load for Parag Parikh Flexi Cap Fund?", "session_id": session_id})
+    res = client.post("/api/faq/query", json={"query": "What is the exit load for SBI Bluechip Fund?", "session_id": session_id})
     assert res.status_code == 200
     data = res.json()
     assert data["status"] == "answered"
