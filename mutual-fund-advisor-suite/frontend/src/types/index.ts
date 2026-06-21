@@ -71,6 +71,12 @@ export interface EducationSearchResult {
   excerpt: string;
 }
 
+export interface EducationQAResponse {
+  status: 'answered' | 'advice_deflected' | 'no_answer' | 'clarification_needed';
+  answer: FAQAnswer | null;
+  session_log_id: string | null;
+}
+
 // ── Voice Appointment Scheduler (Sprint 11 backend / Sprint 12 frontend) ───
 
 export interface AvailableSlot {

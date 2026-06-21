@@ -7,15 +7,14 @@ import {
   X,
   Robot,
 } from '@phosphor-icons/react';
-import { Card, Skeleton } from '../components/ui';
+import { Card, DisclaimerBlock, Skeleton } from '../components/ui';
 import { SECTION_META, fundTypePill } from '../components/features/education/educationMeta';
 import { educationService } from '../services/education.service';
-import { faqService } from '../services/faq.service';
 import { EDUCATION_COMPLIANCE_STRIP } from '../utils/compliance';
 import type {
-  FAQResponse,
   EducationArticleSummary,
   EducationCategory,
+  EducationQAResponse,
   EducationSearchResult,
   EducationSectionSummary,
 } from '../types';
@@ -32,7 +31,7 @@ export default function EducationHub() {
   const [searchResults, setSearchResults] = useState<EducationSearchResult[] | null>(null);
   const [searching, setSearching] = useState(false);
   const [ragLoading, setRagLoading] = useState(false);
-  const [aiResponse, setAiResponse] = useState<FAQResponse | null>(null);
+  const [aiResponse, setAiResponse] = useState<EducationQAResponse | null>(null);
 
   const [highlighted, setHighlighted] = useState<EducationCategory | null>(null);
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -94,10 +93,10 @@ export default function EducationHub() {
     }
 
     try {
-      const ragResult = await faqService.queryFAQ(trimmed, 'education-hub-session-' + Date.now());
-      setAiResponse(ragResult);
+      const qaResult = await educationService.ask(trimmed, 'education-hub-session-' + Date.now());
+      setAiResponse(qaResult);
     } catch (e) {
-      console.error('RAG failed', e);
+      console.error('Education Q&A failed', e);
     } finally {
       setRagLoading(false);
     }
@@ -214,8 +213,8 @@ export default function EducationHub() {
                   <div className="text-neutral-800 text-[15px] leading-relaxed">
                     {aiResponse.status === 'advice_deflected' ? (
                         <p>We cannot provide investment advice, but please explore the related educational articles below.</p>
-                    ) : aiResponse.status === 'out_of_scope' ? (
-                        <p>This question seems to be outside the scope of mutual funds. Please ask a mutual fund related question.</p>
+                    ) : aiResponse.status === 'no_answer' ? (
+                        <p>We don't have verified information about this. Please explore the related educational articles below.</p>
                     ) : (
                         <div>
                             <p>{aiResponse.answer?.answer_text}</p>
@@ -226,6 +225,9 @@ export default function EducationHub() {
                                     ))}
                                 </div>
                             )}
+                            <div className="mt-4">
+                                <DisclaimerBlock variant="primary" />
+                            </div>
                         </div>
                     )}
                   </div>

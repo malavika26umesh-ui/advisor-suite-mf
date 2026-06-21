@@ -3,6 +3,7 @@ import type {
   EducationArticleDetail,
   EducationArticleSummary,
   EducationCategory,
+  EducationQAResponse,
   EducationSearchResult,
   EducationSectionSummary,
 } from '../types';
@@ -37,6 +38,15 @@ export const educationService = {
     const response = await api.get<EducationSearchResult[]>('/education/search', {
       params: { q },
     });
+    return response.data;
+  },
+
+  async ask(query: string, sessionId: string): Promise<EducationQAResponse> {
+    const response = await api.post<EducationQAResponse>(
+      '/education/ask',
+      { query, session_id: sessionId },
+      { timeout: 30000 }
+    );
     return response.data;
   },
 };
