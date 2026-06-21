@@ -27,6 +27,9 @@ def start_scheduler():
     from app.services.pulse.scheduler import register_pulse_job
     register_pulse_job(scheduler)
 
+    from app.services.scheduler.scheme_data_refresh import register_scheme_data_refresh_job
+    register_scheme_data_refresh_job(scheduler)
+
     if not scheduler.running:
         scheduler.start()
 
