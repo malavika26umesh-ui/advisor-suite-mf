@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://advisor-suite-mf.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
