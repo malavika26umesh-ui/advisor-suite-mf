@@ -2,6 +2,7 @@ from datetime import date
 from typing import List, Optional
 
 from pydantic import BaseModel
+from app.models.faq_schemas import FAQAnswer
 
 
 class Citation(BaseModel):
@@ -42,3 +43,14 @@ class SearchResult(BaseModel):
     title: str
     category: str
     excerpt: str
+
+
+class EducationQARequest(BaseModel):
+    query: str
+    session_id: str
+
+
+class EducationQAResponse(BaseModel):
+    status: str
+    answer: Optional[FAQAnswer] = None
+    session_log_id: Optional[str] = None

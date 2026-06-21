@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Date, Integer, JSON, String, Text
+from sqlalchemy import Boolean, Column, Date, DateTime, Integer, JSON, String, Text, func
 from app.core.database import Base
 
 CATEGORIES = (
@@ -25,3 +25,15 @@ class EducationArticle(Base):
     scheme_example_id = Column(Integer, nullable=True)
     most_misunderstood = Column(Boolean, nullable=False, default=False)
     is_published = Column(Boolean, nullable=False, default=True)
+
+
+class EducationQueryLog(Base):
+    __tablename__ = "education_query_log"
+
+    id = Column(Integer, primary_key=True, index=True)
+    session_id = Column(String, index=True)
+    query = Column(String)
+    answer_text = Column(String, nullable=True)
+    bucket = Column(String)
+    timestamp = Column(DateTime(timezone=True), server_default=func.now())
+    expires_at = Column(DateTime(timezone=True))
