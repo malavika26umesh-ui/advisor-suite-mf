@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from app.services.rag.corpus_check import CorpusChecker
 from app.services.triage.classifier import TriageClassifier
-from app.services.rag.retriever import PineconeRetriever
+from app.services.rag.chroma_retriever import ChromaRetriever
 from app.services.rag.answer_builder import FAQAnswerBuilder
 from app.services.rag.education_lookup import EducationLookup
 from app.models.faq_schemas import FAQResponse, RelatedEducationArticle
@@ -12,7 +12,7 @@ class FAQPipeline:
     def __init__(self):
         self.corpus_checker = CorpusChecker()
         self.triage_classifier = TriageClassifier()
-        self.retriever = PineconeRetriever()
+        self.retriever = ChromaRetriever()
         self.answer_builder = FAQAnswerBuilder()
         self.education_lookup = EducationLookup()
 
