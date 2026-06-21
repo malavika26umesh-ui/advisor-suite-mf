@@ -17,6 +17,20 @@ function dateKey(d: Date): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/**
+ * Returns an ISO 8601 datetime string in *local* time without a timezone
+ * suffix (e.g. "2026-06-22T10:00:00").  We deliberately avoid
+ * Date.toISOString() because that converts to UTC, which causes the backend
+ * (SQLite, naive datetimes) to store the wrong time, and the frontend then
+ * re-renders the slot at the wrong hour in the calendar grid.
+ */
+function toLocalISOString(d: Date): string {
+  return (
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` +
+    `T${pad(d.getHours())}:${pad(d.getMinutes())}:00`
+  );
+}
+
 function getWeekDates(): Date[] {
   const today = new Date();
   const dayOfWeek = today.getDay(); // 0 = Sun
@@ -105,6 +119,14 @@ export default function AdvisorCalendar() {
 
   const handleAddSlot = async () => {
     if (selectedDays.length === 0 || !fromTime || !toTime) return;
+
+    const [fh, fm] = fromTime.split(':').map(Number);
+    const [th, tm] = toTime.split(':').map(Number);
+    if (th * 60 + tm <= fh * 60 + fm) {
+      addToast('End time must be after start time.', 'error');
+      return;
+    }
+
     setSaving(true);
     try {
       for (const dayLabel of selectedDays) {
@@ -112,16 +134,16 @@ export default function AdvisorCalendar() {
         const base = new Date(weekDates[0]);
         base.setDate(weekDates[0].getDate() + dayIndex);
 
-        const [fh, fm] = fromTime.split(':').map(Number);
-        const [th, tm] = toTime.split(':').map(Number);
         const start = new Date(base);
         start.setHours(fh, fm, 0, 0);
         const end = new Date(base);
         end.setHours(th, tm, 0, 0);
 
+        // Use local-time ISO strings (no 'Z' suffix) so the backend stores
+        // the exact local hour rather than the UTC-converted equivalent.
         await advisorService.createSlot({
-          start_time: start.toISOString(),
-          end_time: end.toISOString(),
+          start_time: toLocalISOString(start),
+          end_time: toLocalISOString(end),
           is_recurring: isRecurring,
         });
       }
@@ -129,8 +151,9 @@ export default function AdvisorCalendar() {
       setModalOpen(false);
       setSelectedDays([]);
       loadData();
-    } catch {
-      addToast('Could not add this time block.', 'error');
+    } catch (err: any) {
+      const detail = err?.response?.data?.detail;
+      addToast(detail ? `Could not add time block: ${detail}` : 'Could not add this time block. Please try again.', 'error');
     } finally {
       setSaving(false);
     }

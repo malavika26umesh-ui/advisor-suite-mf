@@ -117,4 +117,6 @@ class EmailSender:
             subject="AdvisorSuite MF - Login OTP",
             html_content=html_content
         )
+        if not self.sg:
+            print(f"--- LOCAL DEV OTP --- Login with OTP: {otp} for {advisor_email}")
         return self._send_email(message)
