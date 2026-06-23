@@ -4,12 +4,30 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import triage, faq, education, scheduler, advisor, pulse, mcp, admin
 from app.core.config import settings
 
+import asyncio
 from contextlib import asynccontextmanager
+
+
+async def heal_scheme_data_if_empty() -> None:
+    # Render's free-tier disk is ephemeral -- every cold start (deploy, or the
+    # free-tier idle spin-down/spin-up cycle, which happens far more often
+    # than deploys) wipes the local ChromaDB store. Without this, the FAQ
+    # Centre silently goes back to "We don't have verified information" on
+    # every restart until someone notices and manually hits the admin
+    # refresh endpoint. Self-heal on boot instead.
+    from app.services.rag.chroma_store import SchemeLiveDataStore
+    from app.services.scheduler.scheme_data_refresh import run_daily_scheme_data_refresh
+
+    if SchemeLiveDataStore().count() == 0:
+        print("[startup] scheme_live_data collection is empty -- triggering background refresh")
+        asyncio.create_task(run_daily_scheme_data_refresh())
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     from app.services.scheduler.cron_jobs import start_scheduler
     start_scheduler()
+    await heal_scheme_data_if_empty()
     yield
 
 app = FastAPI(title="Mutual Fund Advisor Intelligence Suite API", lifespan=lifespan)
