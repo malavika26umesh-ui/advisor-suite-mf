@@ -3,3 +3,8 @@ https://groww.in/mutual-funds/sbi-large-cap-direct-plan-growth
 https://groww.in/mutual-funds/icici-prudential-us-bluechip-equity-fund-direct-growth
 https://groww.in/mutual-funds/hdfc-equity-fund-direct-growth
 https://groww.in/mutual-funds/icici-prudential-value-direct-growth 
+https://groww.in/mutual-funds/nippon-india-large-cap-fund-direct-growth
+https://groww.in/mutual-funds/nippon-india-small-cap-fund-direct-growth
+https://groww.in/mutual-funds/sbi-small-midcap-fund-direct-growth
+https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth
+https://groww.in/mutual-funds/kotak-emerging-equity-scheme-direct-growth 
