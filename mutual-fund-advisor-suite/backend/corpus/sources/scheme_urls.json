@@ -1,14 +1,14 @@
 {
   "schemes": [
     { "id": 1, "name": "Parag Parikh Flexi Cap Fund", "url": "https://groww.in/mutual-funds/parag-parikh-long-term-value-fund-direct-growth" },
-    { "id": 2, "name": "SBI Bluechip Fund", "url": "https://groww.in/mutual-funds/sbi-large-cap-direct-plan-growth" },
-    { "id": 3, "name": "ICICI Prudential Bluechip Fund", "url": "https://groww.in/mutual-funds/icici-prudential-us-bluechip-equity-fund-direct-growth" },
+    { "id": 2, "name": "SBI Bluechip Fund", "url": "https://groww.in/mutual-funds/sbi-bluechip-fund-direct-growth" },
+    { "id": 3, "name": "ICICI Prudential Bluechip Fund", "url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth" },
     { "id": 4, "name": "HDFC Flexi Cap Fund", "url": "https://groww.in/mutual-funds/hdfc-equity-fund-direct-growth" },
-    { "id": 5, "name": "ICICI Prudential Value Discovery Fund", "url": "https://groww.in/mutual-funds/icici-prudential-value-direct-growth" },
+    { "id": 5, "name": "ICICI Prudential Value Discovery Fund", "url": "https://groww.in/mutual-funds/icici-prudential-value-discovery-fund-direct-growth" },
     { "id": 6, "name": "Nippon India Large Cap Fund", "url": "https://groww.in/mutual-funds/nippon-india-large-cap-fund-direct-growth" },
     { "id": 7, "name": "Nippon India Small Cap Fund", "url": "https://groww.in/mutual-funds/nippon-india-small-cap-fund-direct-growth" },
     { "id": 8, "name": "SBI Small Cap Fund", "url": "https://groww.in/mutual-funds/sbi-small-midcap-fund-direct-growth" },
-    { "id": 9, "name": "HDFC Mid-Cap Opportunities Fund", "url": "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth" },
+    { "id": 9, "name": "HDFC Mid-Cap Opportunities Fund", "url": "https://groww.in/mutual-funds/hdfc-mid-cap-opportunities-fund-direct-growth" },
     { "id": 10, "name": "Kotak Emerging Equity Fund", "url": "https://groww.in/mutual-funds/kotak-emerging-equity-scheme-direct-growth" }
   ]
 }
