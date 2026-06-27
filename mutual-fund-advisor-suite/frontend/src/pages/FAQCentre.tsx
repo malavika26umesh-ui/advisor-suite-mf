@@ -21,6 +21,9 @@ export const FAQCentre: React.FC = () => {
   const topicParam = searchParams.get('topic');
   const qParam = searchParams.get('q');
 
+  // Scheme pill two-stage selection
+  const [selectedSchemePill, setSelectedSchemePill] = useState<string | null>(null);
+
   // State Machine
   const [state, setState] = useState<FAQState>('idle');
   const [query, setQuery] = useState('');
@@ -193,10 +196,10 @@ export const FAQCentre: React.FC = () => {
               isLoading={state === 'loading' || followUpLoading}
               query={query}
             />
-            {/* Covered scheme pills — lets users know which schemes they can ask about */}
-            <div className="flex flex-col gap-1.5">
+            {/* Two-stage scheme picker: pick scheme → pick parameter → fire precise query */}
+            <div className="flex flex-col gap-2">
               <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider">
-                Ask about any of these 10 covered schemes:
+                Ask about NAV, AUM or Exit Load for any of these 10 covered schemes:
               </p>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -214,17 +217,48 @@ export const FAQCentre: React.FC = () => {
                   <button
                     key={name}
                     type="button"
-                    onClick={() => {
-                      const q = `What is the NAV and exit load of ${name}?`;
-                      handleSearchStart(q);
-                      triggerAutoSearch(q);
-                    }}
-                    className="text-[11px] font-medium text-brand-teal border border-brand-teal/40 bg-teal-50 hover:bg-teal-100 hover:border-brand-teal transition-colors px-2.5 py-1 rounded-full whitespace-normal text-left leading-tight"
+                    onClick={() => setSelectedSchemePill(prev => prev === name ? null : name)}
+                    className={`text-[11px] font-medium border transition-colors px-2.5 py-1 rounded-full whitespace-normal text-left leading-tight ${
+                      selectedSchemePill === name
+                        ? 'bg-brand-teal text-white border-brand-teal'
+                        : 'text-brand-teal border-brand-teal/40 bg-teal-50 hover:bg-teal-100 hover:border-brand-teal'
+                    }`}
                   >
                     {name}
                   </button>
                 ))}
               </div>
+
+              {/* Parameter picker — appears only after a scheme is selected */}
+              {selectedSchemePill && (
+                <div className="flex items-center gap-2 pt-1 pl-1 border-l-2 border-brand-teal/30">
+                  <span className="text-[11px] text-neutral-500 font-medium shrink-0">
+                    What do you want to know?
+                  </span>
+                  {(['NAV', 'AUM', 'Exit Load'] as const).map((param) => (
+                    <button
+                      key={param}
+                      type="button"
+                      onClick={() => {
+                        const q = `What is the ${param} of ${selectedSchemePill}?`;
+                        setSelectedSchemePill(null);
+                        handleSearchStart(q);
+                        triggerAutoSearch(q);
+                      }}
+                      className="text-[11px] font-semibold bg-brand-navy text-white px-3 py-1 rounded-full hover:bg-opacity-90 transition-colors"
+                    >
+                      {param}
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSchemePill(null)}
+                    className="text-[11px] text-neutral-400 hover:text-neutral-600 ml-auto"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
