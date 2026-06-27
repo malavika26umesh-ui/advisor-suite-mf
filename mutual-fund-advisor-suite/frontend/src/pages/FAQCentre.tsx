@@ -183,15 +183,50 @@ export const FAQCentre: React.FC = () => {
         
         {/* Left Column (65% main) */}
         <div className="lg:col-span-2 flex flex-col gap-6">
-          {/* Search Bar */}
-          <FAQSearchBar
-            sessionId={sessionId}
-            onSearchStart={handleSearchStart}
-            onSearchResult={handleSearchResult}
-            onSearchError={handleSearchError}
-            isLoading={state === 'loading' || followUpLoading}
-            query={query}
-          />
+          {/* Search Bar + Scheme Pills */}
+          <div className="flex flex-col gap-3">
+            <FAQSearchBar
+              sessionId={sessionId}
+              onSearchStart={handleSearchStart}
+              onSearchResult={handleSearchResult}
+              onSearchError={handleSearchError}
+              isLoading={state === 'loading' || followUpLoading}
+              query={query}
+            />
+            {/* Covered scheme pills — lets users know which schemes they can ask about */}
+            <div className="flex flex-col gap-1.5">
+              <p className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider">
+                Ask about any of these 10 covered schemes:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Parag Parikh Flexi Cap Fund',
+                  'SBI Bluechip Fund',
+                  'ICICI Prudential Bluechip Fund',
+                  'HDFC Flexi Cap Fund',
+                  'ICICI Prudential Value Discovery Fund',
+                  'Nippon India Large Cap Fund',
+                  'Nippon India Small Cap Fund',
+                  'SBI Small Cap Fund',
+                  'HDFC Mid-Cap Opportunities Fund',
+                  'Kotak Emerging Equity Fund',
+                ].map((name) => (
+                  <button
+                    key={name}
+                    type="button"
+                    onClick={() => {
+                      const q = `What is the NAV and exit load of ${name}?`;
+                      handleSearchStart(q);
+                      triggerAutoSearch(q);
+                    }}
+                    className="text-[11px] font-medium text-brand-teal border border-brand-teal/40 bg-teal-50 hover:bg-teal-100 hover:border-brand-teal transition-colors px-2.5 py-1 rounded-full whitespace-normal text-left leading-tight"
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
 
           {/* State Machine Rendering */}
           <div className="transition-all duration-300">

@@ -75,7 +75,7 @@ export const CoveredSchemesPanel: React.FC = () => {
             {COVERED_SCHEMES.map((name, idx) => (
               <div
                 key={`${name}-${idx}`}
-                className="text-[12px] font-medium text-brand-teal hover:text-teal-700 transition-colors py-0.5 truncate"
+                className="text-[12px] font-medium text-brand-teal hover:text-teal-700 transition-colors py-0.5 break-words leading-snug"
                 title={name}
               >
                 {name}

@@ -37,7 +37,7 @@ export const FAQOutOfScopeCard: React.FC<FAQOutOfScopeCardProps> = ({ schemeName
             {COVERED_SCHEMES.map((name, idx) => (
               <li
                 key={`${name}-${idx}`}
-                className="text-xs font-medium text-brand-teal hover:text-teal-700 list-disc list-inside truncate"
+                className="text-xs font-medium text-brand-teal hover:text-teal-700 list-disc list-inside break-words leading-snug"
                 title={name}
               >
                 {name}
