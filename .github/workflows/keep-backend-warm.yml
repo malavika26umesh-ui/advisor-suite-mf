@@ -1,0 +1,25 @@
+name: Keep Render backend warm
+
+# Render's free tier spins the backend down after ~15 min of inactivity, and a
+# cold start takes 30-60s — long enough that the frontend's request times out and
+# pages (e.g. the Education Hub) render as silently empty. This workflow pings the
+# backend's /health endpoint every 10 minutes so it never goes to sleep.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # every 10 minutes
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend /health
+        run: |
+          echo "Pinging backend at $(date -u)"
+          code=$(curl -s -m 60 -o /dev/null -w "%{http_code}" https://advisor-suite-mf.onrender.com/health)
+          echo "HTTP $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::Backend health check returned $code (expected 200)"
+            exit 1
+          fi
