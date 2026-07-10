@@ -7,7 +7,7 @@ import {
   X,
   Robot,
 } from '@phosphor-icons/react';
-import { Card, DisclaimerBlock, Skeleton } from '../components/ui';
+import { Button, Card, DisclaimerBlock, Skeleton } from '../components/ui';
 import { SECTION_META, fundTypePill } from '../components/features/education/educationMeta';
 import { educationService } from '../services/education.service';
 import { EDUCATION_COMPLIANCE_STRIP } from '../utils/compliance';
@@ -26,6 +26,7 @@ export default function EducationHub() {
   const [sections, setSections] = useState<EducationSectionSummary[]>([]);
   const [articles, setArticles] = useState<EducationArticleSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<EducationSearchResult[] | null>(null);
@@ -36,19 +37,30 @@ export default function EducationHub() {
   const [highlighted, setHighlighted] = useState<EducationCategory | null>(null);
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
+  // Load sections + articles. The backend runs on Render's free tier, which
+  // cold-starts (~30-60s) after idle; a timed-out request must surface a retry
+  // affordance rather than silently rendering empty sections.
+  const loadContent = async () => {
+    setLoading(true);
+    setLoadError(false);
+    try {
+      const [sectionData, articleData] = await Promise.all([
+        educationService.getSections(),
+        educationService.getArticles(),
+      ]);
+      setSections(sectionData);
+      setArticles(articleData);
+    } catch (e) {
+      console.error('Failed to load Education Hub content', e);
+      setLoadError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    (async () => {
-      try {
-        const [sectionData, articleData] = await Promise.all([
-          educationService.getSections(),
-          educationService.getArticles(),
-        ]);
-        setSections(sectionData);
-        setArticles(articleData);
-      } finally {
-        setLoading(false);
-      }
-    })();
+    loadContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ?category= deep link: scroll to that section and briefly highlight it.
@@ -268,8 +280,29 @@ export default function EducationHub() {
           </section>
         )}
 
+        {/* ══ LOAD ERROR ════════════════════════════ */}
+        {!searchResults && loadError && !loading && (
+          <section aria-label="Failed to load content" className="py-16">
+            <div className="max-w-[440px] mx-auto text-center flex flex-col items-center gap-4">
+              <div className="text-warning-500">
+                <Warning size={40} weight="fill" aria-hidden="true" />
+              </div>
+              <h2 className="font-heading text-[20px] font-semibold text-neutral-900">
+                Couldn’t load the Education Hub
+              </h2>
+              <p className="text-[14px] text-neutral-600 leading-relaxed">
+                We couldn’t reach the content service. This can happen on the first visit after a
+                period of inactivity — it usually clears in a few seconds. Please try again.
+              </p>
+              <Button variant="primary" onClick={loadContent} disabled={loading}>
+                {loading ? 'Retrying…' : 'Retry'}
+              </Button>
+            </div>
+          </section>
+        )}
+
         {/* ══ SECTIONS ════════════════════════════ */}
-        {!searchResults && (
+        {!searchResults && !loadError && (
           <>
             {/* Section 1 — Fund Categories */}
             <EducationSection
