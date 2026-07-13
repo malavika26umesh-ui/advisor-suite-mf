@@ -23,7 +23,7 @@ jobs:
           # should succeed on a later attempt, not fail the job (curl exit 28).
           for attempt in 1 2 3; do
             code=$(curl -s -m 150 --connect-timeout 30 -o /dev/null \
-              -w "%{http_code}" https://advisor-suite-mf.onrender.com/health || echo "000")
+              -w "%{http_code}" https://advisor-suite-mf.onrender.com/health) || code="000"
             echo "Attempt $attempt: HTTP $code"
             if [ "$code" = "200" ]; then
               echo "Backend is healthy."
