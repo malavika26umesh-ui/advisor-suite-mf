@@ -17,9 +17,20 @@ jobs:
       - name: Ping backend /health
         run: |
           echo "Pinging backend at $(date -u)"
-          code=$(curl -s -m 60 -o /dev/null -w "%{http_code}" https://advisor-suite-mf.onrender.com/health)
-          echo "HTTP $code"
-          if [ "$code" != "200" ]; then
-            echo "::error::Backend health check returned $code (expected 200)"
-            exit 1
-          fi
+          # Render free tier cold starts can take well over 60s. If GitHub's
+          # scheduler skips/delays runs, the backend may be asleep when we hit
+          # it, so allow a long per-request timeout AND retry — a slow wake-up
+          # should succeed on a later attempt, not fail the job (curl exit 28).
+          for attempt in 1 2 3; do
+            code=$(curl -s -m 150 --connect-timeout 30 -o /dev/null \
+              -w "%{http_code}" https://advisor-suite-mf.onrender.com/health || echo "000")
+            echo "Attempt $attempt: HTTP $code"
+            if [ "$code" = "200" ]; then
+              echo "Backend is healthy."
+              exit 0
+            fi
+            echo "Not ready (likely a cold start) — waiting 30s before retry..."
+            sleep 30
+          done
+          echo "::error::Backend did not return 200 after 3 attempts"
+          exit 1
